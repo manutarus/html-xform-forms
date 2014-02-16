@@ -85,42 +85,15 @@
         </select>
     </div>
     <div class="form-group show_community_unit_mosoriot_select">
-        <label for="encounter.community_unit_mosoriot_select">Mosoriot units:<span class="required">*</span></label>
-        <select class="form-control" id="encounter.community_unit_mosoriot_select" name="encounter.community_unit_mosoriot_select" required="required">
-            <option selected="selected" disabled="disabled" value="">Mosoriot units</option>
-            <option value="Biribiriet">Biribiriet</option>
-            <option value="Chepteri">Chepterit</option>
-            <option value="Itigo">Itigo</option>
-            <option value="Kokwet">Kokwet</option>
-            <option value="Kingwal">Kingwal</option>
-            <option value="Lelmokwo">Lelmokwo</option>
-            <option value="Mosoriot">Mosoriot</option>
-            <option value="Ngechek">Ngechek</option>
-            <option value="Sigo">Sigot</option>
-        </select>
+        <label for="encounter.community_unit.mosoriot">Mosoriot units:<span class="required">*</span></label>
+        <input class="form-control ui-widget" id="encounter.community_unit.mosoriot" name="encounter.community_unit.mosoriot" required="required">
+
     </div>
 
-    <div class="form-group show_community_unit_turbo_select">
+    <div class="form-group show_community_unit_turbo_select ui-widget ">
         <label for="encounter.community_unit.turbo">Turbo units:<span class="required">*</span></label>
-        <select class="form-control" id="encounter.community_unit.turbo" name="encounter.community_unit.turbo" required="required">
-            <option selected="selected" disabled="disabled" value="">Turbo units</option>
-            <option value="Chepkemel">Chepkemelt</option>
-            <option value="Cheplaskei">Cheplaskei</option>
-            <option value="Chepsaita">Chepsaita</option>
-            <option value="Cheramei">Cheramei</option>
-            <option value="Leseru">Leseru</option>
-            <option value="Murgor hills">Murgor hills</option>
-            <option value="Murgusi">Murgusi</option>
-            <option value="Ngenyilel">Ngenyilel</option>
-            <option value="Osorongai">Osorongai</option>
-            <option value="Sambut">Sambut</option>
-            <option value="Sokyot">Sokyot</option>
-            <option value="Sosiani">Sosiani</option>
-            <option value="Sugoi">Sugoi</option>
-            <option value="Tuigoin">Tuigoin</option>
-            <option value="Turbo/ Kaptebee">Turbo/ Kaptebee</option>
 
-        </select>
+        <input class="form-control ui-widget" id="encounter.community_unit.turbo" name="encounter.community_unit.turbo" required="required">
     </div>
 
     <div class="form-group">
@@ -142,8 +115,6 @@
         <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id"
                type="text" required="required">
     </div>
-
-
 </div>
 
 <div class="section">
@@ -151,16 +122,16 @@
 
     <label>Have you at any time during the past 12 months been admitted in a hospital for at least one night?</label>
 
-    <div class="form-group checkNoneSelectedAlone single_select_checkbox">
-        <fieldset name="obs.drugs_dispensed" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
-            <input id="obs.inpatient_admission.yes" type="checkbox" onchange="checkAddress(this)" name="obs.drugs_dispensed" value="1065^YES^99DCT">
-            <label for="obs.inpatient_admission.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="obs.inpatient_admission.no" type="checkbox" onchange="checkAddress(this)" name="obs.drugs_dispensed" value="1066^NO^99DCT">
-            <label for="obs.inpatient_admission.no">No</label><br>
-            <input id="obs.inpatient_admission.dont_know" type="checkbox" onchange="checkAddress(this)"  name="obs.drugs_dispensed" value="1624^DO NOT KNOW^99DCT">
-            <label for="obs.inpatient_admission.dont_know">Don&#39;t Know</label>
-            <input id="obs.inpatient_admission.refused" type="checkbox" onchange="checkAddress(this)"  name="obs.drugs_dispensed" value="1958^REFUSAL^99DCT">
-            <label for="obs.inpatient_admission.refused">Refused</label>
+    <div class="form-group single_select_checkbox admitted_select">
+        <fieldset name="obs.inpatient_admission" data-concept="6419^ADMITTED TO HOSPITAL^99DCT">
+            <input id="obs.admitted.yes" type="checkbox" name="obs.admitted" value="1065^YES^99DCT">
+            <label for="obs.admitted.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.admitted.no" type="checkbox"  name="obs.admitted" value="1066^NO^99DCT">
+            <label for="obs.admitted.no">No</label><br>
+            <input id="obs.admitted.dont_know" type="checkbox"  name="obs.admitted" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.admitted.dont_know">Don&#39;t Know</label>
+            <input id="obs.admitted.refused" type="checkbox"   name="obs.admitted" value="1958^REFUSAL^99DCT">
+            <label for="obs.admitted.refused">Refused</label>
         </fieldset>
     </div>
     <div class="form-group">
@@ -169,66 +140,51 @@
                type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
         <label class="alert alert-info" id="obs.inpatient_admission_label" style="display:none">For each of the admissions you listed, we are going to ask you some additional questions.</label>
     </div>
+    <div class="repeat" id="obs.admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+        <label>Was the admission the result of an accident or injury?</label>
+
+        <div class="form-group single_select_checkbox" id="obs.admission_injury">
+            <fieldset name="obs.admission_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+                <input id="obs.admission_cause_injury.yes" type="checkbox"  name="obs.injury" value="1065^YES^99DCT">
+                <label for="obs.admission_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.admission_cause_injury.no" type="checkbox"  name="obs.injury" value="1066^NO^99DCT">
+                <label for="obs.admission_cause_injury.no">No</label><br>
+                <input id="obs.admission_cause_injury.dont_know" type="checkbox"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.admission_cause_injury.dont_know">Don&#39;t Know</label>
+                <input id="obs.admission_cause_injury.refused" type="checkbox"   name="obs.injury" value="1958^REFUSAL^99DCT">
+                <label for="obs.admission_cause_injury.refused">Refused</label>
+            </fieldset>
+        </div>
+
+        <div  style="display:none" class="form-group single_select_checkbox"  id="obs.admission_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+        <label>was the admission the result of any specific disease e.g malaria, typhoid, hypertension etc?</label>
+        <div class="form-group single_select_checkbox">
+            <fieldset name="obs.admission_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+                <input id="obs.admission_cause_disease.yes" type="checkbox"  name="obs.admitted34" value="1065^YES^99DCT">
+                <label for="obs.admission_cause_disease.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.admission_cause_disease.no" type="checkbox"  name="obs.drugs_dispense345d" value="1066^NO^99DCT">
+                <label for="obs.admission_cause_disease.no">No</label><br>
+                <input id="obs.admission_cause_disease.dont_know" type="checkbox"  name="obs.drugs_345dispensed" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.admission_cause_disease.dont_know">Don&#39;t Know</label>
+                <input id="obs.admission_cause_disease.refused" type="checkbox"   name="obs.drugs_dis345pensed" value="1958^REFUSAL^99DCT">
+                <label for="obs.admission_cause_disease.refused">Refused</label>
+            </fieldset>
+        </div>
+        <div class="form-group" id="obs.specific_disease_div">
+            <label for="obs.specific_disease" id="obs.specific_disease_label">Specify the disease:<span class="required">*</span></label>
+            <input class="form-control" id="obs.specific_disease" name="obs.admission_in_past_12_months"  style="display:none"
+                   type="text" placeholder="specify disease" data-concept="conceptID^Name^99DCT" required="required">
+        </div>
+
+
+
+        </div>
+    </div>
 </div>
 
 
-<input class="form-control numberOfMilligrams" id="txt.test" style="display:none"
-       name="obs.omo_number_of_milligram_other"
-       type="text" data-concept="1899^NUMBER OF MILLIGRAM^99DCT" required="required">
-
 </div>
-<div class="section repeat" id="nifedipine_dispense" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
-    <h3>Nifedipine Dispense</h3>
 
-    <div class="form-group" id="nifedipine_dosage_changed">
-        <label for="obs.other_medication_order_nifedipine">Did you change the [Nifedipine] dosage?<span
-                class="required">*</span></label>
-        <select class="form-control" id="obs.other_medication_order_nifedipine" required="required"
-                name="obs.other_medication_order_nifedipine" data-concept="1931^DOSAGE CHANGE^99DCT">
-            <option value="">...</option>
-            <option value="1065^YES^99DCT">Yes</option>
-            <option value="1066^NO^99DCT">No</option>
-            <option value="1624^DO NOT KNOW^99DCT">Do not know</option>
-        </select>
-    </div>
-    <div class="form-group" id="nifedipine_prescribed_dosage">
-        <label for="obs.tmp_dosage_change_nifedipine">Prescribed [Nifedipine] dose in milligrams (mg):<span
-                class="required">*</span></label>
-        <input class="form-control numberOfMilligrams" id="obs.tmp_dosage_change_nifedipine"
-               name="obs.tmp_dosage_change_nifedipine"
-               type="text" required="required" data-concept="1899^NUMBER OF MILLIGRAM^99DCT">
-    </div>
-    <div class="form-group">
-        <label for="obs.omo_medication_frequency_per_day_nifedipine">[Nifedipine] frequency per day:<span
-                class="required">*</span></label>
-        <select class="form-control" id="obs.omo_medication_frequency_per_day_nifedipine" required="required"
-                name="obs.omo_medication_frequency_per_day_nifedipine" data-concept="1896^MEDICATION FREQUENCY^99DCT">
-            <option value="">...</option>
-            <option value="1639^MORNING^99DCT">Every Morning</option>
-            <option value="1730^EVENING^99DCT">Every Evening</option>
-            <option value="1891^ONCE A DAY^99DCT">Once Daily</option>
-            <option value="1888^TWICE A DAY^99DCT">Twice Daily</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="obs.omo_number_of_tablets_nifedipine">Number of [Nifedipine] tablets prescribed:<span
-                class="required">*</span></label>
-        <input class="form-control numberOfTablets" id="obs.omo_number_of_tablets_nifedipine"
-               name="obs.omo_number_of_tablets_nifedipine" type="text" data-concept="1898^NUMBER OF TABLETS^99DCT"
-               required="required">
-    </div>
-    <div class="form-group">
-        <label for="obs.omo_medication_received_at_vist_nifedipine">[Nifedipine] picked-up at dispensary?<span
-                class="required">*</span></label>
-        <select class="form-control" id="obs.omo_medication_received_at_vist_nifedipine" required="required"
-                name="obs.omo_medication_received_at_vist_nifedipine"
-                data-concept="1276^MEDICATION RECEIVED AT VIST^99DCT">>
-            <option value="">...</option>
-            <option value="true">Yes</option>
-            <option value="false">No</option>
-        </select>
-    </div>
-</div>
 <div class="section repeat" id="other_medication" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
     <h3>Other Medication</h3>
 
@@ -272,10 +228,7 @@
     </div>
 </form>
 
-<div class="ui-widget">
-    <label for="tags">Tags: </label>
-    <input id="tags">
-</div>
+
 
 </body>
 <script type="text/javascript">
@@ -295,12 +248,12 @@ $(document).ready(function () {
          if(selected_value == 'Mosoriot') {
             $show_community_unit_mosoriot_select.show();
             $show_community_unit_turbo_select.hide();
-            $show_community_unit_mosoriot_select.find('input').val(selected_value);
+            $show_community_unit_mosoriot_select.find('input').val('');
         }
         else if(selected_value == 'Turbo') {
             $show_community_unit_mosoriot_select.hide();
             $show_community_unit_turbo_select.show();
-            $show_community_unit_mosoriot_select.find('input').val(selected_value);
+            $show_community_unit_mosoriot_select.find('input').val('');
         }
         else  {
             $show_community_unit_mosoriot_select.hide();
@@ -309,37 +262,38 @@ $(document).ready(function () {
         }
     });
 
-    $('#obs\\.admitted_in_past_12_months').change(function () {
-        var $show_admission_in_past_12_months = $('.show_admission_in_past_12_months');
-        var selected_value = $('#obs\\.admitted_in_past_12_months').val();
-        if(selected_value == '1065^YES^99DCT') {
-            $show_admission_in_past_12_months.show();
-        }
-        else  {
-            $show_admission_in_past_12_months.hide();
-        }
-    });
-
 });
 
-function checkAddress(checkbox)
-{
-    if($("#obs\\.inpatient_admission\\.yes").is(':checked')) {
+$("input:checkbox").change(function() {
+    var $admitted_select = $('.admitted_select');
+    if($("#obs\\.admitted\\.yes").is(':checked')) {
         $("#obs\\.admission_in_past_12_months").show();
         $("#obs\\.admission_in_past_12_months_label").show();
         $("#obs\\.inpatient_admission_label").show();
     }
     else {
         $("#obs\\.inpatient_admission_label").hide();
-        $("#obs\\.admission_in_past_12_months").hide();  // unchecked
-        $("#obs\\.admission_in_past_12_months_label").hide();  // unchecked
+        $("#obs\\.admission_in_past_12_months").hide();
+        $("#obs\\.admission_in_past_12_months_label").hide();
     }
-}
+});
+$("input:checkbox").change(function() {
+    var $injury_select = $('.injury_select');
+    if($("#obs\\.admission_cause_accident\\.yes").is(':checked')) {
+        $("#obs\\.admission_in_past_12_months").show();
+        $("#obs\\.admission_in_past_12_months_label").show();
+        $("#obs\\.inpatient_admission_label").show();
+    }
+    else {
+        $("#obs\\.inpatient_admission_label").hide();
+        $("#obs\\.admission_in_past_12_months").hide();
+        $("#obs\\.admission_in_past_12_months_label").hide();
+    }
+});
 
-
-var selectCorrespondingDrugsDispensed = function (selectedElement) {
-    var drugsArray = {"#obs\\.inpatient_admission\\.yes": "#nifedipine_dispense",
-        "#obs\\.drugs_dispensed\\.Other": "#other_medication"
+var selectCorrespondingAdmission = function (selectedElement) {
+    var drugsArray = {"#obs\\.admitted\\.yes": "#obs\\.admission_details",
+        "#obs\\.admitted\\.Other": "#other_medication"
     };
     $.each(drugsArray, function (k, v) {
         if ($(k).is(':checked')) {
@@ -350,14 +304,11 @@ var selectCorrespondingDrugsDispensed = function (selectedElement) {
     })
 };
 
-var $obs_drugs_dispensed = $('input[name="obs.drugs_dispensed"]');
-$obs_drugs_dispensed.change(function () {
-    selectCorrespondingDrugsDispensed();
+var $obs_admitted = $('input[name="obs.admitted"]');
+$obs_admitted.change(function () {
+    selectCorrespondingAdmission();
 });
-$obs_drugs_dispensed.trigger('change');
-/*  End - Based on Selected medication prescribed show dispensed fields */
-
-/*  Start - Based on Current medication prescribed show dosage fields */
+$obs_admitted.trigger('change');
 
 $("input:checkbox").click(function() {
     var $single_select_checkbox = $('.single_select_checkbox');
@@ -372,34 +323,43 @@ $("input:checkbox").click(function() {
 
 
 $(function() {
-    var availableTags = [
-        "ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme"
+    var turbo_community_units = [
+        "Chepkemel",
+        "Cheplaskei",
+        "Chepsaita",
+        "Cheramei",
+        "Leseru",
+        "Murgor hills",
+        "Murgusi",
+        "Ngenyilel",
+        "Osorongai",
+        "Sambut",
+        "Sokyot",
+        "Sosiani",
+        "Sugoi",
+        "Tuigoin",
+        "Turbo/Kaptebee"
     ];
-    $( "#tags" ).autocomplete({
-        source: availableTags
+    $( "#encounter\\.community_unit\\.turbo" ).autocomplete({
+        source: turbo_community_units
+    });
+    var mosoriot_community_units = [
+        "Biribiriet",
+        "Chepteri",
+        "Itigo",
+        "Kokwet",
+        "Kingwal",
+        "Lelmokwo",
+        "Mosoriot",
+        "Ngechek",
+        "Sigo"
+    ];
+    $( "#encounter\\.community_unit\\.mosoriot" ).autocomplete({
+        source: mosoriot_community_units
     });
 });
+
+
 
 </script>
 
