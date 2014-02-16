@@ -2,12 +2,13 @@
 <head>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/muzima.css" rel="stylesheet">
-    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <link href="css/ui-lightness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
 
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
     <script src="js/additional-methods.min.js"></script>
+    <script src="js/jquery-autocomplete-min.js"></script>
     <script src="js/muzima.js"></script>
 
     <title>Dispensary Form</title>
@@ -21,6 +22,10 @@
 <div class="section">
     <h3>Demographics</h3>
 
+    <div class="form-group">
+        <input class="form-control" id="patient.uuid"
+               name="patient.uuid" type="hidden" readonly="readonly">
+    </div>
     <div class="form-group">
         <label for="patient.medical_record_number">AMRS ID Number:</label>
         <input class="form-control" id="patient.medical_record_number"
@@ -60,8 +65,10 @@
 
     <div class="form-group">
         <label for="encounter.location_id">Name of Dispensary:<span class="required">*</span></label>
-        <select class="form-control" id="encounter.location_id" name="encounter.location_id" required="required">
-            <option value="">...</option>
+        <select class="form-control autocomplete-select" id="encounter.location_id" name="encounter.location_id"
+                placeholder="Start typing in  Dispensary name..."
+                required="required">
+            <option value=""></option>
             <option value="2">Mosoriot Health Centre</option>
             <option value="3">Turbo Health Centre</option>
             <option value="12">Teso District Hospital</option>
@@ -93,8 +100,8 @@
     </div>
     <div class="form-group">
         <label for="encounter.provider_id_select">Provider ID:</label>
-        <select class="form-control" id="encounter.provider_id_select" name="encounter.provider_id_select">
-            <option value="">...</option>
+        <select class="form-control autocomplete-select" id="encounter.provider_id_select" name="encounter.provider_id_select">
+            <option value=""></option>
             <option value="3356-3">David S. Pamba</option>
             <option value="237-8">Ariya Patrick</option>
             <option value="3331-6">Benjamin Osiya Ekirapa</option>
@@ -165,18 +172,21 @@
     <div class="form-group">
 
         <label for="systolic_blood_pressure_phct">Systolic Blood Pressure from pHCT Screening card:</label>
-        <input class="form-control systolicBloodPressure" id="systolic_blood_pressure_phct" name="systolic_blood_pressure_phct"
+        <input class="form-control systolicBloodPressure" id="systolic_blood_pressure_phct"
+               name="systolic_blood_pressure_phct"
                type="text" data-concept="5085^SYSTOLIC BLOOD PRESSURE^99DCT">
     </div>
     <div class="form-group">
         <label for="diastolic_blood_pressure_phct">Diastolic Blood Pressure from pHCT Screening card:</label>
-        <input class="form-control lessThankSystolic" id="diastolic_blood_pressure_phct" name="diastolic_blood_pressure_phct"
+        <input class="form-control lessThankSystolic" id="diastolic_blood_pressure_phct"
+               name="diastolic_blood_pressure_phct"
                type="text" data-concept="5086^DIASTOLIC BLOOD PRESSURE^99DCT">
     </div>
     <div class="form-group">
         <label for="serum_glucose_fasting_phct">Fasting Blood Sugar (FBS) from pHCT Screening card:</label>
         <input class="form-control glucose" id="serum_glucose_fasting_phct" name="serum_glucose_fasting_phct"
-               placeholder="Blood glucose is measured on a fasting basis (collected after an 8 to 10 hour fast)" type="text"
+               placeholder="Blood glucose is measured on a fasting basis (collected after an 8 to 10 hour fast)"
+               type="text"
                data-concept="6252^SERUM GLUCOSE, FASTING^99DCT">
     </div>
     <div class="form-group">
@@ -190,9 +200,8 @@
     <h3>Your current medications</h3>
     <label>Do you take any of the following medications?</label>
 
-    <div class="form-group checkNoneSelectedAlone">
+    <div class="form-group">
         <fieldset name="obs.tmp_drugs">
-            <label class="error"></label><br>
             <input id="obs.tmp_drugs.Metformin" type="checkbox" name="obs.tmp_drugs" value="metformin">
             <label for="obs.tmp_drugs.Metformin">Metformin</label><br>
             <input id="obs.tmp_drugs.Glibenclamide" type="checkbox" name="obs.tmp_drugs" value="glibenclamide">
@@ -587,65 +596,76 @@
     <h3>Symptoms</h3>
     <label>Do you have any of the following symptoms?</label>
 
-    <div class="form-group checkNoneSelectedAlone">
+    <div class="form-group">
         <fieldset data-concept="1069^REVIEW OF SYSTEMS, GENERAL^99DCT" name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT">
-            <label class="error"></label><br>
-            <input id="obs.review_of_systems_general.edema_legs" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.edema_legs" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="590^EDEMA, LEGS^99DCT">
             <label for="obs.review_of_systems_general.edema_legs">Leg Swelling (Oedema)</label><br>
             <input id="obs.review_of_systems_general.shortness_of_breath_with_exertion" type="checkbox"
-                   name="obs.review_of_systems_general" value="5963^SHORTNESS OF BREATH WITH EXERTION^99DCT">
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT" value="5963^SHORTNESS OF BREATH WITH EXERTION^99DCT">
             <label for="obs.review_of_systems_general.shortness_of_breath_with_exertion">Shortness of breath with
                 activity</label><br>
             <input id="obs.review_of_systems_general.focal_weakness" type="checkbox"
-                   name="obs.review_of_systems_general"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="6005^FOCAL WEAKNESS^99DCT">
             <label for="obs.review_of_systems_general.focal_weakness">Weakness in one part of the body</label><br>
-            <input id="obs.review_of_systems_general.oliguria" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.oliguria" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="6021^OLIGURIA^99DCT">
             <label for="obs.review_of_systems_general.oliguria">Reduced urine output</label><br>
-            <input id="obs.review_of_systems_general.heart_racing" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.heart_racing" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="7044^HEART RACING^99DCT">
             <label for="obs.review_of_systems_general.heart_racing">Heart Racing</label><br>
-            <input id="obs.review_of_systems_general.dizziness" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.dizziness" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="877^DIZZINESS^99DCT">
             <label for="obs.review_of_systems_general.dizziness">Recurrent Dizziness</label><br>
-            <input id="obs.review_of_systems_general.fainting" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.fainting" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="7045^FAINTING^99DCT">
             <label for="obs.review_of_systems_general.fainting">Fainting</label><br>
-            <input id="obs.review_of_systems_general.unconscious" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.unconscious" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="2295^UNCONSCIOUS^99DCT">
             <label for="obs.review_of_systems_general.unconscious">Loss of consciousness</label><br>
             <input id="obs.review_of_systems_general.vision_difficulties" type="checkbox"
-                   name="obs.review_of_systems_general" value="5953^VISION DIFFICULTIES^99DCT">
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT" value="5953^VISION DIFFICULTIES^99DCT">
             <label for="obs.review_of_systems_general.vision_difficulties">Vision Difficulties</label><br>
             <input id="obs.review_of_systems_general.foot_complaints" type="checkbox"
-                   name="obs.review_of_systems_general"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="7046^FOOT COMPLAINTS^99DCT">
             <label for="obs.review_of_systems_general.foot_complaints">Foot Complaints</label><br>
-            <input id="obs.review_of_systems_general.nausea" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.nausea" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="5978^NAUSEA^99DCT">
             <label for="obs.review_of_systems_general.nausea">Nausea</label><br>
-            <input id="obs.review_of_systems_general.vomiting" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.vomiting" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="5980^VOMITING^99DCT">
             <label for="obs.review_of_systems_general.vomiting">Vomiting</label><br>
             <input id="obs.review_of_systems_general.abdominal_pain" type="checkbox"
-                   name="obs.review_of_systems_general"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="151^ABDOMINAL PAIN^99DCT">
             <label for="obs.review_of_systems_general.abdominal_pain">Abdominal Discomfort</label><br>
-            <input id="obs.review_of_systems_general.diarrhea" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.diarrhea" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="16^DIARRHEA^99DCT">
             <label for="obs.review_of_systems_general.diarrhea">Diarrhea</label><br>
-            <input id="obs.review_of_systems_general.constipation" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.constipation" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="996^CONSTIPATION^99DCT">
             <label for="obs.review_of_systems_general.constipation">Constipation</label><br>
-            <input id="obs.review_of_systems_general.chronic_cough" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.chronic_cough" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="1470^CHRONIC COUGH^99DCT">
             <label for="obs.review_of_systems_general.chronic_cough">Recurrent Cough</label><br>
-            <input id="obs.review_of_systems_general.hypoglycemia" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.hypoglycemia" type="checkbox"
+                   name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="7047^HYPOGLYCEMIA^99DCT">
             <label for="obs.review_of_systems_general.hypoglycemia">Hunger, Sweating, dizziness and shaking</label><br>
-            <input id="obs.review_of_systems_general.none" type="checkbox" name="obs.review_of_systems_general"
+            <input id="obs.review_of_systems_general.none" type="checkbox" name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"
                    value="1107^NONE^99DCT">
             <label for="obs.review_of_systems_general.none">None of the above</label><br>
         </fieldset>
@@ -813,9 +833,8 @@
         times of day, you should enter each as a separate prescription using the 'Add Group' feature.</label>
     <label>Medications Prescribed:</label>
 
-    <div class="form-group checkNoneSelectedAlone">
+    <div class="form-group">
         <fieldset name="obs.drugs_dispensed" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
-            <label class="error"></label><br>
             <input id="obs.drugs_dispensed.Metformin" type="checkbox" name="obs.drugs_dispensed" value="metformin">
             <label for="obs.drugs_dispensed.Metformin">Metformin</label><br>
             <input id="obs.drugs_dispensed.Glibenclamide" type="checkbox" name="obs.drugs_dispensed"
@@ -924,10 +943,10 @@
     </div>
     <div class="form-group">
         <label for="obs.omo_number_of_tablets_glibenclamide">Number of [Glibenclamide] tablets prescribed:<<span
-                class="required">*</span>/label>
-            <input class="form-control numberOfTablets" id="obs.omo_number_of_tablets_glibenclamide"
-                   name="obs.omo_number_of_tablets_glibenclamide" type="text"
-                   data-concept="1898^NUMBER OF TABLETS^99DCT" required="required">
+                class="required">*</span></label>
+        <input class="form-control numberOfTablets" id="obs.omo_number_of_tablets_glibenclamide"
+               name="obs.omo_number_of_tablets_glibenclamide" type="text"
+               data-concept="1898^NUMBER OF TABLETS^99DCT" required="required">
     </div>
     <div class="form-group">
         <label for="obs.omo_medication_received_at_vist_glibenclamide">[Glibenclamide] picked-up at dispensary?<span
@@ -1186,40 +1205,40 @@
     <h3>Education</h3>
     <label>Education Given:</label>
 
-    <div class="form-group checkNoneSelectedAlone" >
-        <fieldset name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" data-concept="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT">
-            <label class="error"></label><br>
+    <div class="form-group">
+        <fieldset name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT"
+                  data-concept="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT">
             <input id="obs.patient_education_received_this_visit.alcohol_counseling" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="1288^ALCOHOL COUNSELING^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="1288^ALCOHOL COUNSELING^99DCT">
             <label for="obs.patient_education_received_this_visit.alcohol_counseling">Alcohol Reduction</label><br>
             <input id="obs.patient_education_received_this_visit.nutritional_support" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="5484^NUTRITIONAL SUPPORT^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="5484^NUTRITIONAL SUPPORT^99DCT">
             <label for="obs.patient_education_received_this_visit.nutritional_support">General Diet
                 Education</label><br>
             <input id="obs.patient_education_received_this_visit.diabetic_diet" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="7051^DIABETIC DIET^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="7051^DIABETIC DIET^99DCT">
             <label for="obs.patient_education_received_this_visit.diabetic_diet">Diabetic Diet Education</label><br>
             <input id="obs.patient_education_received_this_visit.diabetic_danger_signs" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="7052^DIABETIC DANGER SIGNS^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="7052^DIABETIC DANGER SIGNS^99DCT">
             <label for="obs.patient_education_received_this_visit.diabetic_danger_signs">Diabetic Danger
                 Signs</label><br>
             <input id="obs.patient_education_received_this_visit.salt_reduction" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="7053^SALT REDUCTION^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="7053^SALT REDUCTION^99DCT">
             <label for="obs.patient_education_received_this_visit.salt_reduction">Salt Reduction</label><br>
             <input id="obs.patient_education_received_this_visit.smoking_cessation" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="7054^SMOKING CESSATION^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="7054^SMOKING CESSATION^99DCT">
             <label for="obs.patient_education_received_this_visit.smoking_cessation">Smoking Cessation</label><br>
             <input id="obs.patient_education_received_this_visit.exercise" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="7055^EXERCISE^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="7055^EXERCISE^99DCT">
             <label for="obs.patient_education_received_this_visit.exercise">Exercise</label><br>
             <input id="obs.patient_education_received_this_visit.weight_loss" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="832^WEIGHT LOSS^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="832^WEIGHT LOSS^99DCT">
             <label for="obs.patient_education_received_this_visit.weight_loss">Weight Reduction</label><br>
             <input id="obs.patient_education_received_this_visit.adherence_counseling" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="5488^ADHERENCE COUNSELING^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="5488^ADHERENCE COUNSELING^99DCT">
             <label for="obs.patient_education_received_this_visit.adherence_counseling">Adherence Counseling</label><br>
             <input id="obs.patient_education_received_this_visit.none" type="checkbox"
-                   name="obs.patient_education_received_this_visit" value="1107^NONE^99DCT">
+                   name="6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT" value="1107^NONE^99DCT">
             <label for="obs.patient_education_received_this_visit.none">None</label>
         </fieldset>
     </div>
@@ -1228,31 +1247,32 @@
     <h3>Referrals Ordered</h3>
     <label>Select all referrals made during this visit:</label>
 
-    <div class="form-group checkNoneSelectedAlone">
+    <div class="form-group">
         <fieldset name="1272^REFERRALS ORDERED^99DCT" data-concept="1272^REFERRALS ORDERED^99DCT">
-            <label class="error"></label><br>
-            <input id="obs.referrals_ordered.referred_to_clinic" type="checkbox" name="obs.referrals_ordered"
+            <input id="obs.referrals_ordered.referred_to_clinic" type="checkbox" name="1272^REFERRALS ORDERED^99DCT"
                    value="7056^REFERRED TO CLINIC^99DCT">
             <label for="obs.referrals_ordered.referred_to_clinic">CO/Health Center</label><br>
-            <input id="obs.referrals_ordered.dispensary" type="checkbox" name="obs.referrals_ordered"
+            <input id="obs.referrals_ordered.dispensary" type="checkbox" name="1272^REFERRALS ORDERED^99DCT"
                    value="6436^DISPENSARY^99DCT">
             <label for="obs.referrals_ordered.dispensary">Return to Dispensary</label><br>
-            <input id="obs.referrals_ordered.antenatal_care_service" type="checkbox" name="obs.referrals_ordered"
+            <input id="obs.referrals_ordered.antenatal_care_service" type="checkbox" name="1272^REFERRALS ORDERED^99DCT"
                    value="1865^ANTENATAL CARE SERVICE^99DCT">
             <label for="obs.referrals_ordered.antenatal_care_service">ANC Clinic</label><br>
-            <input id="obs.referrals_ordered.high_risk_antenatal_clinic" type="checkbox" name="obs.referrals_ordered"
+            <input id="obs.referrals_ordered.high_risk_antenatal_clinic" type="checkbox"
+                   name="1272^REFERRALS ORDERED^99DCT"
                    value="7058^HIGH RISK ANTENATAL CLINIC^99DCT">
             <label for="obs.referrals_ordered.high_risk_antenatal_clinic">High Risk ANC Clinic</label><br>
-            <input id="obs.referrals_ordered.none" type="checkbox" name="obs.referrals_ordered" value="1107^NONE^99DCT">
+            <input id="obs.referrals_ordered.none" type="checkbox" name="1272^REFERRALS ORDERED^99DCT"
+                   value="1107^NONE^99DCT">
             <label for="obs.referrals_ordered.none">None</label><br>
         </fieldset>
     </div>
 </div>
-<div class="section" data-concept="5096^RETURN VISIT DATE^99DCT">
+<div class="section">
     <div class="form-group">
         <label for="obs.return_visit_date">Return Date to Dispensary:</label>
-        <input class="form-control datepicker checkFutureDate" id="obs.return_visit_date" name="obs.return_visit_date"
-               type="text"
+        <input class="form-control datepicker checkFutureDate" data-concept="5096^RETURN VISIT DATE^99DCT"
+               id="obs.return_visit_date" name="obs.return_visit_date" type="text"
                readonly="readonly">
     </div>
 </div>
@@ -1266,14 +1286,10 @@
 </body>
 <script type="text/javascript">
 $(document).ready(function () {
-    $('form').submit(function () {
-        $.document.submit();
-    });
 
-    $('#save_draft').click(function(event){
-        $.document.saveDraft();
+    $('#save_draft').click(function () {
+        document.saveDraft();
     });
-
     $('#dispensary_form').validate({
         rules: {
             pulse: {
@@ -1295,7 +1311,25 @@ $(document).ready(function () {
             glycosylated_hemoglobin: {
                 number: true,
                 range: [0, 20]
+            },
+            'obs.tmp_drugs': {
+                checkNoneSelectedAlone: true
+            },
+            '1069^REVIEW OF SYSTEMS, GENERAL^99DCT': {
+                checkNoneSelectedAlone: true
+            },
+            'obs.drugs_dispensed': {
+                checkNoneSelectedAlone: true
+            },
+            '6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT': {
+                checkNoneSelectedAlone: true
+            },
+            '1272^REFERRALS ORDERED^99DCT': {
+                checkNoneSelectedAlone: true
             }
+        },
+        submitHandler: function (form) {
+            document.submit();
         }
     });
 
@@ -1312,7 +1346,7 @@ $(document).ready(function () {
     });
     /* End - lessThankSystolic*/
 
-    /* Start - Based on Selected medication prescribed show dispensed fields */
+    /*  Start - Based on Selected medication prescribed show dispensed fields */
     var selectCorrespondingDrugsDispensed = function (selectedElement) {
         var drugsArray = {"#obs\\.drugs_dispensed\\.Metformin": "#metformin_dispense",
             "#obs\\.drugs_dispensed\\.Glibenclamide": "#glibenclamide_dispense",
@@ -1336,9 +1370,9 @@ $(document).ready(function () {
         selectCorrespondingDrugsDispensed();
     });
     $obs_drugs_dispensed.trigger('change');
-    /* End - Based on Selected medication prescribed show dispensed fields */
+    /*  End - Based on Selected medication prescribed show dispensed fields */
 
-    /* Start - Based on Current medication prescribed show dosage fields */
+    /*  Start - Based on Current medication prescribed show dosage fields */
     var selectCorrespondingCurrentMedication = function (selectedElement) {
         var drugsArray = {"#obs\\.tmp_drugs\\.Metformin": "#medication_metformin",
             "#obs\\.tmp_drugs\\.Glibenclamide": "#medication_glibenclamide",
@@ -1360,7 +1394,7 @@ $(document).ready(function () {
         })
     };
     selectCorrespondingCurrentMedication();
-    /* End - Based on Current medication prescribed show dosage fields */
+    /*  End - Based on Current medication prescribed show dosage fields */
 
     /* When a provider is selected from the provider list, hide the provider id text field */
     $('#encounter\\.provider_id_select').change(function () {
@@ -1376,7 +1410,7 @@ $(document).ready(function () {
         }
     });
 
-    /* Start - If some medication dose was missed, ask for reason */
+    /*  Start - If some medication dose was missed, ask for reason */
     var displayReasonForMissingMedicationWhenNeeded = function (selectedElement) {
         var drugsArray = {"#obs\\.medication_metformin\\.number_of_pills_taken": ".metformin_missed_medication_reason",
             "#obs\\.medication_glibenclamide\\.number_of_pills_taken": ".glibenclamide_missed_medication_reason",
@@ -1400,7 +1434,7 @@ $(document).ready(function () {
         })
     };
     displayReasonForMissingMedicationWhenNeeded();
-    /* End - Start - If some medication dose was missed, ask for reason */
+    /*  End - Start - If some medication dose was missed, ask for reason */
 
     /* Start - Asks for the dosage of other medication in ml only if it is not provided in mg */
     $(document.body).on('change', '.otherMedicationNumberOfMilligram', function () {
@@ -1484,7 +1518,7 @@ $(document).ready(function () {
     $height.trigger('change');
     /* End - Compute the BMI if the weight & height are provided */
 
-    /* Start - Based on Current medication, and medication prescribed, show or hide "dosage changed" fields */
+    /*  Start - Based on Current medication, and medication prescribed, show or hide "dosage changed" fields */
     var showOrHideDosageChanged = function (drugCurrent, drugDispensed, dosageChanged) {
         if ($(drugCurrent).is(':checked') && $(drugDispensed).is(':checked')) {
             $(dosageChanged).show();
@@ -1518,9 +1552,9 @@ $(document).ready(function () {
         })
     };
     selectCorrespondingDosageChanged();
-    /* End - Based on Current medication, and medication prescribed, show or hide "dosage changed" fields */
+    /*  End - Based on Current medication, and medication prescribed, show or hide "dosage changed" fields */
 
-    /* Start - Based on "Did you change the xx dosage" show or hide "prescribed dosage" fields */
+    /*  Start - Based on "Did you change the xx dosage" show or hide  "prescribed dosage" fields */
     var showOrHidePrescribedDosage = function (selectedElement) {
         var drugsArray = ["metformin", "glibenclamide", "enalapril", "enalapril", "hctz", "losartan", "nifedipine"];
         $.each(drugsArray, function (index, v) {
@@ -1544,7 +1578,7 @@ $(document).ready(function () {
         })
     };
     showOrHidePrescribedDosage();
-    /* End - Based on Selected medication prescribed show dispensed fields */
+    /*  End - Based on Selected medication prescribed show dispensed fields */
 
     /* Start - Define variables for conditional displays */
     var $systolicBloodPressure = $('#obs\\.systolic_blood_pressure');
@@ -1561,7 +1595,7 @@ $(document).ready(function () {
         }).get();
     };
     var getReviewOfSystemsGeneralValues = function () {
-        return $('input[name="obs.review_of_systems_general"]:checked').map(function () {
+        return $('input[name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"]:checked').map(function () {
             return this.value;
         }).get();
     };
@@ -1993,7 +2027,7 @@ $(document).ready(function () {
             $('#obs\\.diabetes_reminder_7').show();
         else
             $('#obs\\.diabetes_reminder_7').hide();
-    }
+    };
     displayDiabetesReminder7();
     /* End - DiabetesReminder7 */
 
@@ -2091,7 +2125,7 @@ $(document).ready(function () {
     /* End - DiabetesReminder10 */
     /* End - Conditional display of Diabetes reminders */
 
-    /* Start - Based on Selected current visit type show or hide fields */
+    /*  Start - Based on Selected current visit type show or hide fields */
     var displayPHCTReview = function () {
         var $show_provider_id_text = $("#phct_review");
         var selected_visit_type = $currentVisitType.val();
@@ -2101,7 +2135,7 @@ $(document).ready(function () {
             $("#phct_review").hide();
         }
     };
-    /* End - Based on Selected current visit type show or hide fields */
+    /*  End - Based on Selected current visit type show or hide fields */
 
     /* Start - Reminder triggers */
     $birthdate.change(function () {
@@ -2211,7 +2245,7 @@ $(document).ready(function () {
         displayDiabetesReminder9();
         displayDiabetesReminder10();
     });
-    $('input[name="obs.review_of_systems_general"]').change(function () {
+    $('input[name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"]').change(function () {
         displayHTNReminder1();
         displayHTNReminder2();
         displayHTNReminder3a();
