@@ -143,7 +143,7 @@
     <div class="repeat" id="obs.admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
         <label>Was the admission the result of an accident or injury?</label>
 
-        <div class="form-group single_select_checkbox" id="obs.admission_injury">
+        <div class="form-group single_select_checkbox injury_select" id="obs.admission_injury">
             <fieldset name="obs.admission_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
                 <input id="obs.admission_cause_injury.yes" type="checkbox"  name="obs.injury" value="1065^YES^99DCT">
                 <label for="obs.admission_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -156,7 +156,7 @@
             </fieldset>
         </div>
 
-        <div  style="display:none" class="form-group single_select_checkbox"  id="obs.admission_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+        <div  style="display:none" cla ss="form-group single_select_checkbox"  id="obs.admission_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
         <label>was the admission the result of any specific disease e.g malaria, typhoid, hypertension etc?</label>
         <div class="form-group single_select_checkbox">
             <fieldset name="obs.admission_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
@@ -279,15 +279,11 @@ $("input:checkbox").change(function() {
 });
 $("input:checkbox").change(function() {
     var $injury_select = $('.injury_select');
-    if($("#obs\\.admission_cause_accident\\.yes").is(':checked')) {
-        $("#obs\\.admission_in_past_12_months").show();
-        $("#obs\\.admission_in_past_12_months_label").show();
-        $("#obs\\.inpatient_admission_label").show();
+    if($("#obs\\.admission_cause_injury\\.yes").is(':checked')) {
+        $("#obs\\.admission_disease").hide();
     }
     else {
-        $("#obs\\.inpatient_admission_label").hide();
-        $("#obs\\.admission_in_past_12_months").hide();
-        $("#obs\\.admission_in_past_12_months_label").hide();
+        $("#obs\\.admission_disease").show();
     }
 });
 
