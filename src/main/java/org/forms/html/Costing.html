@@ -84,13 +84,13 @@
             <option value="Turbo">Turbo</option>
         </select>
     </div>
-    <div class="form-group show_community_unit_mosoriot_select">
+    <div style="display:none" class="form-group show_community_unit_mosoriot_select">
         <label for="encounter.community_unit.mosoriot">Mosoriot units:<span class="required">*</span></label>
         <input class="form-control ui-widget" id="encounter.community_unit.mosoriot" name="encounter.community_unit.mosoriot" required="required">
 
     </div>
 
-    <div class="form-group show_community_unit_turbo_select ui-widget ">
+    <div style="display:none" class="form-group show_community_unit_turbo_select ui-widget ">
         <label for="encounter.community_unit.turbo">Turbo units:<span class="required">*</span></label>
 
         <input class="form-control ui-widget" id="encounter.community_unit.turbo" name="encounter.community_unit.turbo" required="required">
@@ -122,27 +122,26 @@
 
     <label>Have you at any time during the past 12 months been admitted in a hospital for at least one night?</label>
 
-    <div class="form-group single_select_checkbox admitted_select">
+    <div class="form-group">
         <fieldset name="obs.inpatient_admission" data-concept="6419^ADMITTED TO HOSPITAL^99DCT">
-            <input id="obs.admitted.yes" type="checkbox" name="obs.admitted" value="1065^YES^99DCT">
+            <input id="obs.admitted.yes" type="radio" name="obs.admitted" value="1065^YES^99DCT">
             <label for="obs.admitted.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
-            <input id="obs.admitted.no" type="checkbox"  name="obs.admitted" value="1066^NO^99DCT">
+            <input id="obs.admitted.no" type="radio"  name="obs.admitted" value="1066^NO^99DCT">
             <label for="obs.admitted.no">No</label><br>
-            <input id="obs.admitted.dont_know" type="checkbox"  name="obs.admitted" value="1624^DO NOT KNOW^99DCT">
+            <input id="obs.admitted.dont_know" type="radio"  name="obs.admitted" value="1624^DO NOT KNOW^99DCT">
             <label for="obs.admitted.dont_know">Don&#39;t Know</label>
-            <input id="obs.admitted.refused" type="checkbox"   name="obs.admitted" value="1958^REFUSAL^99DCT">
+            <input id="obs.admitted.refused" type="radio"   name="obs.admitted" value="1958^REFUSAL^99DCT">
             <label for="obs.admitted.refused">Refused</label>
         </fieldset>
     </div>
-    <div class="form-group">
+
+    <div  id="obs.admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
         <label for="obs.admission_in_past_12_months" id="obs.admission_in_past_12_months_label">Number of Admissions:<span class="required">*</span></label>
-        <input class="form-control" id="obs.admission_in_past_12_months" name="obs.admission_in_past_12_months"  style="display:none"
+        <input class="form-control" id="obs.admission_in_past_12_months" name="obs.admission_in_past_12_months"
                type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
         <label class="alert alert-info" id="obs.inpatient_admission_label" style="display:none">For each of the admissions you listed, we are going to ask you some additional questions.</label>
-    </div>
-    <div class="repeat" id="obs.admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+        <div class="repeat" id="obs.admission_details_repeart" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
         <label>Was the admission the result of an accident or injury?</label>
-
         <div class="form-group single_select_checkbox injury_select" id="obs.admission_injury">
             <fieldset name="obs.admission_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
                 <input id="obs.admission_cause_injury.yes" type="checkbox"  name="obs.injury" value="1065^YES^99DCT">
@@ -154,6 +153,7 @@
                 <input id="obs.admission_cause_injury.refused" type="checkbox"   name="obs.injury" value="1958^REFUSAL^99DCT">
                 <label for="obs.admission_cause_injury.refused">Refused</label>
             </fieldset>
+        </div>
         </div>
 
         <div  style="display:none" cla ss="form-group single_select_checkbox"  id="obs.admission_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
@@ -176,12 +176,9 @@
                    type="text" placeholder="specify disease" data-concept="conceptID^Name^99DCT" required="required">
         </div>
 
-
-
         </div>
     </div>
 </div>
-
 
 </div>
 
@@ -228,8 +225,6 @@
     </div>
 </form>
 
-
-
 </body>
 <script type="text/javascript">
 $(document).ready(function () {
@@ -263,20 +258,6 @@ $(document).ready(function () {
     });
 
 });
-
-$("input:checkbox").change(function() {
-    var $admitted_select = $('.admitted_select');
-    if($("#obs\\.admitted\\.yes").is(':checked')) {
-        $("#obs\\.admission_in_past_12_months").show();
-        $("#obs\\.admission_in_past_12_months_label").show();
-        $("#obs\\.inpatient_admission_label").show();
-    }
-    else {
-        $("#obs\\.inpatient_admission_label").hide();
-        $("#obs\\.admission_in_past_12_months").hide();
-        $("#obs\\.admission_in_past_12_months_label").hide();
-    }
-});
 $("input:checkbox").change(function() {
     var $injury_select = $('.injury_select');
     if($("#obs\\.admission_cause_injury\\.yes").is(':checked')) {
@@ -286,7 +267,6 @@ $("input:checkbox").change(function() {
         $("#obs\\.admission_disease").show();
     }
 });
-
 var selectCorrespondingAdmission = function (selectedElement) {
     var drugsArray = {"#obs\\.admitted\\.yes": "#obs\\.admission_details",
         "#obs\\.admitted\\.Other": "#other_medication"
@@ -299,7 +279,6 @@ var selectCorrespondingAdmission = function (selectedElement) {
         }
     })
 };
-
 var $obs_admitted = $('input[name="obs.admitted"]');
 $obs_admitted.change(function () {
     selectCorrespondingAdmission();
@@ -317,7 +296,9 @@ $("input:checkbox").click(function() {
     }
 });
 
-
+$('input[name$="rdoSearchBy"]').change(function(){
+    alert($('input[name$="rdoSearchBy"]:checked').val());
+});
 $(function() {
     var turbo_community_units = [
         "Chepkemel",
@@ -354,8 +335,6 @@ $(function() {
         source: mosoriot_community_units
     });
 });
-
-
 
 </script>
 
