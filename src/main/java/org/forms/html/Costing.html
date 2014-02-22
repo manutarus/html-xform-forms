@@ -76,7 +76,7 @@
                required="required">
     </div>
 
-    <label>Select Division</label>
+    <label>Select Division<span class="required">*</span></label>
     <div class="form-group" id="encounter.division_select">
         <fieldset name="encounter.division_select" data-concept="6419^ADMITTED TO HOSPITAL^99DCT">
             <input id="encounter.division_select.mosoriot" type="radio" name="encounter.division_options" value="1065^YES^99DCT">
@@ -103,7 +103,7 @@
                type="text" placeholder="Village" data-concept="conceptID^Name^99DCT" required="required">
     </div>
     <div class="form-group">
-        <label for="encounter.provider_id_select">Select RA:</label>
+        <label for="encounter.provider_id_select">Select RA:<span class="required">*</span></label>
         <select class="form-control" id="encounter.provider_id_select" name="encounter.provider_id_select">
             <option value="">RA's</option>
             <option value="3356-3">Jackson Rotich</option>
@@ -121,8 +121,8 @@
 <div class="section">
     <h3>INPATIENT ADMISSIONS</h3>
 
-    <label>Have you at any time during the past 12 months been admitted in a hospital for at least one night?</label>
-    <div class="form-group" id="admitted_select">
+    <label>Have you at any time during the past 12 months been admitted in a hospital for at least one night?<span class="required">*</span></label>
+    <div class="form-group" id="obs.admitted_select">
         <fieldset name="obs.inpatient_admission" data-concept="6419^ADMITTED TO HOSPITAL^99DCT">
             <input id="obs.admitted.yes" type="radio" name="obs.admitted" value="1065^YES^99DCT">
             <label for="obs.admitted.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -142,14 +142,14 @@
         <label class="alert alert-info" id="obs.inpatient_admission_label">For each of the admissions you listed, we are going to ask you some additional questions.</label>
 
         <div class="form-group" id="obs.admission_injury">
-            <label for="obs.admission_details">Was the admission the result of an accident or injury?<span class="required">*</span></label>
-            <fieldset name="obs.admission_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+            <label for="obs.admission_injury">Was the admission the result of an accident or injury?<span class="required">*</span></label>
+            <fieldset name="obs.admission_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.admission_injury_select">
             <input id="obs.admission_cause_injury.yes" type="radio"  name="obs.injury" value="1065^YES^99DCT">
             <label for="obs.admission_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
             <input id="obs.admission_cause_injury.no" type="radio"  name="obs.injury" value="1066^NO^99DCT">
             <label for="obs.admission_cause_injury.no">No</label><br>
             <input id="obs.admission_cause_injury.dont_know" type="radio"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">
-            <label for="obs.admission_cause_injury.dont_know">Don&#39;t Know</label>
+            <label for="obs.admission_cause_injury.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
             <input id="obs.admission_cause_injury.refused" type="radio"   name="obs.injury" value="1958^REFUSAL^99DCT">
             <label for="obs.admission_cause_injury.refused">Refused</label>
             </fieldset>
@@ -233,8 +233,9 @@ var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + fullDate.
 $("#encounter\\.encounter_datetime").val(currentDate);
 
 $(document).ready(function () {
-    $("#admitted_select").buttonset().find('label').width(75);
+    $("#obs\\.admitted_select").buttonset().find('label').width(75);
     $("#encounter\\.division_select").buttonset().find('label').width(85);
+    $("#obs\\.admission_injury_select").buttonset().find('label').width(75);
 });
 
 var selectCorrespondingAdmission = function (selectedElement) {
