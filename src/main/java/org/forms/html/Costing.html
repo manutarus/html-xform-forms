@@ -16,7 +16,7 @@
 <div id="pre_populate_data"></div>
 <form id="costing_form" name="costing_form">
 
-<h2 class="text-center">COST ASSESSMENT TOOL</h2>
+<h2 class="text-center">COST ASSESSMENT</h2>
 
 <div class="section">
     <h3>Demographics</h3>
@@ -72,19 +72,19 @@
     <div class="form-group">
         <label for="encounter.encounter_datetime">Encounter Date:<span class="required">*</span></label>
         <input class="form-control datepicker nonFutureDate" id="encounter.encounter_datetime"
-               name="encounter.encounter_datetime" type="text" readonly="readonly"
+               name="encounter.encounter_datetime"  type="text"  readonly="readonly"
                required="required">
     </div>
 
-    <div class="form-group">
-        <label for="encounter.division_select">Division:<span class="required">*</span></label>
-        <select class="form-control .styled-select2" id="encounter.division_select" name="encounter.division_select" required="required">
-            <option selected="selected" disabled="disabled" value="">Divisions</option>
-            <option value="Mosoriot">Mosoriot</option>
-            <option value="Turbo">Turbo</option>
-        </select>
+    <label>Select Division</label>
+    <div class="form-group" id="encounter.division_select">
+        <fieldset name="encounter.division_select" data-concept="6419^ADMITTED TO HOSPITAL^99DCT">
+            <input id="encounter.division_select.mosoriot" type="radio" name="encounter.division_options" value="1065^YES^99DCT">
+            <label for="encounter.division_select.mosoriot">Mosoriot</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="encounter.division_select.turbo" type="radio"  name="encounter.division_options" value="1066^NO^99DCT">
+            <label for="encounter.division_select.turbo">Turbo</label><br>
+        </fieldset>
     </div>
-
 
 
     <div style="display:none" class="form-group show_community_unit_mosoriot_select">
@@ -92,13 +92,12 @@
         <input class="form-control ui-widget" id="encounter.community_unit.mosoriot" name="encounter.community_unit.mosoriot" required="required">
     </div>
 
-    <div style="display:none" class="form-group show_community_unit_turbo_select ui-widget ">
+    <div style="display:none" class="form-group show_community_unit_turbo_select">
         <label for="encounter.community_unit.turbo">Turbo units:<span class="required">*</span></label>
-
         <input class="form-control ui-widget" id="encounter.community_unit.turbo" name="encounter.community_unit.turbo" required="required">
     </div>
 
-    <div class="form-group">
+    <div style="display:none" class="form-group show_village">
         <label for="encounter.village">village:<span class="required">*</span></label>
         <input class="form-control" id="encounter.village" name="encounter.village"
                type="text" placeholder="Village" data-concept="conceptID^Name^99DCT" required="required">
@@ -206,31 +205,16 @@ $(document).ready(function () {
     $('#encounter\\.division_select').change(function () {
         var $show_community_unit_mosoriot_select = $('.show_community_unit_mosoriot_select');
         var $show_community_unit_turbo_select = $('.show_community_unit_turbo_select');
-        var selected_value = $('#encounter\\.division_select').val();
-         if(selected_value == 'Mosoriot') {
+        var $show_village = $('.show_village');
+        if($("#encounter\\.division_select\\.mosoriot").is(':checked')) {
             $show_community_unit_mosoriot_select.show();
             $show_community_unit_turbo_select.hide();
-            $show_community_unit_mosoriot_select.find('input').val('');
         }
-        else if(selected_value == 'Turbo') {
-            $show_community_unit_mosoriot_select.hide();
+        if($("#encounter\\.division_select\\.turbo").is(':checked')){
             $show_community_unit_turbo_select.show();
-            $show_community_unit_mosoriot_select.find('input').val('');
-        }
-        else  {
             $show_community_unit_mosoriot_select.hide();
-            $show_community_unit_turbo_select.hide();
-            $show_community_unit_mosoriot_select.find('input').val('');
         }
-    });
-
-    $('#obs\\.admission_injury').change(function () {
-        var $show_community_unit_mosoriot_select = $('.show_community_unit_mosoriot_select');
-        var $show_community_unit_turbo_select = $('.show_community_unit_turbo_select');
-        if(!$("#encounter\\.division_select\\.mosoriot").is(':checked'))
-            $show_community_unit_mosoriot_select.hide();
-        else if(!$("#encounter\\.division_select\\.turbo").is(':checked'))
-            $show_community_unit_turbo_select.hide();
+        $show_village.show();
     });
 
     $('#obs\\.admission_injury').change(function () {
@@ -242,8 +226,15 @@ $(document).ready(function () {
     });
 
 });
+
+var fullDate = new Date()
+var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + fullDate.getDate();
+$("#encounter\\.encounter_datetime").val(currentDate);
+
 $(document).ready(function () {
     $("#admitted_select").buttonset().find('label').width(75);
+    $("#encounter\\.division_select").buttonset().find('label').width(85);
 });
 
 var selectCorrespondingAdmission = function (selectedElement) {
