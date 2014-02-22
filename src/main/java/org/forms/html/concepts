@@ -1,3 +1,59 @@
 Have you at any time during the past 12 months been admitted in a hospital for at least one night?
 
 admission_details
+
+
+
+
+
+<div  id="obs.admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+        <label for="obs.admission_in_past_12_months" id="obs.admission_in_past_12_months_label">Number of Admissions:<span class="required">*</span></label>
+
+
+
+
+   <div  id="obs.admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+           <label for="obs.admission_in_past_12_months" id="obs.admission_in_past_12_months_label">Number of Admissions:<span class="required">*</span></label>
+           <input class="form-control" id="obs.admission_in_past_12_months" name="obs.admission_in_past_12_months"
+                  type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
+
+           <label class="alert alert-info" id="obs.inpatient_admission_label">For each of the admissions you listed, we are going to ask you some additional questions.</label>
+
+           <div class="repeat" id="obs.admission_details_repeat" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+           <label>Was the admission the result of an accident or injury?</label>
+           <div class="form-group single_select_checkbox injury_select" id="obs.admission_injury">
+               <fieldset name="obs.admission_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+                   <input id="obs.admission_cause_injury.yes" type="radio"  name="obs.injury" value="1065^YES^99DCT">
+                   <label for="obs.admission_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                   <input id="obs.admission_cause_injury.no" type="radio"  name="obs.injury" value="1066^NO^99DCT">
+                   <label for="obs.admission_cause_injury.no">No</label><br>
+                   <input id="obs.admission_cause_injury.dont_know" type="radio"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">
+                   <label for="obs.admission_cause_injury.dont_know">Don&#39;t Know</label>
+                   <input id="obs.admission_cause_injury.refused" type="radio"   name="obs.injury" value="1958^REFUSAL^99DCT">
+                   <label for="obs.admission_cause_injury.refused">Refused</label>
+               </fieldset>
+           </div>
+
+
+           <div id="none_injury_quiz" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+
+               <label>was the admission the result of any specific disease e.g malaria, typhoid, hypertension etc?</label>
+                   <div class="form-group single_select_checkbox injury_select" id="obs.admission_disease">
+                       <fieldset name="obs.admission_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+                           <input id="obs.admission_cause_disease.yes" type="radio"  name="obs.injury" value="1065^YES^99DCT">
+                           <label for="obs.admission_cause_disease.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                           <input id="obs.admission_cause_disease.no" type="radio"  name="obs.injury" value="1066^NO^99DCT">
+                           <label for="obs.admission_cause_disease.no">No</label><br>
+                           <input id="obs.admission_cause_disease.dont_know" type="radio"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">
+                           <label for="obs.admission_cause_disease.dont_know">Don&#39;t Know</label>
+                           <input id="obs.admission_cause_disease.refused" type="radio"   name="obs.injury" value="1958^REFUSAL^99DCT">
+                           <label for="obs.admission_cause_disease.refused">Refused</label>
+                       </fieldset>
+                   </div>
+           </div>
+       </div>
+   </div>
+
+
+
+
