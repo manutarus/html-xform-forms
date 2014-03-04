@@ -15,12 +15,10 @@
 <body class="col-md-8 col-md-offset-2">
 <div id="pre_populate_data"></div>
 <form id="costing_form" name="costing_form">
-
 <h2 class="text-center">COST ASSESSMENT</h2>
 
 <div class="section">
     <h3>Demographics</h3>
-
     <div class="form-group">
         <label for="patient.medical_record_number">AMRS ID Number:</label>
         <input class="form-control" id="patient.medical_record_number"
@@ -85,18 +83,14 @@
             <label for="encounter.division_select.turbo">Turbo</label><br>
         </fieldset>
     </div>
-
-
-    <div style="display:none" class="form-group show_community_unit_mosoriot_select">
+    <div sty41le="display:none" class="form-group show_community_unit_mosoriot_select">
         <label for="encounter.community_unit.mosoriot">Mosoriot units:<span class="required">*</span></label>
         <input class="form-control ui-widget" id="encounter.community_unit.mosoriot" name="encounter.community_unit.mosoriot" required="required">
     </div>
-
     <div style="display:none" class="form-group show_community_unit_turbo_select">
         <label for="encounter.community_unit.turbo">Turbo units:<span class="required">*</span></label>
         <input class="form-control ui-widget" id="encounter.community_unit.turbo" name="encounter.community_unit.turbo" required="required">
     </div>
-
     <div style="display:none" class="form-group show_village">
         <label for="encounter.village">village:<span class="required">*</span></label>
         <input class="form-control" id="encounter.village" name="encounter.village"
@@ -140,7 +134,7 @@
                type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
 
         <label class="alert alert-info" id="obs.inpatient_admission_label">For each of the admissions you listed, we are going to ask you some additional questions.</label>
-
+      <div class="repeat">
         <div class="form-group" id="obs.admission_injury">
             <label for="obs.admission_injury">Was the admission the result of an accident or injury?<span class="required">*</span></label>
             <fieldset name="obs.admission_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.admission_injury_select">
@@ -156,7 +150,7 @@
         </div>
         <div  style="display:none" class="form-group show_none_injury_quiz"  id="obs.admission_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
         <label>was the admission the result of any specific disease e.g malaria, typhoid, hypertension etc?<span class="required">*</span></label>
-        <div class="form-group  single_select_checkbox">
+        <div class="form-group">
             <fieldset  name="obs.admission_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.admission_disease_select">
                 <input id="obs.admission_cause_disease.yes" type="radio"  name="obs.disease" value="1065^YES^99DCT">
                 <label for="obs.admission_cause_disease.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
@@ -180,89 +174,247 @@
         </div>
         <div class="section">
             <label>Did you pay for this admission using any of the following sources?<span class="required">*</span></label>
-            <div class="form-group largerCheckbox">
+            <div class="form-group" id="obs.payment_source">
                 <fieldset data-concept="1069^payment sources^99DCT" name="1069^payment sources^99DCT">
-                    <input id="obs.review_of_systems_general.edema_legs" type="checkbox"
+
+                    <input id="obs.payment_source.NHIF" type="checkbox"
                            name="1069^payment sources^99DCT"
-                           value="590^EDEMA, LEGS^99DCT">
-                    <label for="obs.review_of_systems_general.edema_legs">Leg Swelling (Oedema)</label><br>
-                    <input id="obs.review_of_systems_general.shortness_of_breath_with_exertion" type="checkbox"
-                           name="1069^payment sources^99DCT" value="5963^SHORTNESS OF BREATH WITH EXERTION^99DCT">
-                    <label for="obs.review_of_systems_general.shortness_of_breath_with_exertion">Shortness of breath with
-                        activity</label><br>
-                    <input id="obs.review_of_systems_general.focal_weakness" type="checkbox"
+                           value="590^NHIF^99DCT">
+                    <label for="obs.payment_source.NHIF">NHIF</label><br>
+
+                    <input id="obs.payment_source.private_medical_insurance" type="checkbox"
                            name="1069^payment sources^99DCT"
-                           value="6005^FOCAL WEAKNESS^99DCT">
-                    <label for="obs.review_of_systems_general.focal_weakness">Weakness in one part of the body</label><br>
-                    <input id="obs.review_of_systems_general.oliguria" type="checkbox"
+                           value="590^INSURANCE^99DCT">
+                    <label for="obs.payment_source.private_medical_insurance">Private Medical Insurance</label><br>
+
+                    <input id="obs.payment_source.pocket" type="checkbox"
                            name="1069^payment sources^99DCT"
-                           value="6021^OLIGURIA^99DCT">
-                    <label for="obs.review_of_systems_general.oliguria">Reduced urine output</label><br>
-                    <input id="obs.review_of_systems_general.heart_racing" type="checkbox"
+                           value="590^POCKET^99DCT">
+                    <label for="obs.payment_source.pocket">Out of pocket</label><br>
+
+                    <input id="obs.payment_source.chama_loan" type="checkbox"
                            name="1069^payment sources^99DCT"
-                           value="7044^HEART RACING^99DCT">
-                    <label for="obs.review_of_systems_general.heart_racing">Heart Racing</label><br>
-                    <input id="obs.review_of_systems_general.dizziness" type="checkbox"
+                           value="590^CHAMA_LOAN^99DCT">
+                    <label for="obs.payment_source.chama_loan">Loaning from Chama</label><br>
+
+                    <input id="obs.payment_source.waiver" type="checkbox"
                            name="1069^payment sources^99DCT"
-                           value="877^DIZZINESS^99DCT">
-                    <label for="obs.review_of_systems_general.dizziness">Recurrent Dizziness</label><br>
-                    <input id="obs.review_of_systems_general.fainting" type="checkbox"
+                           value="590^Waiver^99DCT">
+                    <label for="obs.payment_source.waiver">Waiver</label><br>
+
+                    <input id="obs.payment_source.donations" type="checkbox"
                            name="1069^payment sources^99DCT"
-                           value="7045^FAINTING^99DCT">
-                    <label for="obs.review_of_systems_general.fainting">Fainting</label><br>
-                    <input id="obs.review_of_systems_general.unconscious" type="checkbox"
+                           value="590^DONATIONS^99DCT">
+                    <label for="obs.payment_source.donations">Donations</label><br>
+
+                    <input id="obs.payment_source.others" type="checkbox"
                            name="1069^payment sources^99DCT"
-                           value="2295^UNCONSCIOUS^99DCT">
-                    <label for="obs.review_of_systems_general.unconscious">Loss of consciousness</label><br>
-                    <input id="obs.review_of_systems_general.vision_difficulties" type="checkbox"
-                           name="1069^payment sources^99DCT" value="5953^VISION DIFFICULTIES^99DCT">
-                    <label for="obs.review_of_systems_general.vision_difficulties">Vision Difficulties</label><br>
-                    <input id="obs.review_of_systems_general.foot_complaints" type="checkbox"
+                           value="590^OTHERS^99DCT">
+                    <label for="obs.payment_source.others">Others</label><br>
+                    <div style="display:none" class="section" id="obs.payment_source.others_text_div">
+                        <div class="repeat">
+                        <input class="form-control" id="obs.payment_source.others_text" name="obs.admission_in_past_12_months"
+                               type="text" placeholder="payment source others" data-concept="conceptID^Name^99DCT" required="required">
+                        </div>
+                    </div>
+                    <input id="obs.payment_source.dont_know" type="checkbox"
                            name="1069^payment sources^99DCT"
-                           value="7046^FOOT COMPLAINTS^99DCT">
-                    <label for="obs.review_of_systems_general.foot_complaints">Foot Complaints</label><br>
-                    <input id="obs.review_of_systems_general.nausea" type="checkbox"
+                           value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.payment_source.dont_know">Don&#39;t Know</label><br>
+
+                    <input id="obs.payment_source.refused" type="checkbox"
                            name="1069^payment sources^99DCT"
-                           value="5978^NAUSEA^99DCT">
-                    <label for="obs.review_of_systems_general.nausea">Nausea</label><br>
-                    <input id="obs.review_of_systems_general.vomiting" type="checkbox"
-                           name="1069^payment sources^99DCT"
-                           value="5980^VOMITING^99DCT">
-                    <label for="obs.review_of_systems_general.vomiting">Vomiting</label><br>
-                    <input id="obs.review_of_systems_general.abdominal_pain" type="checkbox"
-                           name="1069^payment sources^99DCT"
-                           value="151^ABDOMINAL PAIN^99DCT">
-                    <label for="obs.review_of_systems_general.abdominal_pain">Abdominal Discomfort</label><br>
-                    <input id="obs.review_of_systems_general.diarrhea" type="checkbox"
-                           name="1069^payment sources^99DCT"
-                           value="16^DIARRHEA^99DCT">
-                    <label for="obs.review_of_systems_general.diarrhea">Diarrhea</label><br>
-                    <input id="obs.review_of_systems_general.constipation" type="checkbox"
-                           name="1069^payment sources^99DCT"
-                           value="996^CONSTIPATION^99DCT">
-                    <label for="obs.review_of_systems_general.constipation">Constipation</label><br>
-                    <input id="obs.review_of_systems_general.chronic_cough" type="checkbox"
-                           name="1069^payment sources^99DCT"
-                           value="1470^CHRONIC COUGH^99DCT">
-                    <label for="obs.review_of_systems_general.chronic_cough">Recurrent Cough</label><br>
-                    <input id="obs.review_of_systems_general.hypoglycemia" type="checkbox"
-                           name="1069^payment sources^99DCT"
-                           value="7047^HYPOGLYCEMIA^99DCT">
-                    <label for="obs.review_of_systems_general.hypoglycemia">Hunger, Sweating, dizziness and shaking</label><br>
-                    <input id="obs.review_of_systems_general.none" type="checkbox" name="1069^payment sources^99DCT"
-                           value="1107^NONE^99DCT">
-                    <label for="obs.review_of_systems_general.none">None of the above</label><br>
+                           value="1958^REFUSAL^99DCT">
+                    <label for="obs.payment_source.refused">Refused</label><br>
+
                 </fieldset>
             </div>
+        </div>
+
+        <div class="form-group">
+            <label for="encounter.provider_id">How much was the total bill for the admission?<span class="required">*</span></label>
+            <input class="form-control checkDigit" id="obs.total_bill" name="obs.total_bill"
+                   type="text" required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="encounter.provider_id">How much did you pay using your own money including money from loans that you will need to pay back?<span class="required">*</span></label>
+            <input class="form-control checkDigit" id="obs.bill_paid_own_money" name="obs.total_bill"
+                   type="text" required="required">
+        </div>
+      </div>
+
+        <div class="form-group" id="obs.means_of_transport">
+            <label for="obs.means_of_transport">What means of transport did you use to get to the hospital? <span class="required">*</span></label>
+            <fieldset name="obs.means_of_transport" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.means_of_transport_select">
+                <input id="obs.means_of_transport.yes" type="radio"  name="obs.means_of_transport_select" value="1065^YES^99DCT">
+                <label for="obs.means_of_transport.yes">On foot</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.means_of_transport.no" type="radio"  name="obs.means_of_transport_select" value="1066^NO^99DCT">
+                <label for="obs.means_of_transport.no">Boda Boda</label><br>
+                <input id="obs.means_of_transport.matatu" type="radio"   name="obs.means_of_transport_select" value="1958^REFUSAL^99DCT">
+                <label for="obs.means_of_transport.matatu">Matatu</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.means_of_transport.refused" type="radio"  name="obs.means_of_transport_select" value="1958^REFUSAL^99DCTx">
+                <label for="obs.means_of_transport.refused">Refused</label><br>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label for="obs.time_to_hospital">How much time did it take to reach the hospital?<span class="required">*</span></label>
+            <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.time_to_hospital">
+            <br><label>Hours</label>
+            <select class="form-control" id="obs.time_to_hospital_hours" name="obs.time_to_hospital_select" required="required">
+                <option value="">...</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">7</option>
+                <option value="7">8</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            <label>Minutes</label>
+            <select class="form-control" id="obs.time_to_hospital_mins" name="obs.time_to_hospital_select" required="required">
+                <option value="0">0</option>
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+                <option value="55">55</option>
+            </select>
+            <input id="obs.time_to_hospital.dont_know" type="radio"   name="obs.time_to_hospital_select" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.time_to_hospital.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.time_to_hospital.refused" type="radio"  name="obs.time_to_hospital_select" value="1958^REFUSAL^99DCT">
+            <label for="obs.time_to_hospital.refused">Refused</label><br>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label for="obs.time_to_hospital">How much was the transport cost?<span class="required">*</span></label>
+            <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.cost_of_transport_options">
+                <input class="form-control" id="obs.cost_of_transport" name="obs.cost_of_transport_options"
+                       type="number" placeholder="Cost to hospital" data-concept="conceptID^Name^99DCT" required="required">
+                <input id="obs.cost_of_transport.dont_know" type="radio"   name="obs.cost_of_transport_options" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.cost_of_transport.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.cost_of_transport.refused" type="radio"  name="obs.cost_of_transport_options" value="1958^REFUSAL^99DCT">
+                <label for="obs.cost_of_transport.refused">Refused</label><br>
+            </fieldset>
         </div>
     </div>
 </div>
 </div>
 
-<div class="section repe" id="" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
-    <h3>Other Medication</h3>
+<div class="section" id="" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+    <h3>NON-INPATIENT SERVICES</h3>
+    <label class="alert alert-info">Now I would like to ask you some questions about your visits to Health Centres or Dispensaries during the past 3 months</label>
+    <label>Have you at any time during the past 3 months received medical care at a Health Centre or Dispensary or a hospital where you did not spend at least one night?<span class="required">*</span></label>
+    <div class="form-group" id="obs.not_admitted_care">
+        <fieldset name="obs.not_admitted_care" data-concept="6419^ADMITTED TO HOSPITAL^99DCT" id="obs.not_admitted_care_select" >
+            <input id="obs.not_admitted_care.yes" type="radio" name="not_admitted_care_select" value="1065^YES^99DCT">
+            <label for="obs.not_admitted_care.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.not_admitted_care.no" type="radio"  name="not_admitted_care_select" value="1066^NO^99DCT">
+            <label for="obs.not_admitted_care.no">No</label><br>
+            <input id="obs.not_admitted_care.dont_know" type="radio"  name="not_admitted_care_select" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.not_admitted_care.dont_know">Don&#39;t Know</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.not_admitted_care.refused" type="radio"   name="not_admitted_care_select" value="1958^REFUSAL^99DCT">
+            <label for="obs.not_admitted_care.refused">Refused</label>
+        </fieldset>
+    </div>
 
+<label>In the past three months, how many times did you visit each of the following places:<span class="required">*</span></label>
+    <div class="form-group" id="obs.facility_visited">
+        <fieldset name="obs.facility_visited" data-concept="6419^ADMITTED TO HOSPITAL^99DCT" id="obs.facility_visited_check" >
+            <input id="obs.facility_visited.health_center" type="checkbox" name="facility_visited_check" value="1065^YES^99DCT">
+            <label for="obs.facility_visited.health_center">Health center</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.facility_visited.dispensary" type="checkbox"  name="facility_visited_check" value="1066^NO^99DCT">
+            <label for="obs.facility_visited.dispensary">Dispensary</label><br>
+            <input id="obs.facility_visited.hospital_day_visit" type="checkbox"  name="facility_visited_check" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.facility_visited.hospital_day_visit">Hospital day visit</label> &nbsp;&nbsp;&nbsp;&nbsp;
+        </fieldset>
+    </div>
 
+    <div id="health_center" data-concept="1919^PATIENT REPORTED CURRENT OTHER TREATMENT^99DCT">
+        <h3>Number of times you visited a health center</h3>
+
+        <input class="form-control" id="obs.number_visited_health_center" name="obs.number_visited_health_center"
+               type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
+        <label class="alert alert-info" id="obs.number_visited_health_center_alert">For each of the admissions you listed, we are going to ask you some additional questions.</label>
+
+        <div class="repeat">
+            <label for="obs.visit_injury">Was the visit the result of an accident or injury?<span class="required">*</span></label>
+            <div class="form-group" id="obs.visit_injury">
+                <fieldset name="obs.visit_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.visit_injury_select">
+                    <input id="obs.visit_cause_injury.yes" type="radio"  name="obs.injury" value="1065^YES^99DCT">
+                    <label for="obs.visit_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.visit_cause_injury.no" type="radio"  name="obs.injury" value="1066^NO^99DCT">
+                    <label for="obs.visit_cause_injury.no">No</label><br>
+                    <input id="obs.visit_cause_injury.dont_know" type="radio"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.visit_cause_injury.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.visit_cause_injury.refused" type="radio"   name="obs.injury" value="1958^REFUSAL^99DCT">
+                    <label for="obs.visit_cause_injury.refused">Refused</label>
+                </fieldset>
+            </div>
+            <div  style="display:none" class="form-group show_none_injury_quiz_visit"  id="obs.visit_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+                <label>was the visit the result of any specific disease e.g malaria, typhoid, hypertension etc?<span class="required">*</span></label>
+                <div class="form-group">
+                    <fieldset  name="obs.visit_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.visit_disease_select">
+                        <input id="obs.visit_cause_disease.yes" type="radio"  name="obs.disease" value="1065^YES^99DCT">
+                        <label for="obs.visit_cause_disease.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.visit_cause_disease.no" type="radio"  name="obs.disease" value="1066^NO^99DCT">
+                        <label for="obs.visit_cause_disease.no">No</label><br>
+                        <input id="obs.visit_cause_disease.dont_know" type="radio"  name="obs.disease" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.visit_cause_disease.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.visit_cause_disease.refused" type="radio"   name="obs.disease" value="1958^REFUSAL^99DCT">
+                        <label for="obs.visit_cause_disease.refused">Refused</label>
+                    </fieldset>
+                </div>
+
+                <div style="display:none" class="form-group ask_specify_disease_visit" id="obs.visit_specific_disease_div">
+                    <label for="obs.specific_disease" id="obs.visit_specific_disease_label">What was/were the reason(s)/disease(s)<span class="required">*</span></label>
+                    <div class="section repeat">
+                        <fieldset  name="obs.visit_disease_options" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.visit_disease_options">
+                        <input class="form-control" id="obs.visit_specific_disease" name="obs.visit_cause_disease"
+                               type="text" placeholder="Reason(s)/disease(s)" data-concept="conceptID^Name^99DCT" required="required">
+                        <input id="obs.visit_specific_disease.dont_know" type="radio"  name="obs.visit_cause_disease" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.visit_cause_disease.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.visit_specific_disease.refused" type="radio"   name="obs.visit_cause_disease" value="1958^REFUSAL^99DCT">
+                        <label for="obs.visit_specific_disease.refused">Refused</label>
+                        </fieldset>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<div id="dispensary" data-concept="1919^PATIENT REPORTED CURRENT OTHER TREATMENT^99DCT">
+        <h3>Number of times you visited a dispensary </h3>
+
+    <input class="form-control" id="obs.number_visited_dispensary" name="obs.number_visited_dispensary"
+           type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
+
+    </div>
+
+<div id="hospital_day_visit" data-concept="1919^PATIENT REPORTED CURRENT OTHER TREATMENT^99DCT">
+    <h3>Number of times you visited the hospital for a day visit </h3>
+
+    <input class="form-control" id="obs.number_visited_hospital_day_visit" name="obs.number_visited_hospital_day_visit"
+           type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
+
+    </div>
 
 </div>
     <div class="form-group text-center">
@@ -312,6 +464,17 @@ $('#obs\\.admission_injury').change(function () {
     else
         $show_none_injury_quiz.hide();
 });
+
+$('#obs\\.visit_injury').change(function () {
+    var $show_none_injury_quiz_visit = $('.show_none_injury_quiz_visit');
+    if(!$("#obs\\.visit_cause_injury\\.yes").is(':checked'))
+        $show_none_injury_quiz_visit.show();
+
+    else
+        $show_none_injury_quiz_visit.hide();
+});
+
+
 $('#obs\\.admission_disease').change(function () {
     var $ask_specify_disease = $('.ask_specify_disease');
     if($("#obs\\.admission_cause_disease\\.yes").is(':checked'))
@@ -319,16 +482,68 @@ $('#obs\\.admission_disease').change(function () {
     else
         $ask_specify_disease.hide();
 });
+//  show hide for visit disease
+$('#obs\\.visit_disease_select').change(function () {
+    var $ask_specify_disease_visit = $('.ask_specify_disease_visit');
+    if($("#obs\\.visit_cause_disease\\.yes").is(':checked'))
+        $ask_specify_disease_visit.show();
+    else
+        $ask_specify_disease_visit.hide();
+});
+
+
+$('#obs\\.payment_source').bind('change', function () {
+
+    if ($("#obs\\.payment_source\\.others_text").is(':checked'))
+        $("#obs\\.payment_source\\.others_text_div").show();
+    else
+        $("#obs\\.payment_source\\.others_text_div").hide();
+
+});
+
+$('#obs\\.payment_source\\.others').bind('change', function () {
+
+    if ($(this).is(':checked'))
+        $("#obs\\.payment_source\\.others_text_div").show();
+    else
+        $("#obs\\.payment_source\\.others_text_div").hide();
+
+});
 var fullDate = new Date()
 var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
 var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + fullDate.getDate();
 $("#encounter\\.encounter_datetime").val(currentDate);
 
+
+var visit_check = function (selectedElement) {
+    var visit_array = {"#obs\\.facility_visited\\.health_center": "#health_center",
+        "#obs\\.facility_visited\\.dispensary": "#dispensary",
+        "#obs\\.facility_visited\\.hospital_day_visit": "#hospital_day_visit"
+    };
+    $.each(visit_array, function (k, v) {
+        $(k).change(function () {
+            if ($(k).is(':checked')) {
+                $(v).show();
+            } else {
+                $(v).hide();
+            }
+        });
+        $(k).trigger('change');
+    })
+};
+visit_check();
+  //resize check box and radio buttons
 $(document).ready(function () {
-    $("#obs\\.admitted_select").buttonset().find('label').width(75);
-    $("#encounter\\.division_select").buttonset().find('label').width(85);
-    $("#obs\\.admission_injury_select").buttonset().find('label').width(75);
-    $("#obs\\.admission_disease_select").buttonset().find('label').width(75);
+    $("#obs\\.admitted_select").buttonset().find('label').width(115);
+    $("#encounter\\.division_select").buttonset().find('label').width(115);
+    $("#obs\\.admission_injury_select").buttonset().find('label').width(115);
+    $("#obs\\.admission_disease_select").buttonset().find('label').width(115);
+    $("#obs\\.means_of_transport_select").buttonset().find('label').width(115);
+    $("#obs\\.not_admitted_care_select").buttonset().find('label').width(115);
+    $("#obs\\.facility_visited_check").buttonset().find('label').width(160);
+    $("#obs\\.visit_injury").buttonset().find('label').width(115);
+    $("#obs\\.visit_disease_select").buttonset().find('label').width(115);
+    $("#obs\\.visit_disease_options").buttonset().find('label').width(115);
 });
 
 var selectCorrespondingAdmission = function (selectedElement) {
