@@ -1,0 +1,82 @@
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+
+</head>
+
+<body>
+<br>
+<input type="text" id="txt_name"  />
+<div class="form-group generate_table" id="tabale">
+<table id="maintable" width="50%" cellpadding="0" cellspacing="0" class="pdzn_tbl1" border="#729111 1px solid">
+    <tr>
+        <th align="center">Roll No</th>
+        <th align="center">First Name</th>
+        <th align="center">Last Name</th>
+    </tr>
+    <tr id="rows">
+        <div style="padding-left: 5px">
+            <td style="padding:5px;">
+                <input type="text" name="rollno<? $i ?>" />
+            </td>
+            <td style="padding:5px;">
+                <input type="text" name="firstname<? $i ?>" />
+            </td>
+            <td style="padding:5px;">
+                <input type="text" name="lastname<? $i ?>" />
+            </td>
+        </div>
+    </tr>
+</table>
+    </div>
+<br><div id="add_new">ADD NEW
+</div>
+</body>
+</html>
+<script type="text/javascript">
+
+    $( document ).ready(function() {
+        $("#providersFormElementsTable").html("<tr><td>Nickname</td><td><input type='text' id='nickname' name='nickname'></td></tr><tr><td>CA Number</td><td><input type='text' id='account' name='account'></td></tr>");
+        $("#txt_name").focusout(function(){
+
+            $("#maintable").each(function () {
+
+                var tds = '<tr>';
+                jQuery.each($('tr:last td', this), function () {
+                    tds += '<td>' + $(this).html() + '</td>';
+                });
+                tds += '</tr>';
+                if ($('tbody', this).length > 0) {
+
+                    for (var x = 1; x < $('#txt_name').val(); x++) {
+                        $('tbody', this).append(tds);
+                    }
+
+
+                } else {
+                    $(this).append(tds);
+                }
+            });
+        });
+
+
+    });
+
+
+    $('#test').onblur(function () {
+        var $generate_table = $('.generate_table');
+        if($("#encounter\\.division_select\\.mosoriot").is(':checked')) {
+            $show_community_unit_mosoriot_select.show();
+            $show_community_unit_turbo_select.hide();
+        }
+        if($("#encounter\\.division_select\\.turbo").is(':checked')){
+            $show_community_unit_turbo_select.show();
+            $show_community_unit_mosoriot_select.hide();
+        }
+        $show_village.show();
+    });
+
+
+
+
+ </script>

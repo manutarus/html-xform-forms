@@ -262,44 +262,19 @@
             <label for="obs.time_to_hospital">How much time did it take to reach the hospital?<span class="required">*</span></label>
             <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.time_to_hospital">
             <br><label>Hours</label>
-            <select class="form-control" id="obs.time_to_hospital_hours" name="obs.time_to_hospital_select" required="required">
-                <option value="">...</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">7</option>
-                <option value="7">8</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
+                <select id="obs.time_to_hospital_hours" name="select" class="main-form">
+                    <option value="">Hours</option>
+                </select>
             <label>Minutes</label>
-            <select class="form-control" id="obs.time_to_hospital_mins" name="obs.time_to_hospital_select" required="required">
-                <option value="0">0</option>
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-                <option value="20">20</option>
-                <option value="25">25</option>
-                <option value="30">30</option>
-                <option value="35">35</option>
-                <option value="40">40</option>
-                <option value="45">45</option>
-                <option value="50">50</option>
-                <option value="55">55</option>
-            </select>
+                <select id="obs.time_to_hospital_mins" name="select" class="main-form">
+                    <option value="">Mins</option>
+                </select> <br>
             <input id="obs.time_to_hospital.dont_know" type="radio"   name="obs.time_to_hospital_select" value="1624^DO NOT KNOW^99DCT">
             <label for="obs.time_to_hospital.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
             <input id="obs.time_to_hospital.refused" type="radio"  name="obs.time_to_hospital_select" value="1958^REFUSAL^99DCT">
             <label for="obs.time_to_hospital.refused">Refused</label><br>
             </fieldset>
         </div>
-
         <div class="form-group">
             <label for="obs.time_to_hospital">How much was the transport cost?<span class="required">*</span></label>
             <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.cost_of_transport_options">
@@ -332,11 +307,15 @@
         </fieldset>
     </div>
 
-<label>In the past three months, how many times did you visit each of the following places:<span class="required">*</span></label>
+
+    <div style="display:none"  id="obs.none_admission_details" class="show_none_admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+
+
+    <label>In the past three months, how many times did you visit each of the following places:<span class="required">*</span></label>
     <div class="form-group" id="obs.facility_visited">
         <fieldset name="obs.facility_visited" data-concept="6419^ADMITTED TO HOSPITAL^99DCT" id="obs.facility_visited_check" >
             <input id="obs.facility_visited.health_center" type="checkbox" name="facility_visited_check" value="1065^YES^99DCT">
-            <label for="obs.facility_visited.health_center">Health center</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <label for="obs.facility_visited.health_center">Health center</label> <br>
             <input id="obs.facility_visited.dispensary" type="checkbox"  name="facility_visited_check" value="1066^NO^99DCT">
             <label for="obs.facility_visited.dispensary">Dispensary</label><br>
             <input id="obs.facility_visited.hospital_day_visit" type="checkbox"  name="facility_visited_check" value="1624^DO NOT KNOW^99DCT">
@@ -393,18 +372,205 @@
                         </fieldset>
                     </div>
                 </div>
-
             </div>
+            <label>During the visit were you prescribed or given any drugs to use?<span class="required">*</span></label>
+            <div class="form-group">
+                <fieldset  name="obs.visit_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.visit_prescribed_drugs">
+                    <input id="obs.visit_prescribed_drugs.yes" type="radio"  name="obs.visit_prescribed_drugs" value="1065^YES^99DCT">
+                    <label for="obs.visit_prescribed_drugs.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.visit_prescribed_drugs.no" type="radio"  name="obs.visit_prescribed_drugs" value="1066^NO^99DCT">
+                    <label for="obs.visit_prescribed_drugs.no">No</label><br>
+                    <input id="obs.visit_prescribed_drugs.dont_know" type="radio"  name="obs.visit_prescribed_drugs" value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.visit_prescribed_drugs.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.visit_prescribed_drugs.refused" type="radio"   name="obs.visit_prescribed_drugs" value="1958^REFUSAL^99DCT">
+                    <label for="obs.visit_prescribed_drugs.refused">Refused</label>
+                </fieldset>
+            </div>
+            <label>How much did you pay out of pocket for the visit including drug costs if applicable?<span class="required">*</span></label>
+            <div class="form-group">
 
+
+                    <fieldset  name="obs.visit_disease_options" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.pay_out_of_pocket_label">
+                        <input class="form-control" id="obs.pay_out_of_pocket.ksh" name="obs.pay_out_of_pocket.ksh"
+                               type="number" placeholder="KSH" data-concept="conceptID^Name^99DCT" required="required">
+                        <input id="obs.pay_out_of_pocket.dont_know" type="radio"  name="obs.pay_out_of_pocket_label" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.pay_out_of_pocket.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.pay_out_of_pocket.refused" type="radio"   name="obs.pay_out_of_pocket_label" value="1958^REFUSAL^99DCT">
+                        <label for="obs.pay_out_of_pocket.refused">Refused</label>
+                    </fieldset>
+                </fieldset>
+            </div>
+        </div>
+        <label class="alert alert-info" id="obs.last_visit_alert">Now, thinking about  your LAST visit</label>
+        <div class="form-group" id="obs.visit_means_of_transport">
+            <label for="obs.visit_means_of_transport">What means of transport did you use to get to the hospital? <span class="required">*</span></label>
+            <fieldset name="obs.visit_means_of_transport" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.visit_means_of_transport_select">
+                <input id="obs.visit_means_of_transport.yes" type="radio"  name="obs.visit_means_of_transport_select" value="1065^YES^99DCT">
+                <label for="obs.visit_means_of_transport.yes">On foot</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.visit_means_of_transport.no" type="radio"  name="obs.visit_means_of_transport_select" value="1066^NO^99DCT">
+                <label for="obs.visit_means_of_transport.no">Boda Boda</label><br>
+                <input id="obs.visit_means_of_transport.matatu" type="radio"   name="obs.visit_means_of_transport_select" value="1958^REFUSAL^99DCT">
+                <label for="obs.visit_means_of_transport.matatu">Matatu</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.visit_means_of_transport.refused" type="radio"  name="obs.visit_means_of_transport_select" value="1958^REFUSAL^99DCTx">
+                <label for="obs.visit_means_of_transport.refused">Refused</label><br>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label for="obs.time_to_hospital">How much time did it take to reach the hospital?<span class="required">*</span></label>
+            <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.visit_time_to_hospital">
+                <br><label>Hours</label>
+                <select id="obs.visit_time_to_hospital_hours" name="select" class="main-form">
+                    <option value="">hours</option>
+                </select>
+                <label>Minutes</label>
+                <select id="obs.visit_time_to_hospital_mins" name="select" class="main-form">
+                    <option value="">mins</option>
+                </select> <br>
+                <input id="obs.visit_time_to_hospital.dont_know" type="radio"   name="obs.time_to_hospital_select" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.visit_time_to_hospital.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.visit_time_to_hospital.refused" type="radio"  name="obs.time_to_hospital_select" value="1958^REFUSAL^99DCT">
+                <label for="obs.visit_time_to_hospital.refused">Refused</label><br>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label >How much was the transport cost?<span class="required">*</span></label>
+            <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.dispensary_visit_cost_of_transport_options">
+                <input class="form-control" id="obs.visit_cost_of_transport" name="obs.cost_of_transport_options"
+                       type="number" placeholder="Cost to hospital" data-concept="conceptID^Name^99DCT" required="required">
+                <input id="obs.visit_cost_of_transport.dont_know" type="radio"   name="obs.cost_of_transport_options" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.visit_cost_of_transport.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.visit_cost_of_transport.refused" type="radio"  name="obs.cost_of_transport_options" value="1958^REFUSAL^99DCT">
+                <label for="obs.visit_cost_of_transport.refused">Refused</label><br>
+            </fieldset>
         </div>
 
     </div>
+
 
 <div id="dispensary" data-concept="1919^PATIENT REPORTED CURRENT OTHER TREATMENT^99DCT">
         <h3>Number of times you visited a dispensary </h3>
 
     <input class="form-control" id="obs.number_visited_dispensary" name="obs.number_visited_dispensary"
            type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
+
+
+    <div class="repeat">
+        <label for="obs.dispensary_visit_injury">Was the visit the result of an accident or injury?<span class="required">*</span></label>
+        <div class="form-group" id="obs.dispensary_visit_injury">
+            <fieldset name="obs.visit_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.dispensary_visit_injury_select">
+                <input id="obs.dispensary_visit_cause_injury.yes" type="radio"  name="obs.injury" value="1065^YES^99DCT">
+                <label for="obs.dispensary_visit_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.dispensary_visit_cause_injury.no" type="radio"  name="obs.injury" value="1066^NO^99DCT">
+                <label for="obs.dispensary_visit_cause_injury.no">No</label><br>
+                <input id="obs.dispensary_visit_cause_injury.dont_know" type="radio"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.dispensary_visit_cause_injury.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.dispensary_visit_cause_injury.refused" type="radio"   name="obs.injury" value="1958^REFUSAL^99DCT">
+                <label for="obs.dispensary_visit_cause_injury.refused">Refused</label>
+            </fieldset>
+        </div>
+        <div  style="display:none" class="form-group show_none_injury_quiz_visit"  id="obs.dispensary_visit_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+            <label>was the visit the result of any specific disease e.g malaria, typhoid, hypertension etc?<span class="required">*</span></label>
+            <div class="form-group">
+                <fieldset  name="obs.dispensary_visit_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.dispensary_visit_disease_select">
+                    <input id="obs.dispensary_visit_cause_disease.yes" type="radio"  name="obs.disease" value="1065^YES^99DCT">
+                    <label for="obs.dispensary_visit_cause_disease.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.dispensary_visit_cause_disease.no" type="radio"  name="obs.disease" value="1066^NO^99DCT">
+                    <label for="obs.dispensary_visit_cause_disease.no">No</label><br>
+                    <input id="obs.dispensary_visit_cause_disease.dont_know" type="radio"  name="obs.disease" value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.dispensary_visit_cause_disease.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.dispensary_visit_cause_disease.refused" type="radio"   name="obs.disease" value="1958^REFUSAL^99DCT">
+                    <label for="obs.dispensary_visit_cause_disease.refused">Refused</label>
+                </fieldset>
+            </div>
+
+            <div style="display:none" class="form-group ask_specify_disease_visit" id="obs.dispensary_visit_specific_disease_div">
+                <label for="obs.specific_disease" id="obs.dispensary_visit_specific_disease_label">What was/were the reason(s)/disease(s)<span class="required">*</span></label>
+                <div class="section repeat">
+                    <fieldset  name="obs.visit_disease_options" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.dispensary_visit_disease_options">
+                        <input class="form-control" id="obs.dispensary_visit_specific_disease" name="obs.visit_cause_disease"
+                               type="text" placeholder="Reason(s)/disease(s)" data-concept="conceptID^Name^99DCT" required="required">
+                        <input id="obs.dispensary_visit_specific_disease.dont_know" type="radio"  name="obs.visit_cause_disease" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.dispensary_visit_cause_disease.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.dispensary_visit_specific_disease.refused" type="radio"   name="obs.visit_cause_disease" value="1958^REFUSAL^99DCT">
+                        <label for="obs.dispensary_visit_specific_disease.refused">Refused</label>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <label>During the visit were you prescribed or given any drugs to use?<span class="required">*</span></label>
+        <div class="form-group">
+            <fieldset  name="obs.visit_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.dispensary_visit_prescribed_drugs">
+                <input id="obs.dispensary_visit_prescribed_drugs.yes" type="radio"  name="obs.visit_prescribed_drugs" value="1065^YES^99DCT">
+                <label for="obs.dispensary_visit_prescribed_drugs.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.dispensary_visit_prescribed_drugs.no" type="radio"  name="obs.visit_prescribed_drugs" value="1066^NO^99DCT">
+                <label for="obs.dispensary_visit_prescribed_drugs.no">No</label><br>
+                <input id="obs.dispensary_visit_prescribed_drugs.dont_know" type="radio"  name="obs.visit_prescribed_drugs" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.dispensary_visit_prescribed_drugs.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.dispensary_visit_prescribed_drugs.refused" type="radio"   name="obs.visit_prescribed_drugs" value="1958^REFUSAL^99DCT">
+                <label for="obs.dispensary_visit_prescribed_drugs.refused">Refused</label>
+            </fieldset>
+        </div>
+        <label>How much did you pay out of pocket for the visit including drug costs if applicable?<span class="required">*</span></label>
+        <div class="form-group">
+
+
+            <fieldset  name="obs.dispensary_visit_disease_options" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.dispensary_pay_out_of_pocket_label">
+                <input class="form-control" id="obs.dispensary_pay_out_of_pocket.ksh" name="obs.pay_out_of_pocket.ksh"
+                       type="number" placeholder="KSH" data-concept="conceptID^Name^99DCT" required="required">
+                <input id="obs.dispensary_pay_out_of_pocket.dont_know" type="radio"  name="obs.pay_out_of_pocket_label" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.dispensary_pay_out_of_pocket.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.dispensary_pay_out_of_pocket.refused" type="radio"   name="obs.pay_out_of_pocket_label" value="1958^REFUSAL^99DCT">
+                <label for="obs.dispensary_pay_out_of_pocket.refused">Refused</label>
+            </fieldset>
+            </fieldset>
+        </div>
+    </div>
+    <label class="alert alert-info" id="obs.dispensary_last_visit_alert">Now, thinking about  your LAST visit</label>
+    <div class="form-group" id="obs.dispensary_visit_means_of_transport">
+        <label for="obs.dispensary_visit_means_of_transport">What means of transport did you use to get to the hospital? <span class="required">*</span></label>
+        <fieldset name="obs.dispensary_visit_means_of_transport" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.dispensary_visit_means_of_transport_select">
+            <input id="obs.dispensary_visit_means_of_transport.yes" type="radio"  name="obs.dispensary_visit_means_of_transport_select" value="1065^YES^99DCT">
+            <label for="obs.dispensary_visit_means_of_transport.yes">On foot</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.dispensary_visit_means_of_transport.no" type="radio"  name="obs.dispensary_visit_means_of_transport_select" value="1066^NO^99DCT">
+            <label for="obs.dispensary_visit_means_of_transport.no">Boda Boda</label><br>
+            <input id="obs.dispensary_visit_means_of_transport.matatu" type="radio"   name="obs.dispensary_visit_means_of_transport_select" value="1958^REFUSAL^99DCT">
+            <label for="obs.dispensary_visit_means_of_transport.matatu">Matatu</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.dispensary_visit_means_of_transport.refused" type="radio"  name="obs.dispensary_visit_means_of_transport_select" value="1958^REFUSAL^99DCTx">
+            <label for="obs.dispensary_visit_means_of_transport.refused">Refused</label><br>
+        </fieldset>
+    </div>
+
+    <div class="form-group">
+        <label for="obs.time_to_hospital">How much time did it take to reach the hospital?<span class="required">*</span></label>
+        <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.dispensary_visit_time_to_hospital">
+            <br><label>Hours</label>
+            <select id="obs.dispensary_visit_time_to_hospital_hours" name="select" class="main-form">
+                <option value="">hours</option>
+            </select>
+            <label>Minutes</label>
+            <select id="obs.dispensary_visit_time_to_hospital_mins" name="select" class="main-form">
+                <option value="">mins</option>
+            </select> <br>
+            <input id="obs.dispensary_visit_time_to_hospital.dont_know" type="radio"   name="obs.time_to_hospital_select" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.dispensary_visit_time_to_hospital.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.dispensary_visit_time_to_hospital.refused" type="radio"  name="obs.time_to_hospital_select" value="1958^REFUSAL^99DCT">
+            <label for="obs.dispensary_visit_time_to_hospital.refused">Refused</label><br>
+        </fieldset>
+    </div>
+
+    <div class="form-group">
+        <label >How much was the transport cost?<span class="required">*</span></label>
+        <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs._visit_cost_of_transport_options">
+            <input class="form-control" id="obs.dispensary_visit_cost_of_transport" name="obs.cost_of_transport_options"
+                   type="number" placeholder="Cost to hospital" data-concept="conceptID^Name^99DCT" required="required">
+            <input id="obs.dispensary_visit_cost_of_transport.dont_know" type="radio"   name="obs.cost_of_transport_options" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.dispensary_visit_cost_of_transport.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.dispensary_visit_cost_of_transport.refused" type="radio"  name="obs.cost_of_transport_options" value="1958^REFUSAL^99DCT">
+            <label for="obs.dispensary_visit_cost_of_transport.refused">Refused</label><br>
+        </fieldset>
+    </div>
 
     </div>
 
@@ -414,14 +580,273 @@
     <input class="form-control" id="obs.number_visited_hospital_day_visit" name="obs.number_visited_hospital_day_visit"
            type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
 
+
+    <div class="repeat">
+        <label for="obs.day_visit_visit_injury">Was the visit the result of an accident or injury?<span class="required">*</span></label>
+        <div class="form-group" id="obs.day_visit_visit_injury">
+            <fieldset name="obs.visit_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.day_visit_visit_injury_select">
+                <input id="obs.day_visit_visit_cause_injury.yes" type="radio"  name="obs.injury" value="1065^YES^99DCT">
+                <label for="obs.day_visit_visit_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.day_visit_visit_cause_injury.no" type="radio"  name="obs.injury" value="1066^NO^99DCT">
+                <label for="obs.day_visit_visit_cause_injury.no">No</label><br>
+                <input id="obs.day_visit_visit_cause_injury.dont_know" type="radio"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.day_visit_visit_cause_injury.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.day_visit_visit_cause_injury.refused" type="radio"   name="obs.injury" value="1958^REFUSAL^99DCT">
+                <label for="obs.day_visit_visit_cause_injury.refused">Refused</label>
+            </fieldset>
+        </div>
+        <div  style="display:none" class="form-group show_none_injury_quiz_visit"  id="obs.day_visit_visit_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+            <label>was the visit the result of any specific disease e.g malaria, typhoid, hypertension etc?<span class="required">*</span></label>
+            <div class="form-group">
+                <fieldset  name="obs.day_visit_visit_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.day_visit_visit_disease_select">
+                    <input id="obs.day_visit_visit_cause_disease.yes" type="radio"  name="obs.disease" value="1065^YES^99DCT">
+                    <label for="obs.day_visit_visit_cause_disease.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.day_visit_visit_cause_disease.no" type="radio"  name="obs.disease" value="1066^NO^99DCT">
+                    <label for="obs.day_visit_visit_cause_disease.no">No</label><br>
+                    <input id="obs.day_visit_visit_cause_disease.dont_know" type="radio"  name="obs.disease" value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.day_visit_visit_cause_disease.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.day_visit_visit_cause_disease.refused" type="radio"   name="obs.disease" value="1958^REFUSAL^99DCT">
+                    <label for="obs.day_visit_visit_cause_disease.refused">Refused</label>
+                </fieldset>
+            </div>
+
+            <div style="display:none" class="form-group ask_specify_disease_visit" id="obs.day_visit_visit_specific_disease_div">
+                <label for="obs.specific_disease" id="obs.day_visit_visit_specific_disease_label">What was/were the reason(s)/disease(s)<span class="required">*</span></label>
+                <div class="section repeat">
+                    <fieldset  name="obs.visit_disease_options" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.day_visit_visit_disease_options">
+                        <input class="form-control" id="obs.day_visit_visit_specific_disease" name="obs.visit_cause_disease"
+                               type="text" placeholder="Reason(s)/disease(s)" data-concept="conceptID^Name^99DCT" required="required">
+                        <input id="obs.day_visit_visit_specific_disease.dont_know" type="radio"  name="obs.visit_cause_disease" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.day_visit_visit_cause_disease.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.day_visit_visit_specific_disease.refused" type="radio"   name="obs.visit_cause_disease" value="1958^REFUSAL^99DCT">
+                        <label for="obs.day_visit_visit_specific_disease.refused">Refused</label>
+                    </fieldset>
+                </div>
+            </div>
+        </div>
+        <label>During the visit were you prescribed or given any drugs to use?<span class="required">*</span></label>
+        <div class="form-group">
+            <fieldset  name="obs.visit_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.day_visit_visit_prescribed_drugs">
+                <input id="obs.day_visit_visit_prescribed_drugs.yes" type="radio"  name="obs.visit_prescribed_drugs" value="1065^YES^99DCT">
+                <label for="obs.day_visit_visit_prescribed_drugs.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.day_visit_visit_prescribed_drugs.no" type="radio"  name="obs.visit_prescribed_drugs" value="1066^NO^99DCT">
+                <label for="obs.day_visit_visit_prescribed_drugs.no">No</label><br>
+                <input id="obs.day_visit_visit_prescribed_drugs.dont_know" type="radio"  name="obs.visit_prescribed_drugs" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.day_visit_visit_prescribed_drugs.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.day_visit_visit_prescribed_drugs.refused" type="radio"   name="obs.visit_prescribed_drugs" value="1958^REFUSAL^99DCT">
+                <label for="obs.day_visit_visit_prescribed_drugs.refused">Refused</label>
+            </fieldset>
+        </div>
+        <label>How much did you pay out of pocket for the visit including drug costs if applicable?<span class="required">*</span></label>
+        <div class="form-group">
+
+
+            <fieldset  name="obs.day_visit_visit_disease_options" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.day_visit_pay_out_of_pocket_label">
+                <input class="form-control" id="obs.day_visit_pay_out_of_pocket.ksh" name="obs.pay_out_of_pocket.ksh"
+                       type="number" placeholder="KSH" data-concept="conceptID^Name^99DCT" required="required">
+                <input id="obs.day_visit_pay_out_of_pocket.dont_know" type="radio"  name="obs.pay_out_of_pocket_label" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.day_visit_pay_out_of_pocket.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.day_visit_pay_out_of_pocket.refused" type="radio"   name="obs.pay_out_of_pocket_label" value="1958^REFUSAL^99DCT">
+                <label for="obs.day_visit_pay_out_of_pocket.refused">Refused</label>
+            </fieldset>
+            </fieldset>
+        </div>
+    </div>
+    <label class="alert alert-info" id="obs.day_visit_last_visit_alert">Now, thinking about  your LAST visit</label>
+    <div class="form-group" id="obs.day_visit_visit_means_of_transport">
+        <label for="obs.day_visit_visit_means_of_transport">What means of transport did you use to get to the hospital? <span class="required">*</span></label>
+        <fieldset name="obs.day_visit_visit_means_of_transport" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.day_visit_visit_means_of_transport_select">
+            <input id="obs.day_visit_visit_means_of_transport.yes" type="radio"  name="obs.day_visit_visit_means_of_transport_select" value="1065^YES^99DCT">
+            <label for="obs.day_visit_visit_means_of_transport.yes">On foot</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.day_visit_visit_means_of_transport.no" type="radio"  name="obs.day_visit_visit_means_of_transport_select" value="1066^NO^99DCT">
+            <label for="obs.day_visit_visit_means_of_transport.no">Boda Boda</label><br>
+            <input id="obs.day_visit_visit_means_of_transport.matatu" type="radio"   name="obs.day_visit_visit_means_of_transport_select" value="1958^REFUSAL^99DCT">
+            <label for="obs.day_visit_visit_means_of_transport.matatu">Matatu</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.day_visit_visit_means_of_transport.refused" type="radio"  name="obs.day_visit_visit_means_of_transport_select" value="1958^REFUSAL^99DCTx">
+            <label for="obs.day_visit_visit_means_of_transport.refused">Refused</label><br>
+        </fieldset>
     </div>
 
+    <div class="form-group">
+        <label for="obs.time_to_hospital">How much time did it take to reach the hospital?<span class="required">*</span></label>
+        <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.day_visit_visit_time_to_hospital">
+            <br><label>Hours</label>
+            <select id="obs.day_visit_visit_time_to_hospital_hours" name="select" class="main-form">
+                <option value="">hours</option>
+            </select>
+            <label>Minutes</label>
+            <select id="obs.day_visit_visit_time_to_hospital_mins" name="select" class="main-form">
+                <option value="">mins</option>
+            </select> <br>
+            <input id="obs.day_visit_visit_time_to_hospital.dont_know" type="radio"   name="obs.time_to_hospital_select" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.day_visit_visit_time_to_hospital.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.day_visit_visit_time_to_hospital.refused" type="radio"  name="obs.time_to_hospital_select" value="1958^REFUSAL^99DCT">
+            <label for="obs.day_visit_visit_time_to_hospital.refused">Refused</label><br>
+        </fieldset>
+    </div>
+
+    <div class="form-group">
+        <label >How much was the transport cost?<span class="required">*</span></label>
+        <fieldset class="section" name="obs.time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.day_visit_cost_of_transport_options">
+            <input class="form-control" id="obs.day_visit_visit_cost_of_transport" name="obs.cost_of_transport_options"
+                   type="number" placeholder="Cost to hospital" data-concept="conceptID^Name^99DCT" required="required">
+            <input id="obs.day_visit_visit_cost_of_transport.dont_know" type="radio"   name="obs.cost_of_transport_options" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.day_visit_visit_cost_of_transport.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.day_visit_visit_cost_of_transport.refused" type="radio"  name="obs.cost_of_transport_options" value="1958^REFUSAL^99DCT">
+            <label for="obs.day_visit_visit_cost_of_transport.refused">Refused</label><br>
+        </fieldset>
+    </div>
 </div>
+</div>
+</div>
+
+<div class="section">
+    <h3>HERBAL MEDICINE/SPIRITUAL HEALER</h3>
+
+    <label>Have you at any time during the past 3 months visited a herbalist or spiritual healer?<span class="required">*</span></label>
+    <div class="form-group" id="obs.herbalist_select">
+        <fieldset name="obs.herbalist_visit" data-concept="6419^herbalist_visitD TO HOSPITAL^99DCT">
+            <input id="obs.herbalist_visit.yes" type="radio" name="obs.herbalist_visitd" value="1065^YES^99DCT">
+            <label for="obs.herbalist_visit.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.herbalist_visit.no" type="radio"  name="obs.herbalist_visitd" value="1066^NO^99DCT">
+            <label for="obs.herbalist_visit.no">No</label><br>
+            <input id="obs.herbalist_visit.dont_know" type="radio"  name="obs.herbalist_visitd" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.herbalist_visit.dont_know">Don&#39;t Know</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.herbalist_visit.refused" type="radio"   name="obs.herbalist_visitd" value="1958^REFUSAL^99DCT">
+            <label for="obs.herbalist_visit.refused">Refused</label>
+        </fieldset>
+    </div>
+
+    <div style="display:none" class="form-group show_herbal_quiz" id="obs.herbalist_visit_yes">
+    <div  id="obs.herbalist_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+        <label>Number of visits to:</label> <br>
+
+        <label for="obs.number_visit_to_herbalist_label" id="obs.number_visit_to_herbalist_label">herbalist:<span class="required">*</span></label>
+        <input class="form-control" id="obs.number_visit_to_herbalist" name="obs.admission_in_past_12_months"
+               type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
+
+         <label for="obs.number_visit_to_herbalist_label" id="obs.number_visit_to_spiritual_label">spiritual healer:<span class="required">*</span></label>
+        <input class="form-control" id="obs.number_visit_to_spiritual" name="obs.admission_in_past_12_months"
+               type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
+
+        <label class="alert alert-info" id="obs.inpatient_admission_label1">For each of the visits you listed, we are now going to ask you some additional questions.</label>
+        <div class="repeat">
+            <div class="form-group" id="obs.herbalist_injury">
+                <label for="obs.herbalist_injury">Was the visit the result of an accident or injury?<span class="required">*</span></label>
+                <fieldset name="obs.herbalist_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_injury_select">
+                    <input id="obs.herbalist_cause_injury.yes" type="radio"  name="obs.injury" value="1065^YES^99DCT">
+                    <label for="obs.herbalist_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.herbalist_cause_injury.no" type="radio"  name="obs.injury" value="1066^NO^99DCT">
+                    <label for="obs.herbalist_cause_injury.no">No</label><br>
+                    <input id="obs.herbalist_cause_injury.dont_know" type="radio"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.herbalist_cause_injury.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.herbalist_cause_injury.refused" type="radio"   name="obs.injury" value="1958^REFUSAL^99DCT">
+                    <label for="obs.herbalist_cause_injury.refused">Refused</label>
+                </fieldset>
+            </div>
+            <div  style="display:none" class="form-group show_none_injury_herbal_quiz"  id="obs.herbalist_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+                <label>was the visit as result of any specific disease e.g malaria, typhoid, hypertension etc?<span class="required">*</span></label>
+                <div class="form-group" id="obs.herbalist_visit_reason">
+                    <fieldset  name="obs.herbalist_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_disease_select">
+                        <input id="obs.herbalist_cause_disease.yes" type="radio"  name="obs.disease" value="1065^YES^99DCT">
+                        <label for="obs.herbalist_cause_disease.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.herbalist_cause_disease.no" type="radio"  name="obs.disease" value="1066^NO^99DCT">
+                        <label for="obs.herbalist_cause_disease.no">No</label><br>
+                        <input id="obs.herbalist_cause_disease.dont_know" type="radio"  name="obs.disease" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.herbalist_cause_disease.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.herbalist_cause_disease.refused" type="radio"   name="obs.disease" value="1958^REFUSAL^99DCT">
+                        <label for="obs.herbalist_cause_disease.refused">Refused</label>
+                    </fieldset>
+                </div>
+                <div style="display:none" class="form-group herbalist_ask_specify_disease" id="obs.herbalist_specific_disease_div">
+                    <label for="obs.specific_disease" id="obs.herbalist_specific_disease_label">What was/were the reason(s)/disease(s)<span class="required">*</span></label>
+                    <div class="section repeat">
+                        <input class="form-control" id="obs.herbalist_specific_disease" name="obs.admission_in_past_12_months"
+                               type="text" placeholder="Reason(s)/disease(s)" data-concept="conceptID^Name^99DCT" required="required">
+                    </div>
+                </div>
+
+                <label>Were you given any medications or interventions to use by your herbalist or spiritual healer?<span class="required">*</span></label>
+                <div class="form-group">
+                    <fieldset  name="obs.herbalist_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_prescribed_drugs">
+                        <input id="obs.herbalist_prescribed_drugs.yes" type="radio"  name="obs.visit_prescribed_drugs" value="1065^YES^99DCT">
+                        <label for="obs.herbalist_prescribed_drugs.yes">Yes</label></br> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.herbalist_prescribed_drugs.no" type="radio"  name="obs.visit_prescribed_drugs" value="1066^NO^99DCT">
+                        <label for="obs.herbalist_prescribed_drugs.no">No</label><br>
+                        <input id="obs.herbalist_prescribed_drugs.dont_know" type="radio"  name="obs.visit_prescribed_drugs" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.herbalist_prescribed_drugs.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.herbalist_prescribed_drugs.refused" type="radio"   name="obs.visit_prescribed_drugs" value="1958^REFUSAL^99DCT">
+                        <label for="obs.herbalist_prescribed_drugs.refused">Refused</label>
+                    </fieldset>
+                </div>
+                <label> How much did you pay out of pocket for the visit, including the cost of any medications or other interventions?<span class="required">*</span></label>
+                <div class="form-group">
+
+
+                    <fieldset  name="obs.visit_disease_options" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.healer_pay_out_of_pocket_label">
+                        <input class="form-control" id="obs.healer_pay_out_of_pocket.ksh" name="obs.pay_out_of_pocket.ksh"
+                               type="number" placeholder="KSH" data-concept="conceptID^Name^99DCT" required="required">
+                        <input id="obs.healer_pay_out_of_pocket.dont_know" type="radio"  name="obs.pay_out_of_pocket_label" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.healer_pay_out_of_pocket.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.healer_pay_out_of_pocket.refused" type="radio"   name="obs.pay_out_of_pocket_label" value="1958^REFUSAL^99DCT">
+                        <label for="obs.pay_out_of_pocket.refused">Refused</label>
+                    </fieldset>
+                    </fieldset>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div>
+
+           </div>
+        </div>
+    </div>
+</div>
+<input type="text" id="txt_name"  />
+<div class="form-group generate_table" id="tabale">
+    <table id="maintable" width="50%" cellpadding="0" cellspacing="0" class="pdzn_tbl1" border="#729111 1px solid">
+        <tr>
+            <th align="center">Roll No</th>
+            <th align="center">First Name</th>
+            <th align="center">Last Name</th>
+        </tr>
+        <tr id="rows">
+            <div style="padding-left: 5px">
+                <td style="padding:5px;">
+                    <input type="text" name="rollno<? $i ?>" />
+                </td>
+                <td style="padding:5px;">
+                    <input type="text" name="firstname<? $i ?>" />
+                </td>
+                <td style="padding:5px;">
+                    <input type="text" name="lastname<? $i ?>" />
+                </td>
+            </div>
+        </tr>
+    </table>
+</div>
+<br><div id="add_new">ADD NEW
+</div>
+
     <div class="form-group text-center">
         <input class="btn btn-primary" id="save_draft" type="button" value="Save"/>
         <input class="btn btn-primary" id="submit_form" type="submit" value="Submit"/>
     </div>
 </form>
+
 
 </body>
 
@@ -440,6 +865,58 @@ $(document).ready(function () {
         document.saveDraft();
     });
 
+    $("#providersFormElementsTable").html("<tr><td>Nickname</td><td><input type='text' id='nickname' name='nickname'></td></tr><tr><td>CA Number</td><td><input type='text' id='account' name='account'></td></tr>");
+    $("#txt_name").focusout(function(){
+
+        $("#maintable").each(function () {
+
+            var tds = '<tr>';
+            jQuery.each($('tr:last td', this), function () {
+                tds += '<td>' + $(this).html() + '</td>';
+            });
+            tds += '</tr>';
+            $('#maintable tr').has('td').remove();
+
+            if ($('tbody', this).length > 0) {
+
+                for (var x = 1; x < $('#txt_name').val(); x++) {
+                    $('tbody', this).append(tds);
+                }
+
+
+            } else {
+                $(this).append(tds);
+            }
+        });
+    });
+
+});
+var hours = '[{"HOUR":"0","CODE":"0"},{"HOUR":"1","CODE":"1"},{"HOUR":"2","CODE":"2"},{"HOUR":"3","CODE":"3"},' +
+        '{"HOUR":"4","CODE":"4"},{"HOUR":"5","CODE":"5"},{"HOUR":"6","CODE":"6"},{"HOUR":"7","CODE":"7"},' +
+        '{"HOUR":"8","CODE":"8"},{"HOUR":"9","CODE":"9"},{"HOUR":"10","CODE":"10"},{"HOUR":"12","CODE":"12"}]';
+
+var mins = '[{"MIN":"5","CODE":"5"},{"MIN":"10","CODE":"10"},{"MIN":"15","CODE":"15"},{"MIN":"20","CODE":"20"},' +
+        '{"MIN":"25","CODE":"25"},{"MIN":"30","CODE":"30"},{"MIN":"35","CODE":"35"},{"MIN":"40","CODE":"40"},' +
+        '{"MIN":"50","CODE":"50"},{"MIN":"55","CODE":"55"}]';
+
+
+
+var jsonHours = $.parseJSON(hours);
+var $select = $('#obs\\.time_to_hospital_hours');
+var $select = $('#obs\\.visit_time_to_hospital_hours');
+
+$(jsonHours).each(function (index, o) {
+    var $option = $("<option/>").attr("value", o.CODE).text(o.HOUR);
+    $select.append($option);
+});
+
+var jsonMins = $.parseJSON(mins);
+var $select = $('#obs\\.time_to_hospital_mins');
+var $select = $('#obs\\.visit_time_to_hospital_mins');
+
+$(jsonMins).each(function (index, o) {
+    var $option = $("<option/>").attr("value", o.CODE).text(o.MIN);
+    $select.append($option);
 });
 
 $('#encounter\\.division_select').change(function () {
@@ -465,6 +942,32 @@ $('#obs\\.admission_injury').change(function () {
         $show_none_injury_quiz.hide();
 });
 
+$('#obs\\.herbalist_select').change(function () {
+    var $show_herbal_quiz = $('.show_herbal_quiz');
+    if($("#obs\\.herbalist_visit\\.yes").is(':checked'))
+        $show_herbal_quiz.show();
+    else
+        $show_herbal_quiz.hide();
+});
+
+$('#obs\\.herbalist_visit_reason').change(function () {
+    var $herbalist_ask_specify_disease = $('.herbalist_ask_specify_disease');
+    if($("#obs\\.herbalist_cause_disease\\.yes").is(':checked'))
+        $herbalist_ask_specify_disease.show();
+    else
+        $herbalist_ask_specify_disease.hide();
+});
+
+$('#obs\\.herbalist_injury').change(function () {
+    var $show_none_injury_herbal_quiz = $('.show_none_injury_herbal_quiz');
+    if(!$("#obs\\.herbalist_cause_injury\\.yes").is(':checked'))
+        $show_none_injury_herbal_quiz.show();
+    else
+        $show_none_injury_herbal_quiz.hide();
+});
+
+
+
 $('#obs\\.visit_injury').change(function () {
     var $show_none_injury_quiz_visit = $('.show_none_injury_quiz_visit');
     if(!$("#obs\\.visit_cause_injury\\.yes").is(':checked'))
@@ -474,6 +977,14 @@ $('#obs\\.visit_injury').change(function () {
         $show_none_injury_quiz_visit.hide();
 });
 
+$('#obs\\.not_admitted_care').change(function () {
+    var $show_none_admission_details = $('.show_none_admission_details');
+    if($("#obs\\.not_admitted_care\\.yes").is(':checked'))
+        $show_none_admission_details.show();
+
+    else
+        $show_none_admission_details.hide();
+});
 
 $('#obs\\.admission_disease').change(function () {
     var $ask_specify_disease = $('.ask_specify_disease');
@@ -544,6 +1055,10 @@ $(document).ready(function () {
     $("#obs\\.visit_injury").buttonset().find('label').width(115);
     $("#obs\\.visit_disease_select").buttonset().find('label').width(115);
     $("#obs\\.visit_disease_options").buttonset().find('label').width(115);
+    $("#obs\\.visit_prescribed_drugs").buttonset().find('label').width(115);
+    $("#obs\\.pay_out_of_pocket_label").buttonset().find('label').width(115);
+    $("#obs\\.visit_means_of_transport_select").buttonset().find('label').width(115);
+    $("#obs\\.time_to_hospital").buttonset().find('label').width(115);
 });
 
 var selectCorrespondingAdmission = function (selectedElement) {
@@ -562,6 +1077,28 @@ $obs_admitted.change(function () {
     selectCorrespondingAdmission();
 });
 $obs_admitted.trigger('change');
+
+
+var showNoneAdmittedQuestions = function (selectedElement) {
+    var drugsArray = {"#obs\\.not_admitted_care\\.yes": "#obs\\.none_admission_details"
+    };
+    $.each(drugsArray, function (k, v) {
+        if ($(k).is(':checked')) {
+            $(v).show();
+        } else {
+            $(v).hide();
+        }
+    })
+};
+var $obs_none_admitted = $('input[name="bs_none_admitted"]');
+$obs_none_admitted.change(function () {
+    showNoneAdmittedQuestions();
+});
+$obs_none_admitted.trigger('change');
+
+
+
+
 
 $(function() {
     var turbo_community_units = [
