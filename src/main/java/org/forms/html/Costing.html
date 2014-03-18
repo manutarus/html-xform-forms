@@ -719,7 +719,7 @@
 
     <label>Have you at any time during the past 3 months visited a herbalist or spiritual healer?<span class="required">*</span></label>
     <div class="form-group" id="obs.herbalist_select">
-        <fieldset name="obs.herbalist_visit" data-concept="6419^herbalist_visitD TO HOSPITAL^99DCT">
+        <fieldset name="obs.herbalist_visit" data-concept="6419^herbalist_visit^99DCT" id="obs.herbalist_visit">
             <input id="obs.herbalist_visit.yes" type="radio" name="obs.herbalist_visitd" value="1065^YES^99DCT">
             <label for="obs.herbalist_visit.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
             <input id="obs.herbalist_visit.no" type="radio"  name="obs.herbalist_visitd" value="1066^NO^99DCT">
@@ -733,28 +733,35 @@
 
     <div style="display:none" class="form-group show_herbal_quiz" id="obs.herbalist_visit_yes">
     <div  id="obs.herbalist_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
-        <label>Number of visits to:</label> <br>
+        <label>Number of visits to spiritual healer/herbalist</label> <br>
 
-        <label for="obs.number_visit_to_herbalist_label" id="obs.number_visit_to_herbalist_label">herbalist:<span class="required">*</span></label>
-        <input class="form-control" id="obs.number_visit_to_herbalist" name="obs.admission_in_past_12_months"
-               type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
-
-         <label for="obs.number_visit_to_herbalist_label" id="obs.number_visit_to_spiritual_label">spiritual healer:<span class="required">*</span></label>
-        <input class="form-control" id="obs.number_visit_to_spiritual" name="obs.admission_in_past_12_months"
-               type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
-
+        <input type="number" id="table_rows"  />
+        <input type="button" value="Table(s)"/>
+        </p>
         <label class="alert alert-info" id="obs.inpatient_admission_label1">For each of the visits you listed, we are now going to ask you some additional questions.</label>
-        <div class="repeat">
+        <div id="tb_container" ></div>
+
+        </div>
+    </div>
+</div>
+</p>
+
+
+
+<div id="herbalModal" class="modalDialog">
+    <div>
+        <a href="#close" title="Close" class="close">close</a>
+
             <div class="form-group" id="obs.herbalist_injury">
                 <label for="obs.herbalist_injury">Was the visit the result of an accident or injury?<span class="required">*</span></label>
                 <fieldset name="obs.herbalist_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_injury_select">
-                    <input id="obs.herbalist_cause_injury.yes" type="radio"  name="obs.injury" value="1065^YES^99DCT">
+                    <input id="obs.herbalist_cause_injury.yes" type="radio"  name="obs.herbalist_injury" value="1065^YES^99DCT">
                     <label for="obs.herbalist_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input id="obs.herbalist_cause_injury.no" type="radio"  name="obs.injury" value="1066^NO^99DCT">
+                    <input id="obs.herbalist_cause_injury.no" type="radio"  name="obs.herbalist_injury" value="1066^NO^99DCT">
                     <label for="obs.herbalist_cause_injury.no">No</label><br>
-                    <input id="obs.herbalist_cause_injury.dont_know" type="radio"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">
+                    <input id="obs.herbalist_cause_injury.dont_know" type="radio"  name="obs.herbalist_injury" value="1624^DO NOT KNOW^99DCT">
                     <label for="obs.herbalist_cause_injury.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input id="obs.herbalist_cause_injury.refused" type="radio"   name="obs.injury" value="1958^REFUSAL^99DCT">
+                    <input id="obs.herbalist_cause_injury.refused" type="radio"   name="obs.herbalist_injury" value="1958^REFUSAL^99DCT">
                     <label for="obs.herbalist_cause_injury.refused">Refused</label>
                 </fieldset>
             </div>
@@ -762,13 +769,13 @@
                 <label>was the visit as result of any specific disease e.g malaria, typhoid, hypertension etc?<span class="required">*</span></label>
                 <div class="form-group" id="obs.herbalist_visit_reason">
                     <fieldset  name="obs.herbalist_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_disease_select">
-                        <input id="obs.herbalist_cause_disease.yes" type="radio"  name="obs.disease" value="1065^YES^99DCT">
+                        <input id="obs.herbalist_cause_disease.yes" type="radio"  name="obs.herbalist_disease" value="1065^YES^99DCT">
                         <label for="obs.herbalist_cause_disease.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input id="obs.herbalist_cause_disease.no" type="radio"  name="obs.disease" value="1066^NO^99DCT">
+                        <input id="obs.herbalist_cause_disease.no" type="radio"  name="obs.herbalist_disease" value="1066^NO^99DCT">
                         <label for="obs.herbalist_cause_disease.no">No</label><br>
-                        <input id="obs.herbalist_cause_disease.dont_know" type="radio"  name="obs.disease" value="1624^DO NOT KNOW^99DCT">
+                        <input id="obs.herbalist_cause_disease.dont_know" type="radio"  name="obs.herbalist_disease" value="1624^DO NOT KNOW^99DCT">
                         <label for="obs.herbalist_cause_disease.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input id="obs.herbalist_cause_disease.refused" type="radio"   name="obs.disease" value="1958^REFUSAL^99DCT">
+                        <input id="obs.herbalist_cause_disease.refused" type="radio"   name="obs.herbalist_ disease" value="1958^REFUSAL^99DCT">
                         <label for="obs.herbalist_cause_disease.refused">Refused</label>
                     </fieldset>
                 </div>
@@ -783,102 +790,33 @@
                 <label>Were you given any medications or interventions to use by your herbalist or spiritual healer?<span class="required">*</span></label>
                 <div class="form-group">
                     <fieldset  name="obs.herbalist_cause_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_prescribed_drugs">
-                        <input id="obs.herbalist_prescribed_drugs.yes" type="radio"  name="obs.visit_prescribed_drugs" value="1065^YES^99DCT">
-                        <label for="obs.herbalist_prescribed_drugs.yes">Yes</label></br> &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input id="obs.herbalist_prescribed_drugs.no" type="radio"  name="obs.visit_prescribed_drugs" value="1066^NO^99DCT">
+                        <input id="obs.herbalist_prescribed_drugs.yes" type="radio"  name="obs.herbalist_prescribed_drugs" value="1065^YES^99DCT">
+                        <label for="obs.herbalist_prescribed_drugs.yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.herbalist_prescribed_drugs.no" type="radio"  name="obs.herbalist_prescribed_drugs" value="1066^NO^99DCT">
                         <label for="obs.herbalist_prescribed_drugs.no">No</label><br>
-                        <input id="obs.herbalist_prescribed_drugs.dont_know" type="radio"  name="obs.visit_prescribed_drugs" value="1624^DO NOT KNOW^99DCT">
-                        <label for="obs.herbalist_prescribed_drugs.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input id="obs.herbalist_prescribed_drugs.refused" type="radio"   name="obs.visit_prescribed_drugs" value="1958^REFUSAL^99DCT">
+                        <input id="obs.herbalist_prescribed_drugs.dont_know" type="radio"  name="obs.herbalist_prescribed_drugs" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.herbalist_prescribed_drugs.dont_know">Don&#39;t Know</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.herbalist_prescribed_drugs.refused" type="radio"   name="obs.herbalist_prescribed_drugs" value="1958^REFUSAL^99DCT">
                         <label for="obs.herbalist_prescribed_drugs.refused">Refused</label>
                     </fieldset>
                 </div>
                 <label> How much did you pay out of pocket for the visit, including the cost of any medications or other interventions?<span class="required">*</span></label>
-                <div class="form-group" id="one_on_one">
-
-
-                    <fieldset  name="obs.visit_disease_options" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.healer_pay_out_of_pocket_label">
-                        <input class="form-control" id="obs.healer_pay_out_of_pocket.ksh" name="obs.pay_out_of_pocket.ksh"
+                <div class="form-group">
+                        <input class="form-control" id="obs.healer_pay_out_of_pocket.ksh" name="obs.pay_out_of_pocket"
                                type="number" placeholder="KSH" data-concept="conceptID^Name^99DCT" required="required">
-                        <input id="obs.healer_pay_out_of_pocket.dont_know" type="radio"  name="obs.pay_out_of_pocket_label" value="1624^DO NOT KNOW^99DCT">
-                        <label for="obs.healer_pay_out_of_pocket.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
-                        <input id="obs.healer_pay_out_of_pocket.refused" type="radio"   name="obs.pay_out_of_pocket_label" value="1958^REFUSAL^99DCT">
-                        <label for="obs.pay_out_of_pocket.refused">Refused</label>
-                    </fieldset>
+                    <fieldset  name="obs.healer_pay_out_of_pocket" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.healer_pay_out_of_pocket">
+
+                        <input id="obs.healer_pay_out_of_pocket.dont_know" type="radio"  name="obs.herbalist_prescribed_drugs5" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.healer_pay_out_of_pocket.dont_know">Don&#39;t Know</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.healer_pay_out_of_pocket.refused" type="radio"   name="obs.herbalist_prescribed_drugs5" value="1958^REFUSAL^99DCT">
+                        <label for="obs.healer_pay_out_of_pocket.refused">Refused</label>
                     </fieldset>
                 </div>
 
-
-
-
             </div>
 
-           </div>
-        </div>
     </div>
 </div>
-</p>
-In the past three months, how many times did you visit each of the following places: <br>
-<input type="number" id="txt_name"  />
-</p>
-<div class="form-group generate_table" id="tabale">
-    <table id="maintable" width="50%" cellpadding="0" cellspacing="0" class="pdzn_tbl1" border="#729111 1px solid">
-        <tr>
-            <th align="center">Injury</th>
-            <th align="center">Drugs</th>
-            <th align="center">Costs</th>
-        </tr>
-        <tr id="rows">
-
-
-            <section>
-                <div id="deliveryMethod" title="Delivery Method" class="hide">
-
-
-
-
-
-                </div>
-            </section>
-            
-               
-
-            <div style="padding-left: 5px">
-                <td style="padding:5px;">
-
-                    <a href="#openModal">Options</a>
-                </td>
-                <td style="padding:5px;">
-                    <a href="#openModal">Options</a>
-                </td>
-                <td style="padding:5px;">
-                    <a href="#openModal">Options</a>
-                </td>
-            </div>
-        </tr>
-    </table>
-</div>
-
-<div id="openModal" class="modalDialog">
-    <div>
-        <a href="#close" title="Close" class="close">X</a>
-        <h2>Was the visit the result of an accident or injury?</h2>
-        <div class="form-group">
-            <fieldset  name="obs.herbalist_visit_cause" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_model">
-                <input id="obs.herbalist_visit_injury.yes" type="radio"  name="obs.herbalist_visit" value="1065^YES^99DCT">
-                <label for="obs.herbalist_visit_injury.yes">Yes</label>&nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="obs.herbalist_visit_injury.no" type="radio"  name="obs.herbalist_visit" value="1066^NO^99DCT">
-                <label for="obs.herbalist_visit_injury.no">No</label><br>
-                <input id="obs.herbalist_visit_injury.dont_know" type="radio"  name="obs.herbalist_visit" value="1624^DO NOT KNOW^99DCT">
-                <label for="obs.herbalist_visit_injury.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="obs.herbalist_visit_injury.refused" type="radio"   name="herbalist_visit" value="1958^REFUSAL^99DCT">
-                <label for="obs.herbalist_visit_injury.refused">Refused</label>
-            </fieldset>
-        </div>
-    </div>
-</div>
-
-
 
 
 </div>
@@ -897,15 +835,13 @@ In the past three months, how many times did you visit each of the following pla
 
     input[type="checkbox"]:checked+label{background:#ccc; color:white}​
 
-                                                                      .hide {
-                                                                          display: none;
-                                                                      }
+    .hide {
+        display: none;
+    }
     .dialog{
         width:300px !important;
     }
 </style>
-
-
 <style type="text/css">
     .modalDialog {
         position: fixed;
@@ -922,18 +858,15 @@ In the past three months, how many times did you visit each of the following pla
         transition: opacity 400ms ease-in;
         pointer-events: none;
     }
-
-
     .modalDialog:target {
         opacity:1;
         pointer-events: auto;
     }
-
     .modalDialog > div {
         width: 90%;
-        height: 60%;
+        height: 90%;
         position: relative;
-        margin: 10% auto;
+        margin: 3% auto;
         padding: 5px 20px 13px 20px;
         border-radius: 10px;
         background: #fff;
@@ -944,12 +877,12 @@ In the past three months, how many times did you visit each of the following pla
     .close {
         background: #606061;
         color: #FFFFFF;
-        line-height: 25px;
+        line-height: 70px;
         position: absolute;
-        right: -12px;
+        right: 12px;
         text-align: center;
-        top: -10px;
-        width: 24px;
+        top: 10px;
+        width: 70px;
         text-decoration: none;
         font-weight: bold;
         -webkit-border-radius: 12px;
@@ -959,10 +892,8 @@ In the past three months, how many times did you visit each of the following pla
         -webkit-box-shadow: 1px 1px 3px #000;
         box-shadow: 1px 1px 3px #000;
     }
-
     .close:hover { background: #00d9ff; }
 </style>
-
 
 <script type="text/javascript">
 $(document).ready(function () {
@@ -974,66 +905,20 @@ $(document).ready(function () {
         document.saveDraft();
     });
 
-    $("#providersFormElementsTable").html("<tr><td>Nickname</td><td><input type='text' id='nickname' name='nickname'></td></tr><tr><td>CA Number</td><td><input type='text' id='account' name='account'></td></tr>");
-    $("#txt_name").focusout(function(){
-
-        $("#maintable").each(function () {
-
-            var tds = '<tr>';
-            jQuery.each($('tr:last td', this), function () {
-                tds += '<td>' + $(this).html() + '</td>';
-            });
-            tds += '</tr>';
-            $('#maintable tr').has('td').remove();
-
-            if ($('tbody', this).length > 0) {
-
-                for (var x = 0; x < $('#txt_name').val(); x++) {
-                    $('tbody', this).append(tds);
-                }
-
-
-            } else {
-                $(this).append(tds);
+    $("#table_rows").focusout(function(){
+            document.getElementById('tb_container').innerHTML = "" ;
+            tblHtml = '<table>'
+            for (i=1; i<= $('#table_rows').val(); i +=1 ) {
+                tblHtml += '<tr>';
+                tblHtml += '<td><a href="#herbalModal"><strong>visit '+i+'</strong></a></td>';
+                tblHtml += '</tr>';
             }
-        });
+            tblHtml += '</table>';
+            document.getElementById('tb_container').innerHTML = tblHtml;
     });
 
 });
 
-function deliveryServiceClick() {
-    var dialogDiv = $('#dialogDiv');
-
-    if (dialogDiv.length == 0) {
-
-        dialogDiv = $("<div id='dialogDiv'><div/>").appendTo('body');
-        $('#deliveryMethod').appendTo(dialogDiv).removeClass('hide')
-        dialogDiv.attr("Title", "Please select your chosen delivery service...............................");
-
-        dialogDiv.dialog({
-
-            modal : true,
-
-            buttons : [
-                {
-                    text : "Process",
-                    class : 'large',
-                    click : function() {
-                        //
-                    }
-                },
-                {
-                    text : "Cancel",
-                    class : 'large',
-                    click : function() {
-                        $(this).dialog('close');
-                    }
-                } ]
-        });
-    }else{
-        dialogDiv.dialog("open");
-    }
-}
 var hours = '[{"HOUR":"0","CODE":"0"},{"HOUR":"1","CODE":"1"},{"HOUR":"2","CODE":"2"},{"HOUR":"3","CODE":"3"},' +
         '{"HOUR":"4","CODE":"4"},{"HOUR":"5","CODE":"5"},{"HOUR":"6","CODE":"6"},{"HOUR":"7","CODE":"7"},' +
         '{"HOUR":"8","CODE":"8"},{"HOUR":"9","CODE":"9"},{"HOUR":"10","CODE":"10"},{"HOUR":"12","CODE":"12"}]';
@@ -1041,8 +926,6 @@ var hours = '[{"HOUR":"0","CODE":"0"},{"HOUR":"1","CODE":"1"},{"HOUR":"2","CODE"
 var mins = '[{"MIN":"5","CODE":"5"},{"MIN":"10","CODE":"10"},{"MIN":"15","CODE":"15"},{"MIN":"20","CODE":"20"},' +
         '{"MIN":"25","CODE":"25"},{"MIN":"30","CODE":"30"},{"MIN":"35","CODE":"35"},{"MIN":"40","CODE":"40"},' +
         '{"MIN":"50","CODE":"50"},{"MIN":"55","CODE":"55"}]';
-
-
 
 var jsonHours = $.parseJSON(hours);
 var $select = $('#obs\\.time_to_hospital_hours');
@@ -1108,8 +991,6 @@ $('#obs\\.herbalist_injury').change(function () {
     else
         $show_none_injury_herbal_quiz.hide();
 });
-
-
 
 $('#obs\\.visit_injury').change(function () {
     var $show_none_injury_quiz_visit = $('.show_none_injury_quiz_visit');
@@ -1203,6 +1084,11 @@ $(document).ready(function () {
     $("#obs\\.pay_out_of_pocket_label").buttonset().find('label').width(115);
     $("#obs\\.visit_means_of_transport_select").buttonset().find('label').width(115);
     $("#obs\\.time_to_hospital").buttonset().find('label').width(115);
+    $("#obs\\.herbalist_visit").buttonset().find('label').width(115);
+    $("#obs\\.herbalist_injury_select").buttonset().find('label').width(115);
+    $("#obs\\.herbalist_disease_select").buttonset().find('label').width(115);
+    $("#obs\\.herbalist_prescribed_drugs").buttonset().find('label').width(115);
+    $("#obs\\.healer_pay_out_of_pocket_label").buttonset().find('label').width(115);
 });
 
 var selectCorrespondingAdmission = function (selectedElement) {
