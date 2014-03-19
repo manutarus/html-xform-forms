@@ -732,16 +732,64 @@
     </div>
 
     <div style="display:none" class="form-group show_herbal_quiz" id="obs.herbalist_visit_yes">
-    <div  id="obs.herbalist_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+        <div  id="obs.herbalist_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
         <label>Number of visits to spiritual healer/herbalist</label> <br>
 
         <input type="number" id="table_rows"  />
-        <input type="button" value="Table(s)"/>
+        <input type="button" value="Advance"/>
         </p>
         <label class="alert alert-info" id="obs.inpatient_admission_label1">For each of the visits you listed, we are now going to ask you some additional questions.</label>
         <div id="tb_container" ></div>
 
         </div>
+
+        <label class="alert alert-info">Now, thinking about your LAST visit</label>
+
+        <div class="form-group" id="obs.herbalist_means_of_transport">
+            <label for="obs.herbalist_means_of_transport">What means of transport did you use to get to the hospital? <span class="required">*</span></label>
+            <fieldset name="obs.herbalist_means_of_transport" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_means_of_transport_select">
+                <input id="obs.herbalist_means_of_transport.yes" type="radio"  name="obs.herbalist_means_of_transport_select" value="1065^YES^99DCT">
+                <label for="obs.herbalist_means_of_transport.yes">On foot</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.herbalist_means_of_transport.no" type="radio"  name="obs.herbalist_means_of_transport_select" value="1066^NO^99DCT">
+                <label for="obs.herbalist_means_of_transport.no">Boda Boda</label><br>
+                <input id="obs.herbalist_means_of_transport.matatu" type="radio"   name="obs.herbalist_means_of_transport_select" value="1958^REFUSAL^99DCT">
+                <label for="obs.herbalist_means_of_transport.matatu">Matatu</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.herbalist_means_of_transport.refused" type="radio"  name="obs.herbalist_means_of_transport_select" value="1958^REFUSAL^99DCTx">
+                <label for="obs.herbalist_means_of_transport.refused">Refused</label><br>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label for="obs.herbalist_time_to_hospital">How much time did it take to reach the hospital?<span class="required">*</span></label>
+            <fieldset class="section" name="obs.herbalist_time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_time_to_hospital">
+                <br><label>Hours</label>
+                <select id="obs.herbalist_time_to_hospital_hours" name="select" class="main-form">
+                    <option value="">Hours</option>
+                </select>
+                <label>Minutes</label>
+                <select id="obs.herbalist_time_to_hospital_mins" name="select" class="main-form">
+                    <option value="">Mins</option>
+                </select> <br>
+                <input id="obs.herbalist_time_to_hospital.dont_know" type="radio"   name="obs.herbalist_time_to_hospital_select" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.herbalist_time_to_hospital.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.herbalist_time_to_hospital.refused" type="radio"  name="obs.herbalist_time_to_hospital_select" value="1958^REFUSAL^99DCT">
+                <label for="obs.herbalist_time_to_hospital.refused">Refused</label><br>
+            </fieldset>
+        </div>
+        <div class="form-group">
+            <label for="obs.herbalist_time_to_hospital">How much was the transport cost?<span class="required">*</span></label>
+            <fieldset class="section" name="obs.herbalist_time_to_hospital" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.herbalist_cost_of_transport_options">
+                <input class="form-control" id="obs.herbalist_cost_of_transport" name="obs.herbalist_cost_of_transport_options"
+                       type="number" placeholder="Cost to hospital" data-concept="conceptID^Name^99DCT" required="required">
+                <input id="obs.herbalist_cost_of_transport.dont_know" type="radio"   name="obs.herbalist_cost_of_transport_options" value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.herbalist_cost_of_transport.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.herbalist_cost_of_transport.refused" type="radio"  name="obs.herbalist_cost_of_transport_options" value="1958^REFUSAL^99DCT">
+                <label for="obs.herbalist_cost_of_transport.refused">Refused</label><br>
+            </fieldset>
+        </div>
+
+
+
     </div>
 </div>
 </p>
@@ -817,6 +865,12 @@
 
     </div>
 </div>
+</div>
+
+
+<div class="section">
+    <h3>PRESCRIBED MEDICINES</h3>
+    <label class="alert alert-info">In thIn this section, we will be asking about PRESCRIBED medicines that you have taken in the past 3 months.</label>
 
 
 </div>
@@ -930,6 +984,7 @@ var mins = '[{"MIN":"5","CODE":"5"},{"MIN":"10","CODE":"10"},{"MIN":"15","CODE":
 var jsonHours = $.parseJSON(hours);
 var $select = $('#obs\\.time_to_hospital_hours');
 var $select = $('#obs\\.visit_time_to_hospital_hours');
+var $select = $('#obs\\.herbalist_time_to_hospital_hours');
 
 $(jsonHours).each(function (index, o) {
     var $option = $("<option/>").attr("value", o.CODE).text(o.HOUR);
@@ -939,6 +994,7 @@ $(jsonHours).each(function (index, o) {
 var jsonMins = $.parseJSON(mins);
 var $select = $('#obs\\.time_to_hospital_mins');
 var $select = $('#obs\\.visit_time_to_hospital_mins');
+var $select = $('#obs\\.herbalist_time_to_hospital_mins');
 
 $(jsonMins).each(function (index, o) {
     var $option = $("<option/>").attr("value", o.CODE).text(o.MIN);
@@ -1089,6 +1145,7 @@ $(document).ready(function () {
     $("#obs\\.herbalist_disease_select").buttonset().find('label').width(115);
     $("#obs\\.herbalist_prescribed_drugs").buttonset().find('label').width(115);
     $("#obs\\.healer_pay_out_of_pocket_label").buttonset().find('label').width(115);
+    $("#obs\\.herbalist_means_of_transport_select").buttonset().find('label').width(115);
 });
 
 var selectCorrespondingAdmission = function (selectedElement) {
