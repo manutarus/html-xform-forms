@@ -867,13 +867,518 @@
 </div>
 </div>
 
-
 <div class="section">
     <h3>PRESCRIBED MEDICINES</h3>
     <label class="alert alert-info">In thIn this section, we will be asking about PRESCRIBED medicines that you have taken in the past 3 months.</label>
 
+    <label>Have you TAKEN any medicines that were prescribed by your health care provider over the past 3 months?<span class="required">*</span></label>
+    <div class="form-group" id ="obs.prescribed_meds">
+        <fieldset  name="obs.prescribed_meds_taken_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.prescribed_meds_taken_select">
+            <input id="obs.prescribed_meds_taken.yes" type="radio"  name="obs.prescribed_meds_taken" value="1065^YES^99DCT">
+            <label for="obs.prescribed_meds_taken.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.prescribed_meds_taken.no" type="radio"  name="obs.prescribed_meds_taken" value="1066^NO^99DCT">
+            <label for="obs.prescribed_meds_taken.no">No</label><br>
+            <input id="obs.prescribed_meds_taken.dont_know" type="radio"  name="obs.prescribed_meds_taken" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.prescribed_meds_taken.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.prescribed_meds_taken.refused" type="radio"   name="obs.prescribed_meds_taken" value="1958^REFUSAL^99DCT">
+            <label for="obs.prescribed_meds_taken.refused">Refused</label>
+        </fieldset>
+    </div>
+
+    <div style="display:none" class="form-group show_prescribed_meds" >
+
+    <div class="form-group">
+        <label >How many different types of prescriptions medicines have you taken in the past 3 months?<span class="required">*</span></label>
+        <fieldset class="section" name="obs.prescribed_drugs" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.prescribed_drugs">
+            <input class="form-control" id="obs.number_of_prescribed_drugs" name="obs.number_of_prescribed_drugs"
+                   type="number" placeholder="Number of drugs" data-concept="conceptID^Number of drugs^99DCT" required="required">
+            <input id="obs.number_of_prescribed_drugs.dont_know" type="radio"   name="obs.cost_of_transport_options" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.number_of_prescribed_drugs.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.number_of_prescribed_drugs.refused" type="radio"  name="obs.cost_of_transport_options" value="1958^REFUSAL^99DCT">
+            <label for="obs.number_of_prescribed_drugs.refused">Refused</label><br>
+        </fieldset>
+        </p>
+        <label class="alert alert-info" id="obs.prescribed_drugs_container">We are now going to ask you some questions to find out more information about each of the PRESCRIPTION medicines you have TAKEN over the past 3 months.</label>
+        <div id="prescribed_drugs_container" ></div>
+    </div>
+    </div>
+
+    <div id="prescribedDrugsModal" class="modalDialog">
+        <div>
+            <a href="#close" title="Close" class="close">close</a>
+
+            <div class="form-group" id="obs.prescriptions">
+                <label for="obs.herbalist_injury">What is the name of the medicine?<span class="required">*</span></label>
+                <fieldset class="section" name="obs.prescribed_drugs" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.prescription_name_select">
+                    <input class="form-control" id="obs.prescription_name" name="obs.number_of_prescribed_drugs"
+                           type="text" placeholder="Drug name" data-concept="conceptID^Number of drugs^99DCT" required="required">
+                    <input id="obs.prescription_name.dont_know" type="radio"   name="obs.cost_of_transport_options" value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.prescription_name.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.prescription_name.refused" type="radio"  name="obs.cost_of_transport_options" value="1958^REFUSAL^99DCT">
+                    <label for="obs.prescription_name.refused">Refused</label><br>
+                </fieldset>
+            </div>
+            <div class="form-group" id="obs.medical_condition_input">
+                <label>What medical condition or disease(s) was the prescription meant to address?<span class="required">*</span></label>
+                    <fieldset  name="obs.medical_condition_input" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.medical_condition_select">
+                        <div class="section repeat">
+                            <input class="form-control" id="obs.medical_condition" name="obs.medical_condition"
+                                   type="text" placeholder="condition or disease(s)" data-concept="conceptID^Name^99DCT" required="required">
+                        </div>
+                        <input id="obs.medical_condition.dont_know" type="radio"  name="obs.medical_condition" value="1624^DO NOT KNOW^99DCT">
+                        <label for="obs.medical_condition.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                        <input id="obs.medical_condition.refused" type="radio"   name="obs.medical_condition" value="1958^REFUSAL^99DCT">
+                        <label for="obs.medical_condition.refused">Refused</label>
+                    </fieldset>
+            </div>
+            <div class="form-group" id="obs.prescriptions_purchased_from">
+                <label for="obs.herbalist_injury">Where did you purchase the prescription from?<span class="required">*</span></label>
+                <fieldset  name="obs.prescriptions_purchased_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.prescriptions_purchased_select">
+                    <input id="obs.prescriptions_purchased.private_pharmacy" type="radio"  name="obs.prescriptions_purchased" value="1065^YES^99DCT">
+                    <label for="obs.prescriptions_purchased.private_pharmacy">Private pharmacy</label><br>
+                    <input id="obs.prescriptions_purchased.government_chemist" type="radio"  name="obs.prescriptions_purchased" value="1066^NO^99DCT">
+                    <label for="obs.prescriptions_purchased.government_chemist">Government chemist</label><br>
+                    <input id="obs.prescriptions_purchased.health_center" type="radio"  name="obs.prescriptions_purchased" value="1066^NO^99DCT">
+                    <label for="obs.prescriptions_purchased.health_center">Dispensary/Health Center</label><br>
+                    <input id="obs.prescriptions_purchased.revolving_fund_pharmacy" type="radio"  name="obs.prescriptions_purchased" value="1066^NO^99DCT">
+                    <label for="obs.prescriptions_purchased.revolving_fund_pharmacy">Revolving Fund Pharmacy</label><br>
+                    <input id="obs.prescriptions_purchased.dont_know" type="radio"  name="obs.prescriptions_purchased" value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.prescriptions_purchased.dont_know">Don&#39;t Know</label><br>
+                    <input id="obs.prescriptions_purchased.refused" type="radio"   name="obs.prescriptions_purchased" value="1958^REFUSAL^99DCT">
+                    <label for="obs.prescriptions_purchased.refused">Refused</label>
+                </fieldset>
+            </div>
+
+            <label> How much did you pay for the medicine?<span class="required">*</span></label>
+            <div class="form-group">
+                <input class="form-control" id="obs.prescriptions_purchased.ksh" name="obs.pay_out_of_pocket"
+                       type="number" placeholder="KSH" data-concept="conceptID^Name^99DCT" required="required">
+                <fieldset  name="obs.prescriptions_purchased_cost" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.prescriptions_purchased_cost">
+                    <input id="obs.prescriptions_purchased_cost.dont_know" type="radio"  name="obs.prescriptions_purchased" value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.prescriptions_purchased_cost.dont_know">Don&#39;t Know</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input id="obs.prescriptions_purchased_cost.refused" type="radio"   name="obs.prescriptions_purchased" value="1958^REFUSAL^99DCT">
+                    <label for="obs.prescriptions_purchased_cost.refused">Refused</label>
+                </fieldset>
+            </div>
+
+
+        </div>
+
+     </div>
+</div>
+
+
+
+
+<div class="section">
+    <h3>HEALTH INSURANCE</h3>
+
+    <div class="form-group" id ="obs.health_insurance">
+        <label for="obs.health_insurance">Do you have NHIF insurance?<span class="required">*</span></label>
+        <fieldset  name="obs.health_insurance_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.health_insurance_select">
+            <input id="obs.health_insurance.yes" type="radio"  name="obs.health_insurance" value="1065^YES^99DCT">
+            <label for="obs.health_insurance.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.health_insurance.no" type="radio"  name="obs.health_insurance" value="1066^NO^99DCT">
+            <label for="obs.health_insurance.no">No</label><br>
+            <input id="obs.health_insurance.dont_know" type="radio"  name="obs.health_insurance" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.health_insurance.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.health_insurance.refused" type="radio"   name="obs.health_insurance" value="1958^REFUSAL^99DCT">
+            <label for="obs.health_insurance.refused">Refused</label>
+        </fieldset>
+    </div>
+    <div style="display:none" class="form-group show_used_nhif" id ="obs.used_nhif">
+        <label for="obs.herbalist_injury">Have you ever used your NHIF insurance to pay for health services?<span class="required">*</span></label>
+        <fieldset  name="obs.used_nhif_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.used_nhif_select">
+            <input id="obs.used_nhif.yes" type="radio"  name="obs.health_insurance" value="1065^YES^99DCT">
+            <label for="obs.used_nhif.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.used_nhif.no" type="radio"  name="obs.health_insurance" value="1066^NO^99DCT">
+            <label for="obs.used_nhif.no">No</label><br>
+            <input id="obs.used_nhif.dont_know" type="radio"  name="obs.health_insurance" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.used_nhif.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.used_nhif.refused" type="radio"   name="obs.health_insurance" value="1958^REFUSAL^99DCT">
+            <label for="obs.used_nhif.refused">Refused</label>
+        </fieldset>
+    </div>
+
+    <div class="form-group" id ="obs.none_nhif_health_insurance">
+        <label for="obs.herbalist_injury">Are you currently covered by any other health insurance apart from NHIF?<span class="required">*</span></label>
+        <div class="section repeat">
+            <input class="form-control" id="obs.other_health_insurance" name="obs.medical_condition"
+                   type="text" placeholder="health insurance" data-concept="conceptID^health insurance^99DCT" required="required">
+        </div>
+    </div>
 
 </div>
+<div class="section">
+    <h3>PHYSICAL ACTIVITIES</h3>
+    <label class="alert alert-info">We are interested in finding out about the kinds of physical activities that people do as part of their everyday lives.  The questions will ask you about the time you spent being physically active in the last 7 days.  Please answer each question even if you do not consider yourself to be an active person.  Please think about the activities you do at work and as part of your house, to get from place to place, and in your spare time for recreation, exercise or sport.
+        I am going to first ask you about vigorous activities then later ask about moderate activities that you did in the last seven days</label></p>
+    <label class="alert alert-info">Think about all the vigorous activities that you did in the last 7 days.  Vigorous physical activities refer to activities that take hard physical effort and make you breathe much harder than normal. Think only about those physical activities that you did for at least 10 minutes at a time.</label>
+
+
+    <div class="form-group" id="obs.physical_activities">
+        <label>During the last 7 days, on how many days did you do vigorous physical activities like heavy lifting, digging, running, playing foot ball or fast bicycling?<span class="required">*</span></label>
+        <fieldset  name="obs.medical_condition_input" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.physical_activities_select">
+                <input class="form-control" id="obs.physical_activities_input" name="obs.physical_activities"
+                       type="number" placeholder="physical activities number" data-concept="conceptID^Name^99DCT" required="required">
+            <input id="obs.physical_activities.none" type="radio"  name="obs.physical_activities_none" value="1624^NONE^99DCT">
+            <label for="obs.physical_activities.none">None</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+        </fieldset>
+    </div>
+    <div style="display:none" class="form-group show_physical_activities_quiz" id ="obs.physical_activities_quiz">
+        <label for="obs.herbalist_injury">How much time did you usually spend doing vigorous physical activities on days that you do them?<span class="required">*</span></label>
+        <fieldset  name="obs.physical_activities_time__select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.physical_activities_time_select">
+            <br><label>Hours</label>
+            <select id="obs.physical_activities_time_hours" name="select" class="main-form">
+                <option value="">Hours</option>
+            </select>
+            <label>Minutes</label>
+            <select id="obs.physical_activities_time_mins" name="select" class="main-form">
+                <option value="">Mins</option>
+            </select> <br>
+            <input id="obs.physical_activities_time.dont_know" type="radio"   name="obs.herbalist_time_to_hospital_select" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.physical_activities_time.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.physical_activities_time.refused" type="radio"  name="obs.herbalist_time_to_hospital_select" value="1958^REFUSAL^99DCT">
+            <label for="obs.physical_activities_time.refused">Refused</label><br>
+        </fieldset>
+    </div>
+
+    <label class="alert alert-info">Think about all the moderate activities that you did in the last 7 days.  Moderate activities refer to activities that take moderate physical effort and make you breathe somewhat harder than normal.  Think only about those physical activities that you did for at least 10 minutes at a time.
+    </label>
+
+    <div class="form-group" id="obs.moderate_physical_activities">
+        <label>During the last 7 days, on how many days did you do moderate physical activities like carrying light loads, bicycling at a regular pace? Do not include walking unless you are purposely walking at a fast pace<span class="required">*</span></label>
+        <fieldset  name="obs.moderate_medical_condition_input" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.moderate_physical_activities_select">
+            <input class="form-control" id="obs.moderate_physical_activities_input" name="obs.moderate_physical_activities"
+                   type="number" placeholder="moderate physical activities" data-concept="conceptID^Name^99DCT" required="required">
+            <input id="obs.moderate_physical_activities.none" type="radio"  name="obs.moderate_physical_activities_none" value="1624^NONE^99DCT">
+            <label for="obs.moderate_physical_activities.none">None</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+        </fieldset>
+    </div>
+
+    <div style="display:none" class="form-group show_moderate_physical_activities_quiz" id ="obs.moderate_physical_activities_quiz">
+        <label for="obs.moderate_physical_activities_time_select">How much time do you usually spend doing moderate physical activities on days that you do them?<span class="required">*</span></label>
+        <fieldset  name="obs.moderate_physical_activities_time__select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.moderate_physical_activities_time_select">
+            <br><label>Hours</label>
+            <select id="obs.moderate_physical_activities_time_hours" name="select" class="main-form">
+                <option value="">Hours</option>
+            </select>
+            <label>Minutes</label>
+            <select id="obs.moderate_physical_activities_time_mins" name="select" class="main-form">
+                <option value="">Mins</option>
+            </select> <br>
+            <input id="obs.moderate_physical_activities_time.dont_know" type="radio" name="obs.herbalist_time_to_hospital_select" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.moderate_physical_activities_time.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.moderate_physical_activities_time.refused" type="radio"  name="obs.herbalist_time_to_hospital_select" value="1958^REFUSAL^99DCT">
+            <label for="obs.moderate_physical_activities_time.refused">Refused</label><br>
+        </fieldset>
+    </div>
+
+
+
+</div>
+
+
+<div class="section">
+    <h3>HEALTH STATUS</h3>
+    <label class="alert alert-info" id="obs.health_status">We are now going to ask you questions about your health related quality of life.</label>
+
+    <div class="form-group" id="obs.patient_mobility">
+        <label for="obs.patient_mobility">How would you describe your mobility?<span class="required">*</span></label>
+        <fieldset  name="obs.patient_mobility_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.patient_mobility_select">
+            <input id="obs.patient_mobility.no_problems_walking_about" type="radio"  name="obs.patient_mobility" value="1065^YES^99DCT">
+            <label for="obs.patient_mobility.no_problems_walking_about">No problems in walking about</label><br>
+            <input id="obs.patient_mobility.some_problems_walking_about" type="radio"  name="obs.patient_mobility" value="1066^NO^99DCT">
+            <label for="obs.patient_mobility.some_problems_walking_about">Some problems in walking about</label><br>
+            <input id="obs.patient_mobility.confined_to_bed" type="radio"  name="obs.patient_mobility" value="1066^NO^99DCT">
+            <label for="obs.patient_mobility.confined_to_bed">Confined to bed</label><br>
+        </fieldset>
+    </div>
+
+    <div class="form-group" id="obs.patient_self_care">
+        <label for="obs.patient_self_care">How would you describe your Self-Care?<span class="required">*</span></label>
+        <fieldset  name="obs.patient_self_care_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.self_care_select">
+            <input id="obs.self_care.no_problems_with_self_care" type="radio"  name="obs.patient_self_care" value="1065^YES^99DCT">
+            <label for="obs.self_care.no_problems_with_self_care">No problems with self-care</label><br>
+            <input id="obs.self_care.some_problems_with_self_care" type="radio"  name="obs.patient_self_care" value="1066^NO^99DCT">
+            <label for="obs.self_care.some_problems_with_self_care">Some problems washing or dressing myself</label><br>
+            <input id="obs.self_care.problems_with_self_care" type="radio"  name="obs.patient_self_care" value="1066^NO^99DCT">
+            <label for="obs.self_care.problems_with_self_care">Unable to wash or dress myself</label><br>
+        </fieldset>
+    </div>
+
+    <div class="form-group" id="obs.patient_usual_activities">
+        <label for="obs.patient_self_care">How would you describe your usual Activities? (e.g. work, study, housework, family or
+            leisure activities)<span class="required">*</span></label>
+        <fieldset  name="obs.patient_usual_activities_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.patient_usual_activities_select">
+            <input id="obs.patient_usual_activities.no_problems_with_usual_activities" type="radio"  name="obs.patient_self_care" value="1065^YES^99DCT">
+            <label for="obs.patient_usual_activities.no_problems_with_usual_activities">No problems with performing usual activities</label><br>
+            <input id="obs.patient_usual_activities.some_problems_with_usual_activities" type="radio"  name="obs.patient_self_care" value="1066^NO^99DCT">
+            <label for="obs.patient_usual_activities.some_problems_with_usual_activities">Some problems with performing usual activities</label><br>
+            <input id="obs.patient_usual_activities.problems_with_usual_activities" type="radio"  name="obs.patient_self_care" value="1066^NO^99DCT">
+            <label for="obs.patient_usual_activities.problems_with_usual_activities">Unable to perform my usual activities</label><br>
+        </fieldset>
+    </div>
+
+    <div class="form-group" id="obs.patient_discomfort">
+        <label for="obs.patient_self_care">How would you describe your pain/discomfort?<span class="required">*</span></label>
+        <fieldset  name="obs.patient_discomfort_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.patient_discomfort_select">
+            <input id="obs.patient_discomfort.no_discomfort" type="radio"  name="obs.patient_discomfort" value="1065^YES^99DCT">
+            <label for="obs.patient_discomfort.no_discomfort">No pain or discomfort</label><br>
+            <input id="obs.patient_discomfort.moderate_discomfort" type="radio"  name="obs.patient_discomfort" value="1066^NO^99DCT">
+            <label for="obs.patient_discomfort.moderate_discomfort">Moderate pain or discomfort</label><br>
+            <input id="obs.patient_discomfort.extreme_discomfort" type="radio"  name="obs.patient_discomfort" value="1066^NO^99DCT">
+            <label for="obs.patient_discomfort.extreme_discomfort">Extreme pain or discomfort</label><br>
+        </fieldset>
+    </div>
+
+
+    <div class="form-group" id="obs.patient_anxiety">
+        <label for="obs.patient_self_care">How would you describe your anxiety/depression?<span class="required">*</span></label>
+        <fieldset  name="obs.patient_anxiety_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.patient_anxiety_select">
+            <input id="obs.patient_anxiety.no_anxiety" type="radio"  name="obs.patient_anxiety" value="1065^YES^99DCT">
+            <label for="obs.patient_anxiety.no_anxiety">Not anxious or depressed</label><br>
+            <input id="obs.patient_anxiety.moderate_anxiety" type="radio"  name="obs.patient_anxiety" value="1066^NO^99DCT">
+            <label for="obs.patient_anxiety.moderate_anxiety">Moderately anxious or depressed</label><br>
+            <input id="obs.patient_anxiety.extreme_anxiety" type="radio"  name="obs.patient_anxiety" value="1066^NO^99DCT">
+            <label for="obs.patient_anxiety.extreme_anxiety">Extremely anxious or depressed</label><br>
+        </fieldset>
+    </div>
+    <div class="form-group" id="obs.health_scale">
+        <label class="alert alert-info">We would like to know how good your health is TODAY. The scale is numbered from 0 to 100<br>
+            100 means the BEST health you can imagine<br>
+            0 means the WORST health you can imagine<br>
+
+        </label> <br>
+        <label for="obs.patient_self_care">Select on the drop down scale to indicate how your health is TODAY<span class="required">*</span></label>  </p>
+        <select id="obs.patient_health_scale" name="select" class="main-form">
+            <option value="">Scale</option>
+        </select>
+    </div>
+    
+
+
+</div>
+
+
+<div class="section">
+    <h3>WORK PRODUCTIVITY</h3>
+    <div class="form-group" id ="obs.primary_job">
+       
+        <label for="obs.herbalist_injury">what is your primary job?<span class="required">*</span></label>
+        <fieldset  name="obs.primary_job_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.primary_job_select">
+            <input id="obs.primary_job.none" type="radio"  name="obs.health_insurance" value="1065^NONE^99DCT">
+            <label for="obs.primary_job.none">None</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.primary_job.farmer" type="radio"  name="obs.health_insurance" value="1066^Farmer^99DCT">
+            <label for="obs.primary_job.farmer">Farmer</label><br>
+            <input id="obs.primary_job.business_person" type="radio"  name="obs.health_insurance" value="1624^Business person^99DCT">
+            <label for="obs.primary_job.business_person">Business person</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.primary_job.student" type="radio"   name="obs.health_insurance" value="1958^student^99DCT">
+            <label for="obs.primary_job.student">Student</label> <br>
+            <input id="obs.primary_job.public_employee" type="radio"   name="obs.health_insurance" value="1958^public employee^99DCT">
+            <label for="obs.primary_job.public_employee">Public sector employee</label>
+            <div class="section repeat">
+                <input class="form-control" id="obs.primary_job.other" name="obs.admission_in_past_12_months"
+                       type="text" placeholder="Other (Specify)" data-concept="conceptID^Name^99DCT" required="required">
+            </div>
+        </fieldset>
+    </div>
+
+    <div style="display:none" class="form-group show_earning_quiz" id ="obs.earnings">
+        <label for="obs.moderate_physical_activities_time_select">How much time do you usually spend doing moderate physical activities on days that you do them?<span class="required">*</span></label>
+        <fieldset  name="obs.earnings_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.earnings_select">
+            <input id="obs.earnings.less_than_4999" type="radio"  name="obs.earnings" value="1065^YES^99DCT">
+            <label for="obs.earnings.less_than_4999">Less than kshs 4999</label><br>
+            <input id="obs.earnings.btw_5000-9,999" type="radio"  name="obs.earnings" value="1066^NO^99DCT">
+            <label for="obs.earnings.btw_5000-9,999">Kshs 5000-9,999</label><br>
+            <input id="obs.earnings.btw_10000-1999" type="radio"  name="obs.earnings" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.earnings.btw_10000-1999">Kshs 10,000--19,999</label> <br>
+            <input id="obs.earnings.btw_20,000-29,999" type="radio"   name="obs.earnings" value="1958^REFUSAL^99DCT">
+            <label for="obs.earnings.btw_20,000-29,999">Kshs 20,000-29,999</label> <br>
+            <input id="obs.earnings.btw_30,000-39,999" type="radio"   name="obs.earnings" value="1958^REFUSAL^99DCT">
+            <label for="obs.earnings.btw_30,000-39,999">Kshs 30,000-39,999</label><br>
+            <input id="obs.earnings.over_40,000" type="radio"   name="obs.earnings" value="1958^REFUSAL^99DCT">
+            <label for="obs.earnings.over_40,000">Over Kshs 40,000</label> <br>
+            <input id="obs.earnings.dont_knw" type="radio"   name="obs.earnings" value="1958^REFUSAL^99DCT">
+            <label for="obs.earnings.btw_20,000-29,999">Don’t Know</label> <br>
+            <input id="obs.earnings.refused" type="radio"  name="obs.earnings" value="1958^REFUSAL^99DCT">
+            <label for="obs.earnings.refused">Refused</label>
+        </fieldset>
+
+        <label for="obs.moderate_physical_activities_time_select">During the past 30 days, how many days did you miss from work because of your health problems? Include days/half days you missed on sick days, times you went in late, left early, etc., because of your health problems?<span class="required">*</span></label>
+        <label for="obs.admission_in_past_12_months" id="obs.missed_work_in_30_days">Number of Admissions:<span class="required">*</span></label>
+        <input class="form-control" id="obs.number_missed_work_in_30_days" name="obs.number_missed_work_in_30_days"
+               type="number" placeholder="days missed work" data-concept="conceptID^Name^99DCT" required="required">
+
+        <div  id ="obs.health_problems_label">
+            <label for="obs.health_problems_label">What are the health problems that caused you to miss work?<span class="required">*</span></label>
+            <div class="section repeat">
+                <input class="form-control" id="obs.health_problems" name="obs.reason_not_working"
+                       type="text" placeholder="health problems (Specify)" data-concept="conceptID^Name^99DCT" required="required">
+            </div>
+        </div>
+
+        <label for="obs.number_missed_work_in_7_days">During the past 7 days, how many days did you miss from work because of your health problems? Include days/half days you missed on sick days, times you went in late, left early, etc., because of your health problems?<span class="required">*</span></label>
+        <input class="form-control" id="obs.number_missed_work_in_7_days" name="obs.number_missed_work_in_7_days"
+               type="number" placeholder="Number of hours" data-concept="conceptID^Name^99DCT" required="required">
+
+
+
+    </div>
+
+
+    <div style="display:none" class="form-group show_reason_not_working_quiz" id ="obs.reason_not_working">
+        <label for="obs.moderate_physical_activities_time_select">What is the primary reason you are not working right now?<span class="required">*</span></label>
+        <fieldset  name="obs.reason_not_working_select" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.reason_not_working_select">
+
+            <input id="obs.reason_not_working.less_than_4999" type="radio"  name="obs.reason_not_working" value="1065^YES^99DCT">
+            <label for="obs.reason_not_working.less_than_4999">Could not find work</label><br>
+
+            <input id="obs.reason_not_working.btw_5000-9,999" type="radio"  name="obs.reason_not_working" value="1066^NO^99DCT">
+            <label for="obs.reason_not_working.btw_5000-9,999">Retired</label><br>
+
+            <input id="obs.reason_not_working.btw_10000-1999" type="radio"  name="obs.reason_not_working" value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.reason_not_working.btw_10000-1999">Illness or disability</label> <br>
+
+            <input id="obs.reason_not_working.btw_20,000-29,999" type="radio"   name="obs.reason_not_working" value="1958^REFUSAL^99DCT">
+            <label for="obs.reason_not_working.btw_20,000-29,999">Temporary layoff</label> <br>
+
+            <input id="obs.reason_not_working.btw_30,000-39,999" type="radio"   name="obs.reason_not_working" value="1958^REFUSAL^99DCT">
+            <label for="obs.reason_not_working.btw_30,000-39,999">Maternity/paternity leave</label><br>
+
+            <input id="obs.reason_not_working.over_40,000" type="radio"   name="obs.reason_not_working" value="1958^REFUSAL^99DCT">
+            <label for="obs.reason_not_working.over_40,000">Going to school</label> <br>
+
+            <input id="obs.reason_not_working.dont_knw" type="radio"   name="obs.reason_not_working" value="1958^REFUSAL^99DCT">
+            <label for="obs.reason_not_working.btw_20,000-29,999">Taking care of home or family</label> <br>
+
+            <input id="obs.reason_not_working.timeoff" type="radio"  name="obs.reason_not_working" value="1958^REFUSAL^99DCT">
+            <label for="obs.reason_not_working.timeoff">Wanted some time off</label>  <br>
+
+            <input id="obs.reason_not_working.refused" type="radio"  name="obs.reason_not_working" value="1958^REFUSAL^99DCT">
+            <label for="obs.reason_not_working.refused">Waiting to start new job</label>
+
+            <div class="section repeat">
+                <input class="form-control" id="obs.reason_not_working.other" name="obs.reason_not_working"
+                       type="text" placeholder="Other (Specify)" data-concept="conceptID^Name^99DCT" required="required">
+            </div>
+
+        </fieldset>
+
+    </div>
+
+</div>
+
+</div>
+
+<div class="section">
+    <h3>LIFESTYLE/HABITS</h3>
+
+    <div class="form-group">
+        <label for="obs.size_of_house_hold"> What is the size of your house hold?<span class="required">*</span></label>
+        <input class="form-control" id="obs.size_of_house_hold" name="obs.admission_in_past_12_months"
+               type="number" placeholder="Size of house hold" data-concept="conceptID^Number^99DCT" required="required">
+    </div>
+
+   <div class="form-group">
+        <label for="obs.size_of_house_hold"> For the last one month, how many grams of salt did you purchased?<span class="required">*</span></label>
+        <input class="form-control" id="obs.grams_of_salt" name="obs.grams_of_salt"
+               type="number" placeholder="Size of house hold" data-concept="conceptID^SALT GRAMS^99DCT" required="required">
+    </div>
+
+  <div class="form-group">
+        <label for="obs.currently_using_tobacco_select">Are you currently using any form of  tobacco?<span class="required">*</span></label>
+        <fieldset  name="obs.currently_using_tobacco" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.currently_using_tobacco_select">
+          <input id="obs.currently_using_tobacco.yes" type="radio"  name="obs.health_insurance" value="1065^YES^99DCT">
+          <label for="obs.currently_using_tobacco.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+          <input id="obs.currently_using_tobacco.no" type="radio"  name="obs.health_insurance" value="1066^NO^99DCT">
+          <label for="obs.currently_using_tobacco.no">No</label>
+        </fieldset>
+  </div>
+
+    <div style="display:none" class="ask_tobacco_quiz" id="obs.currently_using_tobacco_div">
+        <div class="form-group">
+            <label for="obs.currently_using_tobacco_select">What form of tobacco do you currently use (i.e. cigarettes, pipe, sniffed, chew)<span class="required">*</span></label>
+            <fieldset  name="obs.currently_used_tobacco" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.type_of_tobacco_select">
+                <input id="obs.currently_used_tobacco.cigarretes" type="checkbox"  name="obs.health_insurance" value="1065^YES^99DCT">
+                <label for="obs.currently_used_tobacco.cigarretes">Cigarretes</label> <br>
+                <input id="obs.currently_used_tobacco.pipe" type="checkbox"  name="obs.health_insurance" value="1066^NO^99DCT">
+                <label for="obs.currently_used_tobacco.pipe">Pipe</label> <br>
+                <input id="obs.currently_used_tobacco.chew" type="checkbox"  name="obs.health_insurance" value="1065^YES^99DCT">
+                <label for="obs.currently_used_tobacco.chew">Chew</label> <br>
+                <input id="obs.currently_used_tobacco.sniffed" type="checkbox"  name="obs.health_insurance" value="1066^NO^99DCT">
+                <label for="obs.currently_used_tobacco.sniffed">Sniffed</label>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label for="obs.cigarettes_smoked_select">How many cigarettes do you smoke each day?<span class="required">*</span></label>
+            <fieldset  name="obs.currently_using_tobacco" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.cigarettes_smoked_select">
+                <input id="obs.cigarettes_smoked.less_than_10" type="radio"  name="obs.health_insurance" value="1065^YES^99DCT">
+                <label for="obs.cigarettes_smoked.less_than_10">Less than 10</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.cigarettes_smoked.11-20" type="radio"  name="obs.health_insurance" value="1066^NO^99DCT">
+                <label for="obs.cigarettes_smoked.11-20">11 - 20</label> <br>
+                <input id="obs.cigarettes_smoked.21-30" type="radio"  name="obs.health_insurance" value="1065^YES^99DCT">
+                <label for="obs.cigarettes_smoked.21-30">21 - 30</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.cigarettes_smoked.more_than_31" type="radio"  name="obs.health_insurance" value="1066^NO^99DCT">
+                <label for="obs.cigarettes_smoked.more_than_31">More than 31</label>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label for="obs.number_of_years_smoking"> How many years have you used tobacco regularly?<span class="required">*</span></label>
+            <input class="form-control" id="obs.number_of_years_smoking" name="obs.number_of_years_smoking"
+                   type="number" placeholder="How many years" data-concept="conceptID^Number^99DCT" required="required">
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="obs.currently_dringing_alcohol_select">Are you currently drinking any form of alcohol?<span class="required">*</span></label>
+        <fieldset  name="obs.currently_dringing_alcohol" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.currently_dringing_alcohol_select">
+            <input id="obs.currently_dringing_alcohol.yes" type="radio"  name="obs.health_insurance" value="1065^YES^99DCT">
+            <label for="obs.currently_dringing_alcohol.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;
+            <input id="obs.currently_dringing_alcohol.no" type="radio"  name="obs.health_insurance" value="1066^NO^99DCT">
+            <label for="obs.currently_dringing_alcohol.no">No</label>
+        </fieldset>
+    </div>
+
+    <div style="display:none" class="ask_alcohol_quiz" id="obs.currently_using_alcohol_div">
+        <div class="form-group">
+            <label for="obs.type_of_alcohol_select">what form of alcohol do you use?<span class="required">*</span></label>
+            <fieldset  name="obs.currently_used_alcohol" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.type_of_alcohol_select">
+                <input id="obs.currently_used_alcohol.beer" type="checkbox"  name="obs.currently_used_alcohol.beer" value="1065^YES^99DCT">
+                <label for="obs.currently_used_alcohol.beer">Beer</label> <br>
+                <input id="obs.currently_used_alcohol.local_brew" type="checkbox"  name="obs.currently_used_alcohol.local_brew" value="1066^NO^99DCT">
+                <label for="obs.currently_used_alcohol.local_brew">Local Brew</label> <br>
+                <input id="obs.currently_used_alcohol.spirits_wines" type="checkbox"  name="obs.currently_used_alcohol.spirits_wines" value="1065^YES^99DCT">
+                <label for="obs.currently_used_alcohol.spirits_wines">Spirits &amp; Wines</label> <br>
+                <input id="obs.currently_used_alcohol.sniffed" type="checkbox"  name="obs.currently_used_alcohol.sniffed" value="1066^NO^99DCT">
+                <label for="obs.currently_used_alcohol.sniffed">Sniffed</label>
+            </fieldset>
+        </div>
+
+        <div class="form-group">
+            <label for="obs.bootles_of_alcohol_consumed_select">In a typical week, how many bottles of alcohol dou you consume?<span class="required">*</span></label>
+            <fieldset  name="obs.currently_using_tobacco" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.bootles_of_alcohol_consumed_select">
+                <input id="obs.bootles_of_alcohol_consumed.less_than_5" type="radio"  name="obs.bootles_of_alcohol_consumed" value="1065^YES^99DCT">
+                <label for="obs.bootles_of_alcohol_consumed.less_than_5">Less than 5</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.bootles_of_alcohol_consumed.6-10" type="radio"  name="obs.bootles_of_alcohol_consumed" value="1066^NO^99DCT">
+                <label for="obs.bootles_of_alcohol_consumed.6-10">6 - 10</label> <br>
+                <input id="obs.bootles_of_alcohol_consumed.11-15" type="radio"  name="obs.bootles_of_alcohol_consumed" value="1065^YES^99DCT">
+                <label for="obs.bootles_of_alcohol_consumed.11-15">11 - 15</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.bootles_of_alcohol_consumed.more_than_16" type="radio"  name="obs.bootles_of_alcohol_consumed" value="1066^NO^99DCT">
+                <label for="obs.bootles_of_alcohol_consumed.more_than_16">More than 16</label>
+            </fieldset>
+        </div>
+
+    </div>
+
+
+
+
+</div>
+
+
 
     <div class="form-group text-center">
         <input class="btn btn-primary" id="save_draft" type="button" value="Save"/>
@@ -971,7 +1476,41 @@ $(document).ready(function () {
             document.getElementById('tb_container').innerHTML = tblHtml;
     });
 
+     $("#obs\\.physical_activities_input").focus(function(){
+         var $show_physical_activities_quiz = $('.show_physical_activities_quiz');
+         $show_physical_activities_quiz.show();
+//         $("#obs\\.physical_activities\\.none").removeAttr('checked');
+         $("#obs\\.physical_activities\\.none").attr("checked" , false );
+    });
+
+
+ $("#obs\\.moderate_physical_activities_input").focus(function(){
+         var $show_moderate_physical_activities_quiz = $('.show_moderate_physical_activities_quiz');
+         $show_moderate_physical_activities_quiz.show();
+//         $("#obs\\.physical_activities\\.none").removeAttr('checked');
+         $("#obs\\.moderate_physical_activities\\.none").attr("checked" , false );
+    });
+
+
+    $("#obs\\.number_of_prescribed_drugs").focusout(function(){
+        document.getElementById('prescribed_drugs_container').innerHTML = "" ;
+        tblHtml = '<table>'
+        for (i=1; i<= $('#obs\\.number_of_prescribed_drugs').val(); i +=1 ) {
+            tblHtml += '<tr>';
+            tblHtml += '<td><a href="#prescribedDrugsModal"><strong>Prescription '+i+'</strong></a></td>';
+            tblHtml += '</tr>';
+        }
+        tblHtml += '</table>';
+        document.getElementById('prescribed_drugs_container').innerHTML = tblHtml;
+    });
+
 });
+
+var scale = '[{"SCALE":"100","CODE":"100"},{"SCALE":"95","CODE":"95"},{"SCALE":"90","CODE":"90"},{"SCALE":"85","CODE":"85"},' +
+        '{"SCALE":"80","CODE":"80"},{"SCALE":"75","CODE":"75"},{"SCALE":"70","CODE":"70"},{"SCALE":"60","CODE":"60"},' +
+        '{"SCALE":"55","CODE":"55"},{"SCALE":"50","CODE":"50"},{"SCALE":"45","CODE":"45"},{"SCALE":"40","CODE":"40"},' +
+        '{"SCALE":"35","CODE":"35"},{"SCALE":"30","CODE":"30"},{"SCALE":"25","CODE":"25"},{"SCALE":"20","CODE":"20"},' +
+        '{"SCALE":"15","CODE":"15"},{"SCALE":"10","CODE":"10"},{"SCALE":"5","CODE":"5"},{"SCALE":"0","CODE":"0"}]';
 
 var hours = '[{"HOUR":"0","CODE":"0"},{"HOUR":"1","CODE":"1"},{"HOUR":"2","CODE":"2"},{"HOUR":"3","CODE":"3"},' +
         '{"HOUR":"4","CODE":"4"},{"HOUR":"5","CODE":"5"},{"HOUR":"6","CODE":"6"},{"HOUR":"7","CODE":"7"},' +
@@ -981,10 +1520,23 @@ var mins = '[{"MIN":"5","CODE":"5"},{"MIN":"10","CODE":"10"},{"MIN":"15","CODE":
         '{"MIN":"25","CODE":"25"},{"MIN":"30","CODE":"30"},{"MIN":"35","CODE":"35"},{"MIN":"40","CODE":"40"},' +
         '{"MIN":"50","CODE":"50"},{"MIN":"55","CODE":"55"}]';
 
+
+var jsonScale = $.parseJSON(scale);
+var $select = $('#obs\\.patient_health_scale');
+
+$(jsonScale).each(function (index, o) {
+    var $option = $("<option/>").attr("value", o.CODE).text(o.SCALE);
+    $select.append($option);
+});
+
+
+
 var jsonHours = $.parseJSON(hours);
 var $select = $('#obs\\.time_to_hospital_hours');
 var $select = $('#obs\\.visit_time_to_hospital_hours');
 var $select = $('#obs\\.herbalist_time_to_hospital_hours');
+var $select = $('#obs\\.physical_activities_time_hours');
+var $select = $('#obs\\.moderate_physical_activities_time_hours');
 
 $(jsonHours).each(function (index, o) {
     var $option = $("<option/>").attr("value", o.CODE).text(o.HOUR);
@@ -995,6 +1547,8 @@ var jsonMins = $.parseJSON(mins);
 var $select = $('#obs\\.time_to_hospital_mins');
 var $select = $('#obs\\.visit_time_to_hospital_mins');
 var $select = $('#obs\\.herbalist_time_to_hospital_mins');
+var $select = $('#obs\\.physical_activities_time_mins');
+var $select = $('#obs\\.moderate_physical_activities_time_mins');
 
 $(jsonMins).each(function (index, o) {
     var $option = $("<option/>").attr("value", o.CODE).text(o.MIN);
@@ -1031,6 +1585,56 @@ $('#obs\\.herbalist_select').change(function () {
     else
         $show_herbal_quiz.hide();
 });
+
+$('#obs\\.health_insurance').change(function () {
+    var $show_used_nhif = $('.show_used_nhif');
+    if($("#obs\\.health_insurance\\.yes").is(':checked'))
+        $show_used_nhif.show();
+    else
+        $show_used_nhif.hide();
+});
+
+$('#obs\\.physical_activities').change(function () {
+    var $show_physical_activities_quiz = $('.show_physical_activities_quiz');
+    if($("#obs\\.physical_activities\\.none").is(':checked'))
+        $show_physical_activities_quiz.hide();
+});
+
+$('#obs\\.moderate_physical_activities').change(function () {
+    var $show_moderate_physical_activities_quiz = $('.show_moderate_physical_activities_quiz');
+    if($("#obs\\.moderate_physical_activities\\.none").is(':checked'))
+        $show_moderate_physical_activities_quiz.hide();
+});
+
+
+$('#obs\\.primary_job').change(function () {
+    var $show_earning_quiz = $('.show_earning_quiz');
+    var $show_reason_not_working_quiz = $('.show_reason_not_working_quiz');
+
+    if($("#obs\\.primary_job\\.none").is(':checked')) {
+        $show_earning_quiz.hide();
+        $show_reason_not_working_quiz.show();
+    }
+
+    else{
+        $show_earning_quiz.show();
+        $show_reason_not_working_quiz.hide();
+    }
+
+});
+
+
+
+
+
+$('#obs\\.prescribed_meds').change(function () {
+    var $show_prescribed_meds = $('.show_prescribed_meds');
+    if($("#obs\\.prescribed_meds_taken\\.yes").is(':checked'))
+        $show_prescribed_meds.show();
+    else
+        $show_prescribed_meds.hide();
+});
+
 
 $('#obs\\.herbalist_visit_reason').change(function () {
     var $herbalist_ask_specify_disease = $('.herbalist_ask_specify_disease');
@@ -1073,6 +1677,9 @@ $('#obs\\.admission_disease').change(function () {
     else
         $ask_specify_disease.hide();
 });
+
+
+
 //  show hide for visit disease
 $('#obs\\.visit_disease_select').change(function () {
     var $ask_specify_disease_visit = $('.ask_specify_disease_visit');
@@ -1080,6 +1687,24 @@ $('#obs\\.visit_disease_select').change(function () {
         $ask_specify_disease_visit.show();
     else
         $ask_specify_disease_visit.hide();
+});
+
+//  ask tobacco questions
+$('#obs\\.currently_using_tobacco_select').change(function () {
+    var $ask_tobacco_quiz = $('.ask_tobacco_quiz');
+    if($("#obs\\.currently_using_tobacco\\.yes").is(':checked'))
+        $ask_tobacco_quiz.show();
+    else
+        $ask_tobacco_quiz.hide();
+});
+
+//  ask alcohol questions
+$('#obs\\.currently_dringing_alcohol_select').change(function () {
+    var $ask_alcohol_quiz = $('.ask_alcohol_quiz');
+    if($("#obs\\.currently_dringing_alcohol\\.yes").is(':checked'))
+        $ask_alcohol_quiz.show();
+    else
+        $ask_alcohol_quiz.hide();
 });
 
 
@@ -1100,6 +1725,8 @@ $('#obs\\.payment_source\\.others').bind('change', function () {
         $("#obs\\.payment_source\\.others_text_div").hide();
 
 });
+
+
 var fullDate = new Date()
 var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
 var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + fullDate.getDate();
@@ -1146,6 +1773,28 @@ $(document).ready(function () {
     $("#obs\\.herbalist_prescribed_drugs").buttonset().find('label').width(115);
     $("#obs\\.healer_pay_out_of_pocket_label").buttonset().find('label').width(115);
     $("#obs\\.herbalist_means_of_transport_select").buttonset().find('label').width(115);
+    $("#obs\\.prescribed_meds_taken_select").buttonset().find('label').width(115);
+    $("#obs\\.prescriptions_purchased_select").buttonset().find('label').width(200);
+    $("#obs\\.health_insurance_select").buttonset().find('label').width(115);
+    $("#obs\\.used_nhif_select").buttonset().find('label').width(115);
+    $("#obs\\.physical_activities_select").buttonset().find('label').width(115);
+    $("#obs\\.moderate_physical_activities_select").buttonset().find('label').width(115);
+    $("#obs\\.patient_mobility_select").buttonset().find('label').width(200);
+    $("#obs\\.self_care_select").buttonset().find('label').width(200);
+    $("#obs\\.patient_usual_activities_select").buttonset().find('label').width(200);
+    $("#obs\\.patient_discomfort_select").buttonset().find('label').width(200);
+    $("#obs\\.patient_anxiety_select").buttonset().find('label').width(200);
+    $("#obs\\.primary_job_select").buttonset().find('label').width(200);
+    $("#obs\\.earnings_select").buttonset().find('label').width(200);
+    $("#obs\\.reason_not_working_select").buttonset().find('label').width(200);
+    $("#obs\\.currently_using_tobacco_select").buttonset().find('label').width(115);
+    $("#obs\\.type_of_tobacco_select").buttonset().find('label').width(200);
+    $("#obs\\.cigarettes_smoked_select").buttonset().find('label').width(200);
+    $("#obs\\.currently_dringing_alcohol_select").buttonset().find('label').width(115);
+    $("#obs\\.type_of_alcohol_select").buttonset().find('label').width(200);
+    $("#obs\\.bootles_of_alcohol_consumed_select").buttonset().find('label').width(200);
+
+
 });
 
 var selectCorrespondingAdmission = function (selectedElement) {
