@@ -1,0 +1,519 @@
+<html>
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+
+    <title>ANTICOAGULATION</title>
+</head>
+<body class="col-md-8 col-md-offset-2">
+<div id="pre_populate_data"></div>
+<form id="referral_form" name="referral_form">
+
+<h2 class="text-center">Referral Anticoagulation</h2>
+
+<div class="section">
+<h3>Demographics</h3>
+
+<div class="form-group">
+    <input class="form-control" id="patient.uuid"
+           name="patient.uuid" type="hidden" readonly="readonly">
+</div>
+
+<div class="form-group">
+    <label for="encounter.encounter_datetime">Encounter Date:<span class="required">*</span></label>
+    <input class="form-control datepicker nonFutureDate" id="encounter.encounter_datetime"
+           name="encounter.encounter_datetime" type="text" readonly="readonly" encounter.encounter_datetime
+           required="required">
+</div>
+
+<div class="form-group">
+    <label for="patient.family_name">Family Name:</label>
+    <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+           readonly="readonly">
+</div>
+<div class="form-group">
+    <label for="patient.given_name">Given Name:</label>
+    <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+           readonly="readonly">
+</div>
+<div class="form-group">
+    <label for="patient.middle_name">Middle Name:</label>
+    <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+           readonly="readonly">
+</div>
+
+<div class="form-group">
+    <label for="patient.medical_record_number">AMRS ID Number:</label>
+    <input class="form-control" id="patient.medical_record_number"
+           name="patient.medical_record_number" type="text" readonly="readonly">
+</div>
+
+<div class="form-group">
+    <label for="patient.medical_record_number">Unique patient ID :</label>
+    <input class="form-control" id="patient.mtrh_memorial_number"
+           name="patient.mtrh_memorial_number" type="text">
+</div>
+
+
+
+<div class="form-group">
+    <label>Within AMPATH Catchment area?<span class="required">*</span></label>
+    <fieldset data-concept="6835^AMPATH CATCHMENT AREA^99DCT" name="6835^AMPATH CATCHMENT AREA^99DC"
+              id="obs.catchment_area">
+        <input id="obs.catchment_area.within" type="radio"
+               name="6835^AMPATH CATCHMENT AREA^99DCT"
+               value="6833^IN AMPATH CATCHMENT AREA^99DCT">
+        <label for="obs.catchment_area.within">In Catchment</label><br>
+        <input id="obs.catchment_area.without" type="radio"
+               name="6835^AMPATH CATCHMENT AREA^99DCT"
+               value="6834^OUT OF AMPATH CATCHMENT AREA^99DCT">
+        <label for="obs.catchment_area.without">Out of Catchment</label><br>
+    </fieldset>
+</div>
+<div class="form-group">
+    <label>Patient covered by NHIF?<span class="required">*</span></label>
+    <fieldset data-concept="6266^HEALTH INSURANCE^99DCT" name="6835^AMPATH CATCHMENT AREA^99DC"
+              id="obs.nhif_health_cover">
+        <input id="obs.nhif_health_cover.yes" type="radio"
+               name="6266^HEALTH INSURANCE^99DCT"
+               value="6815^KENYA NATIONAL HEALTH INSURANCE FUND^99DCT">
+        <label for="obs.nhif_health_cover.yes">yes</label><br>
+
+        <input id="obs.nhif_health_cover.no" type="radio"
+               name="6266^HEALTH INSURANCE^99DCT"
+               value="1107^NONE^99DCT">
+        <label for="obs.nhif_health_cover.no">No</label><br>
+    </fieldset>
+</div>
+<div class="form-group">
+    <label for="patient.phone">Phone:</label>
+    <input class="form-control phoneNumber" id="patient.phone" name="patient.phone" type="tel">
+</div>
+
+<div class="form-group">
+    <label for="patient.phone_alternative">Backup Cell Phone Number:</label>
+    <input class="form-control phoneNumber" id="patient.phone_alternative" name="patient.phone" type="tel">
+</div>
+
+<div class="form-group">
+    <label for="encounter.provider_id_select">Referring Clinician Name:</label>
+    <input class="form-control" id="encounter.provider_id_select" type="text" placeholder="Start typing something...">
+    <input class="form-control" name="encounter.provider_id_select" type="hidden">
+</div>
+
+<div class="form-group show_provider_id_text">
+    <label for="encounter.provider_id">Enter provider's system-id:<span class="required">*</span></label>
+    <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id"
+           type="text" required="required">
+</div>
+
+<div class="form-group">
+    <label>Referring Site?<span class="required">*</span></label>
+    <fieldset data-concept="6750^REFERRED BY, DETAILED^99DCT" name="6750^REFERRED BY, DETAILED^99DC"
+              id="obs.referring_site">
+        <input id="obs.referring_site.inpatient" type="radio"
+               name="6750^REFERRED BY, DETAILED^99DCT"
+               value="8845^INPATIENT REFERRED BY^99DCT">
+        <label for="obs.referring_site.inpatient">Inpatient</label>&nbsp;&nbsp;&nbsp;&nbsp;
+
+        <input id="obs.referring_site.outpatient" type="radio"
+               name="6750^REFERRED BY, DETAILED^99DCT"
+               value="8846^OUTPATIENT REFERRED BY^99DCT">
+        <label for="obs.referring_site.outpatient">Outpatient</label><br>
+    </fieldset>
+</div>
+
+<div style="display:none" class="form-group show_inpatient_quiz ">
+    <label>Referring Site(Inpatient)<span class="required">*</span></label>
+    <fieldset data-concept="8845^INPATIENT REFERRED BY^99DCT" name="8845^INPATIENT REFERRED BY^99DC"
+              id="obs.referring_site_in">
+        <input id="obs.referring_site.nyayo_word" type="radio"
+               name="8845^INPATIENT REFERRED BY^99DCT"
+               value="8837^NYAYO WARDS^99DCT">
+        <label for="obs.referring_site.nyayo_word">Nyayo Wards</label><br>
+        <input id="obs.referring_site.faraja" type="radio"
+               name="8845^INPATIENT REFERRED BY^99DCT"
+               value="8838^FARAJA WARDS^99DCT">
+        <label for="obs.referring_site.faraja">Faraja Wards</label><br>
+        <input id="obs.referring_site.rmbh" type="radio"
+               name="8845^INPATIENT REFERRED BY^99DCT"
+               value="8839^RILEY MOTHER AND BABY HOSPITAL^99DCT">
+        <label for="obs.referring_site.rmbh">RMBH</label><br>
+        <input id="obs.referring_site.orthopedic" type="radio"
+               name="8845^INPATIENT REFERRED BY^99DCT"
+               value="8840^MTRH ORTHOPEDIC WARD^99DCT">
+        <label for="obs.referring_site.orthopedic">RMBH</label><br>
+        <input id="obs.referring_site.kitale" type="radio"
+               name="8845^INPATIENT REFERRED BY^99DCT"
+               value="8841^KITALE DISTRICT HOSPITAL^99DCT">
+        <label for="obs.referring_site.kitale">Kitale</label><br>
+        <input id="obs.referring_site.amenity" type="radio"
+               name="8845^INPATIENT REFERRED BY^99DCT"
+               value="8842^MTRH PRIVATE WING 1^99DCT">
+        <label for="obs.referring_site.amenity">Amenity</label><br>
+        <input id="obs.referring_site.memorial" type="radio"
+               name="8845^INPATIENT REFERRED BY^99DCT"
+               value="8843^MTRH PRIVATE WING 2^99DCT">
+        <label for="obs.referring_site.memorial">Memorial</label><br>
+        <input id="obs.referring_site.st_luke" type="radio"
+               name="8845^INPATIENT REFERRED BY^99DCT"
+               value="8844^ST. LUKE'S ORTHOPEDIC AND TRAUMA HOSPITAL^99DCT">
+        <label for="obs.referring_site.st_luke">Memorial</label><br>
+        <input id="obs.referring_site.webuye" type="radio"
+               name="8845^INPATIENT REFERRED BY^99DCT"
+               value="6752^WEBUYE DISTRICT HOSPITAL^99DCT">
+        <label for="obs.referring_site.webuye">Webuye</label><br>
+
+    </fieldset>
+</div>
+
+<div style="display:none" class="form-group show_outpatient_quiz">
+    <label>Referring Site (Outpatient)<span class="required">*</span></label>
+    <fieldset data-concept="8846^OUTPATIENT REFERRED BY^99DCT" name="8846^OUTPATIENT REFERRED BY^99DC"
+              id="obs.referring_site.out">
+        <input id="obs.referring_site.cardiology" type="radio"
+               name="8846^OUTPATIENT REFERRED BY^99DCT"
+               value="8074^CARDIOLOGY^99DCT">
+        <label for="obs.referring_site.cardiology">Cardiology</label><br>
+        <input id="obs.referring_site.oncology" type="radio"
+               name="8846^OUTPATIENT REFERRED BY^99DCT"
+               value="8053^ONCOLOGY SERVICES^99DCT">
+        <label for="obs.referring_site.oncology">Oncology</label><br>
+        <input id="obs.referring_site.ahc" type="radio"
+               name="8846^OUTPATIENT REFERRED BY^99DCT"
+               value="1286^AMPATH^99DCT">
+        <label for="obs.referring_site.ahc">AMPATH HIV Clinic</label><br>
+        <input id="obs.referring_site.mopc" type="radio"
+               name="8846^OUTPATIENT REFERRED BY^99DCT"
+               value="1965^OUTPATIENT SERVICES^99DCT">
+        <label for="obs.referring_site.mopc">MOPC</label><br>
+        <input id="obs.referring_site.orthopedic_clinic" type="radio"
+               name="8846^OUTPATIENT REFERRED BY^99DCT"
+               value="8825^ORTHOPEDIC SERVICES^99DCT">
+        <label for="obs.referring_site.orthopedic_clinic">Orthopedic Clini</label><br>
+        <input id="obs.referring_site.stLuke" type="radio"
+               name="8846^OUTPATIENT REFERRED BY^99DCT"
+               value="8844^ST. LUKE'S ORTHOPEDIC AND TRAUMA HOSPITAL^99DCT">
+        <label for="obs.referring_site.stLuke">St. Luke’s</label><br>
+
+    </fieldset>
+</div>
+
+<div class="form-group">
+    <label for="obs.duration_of_anticoagulation">Duration Of Anticoagulation Necessary (to be guided by questions below or at the referring clinician’s discretion):<span class="required">*</span></label>
+    <select class="form-control" id="obs.duration_of_anticoagulation" required="required"
+            name="obs.duration_of_anticoagulation" data-concept="8849^DURATION OF ANTICOAGULATION NEEDED, CODED^99DCT">
+        <option value="">...</option>
+        <option value="8847^MONTH ONE^99DCT">1 month</option>
+        <option value="2305^MONTH TWO^99DCT">2 months</option>
+        <option value="2306^MONTH THREE^99DCT">3 months</option>
+        <option value="8551^MONTH SIX^99DCT">6 months</option>
+        <option value="8848^MONTH TWELVE^99DCT">12 months</option>
+        <option value="8886^FOREVER^99DCT">Lifetime</option>
+    </select>
+</div>
+
+</div>
+<div class="section">
+    <div class="form-group">
+        <label><h3>Atrial Fibrillation</h3><br>
+            Patient must also have at least one of the following risk factors to qualify for anticoagulation</label> <p>
+        <label class="alert alert-info">High Risk (anticoagulate for life)</label>
+
+        <fieldset data-concept="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT" name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT">
+            <input id="obs.referring_site.more_than_75" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8856^AGE GREATER THAN 75 YEARS^99DCT">
+            <label for="obs.referring_site.more_than_75">Age >75</label><br>
+            <input id="obs.referring_site.rhd" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="221^RHEUMATIC HEART DISEASE^99DCT">
+            <label for="obs.referring_site.rhd">Rheumatic Heart Disease</label><br>
+            <input id="obs.referring_site.tia" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8076^TRANSIENT CEREBRAL ISCHEMIA^99DCT">
+            <label for="obs.referring_site.tia">History of TIA/Stroke</label><br>
+            <input id="obs.referring_site.av" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8866^ARTIFICIAL HEART VALVES^99DCT">
+            <label for="obs.referring_site.av">Artificial Valve</label><br>
+            <input id="obs.referring_site.orthopedic_hypertension" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="903^HYPERTENSION^99DCT">
+            <label for="obs.referring_site.orthopedic_hypertension">History of Hypertension</label><br>
+            <input id="obs.referring_site.emboluse" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8859^PERSONAL HISTORY OF PULMONARY EMBOLISM^99DCT">
+            <label for="obs.referring_site.emboluse">History of embolus</label><br>
+
+            <input id="obs.referring_site.thyrotoxicosis" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8857^THYROTOXICOSIS^99DCT">
+            <label for="obs.referring_site.thyrotoxicosis">Thyrotoxicosis</label><br>
+
+            <input id="obs.referring_site.dysfunction" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8858^LEFT VENTRICULAR DYSFUNCTION^99DCT">
+            <label for="obs.referring_site.dysfunction">Left Ventricular Dysfunction</label><br>
+            <input id="obs.referring_site.failture" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="1456^CONGESTIVE CARDIAC FAILURE^99DCT">
+            <label for="obs.referring_site.failture">CHF / Heart Failture</label><p></p>
+
+            <label><h3>Intermediate Risk</h3></label> <p></p>
+            <label class="alert alert-info">Anticoagulation can be considered in patients with the following risk factors but it is of less value</label> <br>
+
+            <input id="obs.referring_site.btw65-75" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8860^AGE BETWEEN 65-75 YEARS^99DCT">
+            <label for="obs.referring_site.btw65-75">Age 65-75</label><br>
+            <input id="obs.referring_site.cad" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8861^CORONARY HEART DISEASE^99DCT">
+            <label for="obs.referring_site.cad">Coronary Artery Disease</label><br>
+            <input id="obs.referring_site.dm" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="175^DIABETES MELLITUS^99DCT">
+            <label for="obs.referring_site.dm">Diabetes Mellitus </label><br>
+            <input id="obs.referring_site.af" type="checkbox"
+                   name="8852^ATRIAL FIBRILLATION INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8862^ATRIAL FIBRILLATION^99DCT">
+            <label for="obs.referring_site.af">Atrial fibrillation</label><br>
+
+        </fieldset>
+    </div>
+
+    <label><h3>Valvular Disease </h3></label> <p></p>
+    <label class="alert alert-info">lifetime anticoagulation</label> <br>
+
+    <div class="form-group">
+        <fieldset data-concept="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT" name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT">
+            <input id="obs.review_of_systems_general.edema_legs" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8924^RHEUMATIC HEART DISEASE WITH ATRIAL FIBRILLATION^99DCT">
+            <label for="obs.review_of_systems_general.edema_legs">Rheumatic Heart Disease</label><br>
+
+            <input id="obs.review_of_systems_general.shortness_of_breath_with_exertion" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8925^RHEUMATIC HEART DISEASE WITH HISTORY OF PULMONARY EMBOLISM^99DCT">
+            <label for="obs.review_of_systems_general.shortness_of_breath_with_exertion">RHD with history of emboli</label><br>
+
+
+            <input id="obs.review_of_systems_general.focal_weakness" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8863^FRHEUMATIC HEART DISEASE WITH LEFT ATRIAL ENLARGEMENT^99DCT">
+            <label for="obs.review_of_systems_general.focal_weakness">RHD with left atrial dilatation</label><br>
+
+            <input id="obs.review_of_systems_general.oliguria" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8864^RHEUMATIC HEART DISEASE WITH PULMONARY HYPTERTENSION AND RIGHT SIDED HEART FAILURE^99DCT">
+            <label for="obs.review_of_systems_general.oliguria">RHD with Pulmonary Hypertension and right-sided heart failure</label><br>
+            <input id="obs.review_of_systems_general.heart_racing" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8865^RHEUMATIC HEART DISEASE WITH LEFT ATRIAL THROMBUS^99DCT">
+
+            <label for="obs.review_of_systems_general.heart_racing">RHD with left atrial thrombus</label><br>
+            <input id="obs.review_of_systems_general.dizziness" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8867^RHEUMATIC HEART DISEASE WITH ATRIAL AND MITRAL VALVE DISEASE^99DCT">
+            <label for="obs.review_of_systems_general.dizziness">RHD with mitral and atrial valve disease</label><br>
+
+            <input id="obs.review_of_systems_general.fainting" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="88665^ARTIFICIAL HEART VALVE^99DCT">
+            <label for="obs.review_of_systems_general.fainting">Artificial Heart Valve</label><br>
+        </fieldset>
+    </div>
+
+    <label class="alert alert-info">History of DVT/PE within the last six (6) months</label> <br>
+
+    <div class="form-group">
+        <fieldset data-concept="6647^DEEP VEIN THROMBOSIS, PULMONARY EMBOLISM, OR BLOOD CLOTS^99DCT" name="6647^DEEP VEIN THROMBOSIS, PULMONARY EMBOLISM, OR BLOOD CLOTS^99DCT">
+            <input id="obs.review_of_systems_general.edema_leg" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8870^REVERSIBLE OR TIME LIMITED RISK FACTORS^99DCT">
+            <label for="obs.review_of_systems_general.edema_leg">Reversible or time limited risk factors</label><br>
+
+            <input id="obs.review_of_systems_general.shortness_of_breath_with_exertio" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="6218^COMBINED HORMONE ORAL CONTRACEPTIVE PILL^99DCT">
+            <label for="obs.review_of_systems_general.shortness_of_breath_with_exertio">Use of oestrogen-containing oral contraceptives</label><br>
+
+
+            <input id="obs.review_of_systems_general.focal_weaknes" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="1180^POSTPARTUM^99DCT">
+            <label for="obs.review_of_systems_general.focal_weaknes">Postpartum (anticoagulate for 6 months)</label><br>
+
+
+            <input id="obs.review_of_systems_general.oliguri" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="44^PREGNANCY^99DCT">
+            <label for="obs.review_of_systems_general.oliguri">During Pregnancy</label><br>
+
+
+            <input id="obs.review_of_systems_general.heart_racin" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="6647^DEEP VEIN THROMBOSIS, PULMONARY EMBOLISM, OR BLOOD CLOTS^99DCT">
+
+            <label for="obs.review_of_systems_general.heart_racin">DVT/PE in the presence of continued risk factors (tick risk factors below)</label><br>
+
+        </fieldset>
+    </div>
+
+    <label class="alert alert-info">Miscellaneous Indications</label> <br>
+    <div class="form-group">
+        <fieldset data-concept="6647^OTHER INDICATIONS FOR ANTICOAGULATION^99DCT" name="6647^DEEP VEIN THROMBOSIS, PULMONARY EMBOLISM, OR BLOOD CLOTS^99DCT">
+            <input id="obs.review_of_systems_general.edema_le" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8871^CARDIOEMBOLIC STROKE^99DCT">
+            <label for="obs.review_of_systems_general.edema_le">Cardioembolic Stroke</label><br>
+
+            <input id="obs.review_of_systems_general.shortness_of_breath_with_exerti" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="1541^PULMONARY HYPERTENSION^99DCT">
+            <label for="obs.review_of_systems_general.shortness_of_breath_with_exerti">High risk pulmonary hypertension</label><br>
+
+
+            <input id="obs.review_of_systems_general.focal_weakne" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="7996^PERIPHERAL VASCULAR DISEASE^99DCT">
+            <label for="obs.review_of_systems_general.focal_weakne">Recurrent Peripheral Vascular Disease</label><br>
+
+
+            <input id="obs.review_of_systems_general.oligur" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8590^PULMONARY EMBOLISM^99DCT">
+            <label for="obs.review_of_systems_general.oligur">Chronic PE with pulmonary hypertension</label><br>
+
+
+            <input id="obs.review_of_systems_general.heart_raci" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="8872^SAGITTAL SINUS THROMBOSIS^99DCT">
+            <label for="obs.review_of_systems_general.heart_raci">Sagittal sinus thrombosis</label><br>
+
+            <input id="obs.review_of_systems_general.heart_rac" type="checkbox"
+                   name="8853^HEART VALVE DISEASE INDICATIONS FOR ANTICOAGULATION^99DCT"
+                   value="1538^DILATED CARDIOMYOPATHY^99DCT">
+            <label for="obs.review_of_systems_general.heart_rac">Sagittal sinus thrombosis</label><br>
+
+        </fieldset>
+
+    </div>
+
+
+
+    <div class="form-group text-center">
+        <input class="btn btn-primary" id="save_draft" type="button" value="Save"/>
+        <input class="btn btn-primary" id="submit_form" type="button" value="Submit"/>
+    </div>
+</div>
+</form>
+
+</body>
+<script type="text/javascript">
+$(document).ready(function () {
+    $("#obs\\.catchment_area").buttonset().find('label').width(200);
+    $("#obs\\.nhif_health_cover").buttonset().find('label').width(200);
+    $("#obs\\.referring_site").buttonset().find('label').width(200);
+    $("#obs\\.referring_site_in").buttonset().find('label').width(200);
+    $("#obs\\.referring_site\\.out").buttonset().find('label').width(200);
+
+    $('#save_draft').click(function () {
+        document.saveDraft();
+    });
+
+    $('#submit_form').click(function(){
+        document.submit();
+    });
+
+    $('#obs\\.referring_site').change(function () {
+        var $show_inpatient_quiz = $('.show_inpatient_quiz');
+        if($("#obs\\.referring_site\\.inpatient").is(':checked'))
+            $show_inpatient_quiz.show();
+        else
+            $show_inpatient_quiz.hide();
+    });
+
+    $('#obs\\.referring_site').change(function () {
+        var $show_outpatient_quiz = $('.show_outpatient_quiz');
+        if($("#obs\\.referring_site\\.outpatient").is(':checked'))
+            $show_outpatient_quiz.show();
+        else
+            $show_outpatient_quiz.hide();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $('#referral_form').validate({
+        rules: {
+            pulse: {
+                number: true,
+                range: [0, 230]
+            },
+            temperature_c: {
+                number: true,
+                range: [25, 43]
+            },
+            weight_kg: {
+                number: true,
+                range: [0, 250]
+            },
+            height_cm: {
+                number: true,
+                range: [10, 228]
+            },
+            glycosylated_hemoglobin: {
+                number: true,
+                range: [0, 20]
+            }
+        },
+        submitHandler: function (form) {
+            $('#result').html(JSON.stringify($('form').serializeEncounterForm(),undefined,2));
+        }
+    });
+});
+
+</script>
+</html>

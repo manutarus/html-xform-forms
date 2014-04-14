@@ -3,7 +3,7 @@
            xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xs="http://www.w3.org/2001/XMLSchema"
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jr="http://openrosa.org/javarosa">
     <xf:head>
-        <xf:title>Registration Form 6.0.1</xf:title>
+        <xf:title>Registration Form</xf:title>
         <xf:model id="openmrs_model">
             <xf:instance id="openmrs_model_instance">
                 <form id="1" name="Registration Form" version="0.1" xmlns:openmrs="/moduleServlet/formentry/forms/schema/4-1" xmlns:xd="http://schemas.microsoft.com/office/infopath/2003">
@@ -35,15 +35,6 @@
                             <birth_date/>
                             <birthdate_estimated/>
                         </tmp>
-                        <other_identifier_type_group>
-                            <no_checkdigit_id_value_confirm/>
-                            <other_identifier_type/>
-                            <other_identifier_value/>
-                            <no_checkdigit_id_value/>
-                            <no_checkdigit_id_value_hidden/>
-                            <confirm_identifier_value/>
-
-                        </other_identifier_type_group>
                     </patient>
                     <encounter>
                         <encounter.encounter_datetime openmrs_table="encounter" openmrs_attribute="encounter_datetime"/>
@@ -62,7 +53,8 @@
             <bind id="patient.patient_id" nodeset="/form/patient/patient.patient_id" type="int" required="true()"/>
             <bind id="patient_identifier.identifier_type_id" nodeset="/form/patient/patient_identifier.identifier_type_id" calculate="1" type="integer" />
             <!-- UNCOMMENT TO ENTER PATIENT IDENTIFIER -->
-            <bind id="amrs_id" nodeset="/form/patient/tmp/amrs_id" type="barcode" />
+            <bind id="amrs_id" nodeset="/form/patient/tmp/amrs_id" type="barcode" constraint="regex(., '^\w+[-]?\d{1}') and (checkdigit(.))" required="true()"
+                  jr:constraintMsg="Invalid ID format and/or CheckDigit. Please Re-enter your ID."/>
             <bind id="patient.medical_record_number" nodeset="/form/patient/patient.medical_record_number" type="string" readonly="true()"
                   calculate="../tmp/amrs_id"/>
 
@@ -93,41 +85,6 @@
             <bind id="encounter.location_id" nodeset="/form/encounter/encounter.location_id" type="string" required="true()"/>
             <bind id="encounter.provider_id" nodeset="/form/encounter/encounter.provider_id" type="select1" required="true()"/>
             <bind id="mothers_name" nodeset="/form/patient/person_attribute4" type="string"/>
-
-            <bind id="other_identifier_type" nodeset="/form/patient/other_identifier_type_group/other_identifier_type"  required="true()" type="string" />
-            <bind id="other_identifier_value" nodeset="/form/patient/other_identifier_type_group/other_identifier_value"
-                  constraint="regex(., '^\w+[-]?\d{1}') and (checkdigit(.))" jr:constraintMsg="Invalid ID format and/or CheckDigit. Please Re-enter your ID."
-                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='hct_id'
-		or /form/patient/other_identifier_type_group/other_identifier_type='pmtct_id'
-		or /form/patient/other_identifier_type_group/other_identifier_type='ampath_medical_record_number'"
-                  required="true()" type="string"/>
-            <bind id="no_checkdigit_id_value" nodeset="/form/patient/other_identifier_type_group/no_checkdigit_id_value"
-                  relevant="/form/patient/other_identifier_type_group/other_identifier_type!='hct_id'
-		and /form/patient/other_identifier_type_group/other_identifier_type!='pmtct_id'
-		and /form/patient/other_identifier_type_group/other_identifier_type!='ampath_medical_record_number'
-		"
-                  required="true()" type="string"/>
-
-            <!--and /form/patient/other_identifier_type_group/no_checkdigit_id_value_confirm=''"-->
-
-            <bind id="no_checkdigit_id_value_hidden" nodeset="/form/patient/other_identifier_type_group/no_checkdigit_id_value_hidden"
-                  calculate="/form/patient/other_identifier_type_group/no_checkdigit_id_value"  required="true()" type="string"/>
-
-            <bind id="no_checkdigit_id_value_confirm" nodeset="/form/patient/other_identifier_type_group/no_checkdigit_id_value_confirm"  required="true()" type="string"/>
-
-
-
-            <bind id="confirm_identifier_value" nodeset="/form/patient/other_identifier_type_group/confirm_identifier_value"
-
-                  required="true()"
-                  constraint=". =/form/patient/other_identifier_type_group/no_checkdigit_id_value"
-                  jr:constraintMsg="The two Identifiers do not match"
-
-                  type="string"/>
-
-
-
-
         </xf:model>
     </xf:head>
     <xf:body>
@@ -164,88 +121,6 @@
                 <label>AMRS Universal ID Assigned</label>
                 <hint>The AMRS ID by barcode scanning or client input.</hint>
             </input>
-
-
-        </group>
-        <group>
-            <label>Identifier</label>
-            <repeat nodeset="/form/patient/other_identifier_type_group">
-                <select1 bind="other_identifier_type">
-                    <label>Identifier</label>
-
-                    <item>
-                        <label>AMRS Medical Record Number</label>
-                        <value>ampath_medical_record_number</value>
-                    </item>
-
-                    <item>
-                        <label>CCC Number</label>
-                        <value>ccc_number</value>
-                    </item>
-
-                    <item>
-                        <label>HCT ID</label>
-                        <value>hct_id</value>
-                    </item>
-                    <item>
-                        <label>KENYAN NATIONAL ID NUMBER</label>
-                        <value>kenyan_national_id_number</value>
-                    </item>
-                    <item>
-                        <label>MTCT Plus ID</label>
-                        <value>mtct_plus_id</value>
-                    </item>
-                    <item>
-                        <label>MTRH Hospital Number</label>
-                        <value>mtrh_hospital_number</value>
-                    </item>
-                    <item>
-                        <label>Old AMPATH Medical Record Number</label>
-                        <value>old_ampath_medical_record_number</value>
-                    </item>
-                    <item>
-                        <label>pMTCT ID</label>
-                        <value>pmtct_id</value>
-                    </item>
-                </select1>
-
-                <input bind="other_identifier_value">
-                    <label>Identifier</label>
-                    <hint>Enter Identifier</hint>
-                </input>
-
-
-
-
-                <input  bind="no_checkdigit_id_value">
-
-                    <label>Identifier No Check Digit</label>
-                    <hint>Enter Identifier</hint>
-                </input>
-
-                <select1  bind="no_checkdigit_id_value_confirm">
-                    <item>
-                        <label>Confirm</label>
-                        <value>confirm</value>
-                    </item>
-
-                </select1>
-
-
-
-                <input bind="confirm_identifier_value">
-                    <label>Confirm Identifier</label>
-                    <hint>Re-Enter Identifier</hint>
-                </input>
-
-                <input bind="no_checkdigit_id_value_hidden">
-                    <label>this is the the value</label>
-                    <hint>Re-Enter Identifier</hint>
-                </input>
-
-
-
-            </repeat>
         </group>
         <group appearance="field-list">
             <select1 bind="birthdate_type">

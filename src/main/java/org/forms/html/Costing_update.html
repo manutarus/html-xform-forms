@@ -1,0 +1,186 @@
+<html>
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+    <link rel="stylesheet" href="../_static/js/dojo/../dijit/themes/claro/claro.css">
+    <script>dojoConfig = {parseOnLoad: true}</script>
+    <script src='../_static/js/dojo/dojo.js'></script>
+    <script>
+        require(["dijit/Dialog", "dojo/domReady!"], function(Dialog){
+            myDialog = new Dialog({
+                title: "My Dialog",
+                content: "Test content.",
+                style: "width: 300px"
+            });
+        });
+    </script>
+    <title>Cost Assessment</title>
+</head>
+<body class="col-md-8 col-md-offset-2">
+<div id="pre_populate_data"></div>
+<form id="costing_form" name="costing_form">
+    <h2 class="text-center">COST ASSESSMENT</h2>
+
+    <div class="section">
+        <h3>Demographics</h3>
+        <div class="form-group">
+            <label for="patient.medical_record_number">AMRS ID Number:</label>
+            <input class="form-control" id="patient.medical_record_number"
+                   name="patient.medical_record_number" type="text" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.family_name">Family Name:</label>
+            <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+                   readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.given_name">Given Name:</label>
+            <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+                   readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.middle_name">Middle Name:</label>
+            <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+                   readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.sex">Gender:</label>
+            <select class="form-control" id="patient.sex" name="patient.sex" readonly="readonly">
+                <option value="">...</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="patient.birthdate">Date Of Birth:</label>
+            <input class="form-control datepicker nonFutureDate" id="patient.birthdate" name="patient.birthdate" type="text"
+                   readonly="readonly">
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Survey Information</h3>
+
+        <div class="form-group">
+            <label for="obs.participant">Enter Participant ID:<span class="required">*</span></label>
+            <input class="form-control" id="obs.participant"
+                   name="obs.systolic_blood_pressure" type="text"
+                   placeholder="Participant ID" data-concept="5325^PATIENT ID^99DCT"
+                   required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="person_attribute15">Enter Household ID:<span class="required">*</span></label>
+            <input class="form-control" id="person_attribute15" name="person_attribute15"
+                   type="text" placeholder="Household ID" required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="encounter.encounter_datetime">Encounter Date:</label>
+            <input class="form-control datepicker nonFutureDate" id="encounter.encounter_datetime"
+                   name="encounter.encounter_datetime"  type="text"  readonly="readonly"
+                   required="required">
+        </div>
+        <div  class="form-group">
+            <label>Division<span class="required">*</span></label>
+            <fieldset name="person_address.address4" id="person_address.address4">
+                <input id="person_address.address4.mosoriot" type="radio" name="address4" value="2">
+                <label for="person_address.address4.mosoriot">Mosoriot</label>&nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="person_address.address4.turbo" type="radio" name="address4" value="3">
+                <label for="person_address.address4.turbo">Turbo</label>
+            </fieldset>
+        </div>
+        <div class="form-group show_community_units">
+            <select id="person_address.address5" name="person_address.address5" class="form-control"required="required">
+                <option value="">.....</option>
+            </select>
+        </div>
+        <div style="display:none" class="form-group show_village">
+            <label for="person_address.city_village">Village:<span class="required">*</span> </label>
+            <input class="form-control" placeholder="village" id="person_address.city_village" name="person_address.city_village" type="text" required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="encounter.provider_id">Select RA:<span class="required">*</span></label>
+            <select class="form-control" id="encounter.provider_id" name="encounter.provider_id" required="required">
+                <option value="">RA</option>
+                <option value="4-2">Jackson Rotich</option>
+                <option value="4-2">Penina Kiptoo</option>
+                <option value="4-2">Kenedy Kirwa</option>
+            </select>
+        </div>
+    </div>
+
+    </form>
+</body>
+</html>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(document).ready(function () {
+            $("#person_address\\.address4").buttonset().find('label').width(115);
+
+        });
+        $('form').submit(function () {
+            document.submit();
+        });
+
+        $('#save_draft').click(function(){
+            document.saveDraft();
+        });
+        $.validator.addClassRules({
+            address5 : {
+                number: true,
+                range: [1, 200]
+            },
+            diastolicBloodPressure: {
+                number: true,
+                range: [20, 150]
+            }
+        });
+    var fullDate = new Date()
+    var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+    var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + fullDate.getDate();
+    var turbo_units =
+    {"Chepkemel" : "5","Cheplaskei" : "10","Chepsaita" : "15","Cheramei" : "20","Leseru" : "25","Murgor hills" : "30","Murgusi" : "35",
+        "Ngenyilel" : "40","Ngenyilel" : "50","Osorongai" : "55","Sambut" : "50","Sokyot" : "55","Sosiani" : "50","Sugoi" :
+            "55","Tuigoin" : "50","Turbo/Kaptebee" : "55"};
+    var mosoriot_units =
+    {"Biribiriet" : "5","Itigo" : "10","Kokwet" : "15","Kingwal" : "20","Lelmokwo" : "25","Mosoriot" : "30","Ngechek" : "35","Sigo" : "40"};
+
+//    pick current date and time and prepopulate the encounter date
+    $("#encounter\\.encounter_datetime").val(currentDate);
+
+//     logic for the division and the community units
+    $('#person_address\\.address4').change(function () {
+        var $show_village = $('.show_village');
+        var $select = $('#person_address\\.address5');
+        if($("#person_address\\.address4\\.mosoriot").is(':checked')) {
+            $select.find('option').remove();
+            $select.append('<option value="0">Mosorait Units</option>');
+            $("#person_address\\.city_village").val('');
+            $.each(mosoriot_units,function(key, value)
+            {
+                $select.append('<option value=' + value + '>' + key + '</option>');
+            });
+        }
+        if($("#person_address\\.address4\\.turbo").is(':checked')){
+            $select.find('option').remove();
+            $select.append('<option value="0">Turbo Units</option>');
+            $("#person_address\\.city_village").val('');
+            $.each(turbo_units,function(key, value)
+            {
+                $select.append('<option value=' + value + '>' + key + '</option>');
+            });
+        }
+        $show_village.show();
+    });
+
+ });
+
+</script>

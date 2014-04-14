@@ -1,0 +1,1860 @@
+<html>
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+
+    <title> ANTICOAGULATION</title>
+</head>
+<body class="col-md-8 col-md-offset-2">
+<div id="pre_populate_data"></div>
+<form id="dispensary_form" name="dispensary_form">
+
+<h2 class="text-center">ANTICOAGULATION INITIAL ASSESSMENT</h2>
+
+<div class="section">
+    <h3>Demographics</h3>
+
+    <div class="form-group">
+        <input class="form-control" id="patient.uuid"
+               name="patient.uuid" type="hidden" readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.medical_record_number">AMRS ID Number:</label>
+        <input class="form-control" id="patient.medical_record_number"
+               name="patient.medical_record_number" type="text" readonly="readonly">
+    </div>
+
+    <div class="form-group">
+        <label for="patient.medical_record_number">Anticoag ID:</label>
+        <input class="form-control" id="person_attribute_type_id64"
+               name="person_attribute_type_id64" type="text">
+    </div>
+    <div class="form-group">
+        <label for="patient.family_name">Family Name:</label>
+        <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.given_name">Given Name:</label>
+        <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.middle_name">Middle Name:</label>
+        <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="patient.sex">Gender:</label>
+        <select class="form-control" id="patient.sex" name="patient.sex" readonly="readonly">
+            <option value="">...</option>
+            <option value="M">Male</option>
+            <option value="F">Female</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="patient.birthdate">Date Of Birth:</label>
+        <input class="form-control datepicker nonFutureDate" id="patient.birthdate" name="patient.birthdate" type="text"
+               readonly="readonly">
+    </div>
+    <div class="form-group">
+        <label for="person_attribute4">Mother's Name: </label>
+        <input class="form-control" id="person_attribute4" name="person_attribute4" type="text">
+    </div>
+
+    <div class="form-group">
+        <label for="person_attribute4">County </label>
+        <input class="form-control" id="person_address.county_district" name="person_address.county_district" type="text">
+    </div>
+    <div class="form-group">
+        <label for="person_attribute4">Tribe </label>
+        <input class="form-control" id="person_attribute_type_id20" name="person_attribute_type_id20" type="text">
+    </div>
+    <div class="form-group">
+        <label for="patient.phone">Phone:</label>
+        <input class="form-control phoneNumber" id="patient.phone" name="patient.phone" type="tel">
+    </div>
+ <div class="form-group">
+        <label for="person_attribute_type_id12">Next of Kin:</label>
+        <input class="form-control" id="person_attribute_type_id12" name="person_attribute_type_id20" type="text">
+    </div>
+    <div class="form-group">
+        <label for="person_attribute_type_id59">Relationship to patient:</label>
+        <input class="form-control" id="person_attribute_type_id59" name="person_attribute_type_id59" type="text">
+    </div>
+
+    <div class="form-group repeat">
+        <label for="person_attribute_type_id61">Next of Kin phone</label>
+        <input class="form-control phoneNumber" id="person_attribute_type_id61" name="person_attribute_type_id59" type="tel">
+    </div>
+
+
+
+
+</div>
+    <div class="section">
+
+        <div class="form-group">
+            <label for="encounter.location_id">Encounter Location<span class="required">*</span></label>
+            <input class="form-control" id="encounter.location_id" type="text" placeholder="Start typing something...">
+            <input class="form-control" name="encounter.location_id" type="hidden">
+        </div>
+
+
+        <div class="form-group">
+            <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
+                   type="hidden" required="required">
+        </div>
+
+
+    </div>
+
+
+<div class="section">
+    <h3>Assessment</h3>
+
+    <div class="form-group">
+        <label for="obs.time_to_clinic">How Long did it take you to travel to the clinic today?(i.e the total time from your home to clinic)<span class="required">*</span></label>
+        <select class="form-control" id="obs.time_to_clinic" required="required"
+                name="obs.time_to_clinic" data-concept="5605^CLINIC TRAVEL TIME^99DCT">
+            <option value="">...</option>
+            <option value="1049^LESS THAN 30 MINUTES^99DCT">Less than 30 min</option>
+            <option value="1050^THIRTY MINUTES TO ONE HOUR^99DCT">Between 30-60 mins</option>
+            <option value="1051^ONE TO TWO HOURS^99DCT">Between 1-2 hours</option>
+            <option value="8884^TWO TO THREE HOURS^99DCT">Between 2-3 hours</option>
+            <option value="8885^THREE TO FOUR HOURS^99DCT">Between 3-4 hours</option>
+            <option value="8886^MORE THAN FOUR HOURS^99DCT">More than 4 hours</option>
+        </select>
+    </div>
+
+    <label>What is your primary mode of transportation?</label>
+
+    <div class="form-group">
+        <fieldset data-concept="6468^MODE OF TRANSPORTATION TO CLINIC^99DCT" name="6468^MODE OF TRANSPORTATION TO CLINIC^99DCT">
+            <input id="obs.mode_of_transport.matatu" type="checkbox"
+                   name="6468^MODE OF TRANSPORTATION TO CLINIC^99DCT"
+                   value="6416^MATATU^99DCT">
+            <label for="obs.mode_of_transport.matatu">Matatu</label><br>
+            <input id="obs.mode_of_transport.drove" type="checkbox"
+                   name="6468^MODE OF TRANSPORTATION TO CLINIC^99DCT"
+                   value="6471^PRIVATE CAR^99DCT">
+            <label for="obs.mode_of_transport.drove">Drove your self</label><br>
+            <input id="obs.mode_of_transport.friend_drove_you" type="checkbox"
+                   name="6468^MODE OF TRANSPORTATION TO CLINIC^99DCT"
+                   value="6471^PRIVATE CAR^99DCT">
+            <label for="obs.mode_of_transport.friend_drove_you">Friend or family drove you in</label><br>
+            <input id="obs.mode_of_transport.boda_boda" type="checkbox"
+                   name="6468^MODE OF TRANSPORTATION TO CLINIC^99DCT"
+                   value="6580^BODA-BODA^99DCT">
+            <label for="obs.mode_of_transport.boda_boda">Boda Boda</label><br>
+            <input id="obs.mode_of_transport.other" type="checkbox"
+                   name="6468^MODE OF TRANSPORTATION TO CLINIC^99DCT"
+                   value="7044^Other^99DCT">
+            <label for="obs.mode_of_transport.other">Other</label><br>
+
+        </fieldset>
+    </div>
+</div>
+<div class="section">
+        <h3>Medical History</h3>
+
+        <div class="form-group">
+            <label for="obs.anticoagulation_year_of_diagnosis">What year were you diagnosed with requiring anticoagulation?<span class="required">*</span></label>
+            <input class="form-control" id="obs.anticoagulation_year_of_diagnosis"
+                   name="obs.anticoagulation_year_of_diagnosis" type="number"
+                   placeholder="Year of diagnosis" data-concept="8887^YEAR OF DIAGNOSIS, CONDITION REQUIRING ANTICOAGULATION^99DCT"
+                   required="required">
+        </div>
+    <div class="form-group">
+        <label for="obs.location_of_diagnosis">Where were you first diagnosed with this condition?<span class="required">*</span></label>
+        <fieldset data-concept="8888^LOCATION OF DIAGNOSIS, CONDITION REQUIRING ANTICOAGULATION^99DCT" name="8888^LOCATION OF DIAGNOSIS, CONDITION REQUIRING ANTICOAGULATION^99DCT"
+                id="obs.location_of_diagnosis">
+           <input id="obs.location_of_diagnosis.clinic" type="checkbox"
+                  name="8888^LOCATION OF DIAGNOSIS, CONDITION REQUIRING ANTICOAGULATION^99DCT"
+                  value="1965^OUTPATIENT SERVICES^99DCT">
+           <label for="obs.location_of_diagnosis.clinic">Out patient clinic</label><br>
+
+           <input id="obs.location_of_diagnosis.matatu.drove" type="checkbox"
+                       name="8888^LOCATION OF DIAGNOSIS, CONDITION REQUIRING ANTICOAGULATION^99DCT"
+                       value="6181^HOSPITAL^99DCT">
+                <label for="obs.location_of_diagnosis.matatu.drove">Hospital/Health center</label><br>
+                <input id="obs.location_of_diagnosis.matatu.community_screen" type="checkbox"
+                       name="8888^LOCATION OF DIAGNOSIS, CONDITION REQUIRING ANTICOAGULATION^99DCT"
+                       value="8923^COMMUNITY SCREEN^99DCT">
+                <label for="obs.location_of_diagnosis.matatu.community_screen">Community Screen</label><br>
+
+        </fieldset>
+    </div>
+
+    <div class="form-group">
+        <label for="obs.other_medical_condions">Do you have any other medical conditions?<span class="required">*</span></label>
+        <fieldset data-concept="1238^MEDICAL RECORD OBSERVATIONS^99DCT" name="1238^MEDICAL RECORD OBSERVATIONS^99DCT"
+                id="obs.other_medical_condions">
+            <input id="obs.other_medical_condions.yes" type="radio"
+                   name="1238^MEDICAL RECORD OBSERVATIONS^99DCT"
+                   value="1065^YES^99DCT">
+            <label for="obs.other_medical_condions.yes">yes</label><br>
+
+            <input id="obs.other_medical_condion.no" type="radio"
+                   name="1238^MEDICAL RECORD OBSERVATIONS^99DCT"
+                   value="1066^NO^99DCT">
+            <label for="obs.other_medical_condion.no">No</label><br>
+            <input id="obs.other_medical_condion.matatu.dont_know" type="radio"
+                   name="1238^MEDICAL RECORD OBSERVATIONS^99DCT"
+                   value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.other_medical_condion.matatu.dont_know">Don&#39;t Know</label><br>
+        </fieldset>
+        <div style="display:none" class="repeat show_other_conditions_quiz">
+            <label for="obs.other_medical_condition">List all the condions?<span class="required">*</span></label>
+            <input class="form-control" id="obs.other_medical_condition"
+                   name="obs.anticoagulation_year_of_diagnosis" type="number"
+                   placeholder="medical conditions" data-concept="1238^MEDICAL RECORD OBSERVATIONS^99DCT"
+                   required="required">
+        </div>
+    </div>
+</div>
+
+<div class="section">
+    <h3>HIV History</h3>
+
+    <div class="form-group">
+        <label for="obs.hiv_status">Do you know your HIV status?<span class="required">*</span></label>
+        <fieldset data-concept="6878^KNOWN HIV STATUS^99DCT" name="6709^HIV STATUS^99DCT"
+                  id="obs.hiv_status">
+            <input id="obs.know_hiv_status.yes" type="radio"
+                   name="6878^KNOWN HIV STATUS^99DCT"
+                   value="1065^YES^99DCT">
+            <label for="obs.know_hiv_status.yes">yes</label><br>
+
+            <input id="obs.know_hiv_status.no" type="radio"
+                   name="6878^KNOWN HIV STATUS^99DCT"
+                   value="1066^NO^99DCT">
+            <label for="obs.know_hiv_status.no">No</label><br>
+        </fieldset>
+        <div style="display:none" class="show_hiv_status_quiz" >
+            <div class="form-group">
+            <label for="obs.last_hiv_test">Date of your last test<span class="required">*</span></label>
+            <input class="form-control datepicker nonFutureDate" id="obs.last_hiv_test" data-concept="2388^PATIENT REPORTED LAST HIV TESTED DATE^99DCT"
+                   name="2388^PATIENT REPORTED LAST HIV TESTED DATE^99DCT" type="text" readonly="readonly"
+                   required="required">
+            </div>
+
+            <div class="form-group">
+                <label for="obs.previous_hiv_test">What were the results of the test?<span class="required">*</span></label>
+                <fieldset data-concept="1362^HIV TEST RESULT PREVIOUSLY^99DCT" name="1362^HIV TEST RESULT PREVIOUSLY^99DCT"
+                          id="obs.previous_hiv_test">
+                    <input id="obs.previous_hiv_tes.positive" type="radio"
+                           name="1362^HIV TEST RESULT PREVIOUSLY^99DCT"
+                           value="1065^YES^99DCT">
+                    <label for="obs.previous_hiv_tes.positive">positive</label><br>
+
+                    <input id="obs.previous_hiv_tes.negative" type="radio"
+                           name="1362^HIV TEST RESULT PREVIOUSLY^99DCT"
+                           value="1066^NO^99DCT">
+                    <label for="obs.previous_hiv_tes.negative">Negative</label><br>
+                    <input id="obs.previous_hiv_tes.indeterminate" type="radio"
+                           name="1362^HIV TEST RESULT PREVIOUSLY^99DCT"
+                           value="1138^INDETERMINATE^99DCT">
+                    <label for="obs.previous_hiv_tes.indeterminate">Indeterminate</label><br>
+                    <input id="obs.previous_hiv_tes.dont_know" type="radio"
+                           name="1362^HIV TEST RESULT PREVIOUSLY^99DCT"
+                           value="1624^DO NOT KNOW^99DCT">
+                    <label for="obs.previous_hiv_tes.dont_know">Don&#39;t Know</label><br>
+                </fieldset>
+            </div>
+
+        <div class="form-group">
+            <label for="obs.enrolled_in_ampath">Are you enrolled in ampath<span class="required">*</span></label>
+            <fieldset data-concept="6904^ENROLLED IN AMPATH^99DCT" name="6904^ENROLLED IN AMPATH^99DCT"
+                      id="obs.enrolled_in_ampath">
+                <input id="obs.enrolled_in_ampath.yes" type="radio"
+                       name="6904^ENROLLED IN AMPATH^99DCT"
+                       value="1065^YES^99DCT">
+                <label for="obs.enrolled_in_ampath.yes">yes</label><br>
+
+                <input id="obs.enrolled_in_ampath.no" type="radio"
+                       name="6904^ENROLLED IN AMPATH^99DCT"
+                       value="1066^NO^99DCT">
+                <label for="obs.enrolled_in_ampath.no">No</label><br>
+            </fieldset>
+         </div>
+            <div style="display:none" class="form-group show_enrolled_in_ampath_quiz">
+                    <label for="patient.medical_record_number">AMRS ID Number:</label>
+                    <input class="form-control" id="patient.medical_record_no"
+                           name="patient.medical_record_number" type="text" readonly="readonly">
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="obs.hiv_test">Results of HIV test<span class="required">*</span></label>
+            <fieldset data-concept="1357^HIV TEST RESULT THIS VISIT^99DCT" name="1357^HIV TEST RESULT THIS VISIT^99DCT"
+                      id="obs.hiv_test">
+                <input id="obs.hiv_test.positive" type="radio"
+                       name="1357^HIV TEST RESULT THIS VISIT^99DCT"
+                       value="1065^YES^99DCT">
+                <label for="obs.hiv_test.positive">positive</label><br>
+
+                <input id="obs.hiv_test.negative" type="radio"
+                       name="1357^HIV TEST RESULT THIS VISIT^99DCT"
+                       value="1066^NO^99DCT">
+                <label for="obs.hiv_test.negative">Negative</label><br>
+                <input id="obs.hiv_test.indeterminate" type="radio"
+                       name="1357^HIV TEST RESULT THIS VISIT^99DCT"
+                       value="1138^INDETERMINATE^99DCT">
+                <label for="obs.hiv_test.indeterminate">Indeterminate</label><br>
+                <input id="obs.hiv_test.declined" type="radio"
+                       name="1357^HIV TEST RESULT THIS VISIT^99DCT"
+                       value="1624^DO NOT KNOW^99DCT">
+                <label for="obs.hiv_test.declined">Declined</label><br>
+            </fieldset>
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="section">
+    <h3>Allergies</h3>
+    <div class="form-group">
+        <label for="obs.allergies_from_drugs">Do yuo have any allergies?<span class="required">*</span></label>
+        <fieldset data-concept="7111^MEDICATION ALLERGY^99DCT" name="7111^MEDICATION ALLERGY^99DCT"
+                  id="obs.allergies_from_drugs">
+            <input id="obs.allergies_from_drugs.yes" type="radio"
+                   name="7111^MEDICATION ALLERGY^99DCT"
+                   value="1065^YES^99DCT">
+            <label for="obs.allergies_from_drugs.yes">yes</label><br>
+            <input id="obs.allergies_from_drugs.no" type="radio"
+                   name="7111^MEDICATION ALLERGY^99DCT"
+                   value="1066^NO^99DCT">
+            <label for="obs.allergies_from_drugs.no">No</label><br>
+            <input id="obs.allergies_from_drug.dont_know" type="radio"
+                   name="7111^MEDICATION ALLERGY^99DCT"
+                   value="1624^DO NOT KNOW^99DCT">
+            <label for="obs.allergies_from_drug.dont_know">Don&#39;t Know</label><br>
+        </fieldset>
+    </div>
+    <div style="display:none" class="form-group repeat show_allergies_from_drugs_quiz">
+        <label for="obs.medications_allergic_to">To which medication(s)</label>
+        <input class="form-control" id="obs.medications_allergic_to"
+               name="patient.medical_record_number" type="text"placeholder="medication"
+               data-concept="2089^ALLERGY TO OTHER MEDICINE NAME^99DCT"
+               required="required">
+    </div>
+
+    <div style="display:none" class="form-group show_allergies_from_drugs_quiz">
+        <label for="obs.medications_allergic_to_desc">To which medication(s)</label>
+        <input class="form-control" id="obs.medications_allergic_to_desc"
+               name="patient.medical_record_number" type="text"placeholder="description"
+               data-concept="2089^ALLERGY TO OTHER MEDICINE NAME^99DCT"
+               required="required">
+    </div>
+</div>
+
+<div class="section">
+    <h3>Smoking History</h3>
+    <div class="form-group">
+        <label for="obs.ever_smoked">Do you or have you ever smoked cigarettes?<span class="required">*</span></label>
+        <fieldset data-concept="6473^EVER SMOKED CIGARETTES^99DCT" name="6473^EVER SMOKED CIGARETTES^99DCT"
+                  id="obs.ever_smoked">
+            <input id="obs.ever_smoked.yes" type="radio"
+                   name="6473^EVER SMOKED CIGARETTES^99DCT"
+                   value="1065^YES^99DCT">
+            <label for="obs.ever_smoked.yes">yes</label><br>
+            <input id="obs.ever_smoked.no" type="radio"
+                   name="6473^EVER SMOKED CIGARETTES^99DCT"
+                   value="1066^NO^99DCT">
+            <label for="obs.ever_smoked.no">No</label><br>
+            <input id="obs.ever_smoked.stopped" type="radio"
+                   name="6473^EVER SMOKED CIGARETTES^99DCT"
+                   value="1679^STOPPED^99DCT">
+            <label for="obs.ever_smoked.stopped">Stopped</label><br>
+        </fieldset>
+    </div>
+
+    <div style="display:none" class="form-group show_stopped_quiz">
+        <label>How long ago did you stop</label> <br>
+        <div class="form-group">
+            <label for="obs.time_since_stopped_smoking_weeks">Weeks</label>
+            <input class="form-control" id="obs.time_since_stopped_smoking_weeks"
+                   name="2066^STOPPED SMOKING CIGARETTES, WEEKS^99DCT" type="number"
+                   placeholder="Weeks stopped" data-concept="2066^STOPPED SMOKING CIGARETTES, WEEKS^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="obs.time_since_stopped_smoking_months">Months</label>
+            <input class="form-control" id="obs.time_since_stopped_smoking_months"
+                   name="2067^STOPPED SMOKING CIGARETTES, MONTHS^99DCT" type="number"
+                   placeholder="Months stopped" data-concept="2066^STOPPED SMOKING CIGARETTES, WEEKS^99DCT">
+        </div>
+        <div class="form-group">
+            <label for="obs.time_since_stopped_smoking_years">Years</label>
+            <input class="form-control" id="obs.time_since_stopped_smoking_years"
+                   name="2068^STOPPED SMOKING CIGARETTES, YEARS^99DCT" type="number"
+                   placeholder="Years stopped" data-concept="2066^STOPPED SMOKING CIGARETTES, WEEKS^99DCT">
+        </div>
+    </div>
+
+    <div style="display:none" class="form-group show_usage_quiz">
+        <label>current or past cigarette use</label> <br>
+        <div class="form-group">
+            <label for="obs.sticks_per_day">Sticks per day<span class="required">*</span></label>
+            <input class="form-control" id="obs.sticks_per_day"
+                   name="2069^NUMBER OF STICKS OF CIGARETTES PER DAY^99DCT" type="number"
+                   placeholder="Sticks per day" data-concept="2069^NUMBER OF STICKS OF CIGARETTES PER DAY^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="obs.years_of_use">Years of use<span class="required">*</span></label>
+            <input class="form-control" id="obs.years_of_use"
+                   name="2067^STOPPED SMOKING CIGARETTES, MONTHS^99DCT" type="number"
+                   placeholder="Years used" data-concept="2070^DURATION OF CURRENT OR PAST CIGARETTE USE IN YEARS^99DCT">
+        </div>
+
+    </div>
+    <div class="form-group">
+        <label for="obs.hiv_test">Do you chew tobacco, miraa, or khat?<span class="required">*</span></label>
+        <fieldset data-concept="7973^TOBACCO CONSUMPTION^99DCT" name="1357^HIV TEST RESULT THIS VISIT^99DCT"
+                  id="obs.chew_tobacco">
+            <input id="obs.chew_tobacco.yes" type="radio"
+                   name="7973^TOBACCO CONSUMPTION^99DCT"
+                   value="1065^YES^99DCT">
+            <label for="obs.chew_tobacco.yes">yes</label><br>
+            <input id="obs.chew_tobacco.no" type="radio"
+                   name="7973^TOBACCO CONSUMPTION^99DCT"
+                   value="1066^NO^99DCT">
+            <label for="obs.ever_smoked.no">No</label><br>
+        </fieldset>
+    </div>
+
+</div>
+
+<div class="section">
+    <h3>Alcohol History</h3>
+    <div class="form-group">
+        <label for="obs.drink_alcohol">Do you sometimes drink alcohol or traditional brew?<span class="required">*</span></label>
+        <fieldset data-concept="1684^ALCOHOL CONSUMPTION^99DCT" name="1684^ALCOHOL CONSUMPTION^99DCT"
+                  id="obs.drink_alcohol">
+            <input id="obs.drink_alcohol.yes" type="radio"
+                   name="1684^ALCOHOL CONSUMPTION^99DCT"
+                   value="1065^YES^99DCT">
+            <label for="obs.drink_alcohol.yes">yes</label><br>
+            <input id="obs.drink_alcohol.no" type="radio"
+                   name="1684^ALCOHOL CONSUMPTION^99DCT"
+                   value="1066^NO^99DCT">
+            <label for="obs.drink_alcohol.no">No</label><br>
+            <input id="obs.drink_alcohol.stopped" type="radio"
+                   name="1684^ALCOHOL CONSUMPTION^99DCT"
+                   value="1679^STOPPED^99DCT">
+            <label for="obs.drink_alcohol.stopped">Stopped</label><br>
+
+        </fieldset>
+    </div>
+    <div style="display:none" class="form-group show_stopped_alcohol_quiz ">
+        <label>How long ago did you stop</label> <br>
+        <div class="form-group">
+            <label for="obs.time_since_stopped_drinking_weeks">Weeks</label>
+            <input class="form-control" id="obs.time_since_stopped_drinking_weeks"
+                   name="1700^STOPPED DRINKING ALCOHOL, WEEKS^99DCT" type="number"
+                   placeholder="Weeks stopped" data-concept="1700^STOPPED DRINKING ALCOHOL, WEEKS^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="obs.time_since_stopped_drinking_months">Months</label>
+            <input class="form-control" id="obs.time_since_stopped_drinking_months"
+                   name="1701^STOPPED DRINKING ALCOHOL, MONTHS^99DCT" type="number"
+                   placeholder="Months stopped" data-concept="1701^STOPPED DRINKING ALCOHOL, MONTHS^99DCT">
+        </div>
+        <div class="form-group">
+            <label for="obs.time_since_stopped_drinking_years">Years</label>
+            <input class="form-control" id="obs.time_since_stopped_drinking_years"
+                   name="1702^STOPPED DRINKING ALCOHOL, YEARS^99DCT" type="number"
+                   placeholder="Year stopped" data-concept="1702^STOPPED DRINKING ALCOHOL, YEARS^99DCT">
+        </div>
+    </div>
+
+    <div style="display:none" class="form-group show_alcohol_usage_quiz show_alcohol_usage_yes_quiz">
+        <label>what kind do (did) you usually drink?</label>
+        <fieldset data-concept="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT" name="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT">
+            <input id="obs.type_of_alcohol.beer" type="checkbox"
+                   name="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT"
+                   value="1680^BEER^99DCT">
+            <label for="obs.type_of_alcohol.beer">Beer</label><br>
+            <input id="obs.type_of_alcohol.spirits" type="checkbox"
+                   name="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT"
+                   value="1681^LIQUOR^99DCT">
+            <label for="obs.type_of_alcohol.spirits">Spirits/liquor</label><br>
+            <input id="obs.type_of_alcohol.wine" type="checkbox"
+                   name="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT"
+                   value="2059^WINE^99DCT">
+            <label for="obs.type_of_alcohol.wine">Wine</label><br>
+            <input id="obs.type_of_alcohol.changaa" type="checkbox"
+                   name="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT"
+                   value="1682^CHANG'AA^99DCT">
+            <label for="obs.type_of_alcohol.changaa">Chang’aa</label><br>
+            <input id="obs.type_of_alcohol.busaa" type="checkbox"
+                   name="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT"
+                   value="1683^BUSAA^99DCT">
+            <label for="obs.type_of_alcohol.busaa">Busaa</label><br>
+
+        </fieldset>
+    </div>
+</div>
+
+<div class="section">
+    <h3>Complementary and Alternative Medicine History</h3>
+    <div class="form-group">
+        <label for="obs.herbal_medication">Do you currently take or have you ever taken any traditional medicines (herbals, vitamins, supplements) or alternative forms of medicine (such as traditional healer/healing ceremony, prayer)?<span class="required">*</span></label>
+        <fieldset data-concept="8828^HERBAL MEDICATION CONSUMPTION^99DCT" name="1684^ALCOHOL CONSUMPTION^99DCT"
+                  id="obs.herbal_medication">
+            <input id="obs.herbal_medication.yes" type="radio"
+                   name="8828^HERBAL MEDICATION CONSUMPTION^99DCT"
+                   value="1065^YES^99DCT">
+            <label for="obs.drink_alcohol.yes">yes</label><br>
+            <input id="obs.herbal_medication.no" type="radio"
+                   name="8828^HERBAL MEDICATION CONSUMPTION^99DCT"
+                   value="1066^NO^99DCT">
+            <label for="obs.drink_alcohol.no">No</label><br>
+
+        </fieldset>
+    </div>
+    <div style="display:none" class="form-group show_herbal_medication_quiz">
+
+        <div class="form-group">
+            <label for="obs.herbal_medication_used">what is the name of the traditional medicine/product that you take or have taken?<span class="required">*</span></label>
+            <input class="form-control" id="obs.herbal_medication_used"
+                   name="8889^HERBAL MEDICATIONS EVER OR CURRENTLY USED^99DCT" type="text"
+                   placeholder="Weeks stopped" data-concept="8889^HERBAL MEDICATIONS EVER OR CURRENTLY USED^99DCT">
+        </div>
+        </div>
+
+</div>
+
+<div class="section">
+    <h3>Insurance status and availability of caregiver</h3>
+    <div class="form-group">
+        <label for="obs.health_insurance">Do you have any health insurance?<span class="required">*</span></label>
+        <fieldset data-concept="6266^HEALTH INSURANCE^99DCT" name="6266^HEALTH INSURANCE^99DCT"
+                  id="obs.health_insurance">
+            <input id="obs.health_insurance.yes" type="radio"
+                   name="6266^HEALTH INSURANCE^99DCT"
+                   value="1065^YES^99DCT">
+            <label for="obs.health_insurance.yes">yes</label><br>
+            <input id="obs.health_insurance.no" type="radio"
+                   name="6266^HEALTH INSURANCE^99DCT"
+                   value="1066^NO^99DCT">
+            <label for="obs.health_insurance.no">No</label><br>
+
+        </fieldset>
+    </div>
+    <div style="display:none" class="form-group show_health_insurance_quiz">
+        <label>What kind of insurance? (tick all that apply)?</label>
+        <fieldset data-concept="6825^HEALTH INSURANCE, DETAILED^99DCT" name="6825^HEALTH INSURANCE, DETAILED^99DC">
+            <input id="obs.type_of_insurence.NHIF" type="checkbox"
+                   name="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT"
+                   value="1680^BEER^99DCT">
+            <label for="obs.type_of_insurence.NHIF">NHIF</label><br>
+            <input id="obs.type_of_insurence.employer" type="checkbox"
+                   name="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT"
+                   value="1681^LIQUOR^99DCT">
+            <label for="obs.type_of_insurence.employer">Employer Based Insurance</label><br>
+            <input id="obs.type_of_insurence.private" type="checkbox"
+                   name="1685^TYPE OF ALCOHOL CONSUMPTION^99DCT"
+                   value="2059^WINE^99DCT">
+            <label for="obs.type_of_insurence.private">Private insurance</label><br>
+
+        </fieldset>
+    </div>
+    <div class="form-group">
+        <label for="obs.health_insurance">Do you have a family member or caregiver who assists you with taking care of your health needs?<span class="required">*</span></label>
+        <fieldset data-concept="8294^HEALTH ASSISTANCE^99DCT" name="8294^HEALTH ASSISTANCE^99DCT"
+                  id="obs.health_assistance">
+            <input id="obs.health_assistance.yes" type="radio"
+                   name="8294^HEALTH ASSISTANCE^99DCT"
+                   value="1065^YES^99DCT">
+            <label for="obs.health_assistance.yes">yes</label><br>
+            <input id="obs.health_assistance.no" type="radio"
+                   name="8294^HEALTH ASSISTANCE^99DCT"
+                   value="1066^NO^99DCT">
+            <label for="obs.health_assistance.no">No</label><br>
+        </fieldset>
+    </div>
+    <div class="form-group">
+        <label for="encounter.provider_id_select">Provider ID:</label>
+        <input class="form-control" id="encounter.provider_id_select" type="text" placeholder="Start typing something...">
+        <input class="form-control" name="encounter.provider_id_select" type="hidden">
+    </div>
+
+    <div class="form-group show_provider_id_text">
+        <label for="encounter.provider_id">Enter provider's system-id:<span class="required">*</span></label>
+        <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id"
+               type="text" required="required">
+    </div>
+    <div class="form-group">
+        <label for="encounter.encounter_datetime">Encounter Date:<span class="required">*</span></label>
+        <input class="form-control datepicker nonFutureDate" id="encounter.encounter_datetime"
+               name="encounter.encounter_datetime" type="text" readonly="readonly" encounter.encounter_datetime
+               required="required">
+    </div>
+</div>
+
+
+
+
+<div class="form-group text-center">
+    <input class="btn btn-primary" id="save_draft" type="button" value="Save"/>
+    <input class="btn btn-primary" id="submit_form" type="button" value="Submit"/>
+</div>
+
+</form>
+
+</body>
+<script type="text/javascript">
+$(document).ready(function () {
+
+    $('#save_draft').click(function () {
+        document.saveDraft();
+    });
+
+    $('#submit_form').click(function(){
+        document.submit();
+    });
+
+    $('#obs\\.other_medical_condions').change(function () {
+        var $show_other_conditions_quiz = $('.show_other_conditions_quiz');
+        if($("#obs\\.other_medical_condions\\.yes").is(':checked'))
+            $show_other_conditions_quiz.show();
+        else
+            $show_other_conditions_quiz.hide();
+    });
+  $('#obs\\.hiv_status').change(function () {
+        var $show_hiv_status_quiz = $('.show_hiv_status_quiz');
+        if($("#obs\\.know_hiv_status\\.yes").is(':checked'))
+            $show_hiv_status_quiz.show();
+        else
+            $show_hiv_status_quiz.hide();
+    });
+$('#obs\\.enrolled_in_ampath').change(function () {
+        var $show_enrolled_in_ampath_quiz = $('.show_enrolled_in_ampath_quiz');
+        if($("#obs\\.enrolled_in_ampath\\.yes").is(':checked'))
+            $show_enrolled_in_ampath_quiz.show();
+        else
+            $show_enrolled_in_ampath_quiz.hide();
+    });
+
+    $('#obs\\.allergies_from_drugs').change(function () {
+        var $show_allergies_from_drugs_quiz = $('.show_allergies_from_drugs_quiz');
+        if($("#obs\\.allergies_from_drugs\\.yes").is(':checked'))
+            $show_allergies_from_drugs_quiz.show();
+        else
+            $show_allergies_from_drugs_quiz.hide();
+    });
+  $('#obs\\.ever_smoked').change(function () {
+        var $show_stopped_quiz = $('.show_stopped_quiz');
+        var $show_usage_quiz = $('.show_usage_quiz');
+
+        if($("#obs\\.ever_smoked\\.stopped").is(':checked'))  {
+            $show_stopped_quiz.show();
+            $show_usage_quiz.show();
+  }
+        else   {
+            $show_stopped_quiz.hide();
+            $show_usage_quiz.hide();
+        }
+
+    });
+
+
+      $('#obs\\.drink_alcohol').change(function () {
+        var $show_alcohol_stopped_quiz = $('.show_alcohol_stopped_quiz');
+        var $show_alcohol_usage_quiz = $('.show_alcohol_usage_quiz');
+
+        if($("#obs\\.drink_alcohol\\.stopped").is(':checked'))  {
+            $show_alcohol_stopped_quiz.show();
+            $show_alcohol_usage_quiz.show();
+  }
+        else   {
+            $show_alcohol_stopped_quiz.hide();
+            $show_alcohol_usage_quiz.hide();
+        }
+
+    });
+
+    $('#obs\\.drink_alcohol').change(function () {
+        var $show_alcohol_usage_yes_quiz = $('.show_alcohol_usage_yes_quiz');
+
+        if($("#obs\\.drink_alcohol\\.yes").is(':checked'))  {
+
+            $show_alcohol_usage_yes_quiz.show();
+        }
+        else   {
+            $show_alcohol_usage_yes_quiz.hide();
+        }
+
+    });
+
+
+
+
+
+    $('#obs\\.ever_smoked').change(function () {
+        var $show_usage_quiz = $('.show_usage_quiz');
+
+        if($("#obs\\.ever_smoked\\.yes").is(':checked'))
+            $show_usage_quiz.show();
+        else
+            $show_usage_quiz.hide();
+    });
+
+
+    $('#obs\\.drink_alcohol').change(function () {
+        var $show_stopped_alcohol_quiz = $('.show_stopped_alcohol_quiz');
+
+        if($("#obs\\.drink_alcohol\\.stopped").is(':checked'))
+            $show_stopped_alcohol_quiz.show();
+        else
+            $show_stopped_alcohol_quiz.hide();
+    });
+
+    $('#obs\\.health_insurance').change(function () {
+        var $show_health_insurance_quiz = $('.show_health_insurance_quiz');
+
+        if($("#obs\\.health_insurance\\.yes").is(':checked'))
+            $show_health_insurance_quiz.show();
+        else
+            $show_health_insurance_quiz.hide();
+    });
+    $('#obs\\.herbal_medication').change(function () {
+        var $show_herbal_medication_quiz = $('.show_herbal_medication_quiz');
+
+        if($("#obs\\.herbal_medication\\.yes").is(':checked'))
+            $show_herbal_medication_quiz.show();
+        else
+            $show_herbal_medication_quiz.hide();
+    });
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    $('#dispensary_form').validate({
+        rules: {
+            pulse: {
+                number: true,
+                range: [0, 230]
+            },
+            temperature_c: {
+                number: true,
+                range: [25, 43]
+            },
+            weight_kg: {
+                number: true,
+                range: [0, 250]
+            },
+            height_cm: {
+                number: true,
+                range: [10, 228]
+            },
+            glycosylated_hemoglobin: {
+                number: true,
+                range: [0, 20]
+            }
+        },
+        submitHandler: function (form) {
+            $('#result').html(JSON.stringify($('form').serializeEncounterForm(),undefined,2));
+        }
+    });
+
+    var name_array = ['obs\\.tmp_drugs', '1069^REVIEW OF SYSTEMS, GENERAL^99DCT', 'obs.drugs_dispensed',
+        '6327^PATIENT EDUCATION RECEIVED THIS VISIT^99DCT', '1272^REFERRALS ORDERED^99DCT'];
+
+    $.fn.customValidationCheck = function(){
+        return $.fn.checkNoneSelectedAlone(name_array);
+    };
+
+
+
+
+
+
+
+    var dispensaryName = [
+        {"val": "2", "label": "Mosoriot Health Centre"},
+        {"val": "3", "label": "Turbo Health Centre"},
+        {"val": "12", "label": "Teso District Hospital"},
+        {"val": "60", "label": "Chepsaita Dispensary"},
+        {"val": "65", "label": "Angurai Health Centre"},
+        {"val": "90", "label": "Changara Dispensary"},
+        {"val": "91", "label": "Malaba Dispensary"},
+        {"val": "106", "label": "Kamollo Dispensary"},
+        {"val": "110", "label": "Mogoget Dispensary"},
+        {"val": "111", "label": "Biribiriet Dispensary"},
+        {"val": "112", "label": "Itigo Dispensary"},
+        {"val": "113", "label": "Lelmokwo Dispensary"},
+        {"val": "114", "label": "Kokwet Dispensary"},
+        {"val": "115", "label": "Ngechek Dispensary"},
+        {"val": "116", "label": "Cheramei Dispensary"},
+        {"val": "117", "label": "Murgusi Dispensary"},
+        {"val": "118", "label": "Cheplasgei Dispensary"},
+        {"val": "119", "label": "Sigot Dispensary"},
+        {"val": "120", "label": "Sugoi A Dispensary"},
+        {"val": "121", "label": "Sugoi B Dispensary"},
+        {"val": "122", "label": "Chepkemel Dispensary"},
+        {"val": "124", "label": "Akichelesit Dispensary"},
+        {"val": "125", "label": "Aboloi Dispensary"},
+        {"val": "126", "label": "Moding Dispensary"},
+        {"val": "127", "label": "Sambut"},
+        {"val": "128", "label": "Ngenyilel"},
+        {"val": "129", "label": "Sosiani"}
+    ];
+    $('#encounter\\.location_id').autocomplete({
+        source: dispensaryName,
+        create: function(event,ui){
+            var location_val = $('input[name="encounter\\.location_id"]').val();
+            $.each(dispensaryName, function (i, elem) {
+                if (elem.val == location_val) {
+                    $('#encounter\\.location_id').val(elem.label)
+                }
+            });
+        },
+        select: function (event, ui) {
+            $('input[name="encounter\\.location_id"]').val(ui.item.val  );
+            $('#encounter\\.location_id').val(ui.item.label);
+            return false;
+        }
+    });
+
+    var provider = [{"val":"4-2","label":"David S. Pamba"},
+        {"val":"4-2","label":"Ariya Patrick"},
+        {"val":"4-2","label":"Benjamin Osiya Ekirapa"},
+        {"val":"3332-4","label":"Molly Omodek Aluku"},
+        {"val":"3333-2","label":"Mercyline Lubisya Omusolo"},
+        {"val":"3334-0","label":"Julita Auma Ndege"},
+        {"val":"3335-7","label":"Caroline Fedha Injete"},
+        {"val":"3336-5","label":"Nelly Nabwire Shiundu"},
+        {"val":"3337-3","label":"Nicholas Dekkers Shitaha"},
+        {"val":"3338-1","label":"Tezra Asangire Okaal"},
+        {"val":"3340-7","label":"Sophy Ikarot Idele"},
+        {"val":"3339-9","label":"Maureen Jacinta Muteitsi"},
+        {"val":"3341-5","label":"Gibson Musera Mutira"},
+        {"val":"3342-3","label":"Titus Chuma Khusua"},
+        {"val":"3343-1","label":"Pamela Ekuriai Emukule"},
+        {"val":"3344-9","label":"Rhoda Jeruto Kurgat"},
+        {"val":"3345-6","label":"Zaitun Hassan Mohamed"},
+        {"val":"3346-4","label":"Grace Gichanga Nyathogora"},
+        {"val":"3347-2","label":"Gabriel Silas Okapes"},
+        {"val":"3348-0","label":"Henry Samson Obonyo"},
+        {"val":"3349-8","label":"Rebecca M. Wambura"},
+        {"val":"3350-6","label":"Zeruya Amwatok Barua"},
+        {"val":"3351-4","label":"Immaculate Otengo Namibia"},
+        {"val":"3352-2","label":"Pamela Were Wamoyi"},
+        {"val":"3357-1","label":"Caroline Wafula Nandisi"},
+        {"val":"3353-0","label":"Markins Opuko Cresent"},
+        {"val":"3354-8","label":"Benedict Kifufuli Wafula"},
+        {"val":"3355-5","label":"Clementine Ingosi Osiel"}];
+
+    $('#encounter\\.provider_id_select').autocomplete({
+        source: provider,
+        create: function (event, ui) {
+            var provider_val = $('input[name="encounter\\.provider_id_select"]').val();
+            $.each(provider, function (i, elem) {
+                if (elem.val == provider_val) {
+                    $('#encounter\\.provider_id_select').val(elem.label)
+                }
+            });
+        },
+        select: function (event, ui) {
+            $('input[name="encounter\\.provider_id_select"]').val(ui.item.val);
+            $('#encounter\\.provider_id_select').val(ui.item.label);
+            $('#encounter\\.provider_id').val(ui.item.val);
+            $('.show_provider_id_text').hide();
+            return false;
+        }
+    });
+    /* Start - Checking that the diastolic blood pressure is less than the systolic blood pressure */
+    $.validator.addMethod("lessThankSystolic", function (value, element) {
+                var systolicBloodPressure = parseInt($(element).closest('.section').find('.systolicBloodPressure').val());
+                return (parseInt(value) <= systolicBloodPressure);
+            }, "DBP cannot be more than Systolic Blood Pressure."
+    );
+
+    // attach 'lessThankSystolic' class to perform validation.
+    jQuery.validator.addClassRules({
+        lessThankSystolic: { lessThankSystolic: true }
+    });
+    /* End - lessThankSystolic*/
+
+    /*  Start - Based on Selected medication prescribed show dispensed fields */
+    var selectCorrespondingDrugsDispensed = function (selectedElement) {
+        var drugsArray = {"#obs\\.drugs_dispensed\\.Metformin": "#metformin_dispense",
+            "#obs\\.drugs_dispensed\\.Glibenclamide": "#glibenclamide_dispense",
+            "#obs\\.drugs_dispensed\\.Enalapril": "#enalapril_dispense",
+            "#obs\\.drugs_dispensed\\.HCTZ": "#hctz_dispense",
+            "#obs\\.drugs_dispensed\\.Losartan": "#losartan_dispense",
+            "#obs\\.drugs_dispensed\\.Nifedipine": "#nifedipine_dispense",
+            "#obs\\.drugs_dispensed\\.Other": "#other_medication"
+        };
+        $.each(drugsArray, function (k, v) {
+            if ($(k).is(':checked')) {
+                $(v).show();
+            } else {
+                $(v).hide();
+            }
+        })
+    };
+
+    var $obs_drugs_dispensed = $('input[name="obs.drugs_dispensed"]');
+    $obs_drugs_dispensed.change(function () {
+        selectCorrespondingDrugsDispensed();
+    });
+    $obs_drugs_dispensed.trigger('change');
+    /*  End - Based on Selected medication prescribed show dispensed fields */
+
+    /*  Start - Based on Current medication prescribed show dosage fields */
+    var selectCorrespondingCurrentMedication = function (selectedElement) {
+        var drugsArray = {"#obs\\.tmp_drugs\\.Metformin": "#medication_metformin",
+            "#obs\\.tmp_drugs\\.Glibenclamide": "#medication_glibenclamide",
+            "#obs\\.tmp_drugs\\.Enalapril": "#medication_enalapril",
+            "#obs\\.tmp_drugs\\.HCTZ": "#medication_hctz",
+            "#obs\\.tmp_drugs\\.Losartan": "#medication_losartan",
+            "#obs\\.tmp_drugs\\.Nifedipine": "#medication_nifedipine",
+            "#obs\\.tmp_drugs\\.Other": "#medication_other"
+        };
+        $.each(drugsArray, function (k, v) {
+            $(k).change(function () {
+                if ($(k).is(':checked')) {
+                    $(v).show();
+                } else {
+                    $(v).hide();
+                }
+            });
+            $(k).trigger('change');
+        })
+    };
+    selectCorrespondingCurrentMedication();
+    /*  End - Based on Current medication prescribed show dosage fields */
+
+    /*  Start - If some medication dose was missed, ask for reason */
+    var displayReasonForMissingMedicationWhenNeeded = function (selectedElement) {
+        var drugsArray = {"#obs\\.medication_metformin\\.number_of_pills_taken": ".metformin_missed_medication_reason",
+            "#obs\\.medication_glibenclamide\\.number_of_pills_taken": ".glibenclamide_missed_medication_reason",
+            "#obs\\.medication_enalapril\\.number_of_pills_taken": ".enalapril_missed_medication_reason",
+            "#obs\\.medication_hctz\\.number_of_pills_taken": ".hctz_missed_medication_reason",
+            "#obs\\.medication_losartan\\.number_of_pills_taken": ".losartan_missed_medication_reason",
+            "#obs\\.medication_nifedipine\\.number_of_pills_taken": ".nifedipine_missed_medication_reason"
+        };
+        $.each(drugsArray, function (pillsTaken, missedReason) {
+            $(pillsTaken).change(function () {
+                var selected_value = $(pillsTaken).val();
+                var $reason = $(missedReason);
+                if (selected_value != '' && selected_value != '1163^ALL^99DCT') {
+                    $reason.show();
+                }
+                else {
+                    $reason.hide();
+                }
+            });
+            $(pillsTaken).trigger('change');
+        })
+    };
+    displayReasonForMissingMedicationWhenNeeded();
+    /*  End - Start - If some medication dose was missed, ask for reason */
+
+    /* Start - Asks for the dosage of other medication in ml only if it is not provided in mg */
+    $(document.body).on('change', '.otherMedicationNumberOfMilligram', function () {
+        $other_medication_number_of_milliliter_group = $(this).closest('.section').children('.other_medication_number_of_milliliter_group');
+        if ($(this).val() != '') {
+            $other_medication_number_of_milliliter_group.hide();
+            $other_medication_number_of_milliliter_group.find('input').val('');
+        } else {
+            $other_medication_number_of_milliliter_group.show();
+        }
+    });
+
+    $('#other_medication_number_of_milligram').trigger('change');
+    /* End - Asks for the dosage of other medication in ml only if it is not provided in mg */
+
+    /* Start - Ask for menstrual & urine pregnancy info only if the client is a woman*/
+    var $patientSex = $('#patient\\.sex');
+    $patientSex.change(function () {
+        var $menstrualPeriod = $('.menstrualPeriod');
+        var $urinePregnancyTestQualitative = $('.urinePregnancyTestQualitative');
+        if ($patientSex.val() != 'F') {
+            $menstrualPeriod.hide();
+            $menstrualPeriod.find('select').val('');
+            $urinePregnancyTestQualitative.hide();
+            $urinePregnancyTestQualitative.find('select').val('');
+        } else {
+            $menstrualPeriod.show();
+            $urinePregnancyTestQualitative.show();
+        }
+    });
+    $patientSex.trigger('change');
+    /* End - Ask for menstrual & urine pregnancy info only if the client is a woman*/
+
+    /* Start - Checks that a field is a decimal */
+    $.validator.addClassRules({
+        systolicBloodPressure: {
+            number: true,
+            range: [50, 300]
+        },
+        diastolicBloodPressure: {
+            number: true,
+            range: [20, 150]
+        },
+        glucose: {
+            number: true,
+            range: [0, 150]
+        },
+        numberOfTablets: {
+            number: true,
+            range: [0, 180]
+        },
+        numberOfMilligrams: {
+            number: true,
+            range: [0.0, 1000.0]
+        }
+    });
+    /* End - Checks that a field is a decimal */
+
+    /* Start - Compute the BMI if the weight & height are provided */
+    var $weight = $('#weight_kg');
+    var $height = $('#height_cm');
+    var $bodyMassIndex = $('.bodyMassIndex');
+    var displayBMI = function () {
+        if (($weight.val() != '') && ($height.val() != '')) {
+            $bodyMassIndex.find('input').val(computeBMI());
+            $bodyMassIndex.show();
+        } else {
+            $bodyMassIndex.hide();
+        }
+    };
+    var computeBMI = function () {
+        var weight = parseInt($weight.val());
+        var height = parseInt($height.val()) / 100;
+        return weight / (height * height);
+    };
+
+    $weight.change(displayBMI());
+    $weight.trigger('change');
+
+    $height.change(displayBMI);
+    $height.trigger('change');
+    /* End - Compute the BMI if the weight & height are provided */
+
+    /*  Start - Based on Current medication, and medication prescribed, show or hide "dosage changed" fields */
+    var showOrHideDosageChanged = function (drugCurrent, drugDispensed, dosageChanged) {
+        if ($(drugCurrent).is(':checked') && $(drugDispensed).is(':checked')) {
+            $(dosageChanged).show();
+        } else {
+            $(dosageChanged).find("select").val('');
+            $(dosageChanged).find("select").trigger('change');
+            $(dosageChanged).hide();
+        }
+    }
+
+    var selectCorrespondingDosageChanged = function (selectedElement) {
+        var drugsArray = {
+            "Metformin": "#metformin_dosage_changed",
+            "Glibenclamide": "#glibenclamide_dosage_changed",
+            "Enalapril": "#enalapril_dosage_changed",
+            "HCTZ": "#hctz_dosage_changed",
+            "Losartan": "#losartan_dosage_changed",
+            "Nifedipine": "#nifedipine_dosage_changed"
+        };
+        $.each(drugsArray, function (k, v) {
+            var drugCurrent = "#obs\\.tmp_drugs\\." + k;
+            var drugDispensed = "#obs\\.drugs_dispensed\\." + k;
+            var dosageChanged = v;
+            $(drugCurrent).change(function () {
+                showOrHideDosageChanged(drugCurrent, drugDispensed, dosageChanged)
+            });
+            $(drugDispensed).change(function () {
+                showOrHideDosageChanged(drugCurrent, drugDispensed, dosageChanged)
+            });
+            $(drugCurrent).trigger('change');
+        })
+    };
+    selectCorrespondingDosageChanged();
+    /*  End - Based on Current medication, and medication prescribed, show or hide "dosage changed" fields */
+
+    /*  Start - Based on "Did you change the xx dosage" show or hide  "prescribed dosage" fields */
+    var showOrHidePrescribedDosage = function (selectedElement) {
+        var drugsArray = ["metformin", "glibenclamide", "enalapril", "enalapril", "hctz", "losartan", "nifedipine"];
+        $.each(drugsArray, function (index, v) {
+            var changeDosageSelect = "#obs\\.other_medication_order_" + v;
+            var prescribedDosage = "#" + v + "_prescribed_dosage";
+            var currentDosage = "#" + v + "_number_of_milligram";
+            $(changeDosageSelect).change(function () {
+                if ($(changeDosageSelect).val() == "1066^NO^99DCT") {
+                    $(prescribedDosage).find('input').val($(currentDosage).val());
+                    $(prescribedDosage).hide();
+                } else {
+                    $(prescribedDosage).show();
+                }
+            });
+            $(currentDosage).change(function () {
+                if ($(changeDosageSelect).val() == "1066^NO^99DCT") {
+                    $(prescribedDosage).find('input').val($(currentDosage).val());
+                }
+            })
+            $(changeDosageSelect).trigger('change');
+        })
+    };
+    showOrHidePrescribedDosage();
+    /*  End - Based on Selected medication prescribed show dispensed fields */
+
+    /* Start - Define variables for conditional displays */
+    var $systolicBloodPressure = $('#obs\\.systolic_blood_pressure');
+    var $diastolicBloodPressure = $('#obs\\.diastolic_blood_pressure');
+    var $currentVisitType = $('#obs\\.current_visit_type');
+    var $metforminCurrentMilligram = $('#metformin_number_of_milligram');
+    var $urinePregnancyTest = $('#obs\\.urine_pregnancy_test_qualitative');
+    var $serumGlucoseFasting = $('#obs\\.serum_glucose_fasting');
+    var $glycosylatedHemoglobin = $('#glycosylated_hemoglobin');
+    var $metforminFrequencyPerDay = $('#obs\\.medication_metformin\\.medication_frequency_per_day');
+    var getCurrentMedicationValues = function () {
+        return $('input[name="obs.tmp_drugs"]:checked').map(function () {
+            return this.value;
+        }).get();
+    };
+    var getReviewOfSystemsGeneralValues = function () {
+        return $('input[name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"]:checked').map(function () {
+            return this.value;
+        }).get();
+    };
+    var checkReviewOfSystemsGeneralForDisplay = function () {
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        return reviewOfSystemsGeneral.indexOf("590^EDEMA, LEGS^99DCT") < 0 && reviewOfSystemsGeneral.indexOf("5963^SHORTNESS OF BREATH WITH EXERTION^99DCT") < 0 &&
+                reviewOfSystemsGeneral.indexOf("6021^OLIGURIA^99DCT") < 0 && reviewOfSystemsGeneral.indexOf("6005^FOCAL WEAKNESS^99DCT") < 0;
+    };
+    /* End - Define variables for conditional displays */
+
+    /* Start - Conditional display of HTN reminders */
+
+    var displayHTNReminder1 = function () {
+        var $htn_reminder_1 = $('#htn_reminder_1');
+        var selectedVisitType = $currentVisitType.val();
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var currentMedication = getCurrentMedicationValues();
+        if ((selectedVisitType == '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT' || selectedVisitType == '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT') &&
+                (systolicBloodValue >= 100 && systolicBloodValue <= 140) && (diastolicBloodValue >= 50 && diastolicBloodValue <= 90) &&
+                currentMedication.indexOf("enalapril") < 0 && currentMedication.indexOf("hctz") < 0 && currentMedication.indexOf("losartan") < 0
+                && currentMedication.indexOf("nifedipine") < 0 && checkReviewOfSystemsGeneralForDisplay()
+                ) {
+            $htn_reminder_1.show();
+        } else {
+            $htn_reminder_1.hide();
+        }
+    };
+    displayHTNReminder1();
+
+    var $urinePregnancyTestQualitative = $('#obs\\.urine_pregnancy_test_qualitative');
+    var $birthdate = $('#patient\\.birthdate');
+    var conditionToDisplayHTNReminder2 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        return ((selectedVisitType == '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT') &&
+                ((systolicBloodValue >= 140 && systolicBloodValue <= 180) || (diastolicBloodValue >= 90 && diastolicBloodValue <= 110)) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' &&
+                checkReviewOfSystemsGeneralForDisplay());
+    };
+    var displayHTNReminder2 = function () {
+        var $htn_reminder_2 = $('#htn_reminder_2');
+        var birthdate = $birthdate.val();
+        var ageInYears = $.fn.getAgeInYears(birthdate);
+        if (conditionToDisplayHTNReminder2() && ageInYears <= 35) {
+            $htn_reminder_2.show();
+        } else {
+            $htn_reminder_2.hide();
+        }
+    };
+    displayHTNReminder2();
+
+    var $serumGlucoseFasting = $('#serum_glucose_fasting');
+    var $glycosylatedHemoglobin = $('#glycosylated_hemoglobin');
+    var isAtLeast35YearsOld = function () {
+        var birthdate = $birthdate.val();
+        var ageInYears = $.fn.getAgeInYears(birthdate);
+        return ageInYears >= 35;
+    };
+    var displayHTNReminder3a = function () {
+        var $htn_reminder_3a = $('#htn_reminder_3a');
+        var serumGlucoseFasting = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobin = parseFloat($glycosylatedHemoglobin.val());
+        if (conditionToDisplayHTNReminder2() && serumGlucoseFasting <= 5.6 &&
+                glycosylatedHemoglobin <= 5.7 && isAtLeast35YearsOld()) {
+            $htn_reminder_3a.show();
+        } else {
+            $htn_reminder_3a.hide();
+        }
+    };
+    displayHTNReminder3a();
+
+    var displayHTNReminder3b = function () {
+        var $htn_reminder_3b = $('#htn_reminder_3b');
+        var currentMedication = getCurrentMedicationValues();
+        if (conditionToDisplayHTNReminder2() && isAtLeast35YearsOld() &&
+                (currentMedication.indexOf("enalapril") >= 0 || currentMedication.indexOf("hctz") >= 0 ||
+                        currentMedication.indexOf("losartan") >= 0 || currentMedication.indexOf("nifedipine") >= 0)
+                ) {
+            $htn_reminder_3b.show();
+        } else {
+            $htn_reminder_3b.hide();
+        }
+    };
+    displayHTNReminder3b();
+
+    var displayHTNReminder3c = function () {
+        var $htn_reminder_3c = $('#htn_reminder_3c');
+        var serumGlucoseFasting = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobin = parseFloat($glycosylatedHemoglobin.val());
+        if (conditionToDisplayHTNReminder2() && serumGlucoseFasting >= 5.6 &&
+                glycosylatedHemoglobin >= 5.7 && isAtLeast35YearsOld()) {
+            $htn_reminder_3c.show();
+        } else {
+            $htn_reminder_3c.hide();
+        }
+    };
+    displayHTNReminder3c();
+
+    var displayHTNReminder4 = function () {
+        var $htn_reminder_4 = $('#htn_reminder_4');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        if ((systolicBloodValue >= 180 || diastolicBloodValue >= 110) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT') {
+            $htn_reminder_4.show();
+        } else {
+            $htn_reminder_4.hide();
+        }
+    };
+    displayHTNReminder4();
+
+    var displayHTNReminder5 = function () {
+        var $htn_reminder_5 = $('#htn_reminder_5');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        if ((systolicBloodValue >= 140 || diastolicBloodValue >= 90) &&
+                urinePregnancyTestQualitativeValue == '703^POSITIVE^99DCT') {
+            $htn_reminder_5.show();
+        } else {
+            $htn_reminder_5.hide();
+        }
+    };
+    displayHTNReminder5();
+
+    var conditionToDisplayHTNReminder6 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var currentMedication = getCurrentMedicationValues();
+        return ((selectedVisitType == '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT') &&
+                ((systolicBloodValue >= 140 && systolicBloodValue <= 180) || (diastolicBloodValue >= 90 && diastolicBloodValue <= 110)) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' && isAtLeast35YearsOld() &&
+                checkReviewOfSystemsGeneralForDisplay() &&
+                currentMedication.indexOf("enalapril") < 0 && currentMedication.indexOf("hctz") < 0 && currentMedication.indexOf("losartan") < 0
+                && currentMedication.indexOf("nifedipine") < 0);
+    };
+    var displayHTNReminder6 = function () {
+        var $htn_reminder_6a = $('#htn_reminder_6a');
+        var serumGlucoseFasting = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobin = parseFloat($glycosylatedHemoglobin.val());
+        if (conditionToDisplayHTNReminder6() && (serumGlucoseFasting <= 5.6 || glycosylatedHemoglobin <= 5.7)) {
+            $htn_reminder_6a.show();
+        } else {
+            $htn_reminder_6a.hide();
+        }
+    };
+    displayHTNReminder6();
+
+    var displayHTNReminder6b = function () {
+        var $htn_reminder_6b = $('#htn_reminder_6b');
+        var serumGlucoseFasting = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobin = parseFloat($glycosylatedHemoglobin.val());
+        if (conditionToDisplayHTNReminder6() && (serumGlucoseFasting >= 5.6 || glycosylatedHemoglobin >= 5.7)) {
+            $htn_reminder_6b.show();
+        } else {
+            $htn_reminder_6b.hide();
+        }
+    };
+    displayHTNReminder6b();
+
+    var displayHTNReminder7 = function () {
+        var $htn_reminder_7 = $('#obs\\.htn_reminder_7');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        if (((systolicBloodValue >= 100 && systolicBloodValue <= 180) || (diastolicBloodValue >= 90 && diastolicBloodValue <= 110)) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' &&
+                (reviewOfSystemsGeneral.indexOf("590^EDEMA, LEGS^99DCT") >= 0 || reviewOfSystemsGeneral.indexOf("5963^SHORTNESS OF BREATH WITH EXERTION^99DCT") >= 0 ||
+                        reviewOfSystemsGeneral.indexOf("6021^OLIGURIA^99DCT") >= 0 || reviewOfSystemsGeneral.indexOf("6005^FOCAL WEAKNESS^99DCT") >= 0)) {
+            $htn_reminder_7.show();
+        } else {
+            $htn_reminder_7.hide();
+        }
+    };
+    displayHTNReminder7();
+
+    var $hctzNumberOfMilligram = $('#hctz_number_of_milligram');
+    var $hctzFrequencyPerDay = $('#obs\\.medication_hctz\\.medication_frequency_per_day');
+    var displayHTNReminder8 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var $htn_reminder_8 = $('#obs\\.htn_reminder_8');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var hctzNumberOfMilligram = parseFloat($hctzNumberOfMilligram.val());
+        var hctzFrequencyPerDay = $hctzFrequencyPerDay.val();
+        if (selectedVisitType != '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT' && systolicBloodValue <= 140
+                && diastolicBloodValue <= 90 &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' && isAtLeast35YearsOld() &&
+                checkReviewOfSystemsGeneralForDisplay() && currentMedication.indexOf("hctz") >= 0 &&
+                hctzNumberOfMilligram == 25 &&
+                (hctzFrequencyPerDay == '1639^MORNING^99DCT' || hctzFrequencyPerDay == '1730^EVENING^99DCT' ||
+                        hctzFrequencyPerDay == '1891^ONCE A DAY^99DCT'
+                        )
+                ) {
+            $htn_reminder_8.show();
+        } else {
+            $htn_reminder_8.hide();
+        }
+    };
+    displayHTNReminder8();
+
+    var displayHTNReminder9 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var $htn_reminder_9 = $('#obs\\.htn_reminder_9');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        var urinePregnancyTestQualitativeValue = $urinePregnancyTestQualitative.val();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var hctzNumberOfMilligram = parseFloat($hctzNumberOfMilligram.val());
+        var hctzFrequencyPerDay = $hctzFrequencyPerDay.val();
+        if (selectedVisitType == '7036^RETURN DISPENSARY VISIT^99DCT' &&
+                ((systolicBloodValue >= 140 && systolicBloodValue <= 180) ||
+                        (diastolicBloodValue >= 90 && diastolicBloodValue <= 110) ) &&
+                urinePregnancyTestQualitativeValue != '703^POSITIVE^99DCT' && isAtLeast35YearsOld() &&
+                checkReviewOfSystemsGeneralForDisplay() && currentMedication.indexOf("hctz") >= 0 &&
+                hctzNumberOfMilligram == 25 &&
+                (hctzFrequencyPerDay == '1639^MORNING^99DCT' || hctzFrequencyPerDay == '1730^EVENING^99DCT' ||
+                        hctzFrequencyPerDay == '1891^ONCE A DAY^99DCT'
+                        )
+                ) {
+            $htn_reminder_9.show();
+        } else {
+            $htn_reminder_9.hide();
+        }
+    };
+    displayHTNReminder9();
+
+    $('#obs\\.tmp_drugs\\.HCTZ').change(function () {
+        displayHTNReminder8();
+        displayHTNReminder9();
+    });
+    $hctzNumberOfMilligram.change(function () {
+        displayHTNReminder8();
+        displayHTNReminder9();
+    });
+    $hctzFrequencyPerDay.change(function () {
+        displayHTNReminder8();
+        displayHTNReminder9();
+    });
+
+    var displayHTNReminder10 = function () {
+        var $htn_reminder_10 = $('#obs\\.htn_reminder_10');
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+        if (systolicBloodValue <= 100 || diastolicBloodValue <= 50) {
+            $htn_reminder_10.show();
+        } else {
+            $htn_reminder_10.hide();
+        }
+    };
+    displayHTNReminder10();
+    /* End - Conditional display of HTN reminders */
+
+    /* Start - Conditional display of Diabetes reminders */
+
+    /* Start - DiabetesReminder1 */
+    var displayDiabetesReminder1 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var currentMedication = getCurrentMedicationValues();
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+
+        var shouldDisplay = (
+                selectedVisitType in {'7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT': 1, '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT': 1} &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        currentMedication.indexOf("metformin") < 0 && currentMedication.indexOf("glibenclamide") < 0 &&
+                        (serumGlucoseFastingVal < 5.6 || glycosylatedHemoglobinVal < 5.7)
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_1').show();
+        else
+            $('#obs\\.diabetes_reminder_1').hide();
+    }
+    displayDiabetesReminder1();
+    /* End - DiabetesReminder1 */
+
+    /* Start - DiabetesReminder2 */
+    var displayDiabetesReminder2 = function () {
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+
+        var shouldDisplay = (
+                urinePregnancyTestVal == '703^POSITIVE^99DCT' &&
+                        (serumGlucoseFastingVal >= 5.6 || glycosylatedHemoglobinVal >= 5.7)
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_2').show();
+        else
+            $('#obs\\.diabetes_reminder_2').hide();
+    }
+    displayDiabetesReminder2();
+    /* End - DiabetesReminder2 */
+
+    /* Start - DiabetesReminder3 */
+    var displayDiabetesReminder3 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var currentMedication = getCurrentMedicationValues();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+
+        var shouldDisplay = (
+                selectedVisitType in {'7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT': 1, '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT': 1} &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        currentMedication.indexOf("metformin") < 0 && currentMedication.indexOf("glibenclamide") < 0 &&
+                        ((serumGlucoseFastingVal >= 5.6 && serumGlucoseFastingVal <= 6.9) ||
+                                (glycosylatedHemoglobinVal >= 5.7 && glycosylatedHemoglobinVal <= 7.0) ||
+                                (systolicBloodValue < 140 || diastolicBloodValue < 90))
+                );
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_3').show();
+        else
+            $('#obs\\.diabetes_reminder_3').hide();
+    }
+    displayDiabetesReminder3();
+    /* End - DiabetesReminder3 */
+
+    /* Start - DiabetesReminder4 */
+    var displayDiabetesReminder4 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var currentMedication = getCurrentMedicationValues();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+        var systolicBloodValue = parseFloat($systolicBloodPressure.val());
+        var diastolicBloodValue = parseFloat($diastolicBloodPressure.val());
+
+        var shouldDisplay = (
+                selectedVisitType in {'7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT': 1, '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT': 1} &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        currentMedication.indexOf("metformin") < 0 && currentMedication.indexOf("glibenclamide") < 0 &&
+                        ((serumGlucoseFastingVal > 6.9 && serumGlucoseFastingVal <= 10) ||
+                                (glycosylatedHemoglobinVal > 7 && glycosylatedHemoglobinVal <= 9) ||
+                                (systolicBloodValue < 140 || diastolicBloodValue < 90))
+                );
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_4').show();
+        else
+            $('#obs\\.diabetes_reminder_4').hide();
+    }
+    displayDiabetesReminder4();
+    /* End - DiabetesReminder4 */
+
+    /* Start - DiabetesReminder5 */
+    var displayDiabetesReminder5 = function () {
+        /*
+         relevant="(../../current_visit_type/value = '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT' or ../../current_visit_type/value = '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT')
+         and ../../urine_pregnancy_test_qualitative/value != '703^POSITIVE^99DCT'
+         and not(selected(../../tmp_drugs, 'metformin') or
+         selected(../../tmp_drugs, 'glibenclamide'))
+         and (../../serum_glucose_fasting/value &gt; 10.0 or ../../glycosylated_hemoglobin/value &gt; 9.0)"/>
+         */
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var currentMedication = getCurrentMedicationValues();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var glycosylatedHemoglobinVal = parseFloat($glycosylatedHemoglobin.val());
+
+        var shouldDisplay = (
+                selectedVisitType in {'7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT': 1, '7035^SECOND DISPENSARY VISIT AFTER HCT ^99DCT': 1} &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        currentMedication.indexOf("metformin") < 0 && currentMedication.indexOf("glibenclamide") < 0 &&
+                        (serumGlucoseFastingVal > 10 || glycosylatedHemoglobinVal > 9)
+                );
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_5').show();
+        else
+            $('#obs\\.diabetes_reminder_5').hide();
+    }
+    displayDiabetesReminder5();
+    /* End - DiabetesReminder5 */
+
+    /* Start - DiabetesReminder6 */
+    var displayDiabetesReminder6 = function () {
+        var currentMedication = getCurrentMedicationValues();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+
+        var shouldDisplay = (
+                currentMedication.indexOf("metformin") >= 0 &&
+                        (reviewOfSystemsGeneral.indexOf("5978^NAUSEA^99DCT") >= 0 ||
+                                reviewOfSystemsGeneral.indexOf("5980^VOMITING^99DCT") >= 0 ||
+                                reviewOfSystemsGeneral.indexOf("151^ABDOMINAL PAIN^99DCT") >= 0 ||
+                                reviewOfSystemsGeneral.indexOf("16^DIARRHEA^99DCT") >= 0 ||
+                                reviewOfSystemsGeneral.indexOf("996^CONSTIPATION^99DCT") >= 0)
+                );
+
+        if (shouldDisplay) {
+            $('#obs\\.diabetes_reminder_6').show();
+            $('#diabetes_reminder6_symptoms').text(reviewOfSystemsGeneral.join(", "));
+        }
+        else
+            $('#obs\\.diabetes_reminder_6').hide();
+    }
+    displayDiabetesReminder6();
+    /* End - DiabetesReminder6 */
+
+    /* Start - DiabetesReminder7 */
+    var displayDiabetesReminder7 = function () {
+        var currentMedication = getCurrentMedicationValues();
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+
+        var shouldDisplay = (
+                currentMedication.indexOf("glibenclamide") >= 0 &&
+                        reviewOfSystemsGeneral.indexOf("7047^HYPOGLYCEMIA^99DCT") >= 0
+                );
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_7').show();
+        else
+            $('#obs\\.diabetes_reminder_7').hide();
+    };
+    displayDiabetesReminder7();
+    /* End - DiabetesReminder7 */
+
+    /* Start - DiabetesReminder8 */
+    var displayDiabetesReminder8 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var metforminCurrentMilligramVal = parseFloat($metforminCurrentMilligram.val());
+        var metforminFrequencyPerDayVal = $metforminFrequencyPerDay.val();
+
+        var shouldDisplay = (
+                selectedVisitType == '7036^RETURN DISPENSARY VISIT^99DCT' &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        serumGlucoseFastingVal >= 8 &&
+                        reviewOfSystemsGeneral.indexOf("5978^NAUSEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("151^ABDOMINAL PAIN^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("16^DIARRHEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("996^CONSTIPATION^99DCT") < 0 &&
+                        currentMedication.indexOf("metformin") >= 0 &&
+                        metforminCurrentMilligramVal == 500 &&
+                        metforminFrequencyPerDayVal == '1888^TWICE A DAY^99DCT'
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_8').show();
+        else
+            $('#obs\\.diabetes_reminder_8').hide();
+    }
+    displayDiabetesReminder8();
+    /* End - DiabetesReminder8 */
+
+    /* Start - DiabetesReminder9 */
+    var displayDiabetesReminder9 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var metforminCurrentMilligramVal = parseFloat($metforminCurrentMilligram.val());
+        var metforminFrequencyPerDayVal = $metforminFrequencyPerDay.val();
+
+        var shouldDisplay = (
+                selectedVisitType == '7036^RETURN DISPENSARY VISIT^99DCT' &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        serumGlucoseFastingVal >= 8 &&
+                        reviewOfSystemsGeneral.indexOf("5978^NAUSEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("151^ABDOMINAL PAIN^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("16^DIARRHEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("996^CONSTIPATION^99DCT") < 0 &&
+                        currentMedication.indexOf("metformin") >= 0 &&
+                        metforminCurrentMilligramVal == 750 &&
+                        metforminFrequencyPerDayVal == '1888^TWICE A DAY^99DCT'
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_9').show();
+        else
+            $('#obs\\.diabetes_reminder_9').hide();
+    }
+    displayDiabetesReminder9();
+    /* End - DiabetesReminder9 */
+
+    /* Start - DiabetesReminder10 */
+    var displayDiabetesReminder10 = function () {
+        var selectedVisitType = $currentVisitType.val();
+        var urinePregnancyTestVal = $urinePregnancyTest.val();
+        var serumGlucoseFastingVal = parseFloat($serumGlucoseFasting.val());
+        var reviewOfSystemsGeneral = getReviewOfSystemsGeneralValues();
+        var currentMedication = getCurrentMedicationValues();
+        var metforminCurrentMilligramVal = parseFloat($metforminCurrentMilligram.val());
+        var metforminFrequencyPerDayVal = $metforminFrequencyPerDay.val();
+
+        var shouldDisplay = (
+                selectedVisitType == '7036^RETURN DISPENSARY VISIT^99DCT' &&
+                        urinePregnancyTestVal != '703^POSITIVE^99DCT' &&
+                        serumGlucoseFastingVal >= 8 &&
+                        reviewOfSystemsGeneral.indexOf("5978^NAUSEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("5980^VOMITING^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("151^ABDOMINAL PAIN^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("16^DIARRHEA^99DCT") < 0 &&
+                        reviewOfSystemsGeneral.indexOf("996^CONSTIPATION^99DCT") < 0 &&
+                        currentMedication.indexOf("metformin") >= 0 &&
+                        metforminCurrentMilligramVal == 1000
+                )
+
+        if (shouldDisplay)
+            $('#obs\\.diabetes_reminder_10').show();
+        else
+            $('#obs\\.diabetes_reminder_10').hide();
+    }
+    displayDiabetesReminder10();
+    /* End - DiabetesReminder10 */
+    /* End - Conditional display of Diabetes reminders */
+
+    /*  Start - Based on Selected current visit type show or hide fields */
+    var displayPHCTReview = function () {
+        var $show_provider_id_text = $("#phct_review");
+        var selected_visit_type = $currentVisitType.val();
+        if (selected_visit_type == '7034^FIRST DISPENSARY VISIT AFTER HCT^99DCT') {
+            $("#phct_review").show();
+        } else {
+            $("#phct_review").hide();
+        }
+    };
+    /*  End - Based on Selected current visit type show or hide fields */
+
+    /* Start - Reminder triggers */
+    $birthdate.change(function () {
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder8();
+        displayHTNReminder9();
+    });
+    $currentVisitType.change(function () {
+        displayPHCTReview();
+        displayHTNReminder1();
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayDiabetesReminder1();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $urinePregnancyTest.change(function () {
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder4();
+        displayHTNReminder5();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder7();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayDiabetesReminder1();
+        displayDiabetesReminder2();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $serumGlucoseFasting.change(function () {
+        displayHTNReminder3a();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayDiabetesReminder1();
+        displayDiabetesReminder2();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $glycosylatedHemoglobin.change(function () {
+        displayHTNReminder3a();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayDiabetesReminder1();
+        displayDiabetesReminder2();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+    });
+    $systolicBloodPressure.change(function () {
+        displayHTNReminder1();
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder4();
+        displayHTNReminder5();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder7();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayHTNReminder10();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+    });
+    $('input[name="obs.tmp_drugs"]').change(function () {
+        displayHTNReminder1();
+        displayHTNReminder3b();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayDiabetesReminder1();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+        displayDiabetesReminder5();
+        displayDiabetesReminder6();
+        displayDiabetesReminder7();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $('input[name="1069^REVIEW OF SYSTEMS, GENERAL^99DCT"]').change(function () {
+        displayHTNReminder1();
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder7();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayDiabetesReminder6();
+        displayDiabetesReminder7();
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $diastolicBloodPressure.change(function () {
+        displayHTNReminder1();
+        displayHTNReminder2();
+        displayHTNReminder3a();
+        displayHTNReminder3b();
+        displayHTNReminder3c();
+        displayHTNReminder4();
+        displayHTNReminder5();
+        displayHTNReminder6();
+        displayHTNReminder6b();
+        displayHTNReminder7();
+        displayHTNReminder8();
+        displayHTNReminder9();
+        displayHTNReminder10();
+        displayDiabetesReminder3();
+        displayDiabetesReminder4();
+    });
+    $metforminCurrentMilligram.change(function () {
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+        displayDiabetesReminder10();
+    });
+    $metforminFrequencyPerDay.change(function () {
+        displayDiabetesReminder8();
+        displayDiabetesReminder9();
+    });
+
+    /* End - Reminder triggers */
+});
+
+</script>
+</html>
