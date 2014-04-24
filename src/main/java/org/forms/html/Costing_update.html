@@ -154,18 +154,21 @@
     </div>
 
 
-    <div  id="obs.admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+    <div style="display:none" class="show_admission_quiz" id="obs.admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
         <label for="obs.admission_in_past_12_months" id="obs.admission_in_past_12_months_label">Number of Admissions:<span class="required">*</span></label>
         <input class="form-control" id="obs.admission_in_past_12_months" name="obs.admission_in_past_12_months"
-               type="number" placeholder="Number of Admissions" data-concept="conceptID^Name^99DCT" required="required">
+               type="number" placeholder="Number of Admissions" data-concept="5704^NUMBER OF HOSPITALIZATIONS IN PAST YEAR^99DCT" required="required">
+        <p></p><input class="btn btn-primary" type="button" value="GO"/> <p></p>
 
-        <label class="alert alert-info" id="obs.inpatient_admission_label">For each of the admissions you listed, we are going to ask you some additional questions.</label>
+    <label class="alert alert-info" id="obs.admission_container">For each of the admissions you listed, we are going to ask you some additional questions.</label>
+    <div id="admission_container" ></div>
     </div>
-    <div id="obs.admission_details3" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
+
+    <div id="admissionModal" class="modalDialog">
+        <div>
+            <a href="#close" title="Close" class="close">close</a>
 
 
-
-        <div class="repeat">
             <div class="form-group" id="obs.admission_injury">
                 <label for="obs.admission_injury">Was the admission the result of an accident or injury?<span class="required">*</span></label>
                 <fieldset name="obs.admission_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.admission_injury_select">
@@ -437,7 +440,32 @@ $(document).ready(function () {
         }
     });
 
-    /* End - Reminder triggers */
+    $("#obs\\.admission_in_past_12_months").focusout(function(){
+        document.getElementById('admission_container').innerHTML = "" ;
+        tblHtml = '<table>'
+        for (i=1; i<= $('#obs\\.admission_in_past_12_months').val(); i +=1 ) {
+            tblHtml += '<tr>';
+            tblHtml += '<td><a href="#admissionModal"><strong>Admission '+i+'</strong></a></td>';
+            tblHtml += '</tr>';
+        }
+        tblHtml += '</table>';
+        document.getElementById('admission_container').innerHTML = tblHtml;
+    });
+
+
+
+
+
+    $('#obs\\.admitted_select').change(function () {
+        var $show_admission_quiz = $('.show_admission_quiz ');
+        if ($('#obs\\.admitted_select').val() == '1065^YES^99DCT') {
+            $show_admission_quiz.show();
+        }
+        else
+            $show_admission_quiz.hide();
+    });
+
+
 });
 
 </script>

@@ -41,13 +41,11 @@
                             <other_identifier_type/>
                             <other_identifier_value/>
                             <no_checkdigit_id_value/>
-			   <confirm_identifier_value/>
+			                <confirm_identifier_value/>
                             <ccc_identifier_value/>
                             <kni_identifier_value/>
                             <confirm_ccc_identifier_value/>
                             <confirm_kni_identifier_value/>
-
-
                         </other_identifier_type_group>
                     </patient>
                     <encounter>
@@ -207,7 +205,7 @@
 
                 </select1>
 
-
+            </repeat>
 
                 <input bind="ccc_identifier_value">
                     <label>Enter CCC Identifier</label>
@@ -234,7 +232,7 @@
                 </input>
 
 
-            </repeat>
+
         </group>
         <group appearance="field-list">
             <select1 bind="birthdate_type">
