@@ -42,15 +42,46 @@
                             <other_identifier_value/>
                             <no_checkdigit_id_value/>
                             <confirm_identifier_value/>
+
                         </other_identifier_type_group>
+
+                        <amrs_medical_record_number_identifier_type>
+                            <amrs_medical_record_number_value/>
+                        </amrs_medical_record_number_identifier_type>
+
                         <ccc_identifier_type>
                             <ccc_identifier_value/>
                             <confirm_ccc_identifier_value/>
                         </ccc_identifier_type>
+
+                        <hct_identifier_type>
+                            <hct_identifier_value/>
+                        </hct_identifier_type>
+
                         <kni_identifier_type>
                             <kni_identifier_value/>
                             <confirm_kni_identifier_value/>
                         </kni_identifier_type>
+                        
+                        <mtct_identifier_type>
+                            <mtct_identifier_value/>
+                            <confirm_mtct_identifier_value/>
+                        </mtct_identifier_type>
+                        
+                        <mtrh_hospital_number_identifier_type>
+                            <mtrh_hospital_number_identifier_value/>
+                            <confirm_mtrh_hospital_number_identifier_value/>
+                        </mtrh_hospital_number_identifier_type>
+
+                        <old_amrs_number_identifier_type>
+                            <old_amrs_number_identifier_value/>
+                            <confirm_old_amrs_number_identifier_value/>
+                        </old_amrs_number_identifier_type>
+                       
+                        <pmtc_identifier_type>
+                            <pmtc_identifier_value/>
+                        </pmtc_identifier_type>
+                        
                     </patient>
                     <encounter>
                         <encounter.encounter_datetime openmrs_table="encounter" openmrs_attribute="encounter_datetime"/>
@@ -103,53 +134,77 @@
 
 
 
-            <bind id="other_identifier_type" nodeset="/form/patient/other_identifier_type_group/other_identifier_type"  required="true()" type="string" />
-            <bind id="other_identifier_value" nodeset="/form/patient/other_identifier_type_group/other_identifier_value"
-                  constraint="regex(., '^\w+[-]?\d{1}') and (checkdigit(.))" 
-	          jr:constraintMsg="Invalid ID format and/or CheckDigit. Please Re-enter your ID."
-                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='hct_id'
-		or /form/patient/other_identifier_type_group/other_identifier_type='pmtct_id'
-		or /form/patient/other_identifier_type_group/other_identifier_type='ampath_medical_record_number'"
-                  required="true()" type="string"/>
+
+
+
+            <bind id="amrs_medical_record_number_value" nodeset="/form/patient/amrs_medical_record_number_identifier_type/amrs_medical_record_number_value"
+                  constraint="regex(., '^\w+[-]?\d{1}') and (checkdigit(.))"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='amrs_medical_record_number'"
+                  required="true()" type="string" />
 
 
             <bind id="ccc_identifier_value" nodeset="/form/patient/ccc_identifier_type/ccc_identifier_value"
                   relevant="/form/patient/other_identifier_type_group/other_identifier_type='ccc_number'"
                   required="true()" type="string" />
 
+            <bind id="confirm_ccc_identifier_value" nodeset="/form/patient/ccc_identifier_type/confirm_ccc_identifier_value"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='ccc_number'"
+                  constraint=". =/form/patient/ccc_identifier_type/ccc_identifier_value"
+                  jr:constraintMsg="ccc identifier values Identifiers do not match "
+                  required="true()" type="string" />
 
+            <bind id="hct_identifier_value" nodeset="/form/patient/hct_identifier_type/hct_identifier_value"
+                  constraint="regex(., '^\w+[-]?\d{1}') and (checkdigit(.))"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='hct_identifier'"
+                  required="true()" type="string" />
 
 
             <bind id="kni_identifier_value" nodeset="/form/patient/kni_identifier_type/kni_identifier_value"
                   relevant="/form/patient/other_identifier_type_group/other_identifier_type='kenyan_national_id_number'"
                   required="true()" type="string" />
 
-
-             <bind id="confirm_ccc_identifier_value" nodeset="/form/patient/ccc_identifier_type/confirm_ccc_identifier_value"
-                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='ccc_number'"
-                  required="true()" type="string" />
-
              <bind id="confirm_kni_identifier_value" nodeset="/form/patient/kni_identifier_type/confirm_kni_identifier_value"
                   relevant="/form/patient/other_identifier_type_group/other_identifier_type='kenyan_national_id_number'"
+                  constraint=". =/form/patient/kni_identifier_type/kni_identifier_value"
+                  jr:constraintMsg="KNI identifier values Identifiers do not match "
                   required="true()" type="string" />
 
-            <bind id="no_checkdigit_id_value" nodeset="/form/patient/other_identifier_type_group/no_checkdigit_id_value"
-                  relevant="/form/patient/other_identifier_type_group/other_identifier_type!='hct_id'
-			   and /form/patient/other_identifier_type_group/other_identifier_type!='pmtct_id'
-		           and /form/patient/other_identifier_type_group/other_identifier_type!='ampath_medical_record_number'"
-                  required="true()" type="string"/>
+            <bind id="mtct_identifier_value" nodeset="/form/patient/mtct_identifier_type/mtct_identifier_value"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='mtct_identifier'"
+                  required="true()" type="string" />
 
-            <bind id="confirm_identifier_value" nodeset="/form/patient/other_identifier_type_group/confirm_identifier_value"
-			relevant="/form/patient/other_identifier_type_group/other_identifier_type!='hct_id'
-			and /form/patient/other_identifier_type_group/other_identifier_type!='pmtct_id'
-			and /form/patient/other_identifier_type_group/other_identifier_type!='ampath_medical_record_number'"                  
+            <bind id="confirm_mtct_identifier_value" nodeset="/form/patient/mtct_identifier_type/confirm_mtct_identifier_value"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='mtct_identifier'"
+                  constraint=". =/form/patient/mtct_identifier_type/mtct_identifier_value"
+                  jr:constraintMsg="mtct identifier values Identifiers do not match "
+                  required="true()" type="string" />
 
-		          required="true()"
-		          constraint=". =/form/patient/other_identifier_type_group/no_checkdigit_id_value"
-		          jr:constraintMsg="The two Identifiers do not match" 
-	   type="string"/>
+            <bind id="mtrh_hospital_number_identifier_value" nodeset="/form/patient/mtrh_hospital_number_identifier_type/mtrh_hospital_number_identifier_value"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='mtrh_hospital_number_identifier'"
+                  required="true()" type="string" />
 
+            <bind id="confirm_mtrh_hospital_number_identifier_value" nodeset="/form/patient/mtrh_hospital_number_identifier_type/confirm_mtrh_hospital_number_identifier_value"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='mtrh_hospital_number_identifier'"
+                  constraint=". =/form/patient/mtrh_hospital_number_identifier_type/mtrh_hospital_number_identifier_value"
+                  jr:constraintMsg="mtrh_hospital_number identifier values Identifiers do not match "
+                  required="true()" type="string" />
 
+            
+            <bind id="old_amrs_number_identifier_value" nodeset="/form/patient/old_amrs_number_identifier_type/old_amrs_number_identifier_value"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='old_amrs_number_identifier'"
+                  required="true()" type="string" />
+
+            <bind id="confirm_old_amrs_number_identifier_value" nodeset="/form/patient/old_amrs_number_identifier_type/confirm_old_amrs_number_identifier_value"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='old_amrs_number_identifier'"
+                  constraint=". =/form/patient/old_amrs_number_identifier_type/old_amrs_number_identifier_value"
+                  jr:constraintMsg="old_amrs_number identifier values Identifiers do not match "
+                  required="true()" type="string" />
+            
+            <bind id="pmtc_identifier_value" nodeset="/form/patient/pmtc_identifier_type/pmtc_identifier_value"
+                  constraint="regex(., '^\w+[-]?\d{1}') and (checkdigit(.))"
+                  relevant="/form/patient/other_identifier_type_group/other_identifier_type='pmtc_identifier'"
+                  required="true()" type="string" />
+            <bind id="other_identifier_type" nodeset="/form/patient/other_identifier_type_group/other_identifier_type"  required="true()" type="string" />
 
 
         </xf:model>
@@ -196,42 +251,102 @@
             <repeat nodeset="/form/patient/other_identifier_type_group">
                 <select1 bind="other_identifier_type">
                     <label>Identifier</label>
-
+                    <item>
+                        <label>Amrs medical record number</label>
+                        <value>amrs_medical_record_number</value>
+                    </item>
                     <item>
                         <label>CCC Number</label>
                         <value>ccc_number</value>
                     </item>
-
+                    <item>
+                        <label>HCT Number</label>
+                        <value>hct_identifier</value>
+                    </item>
                     <item>
                         <label>KENYAN NATIONAL ID NUMBER</label>
                         <value>kenyan_national_id_number</value>
                     </item>
+                    <item>
+                        <label>MTCT Number</label>
+                        <value>mtct_identifier</value>
+                    </item>
+                    <item>
+                        <label>MTRH hospital Number</label>
+                        <value>mtrh_hospital_number_identifier</value>
+                    </item>
+                    <item>
+                        <label>Old AMRS ID</label>
+                        <value>old_amrs_number_identifier</value>
+                    </item>
+                    <item>
+                        <label>pMTCT Number</label>
+                        <value>pmtc_identifier</value>
+                    </item>
 
                 </select1>
             </repeat>
+        </group>
+        <group>
+
+                <input bind="amrs_medical_record_number_value">
+                    <label>Amrs medical record number</label>
+                    <hint>Identifier uses check-digit validation</hint>
+                 </input>
 
                 <input bind="ccc_identifier_value">
                     <label>Enter CCC Identifier</label>
-                    <hint>Identifier uses check-digit validation</hint>
+                    <hint>Enter valid CCC Identifier</hint>
                 </input>
-
-                <input bind="kni_identifier_value">
-                    <label>Enter KNI Identifier</label>
-                    <hint>Identifier uses check-digit validation</hint>
-                </input>
-
-
                 <input bind="confirm_ccc_identifier_value">
                     <label>Confirm CCC Identifier</label>
-                    <hint>Re-Enter Identifier</hint>
+                    <hint>Enter valid CCC Identifier</hint>
+                </input>
+                <input bind="hct_identifier_value">
+                    <label>Enter HCT Identifier</label>
+                    <hint>Identifier uses check-digit validation</hint>
+                </input>
+                <input bind="kni_identifier_value">
+                    <label>Enter KNI Identifier</label>
+                    <hint>Enter valid KNI Identifier</hint>
                 </input>
 
                 <input bind="confirm_kni_identifier_value">
                     <label>Confirm KNI Identifier</label>
-                    <hint>Re-Enter Identifier</hint>
+                    <hint>Enter valid KNI Identifier</hint>
+                </input>
+                <input bind="mtct_identifier_value">
+                    <label>Enter mtct Identifier</label>
+                    <hint>Enter valid mtct Identifier</hint>
                 </input>
 
+                <input bind="confirm_mtct_identifier_value">
+                    <label>Confirm mtct Identifier</label>
+                    <hint>Enter valid mtct Identifier</hint>
+                </input>
+                <input bind="mtrh_hospital_number_identifier_value">
+                    <label>Enter mtrh Identifier</label>
+                    <hint>Enter valid mtrh Identifier</hint>
+                </input>
 
+                <input bind="confirm_mtrh_hospital_number_identifier_value">
+                    <label>Confirm mtrh Identifier</label>
+                    <hint>Enter valid mtrh Identifier</hint>
+                </input>
+
+                <input bind="old_amrs_number_identifier_value">
+                    <label>Enter mtrh Identifier</label>
+                    <hint>Enter valid mtrh Identifier</hint>
+                </input>
+
+                <input bind="confirm_old_amrs_number_identifier_value">
+                    <label>Confirm Old AMRS Id Identifier</label>
+                    <hint>Enter valid Old AMRS Id Identifier</hint>
+                </input>
+                <input bind="pmtc_identifier_value">
+                    <label>Enter pMTC Identifier</label>
+                    <hint>Identifier uses check-digit validation</hint>
+                </input>
 
         </group>
         <group appearance="field-list">
