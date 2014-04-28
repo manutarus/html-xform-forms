@@ -10,7 +10,7 @@
     <script src="js/additional-methods.min.js"></script>
     <script src="js/muzima.js"></script>
 
-
+    <link rel="stylesheet" type="text/css" href="css/_styles.css" media="screen" />
     <link rel="stylesheet" href="../_static/js/dojo/../dijit/themes/claro/claro.css">
 
     <script>dojoConfig = {parseOnLoad: true}</script>
@@ -101,25 +101,38 @@
     </div>
     <div sty41le="display:none" class="form-group show_community_unit_mosoriot_select">
         <label for="encounter.community_unit.mosoriot">Mosoriot units:<span class="required">*</span></label>
-
         <select class="form-control" id="encounter.community_unit.mosoriot" name="encounter.community_unit.mosoriot">
             <option value="">Mosoriot</option>
             <option value="3356-3">Biribiriet</option>
-            <option value="237-8">Chepteri</option>
+            <option value="237-8">Chepterit</option>
+            <option value="3331-6">Itigo</option>
             <option value="3331-6">Kokwet</option>
-            <option value="3331-6">Mosoriot</option>
+            <option value="3331-6">Kosirai</option>
+            <option value="33351-6">Lelmokwo/Sigot</option>
+            <option value="33316-6">Mosoriot</option>
+            <option value="33371-6">Ngechek</option>
+            <option value="33313-6">Mutwot</option>
         </select>
     </div>
     <div style="display:none" class="form-group show_community_unit_turbo_select">
         <label for="encounter.community_unit.turbo3">Turbo units:<span class="required">*</span></label>
-
-
         <select class="form-control" id="encounter.community_unit.turbo3" name="encounter.community_unit.turbo3">
             <option value="">Turbo</option>
-            <option value="3356-3">Chepkemel</option>
-            <option value="237-8">Cheplaskei</option>
-            <option value="3331-6">Leseru</option>
-            <option value="3331-6">Murgor hills</option>
+            <option value="3356-3"> Chepkemel</option>
+            <option value="3357-3">Cheplaskei</option>
+            <option value="3376-3">Chepsaita</option>
+            <option value="3358-3">Cheramei</option>
+            <option value="3359-3">Leseru</option>
+            <option value="33561-3">Murgor hills</option>
+            <option value="33562-3">Murgusi</option>
+            <option value="33563-3">Ngenyilel</option>
+            <option value="33564-3">Osorongai</option>
+            <option value="33565-3">Sambut</option>
+            <option value="33566-3">Sokyot</option>
+            <option value="33567-3">Sosiani</option>
+            <option value="33568-3">Sugoi</option>
+            <option value="33569-3">Tuigoin</option>
+            <option value="33561-3">Turbo/ Kaptebee</option>
         </select>
     </div>
     <div style="display:none" class="form-group show_village">
@@ -131,16 +144,14 @@
         <label for="encounter.provider_id_select">Select RA:<span class="required">*</span></label>
         <select class="form-control" id="encounter.provider_id_select" name="encounter.provider_id_select">
             <option value="">RA's</option>
+            <option value="3335-6">Josephine Kisato</option>
+            <option value="3334-6">Catherine Chiliswa</option>
             <option value="3356-3">Jackson Rotich</option>
             <option value="237-8">Penina Kiptoo</option>
             <option value="3331-6">Kenedy Kirwa</option>
         </select>
     </div>
-    <div class="form-group show_provider_id_text">
-        <label for="encounter.provider_id">Enter RA's system-id:<span class="required">*</span></label>
-        <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id"
-               type="text" required="required">
-    </div>
+
 </div>
 
 <div class="section">
@@ -250,15 +261,15 @@
 
         <div class="form-group" id="obs.means_of_transport">
             <label for="obs.means_of_transport">What means of transport did you use to get to the hospital? <span class="required">*</span></label>
-            <fieldset name="obs.means_of_transport" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.means_of_transport_select">
-                <input id="obs.means_of_transport.yes" type="radio"  name="obs.means_of_transport_select" value="1065^YES^99DCT">
-                <label for="obs.means_of_transport.yes">On foot</label> &nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="obs.means_of_transport.no" type="radio"  name="obs.means_of_transport_select" value="1066^NO^99DCT">
-                <label for="obs.means_of_transport.no">Boda Boda</label><br>
-                <input id="obs.means_of_transport.matatu" type="radio"   name="obs.means_of_transport_select" value="1958^REFUSAL^99DCT">
-                <label for="obs.means_of_transport.matatu">Matatu</label>  &nbsp;&nbsp;&nbsp;&nbsp;
-                <input id="obs.means_of_transport.refused" type="radio"  name="obs.means_of_transport_select" value="1958^REFUSAL^99DCTx">
-                <label for="obs.means_of_transport.refused">Refused</label><br>
+            <fieldset name="obs.means_of_transport[]" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.means_of_transport_select">
+                <input id="obs.means_of_transport.yes" type="radio"  name="obs.means_of_transport_select[]" value="1065^YES^99DCT">
+                <label for="obs.means_of_transport.yes[]">On foot</label> &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.means_of_transport.no[]" type="radio"  name="obs.means_of_transport_select[]" value="1066^NO^99DCT">
+                <label for="obs.means_of_transport.no[]">Boda Boda</label><br>
+                <input id="obs.means_of_transport.matatu[]" type="radio"   name="obs.means_of_transport_select[]" value="1958^REFUSAL^99DCT">
+                <label for="obs.means_of_transport.matatu[]">Matatu</label>  &nbsp;&nbsp;&nbsp;&nbsp;
+                <input id="obs.means_of_transport.refused[]" type="radio"  name="obs.means_of_transport_select[]" value="1958^REFUSAL^99DCTx">
+                <label for="obs.means_of_transport.refused[]">Refused</label><br>
             </fieldset>
         </div>
 
@@ -1521,6 +1532,51 @@
         box-shadow: 1px 1px 3px #000;
     }
     .close:hover { background: #00d9ff; }
+
+
+    dl
+    {
+        padding: 10px;
+    }
+    dl dt
+    {
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+        border: 1px solid #cccccc;
+        margin: 0;
+    }
+    dl dt a
+    {
+
+        font-weight: bold;
+        text-decoration: none;
+        padding: 10px;
+        display: block;
+    }
+    dl dd
+    {
+
+        margin: 0;
+        overflow: hidden;
+        -webkit-transition: height 1s ease;
+        -moz-transition: height 1s ease;
+        -o-transition: height 1s ease;
+    }
+    dl dd p
+    {
+        padding: 10px;
+        margin: 0;
+    }
+    dl dd:not(:target) { height: 0; }
+    dl dd:target {  }
+    dl a.ie:hover dd,
+    dl a.ie:focus dd
+
+
+
+
+
 </style>
 
 <script type="text/javascript">
@@ -1538,12 +1594,42 @@ $(document).ready(function () {
 
 
     $("#obs\\.admission_in_past_12_months").focusout(function(){
+        $("#obs\\.bootles_of_alcohol_consumed_select").buttonset().find('label').width(200);
         document.getElementById('admission_container').innerHTML = "" ;
-        tblHtml = '<table>'
+        tblHtml = '<table><dl>'
         for (i=1; i<= $('#obs\\.admission_in_past_12_months').val(); i +=1 ) {
-            tblHtml += '<tr>';
-            tblHtml += '<td><a href="#admissionModal"><strong>Admission '+i+'</strong></a></td>';
-            tblHtml += '</tr>';
+
+
+
+            tblHtml +=
+                    '<dl><dt><a href="#Section'+i+'"><span style="color:red">Section '+i+'</span></a></dt><dd id="Section'+i+'">' +
+
+
+
+            '<div class="form-group" id="obs.admission_injury">' +
+            '<label for="obs.admission_injury">Was the admission the result of an accident or injury?<span class="required">*</span></label>' +
+            '<fieldset name="obs.admission_cause_injury" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.admission_injury_select">' +
+            '<input id="obs.admission_cause_injury.yes" type="radio"  name="obs.injury" value="1065^YES^99DCT"> ' +
+            '<label for="obs.admission_cause_injury.yes">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;' +
+            '<input id="obs.admission_cause_injury.no" type="radio"  name="obs.injury" value="1066^NO^99DCT">' +
+            '<label for="obs.admission_cause_injury.no">No</label><br>' +
+            '<input id="obs.admission_cause_injury.dont_know" type="radio"  name="obs.injury" value="1624^DO NOT KNOW^99DCT">' +
+            '<label for="obs.admission_cause_injury.dont_know">Don&#39;t Know</label>  &nbsp;&nbsp;&nbsp;&nbsp;' +
+            '<input id="obs.admission_cause_injury.refused" type="radio"   name="obs.injury" value="1958^REFUSAL^99DCT">' +
+            '<label for="obs.admission_cause_injury.refused">Refused</label>' +
+            '</fieldset>' +
+            '</div>' +
+
+
+
+
+
+
+
+
+             '</dd></dl>'
+
+
         }
         tblHtml += '</table>';
         document.getElementById('admission_container').innerHTML = tblHtml;
