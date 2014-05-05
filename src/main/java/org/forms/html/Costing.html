@@ -276,7 +276,12 @@
         <p></p><input class="btn btn-primary" type="button" value="GO"/> <p></p>
         <label class="alert alert-info" id="obs.admission_container">For each of the admissions you listed, we are going to ask you some additional questions.</label>
 
+
+        <div id="id0">id0</div>
+
         <div id="admission_container" ></div>
+
+
 
         <div>
             <p></p>
@@ -1824,6 +1829,28 @@ $(document).ready(function () {
     });
 
 
+
+
+
+
+
+
+
+    $("#obs\\.admission_in_past_12_monthsT").focusout(function(){
+        var c = 0;
+        var cloned;
+
+        for (i=0; i<= $('#obs\\.admission_in_past_12_monthsT').val(); i +=1 ) {
+//        $("button").on('click',function(){
+            cloned = $( '#id'+ i );
+            $("#id"+c).clone().attr('id', 'id'+(++c) ).insertAfter( cloned );
+
+            $("#id"+c).text('id'+c); // JUST TO TEST
+        }
+
+    });
+
+
     $("#obs\\.admission_in_past_12_months").focusout(function(){
         $("#obs\\.bootles_of_alcohol_consumed_select").buttonset().find('label').width(200);
         document.getElementById('admission_container').innerHTML = "" ;
@@ -1836,9 +1863,9 @@ $(document).ready(function () {
             '<h2><a href="#Admission '+i+'">Admission '+i+'</a></h2> ' +
                     '<div class="form-group" id="obs.admission_injury'+i+'">' +
                     '<label for="obs.admission_injury'+i+'">Was the admission the result of an accident or injury?<span class="required">*</span></label>' +
-                    '<fieldset name="obs.admission_injury_select'+i+'" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.admission_injury_select'+i+'">' +
-                    '<input id="obs.admission_cause_injury.yes'+i+'" type="radio"  name="obs.injury'+i+'" value="1065^YES^99DCT"> ' +
-                    '<label for="obs.admission_cause_injury.yes'+i+'">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;' +
+                    '<fieldset name="obs.admission_injury_select1" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.admission_injury_select1">' +
+                    '<input id="obs.admission_cause_injury.yes1" type="radio"  name="obs.injury'+i+'" value="1065^YES^99DCT"> ' +
+                    '<label for="obs.admission_cause_injury.yes1">Yes</label> &nbsp;&nbsp;&nbsp;&nbsp;' +
                     '<input id="obs.admission_cause_injury.no'+i+'" type="radio"  name="obs.injury'+i+'" value="1066^NO^99DCT">' +
                     '<label for="obs.admission_cause_injury.no'+i+'">No</label><br>' +
                     '<input id="obs.admission_cause_injury.dont_know'+i+'" type="radio"  name="obs.injury'+i+'" value="1624^DO NOT KNOW^99DCT">' +
@@ -1848,7 +1875,7 @@ $(document).ready(function () {
                     '</fieldset>' +
                     '</div>' +
 
-                    '<div class="form-group"  id="obs.admission_disease'+i+'" data-concept="1901^OTHER MEDICATION ORDER^99DCT">' +
+                    '<div style="display:none" class="form-group validate_participant_id"  id="obs.admission_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">' +
                     '<label>was the admission the result of any specific disease e.g malaria, typhoid, hypertension etc?<span class="required">*</span></label> ' +
                     '<div class="form-group"> ' +
                     '<fieldset  name="obs.admission_cause_disease'+i+'" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.admission_disease_select'+i+'">' +
@@ -1862,7 +1889,7 @@ $(document).ready(function () {
                     '<label for="obs.admission_cause_disease.refused'+i+'">Refused</label> ' +
                     '</fieldset>' +
                     '</div>' +
-                    '<div class="form-group " id="obs.visit_specific_disease_div'+i+'">' +
+                    '<div style="display:none" class="form-group" id="obs.visit_specific_disease_div'+i+'">' +
                     '<label>What was/were the reason(s)/disease(s)<span class="required">*</span></label>' +
                     '<div class="section repeat">' +
                     '<fieldset  name="obs.visit_disease_options'+i+'" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.visit_disease_options'+i+'">' +
@@ -1939,13 +1966,31 @@ $(document).ready(function () {
 
 
                     ' </section>'
+
+
+
+
+
+
+
         }
         tblHtml += '</div>';
         document.getElementById('admission_container').innerHTML = tblHtml;
     });
 
 
+    $('#obs\\.admission_injury_select1').change(function () {
+//                var participant_id = $('#obs\\.admission_injury_select'+i+'');
+        var $validate_participant_id = $('.validate_participant_id');
 
+//        if(participant_id <101001 || participant_id>225000)
+        if($("#obs\\.admission_cause_injury\\.yes1").is(':checked')) {
+            $validate_participant_id.show();
+        }
+
+        else
+            $validate_participant_id.hide();
+    });
 
 
 
