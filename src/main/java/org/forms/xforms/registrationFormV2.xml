@@ -145,6 +145,7 @@
 
             <bind id="ccc_identifier_value" nodeset="/form/patient/ccc_identifier_type/ccc_identifier_value"
                   relevant="/form/patient/other_identifier_type_group/other_identifier_type='ccc_number'"
+                  constraint="regex(.,'[0-9]{5}[-][0-9]{5}$')" jr:constraintMsg="Invalid CCC Number"
                   required="true()" type="string" />
 
             <bind id="confirm_ccc_identifier_value" nodeset="/form/patient/ccc_identifier_type/confirm_ccc_identifier_value"
@@ -335,7 +336,7 @@
                 </input>
 
                 <input bind="old_amrs_number_identifier_value">
-                    <label>Enter mtrh Identifier</label>
+                    <label>Enter Old AMRS Identifier</label>
                     <hint>Enter valid mtrh Identifier</hint>
                 </input>
 
