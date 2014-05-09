@@ -269,6 +269,18 @@
             <label for="obs.admitted.refused">Refused</label>
         </fieldset>
     </div>
+
+
+    <div id ="try4">
+    <label >No</label><br>
+    <input type="text" id="try4txt" name="try4txt" />
+    </div>
+
+
+    <div id ="try5">
+        <label >NEW NEW</label><br>
+    </div>
+
     <div  id="obs.admission_details" data-concept="1901^OTHER MEDICATION ORDER^99DCT">
         <label>How many times were you admitted overnight to a hospital in the past 12 months?<span class="required">*</span></label>
         <input class="form-control" id="obs.admission_in_past_12_months" name="obs.admission_in_past_12_months"
@@ -277,7 +289,7 @@
         <label class="alert alert-info" id="obs.admission_container">For each of the admissions you listed, we are going to ask you some additional questions.</label>
 
 
-        <div id="id0">id0</div>
+
 
         <div id="admission_container" ></div>
 
@@ -1817,7 +1829,6 @@ $(document).ready(function () {
 
 
 
-
     $('#encounter\\.participant_id').change(function () {
         var participant_id = $('#encounter\\.participant_id');
         var $validate_participant_id = $('.validate_participant_id');
@@ -1854,10 +1865,19 @@ $(document).ready(function () {
     $("#obs\\.admission_in_past_12_months").focusout(function(){
         $("#obs\\.bootles_of_alcohol_consumed_select").buttonset().find('label').width(200);
         document.getElementById('admission_container').innerHTML = "" ;
-
+        var counter = 0;
         tblHtml = '<div class="accordion vertical">'
 
         for (i=1; i<= $('#obs\\.admission_in_past_12_months').val(); i +=1 ) {
+            counter++;
+            $('#try4txt').clone(true).appendTo($('#try5'));
+
+            $('#try4txt').attr('name', 'realname'+counter);
+            $('#try4txt').attr('id', 'realId'+counter);
+
+
+
+
             tblHtml +=
             '<section id="Admission '+i+'">' +
             '<h2><a href="#Admission '+i+'">Admission '+i+'</a></h2> ' +
@@ -1875,7 +1895,14 @@ $(document).ready(function () {
                     '</fieldset>' +
                     '</div>' +
 
-                    '<div style="display:none" class="form-group validate_participant_id"  id="obs.admission_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">' +
+
+                    '<input type="checkbox" autocomplete="off" onchange="asfd(this.checked);"/> ' +
+
+                    '<div id="renew" style="display: none ;"> ' +
+                    '........Content......... ' +
+                    '</div> ' +
+
+                    '<div style="display:none" class="form-group doosomething"  id="obs.admission_disease" data-concept="1901^OTHER MEDICATION ORDER^99DCT">' +
                     '<label>was the admission the result of any specific disease e.g malaria, typhoid, hypertension etc?<span class="required">*</span></label> ' +
                     '<div class="form-group"> ' +
                     '<fieldset  name="obs.admission_cause_disease'+i+'" data-concept="1901^OTHER MEDICATION ORDER^99DCT" id="obs.admission_disease_select'+i+'">' +
@@ -1965,6 +1992,7 @@ $(document).ready(function () {
             '</div>' +
 
 
+
                     ' </section>'
 
 
@@ -1976,20 +2004,44 @@ $(document).ready(function () {
         }
         tblHtml += '</div>';
         document.getElementById('admission_container').innerHTML = tblHtml;
+        function asfd(str)
+        {
+            if(str==true)
+            {
+                jQuery('div#rene.innerHTML').show();
+            }
+            else
+            {
+                jQuery('div#renew').hide();
+            }
+        }
     });
 
 
-    $('#obs\\.admission_injury_select1').change(function () {
-//                var participant_id = $('#obs\\.admission_injury_select'+i+'');
-        var $validate_participant_id = $('.validate_participant_id');
+    var doosomething = function() {
+        // Doo something
+        var $validate_participant_id3 = $('.validate_participant_id3');
 
-//        if(participant_id <101001 || participant_id>225000)
-        if($("#obs\\.admission_cause_injury\\.yes1").is(':checked')) {
-            $validate_participant_id.show();
+        if($("#obs\\.admission_cause_injury\\.yes1\\.innerHTML").is(':checked')) {
+            $validate_participant_id3.show();
         }
 
         else
-            $validate_participant_id.hide();
+            $validate_participant_id3.hide();
+    }
+
+
+    $('#obs\\.admission_injury_select1\\.innerHTML').change(function () {
+//                var participant_id = $('#obs\\.admission_injury_select'+i+'');
+        var $validate_participant_id2 = $('.validate_participant_id2');
+
+//        if(participant_id <101001 || participant_id>225000)
+        if($("#obs\\.admission_cause_injury\\.yes1\\.innerHTML").is(':checked')) {
+            $validate_participant_id2.show();
+        }
+
+        else
+            $validate_participant_id2.hide();
     });
 
 
