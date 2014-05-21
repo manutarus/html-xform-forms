@@ -1,0 +1,339 @@
+<html>
+<head>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/muzima.css" rel="stylesheet">
+    <link href="css/ui-darkness/jquery-ui-1.10.4.custom.min.css" rel="stylesheet">
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jquery-ui-1.10.4.custom.min.js"></script>
+    <script src="js/jquery.validate.min.js"></script>
+    <script src="js/additional-methods.min.js"></script>
+    <script src="js/muzima.js"></script>
+
+    <title>Dispensary Form</title>
+</head>
+<body class="col-md-8 col-md-offset-2">
+<div id="pre_populate_data"></div>
+<form id="dispensary_form" name="dispensary_form">
+
+    <h2 class="text-center">Dispensary Confirmation Form</h2>
+
+    <div class="section">
+        <h3>Demographics</h3>
+
+        <div class="form-group">
+            <input class="form-control" id="patient.uuid"
+                   name="patient.uuid" type="hidden" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.medical_record_number">AMRS ID Number:</label>
+            <input class="form-control" id="patient.medical_record_number"
+                   name="patient.medical_record_number" type="text" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.family_name">Family Name:</label>
+            <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+                   readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.given_name">Given Name:</label>
+            <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+                   readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.middle_name">Middle Name:</label>
+            <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+                   readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label for="patient.sex">Gender:</label>
+            <select class="form-control" id="patient.sex" name="patient.sex" readonly="readonly">
+                <option value="">...</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="patient.birthdate">Date Of Birth:</label>
+            <input class="form-control datepicker nonFutureDate" id="patient.birthdate" name="patient.birthdate" type="text"
+                   readonly="readonly">
+        </div>
+    </div>
+    <div class="section">
+
+        <div class="form-group">
+            <label for="encounter.encounter_datetime">Encounter Date:<span class="required">*</span></label>
+            <input class="form-control datepicker nonFutureDate" id="encounter.encounter_datetime"
+                   name="encounter.encounter_datetime"  type="text"  readonly="readonly"
+                   required="required">
+        </div>
+        <h3>Household Information</h3>
+
+
+        <div class="form-group">
+            <label for="patient.household_household_id">Household id:<span class="required">*</span></label>
+            <input class="form-control" id="patient.household_household_id" type="text" required="required" placeholder="House hold Id">
+        </div>
+
+        <div class="form-group show_provider_id_text">
+            <label for="encounter.provider_id">Provider Id:<span class="required">*</span></label>
+            <input class="form-control checkDigit" id="encounter.provider_id" name="encounter.provider_id"
+                   type="text" required="required">
+        </div>
+
+
+        <div class="form-group">
+            <label for="encounter.location_id">Ampath site/satellite clinic location:<span class="required">*</span></label>
+            <input class="form-control" id="encounter.location_id" type="text" placeholder="Start typing location...">
+            <input class="form-control" name="encounter.location_id" type="hidden">
+        </div>
+
+          </div>
+    <div class="section">
+
+        <div class="form-group">
+            <label for="allowed_in">Allowed in?</label>
+            <select class="form-control" id="allowed_in" name="allowed_in">
+                <option value="">...</option>
+                <option value="A">Accepted</option>
+                <option value="D">Declined</option>
+                <option value="NH">Not home</option>
+                <option value="RLD">Requested later date</option>
+            </select>
+        </div>
+
+
+
+
+        <div class="form-group">
+
+            <label for="members_over_13">No of members &gt;= 13 years:<span class="required">*</span></label>
+            <input class="form-control" id="members_over_13"
+                   name="members_over_13"
+                   type="number" data-concept="7630^NUMBER OF HOUSEHOLD MEMBERS 13 AND OLDER^99DCT" required="required">
+        </div>
+
+        <div class="form-group">
+
+            <label for="children_less_13">No of children &lt; 13 years:<span class="required">*</span></label>
+            <input class="form-control" id="children_less_13"
+                   name="children_less_13"
+                   type="number" data-concept="7631^NUMBER OF HOUSEHOLD MEMBERS LESS THAN 13^99DCT" required="required">
+        </div>
+
+
+        <div class="form-group">
+            <label for="total-number-of-house-hold-members">Total number of house hold members eligible for testing<span class="required">*</span></label>
+            <input class="form-control" id="total-number-of-house-hold-members"
+                   name="total-number-of-house-hold-members" type="NUMBER"
+                   type="number" data-concept="6801^NUMBER OF HOUSEHOLD MEMBERS^99DCT" required="required">
+        </div>
+        </div>
+    <div class="section">
+        <h3>Household member definition</h3>
+
+        <div class="form-group">
+            <label for="no_of_bed_net"> Number of nets<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="no_of_bed_net" required="required"
+                   name="no_of_bed_net" type="number"
+                   data-concept="6866^NUMBER OF BEDNETS IN HOUSEHOLD^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="number-of-nets-provided"> Number of nets provided<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="number-of-nets-provided" required="required"
+                   name="number-of-nets-provided" type="number"
+                   data-concept="7629^NUMBER OF BEDNETS ISSUED PER HOUSEHOLD^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="number-of-nets-provided">Voucher ID of net provided<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="voucher-id-net-provided" required="required"
+                   name="voucher-id-net-provided" type="number"
+                   data-concept="7633^VOUCHER ID FOR BEDNET^99DCT">
+        </div>
+        </div>
+
+    <div class="section">
+        <h3>Socio economic questions</h3>
+
+        <div class="form-group">
+            <label for="number-of-nets-provided">Total land owned<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="total-land-owned" required="required"
+                   name="total-land-owned" type="number"
+                   data-concept="6304^TOTAL LAND HOUSEHOLD CURRENTLY OWN^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="number-of-nets-provided">Number of cows owned<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="total-land-owned" required="required"
+                   name="total-land-owned" type="number"
+                   data-concept="6304^TOTAL LAND HOUSEHOLD CURRENTLY OWN^99DCT">
+        </div>
+
+
+
+
+
+        <div class="form-group">
+            <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
+                   type="hidden" required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="patient.phone">Phone:</label>
+            <input class="form-control phoneNumber" id="patient.phone" name="patient.phone" type="tel">
+        </div>
+
+    </div>
+    </form>
+</body>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#save_draft').click(function () {
+            document.saveDraft();
+        });
+
+        $('#submit_form').click(function(){
+            document.submit();
+        });
+
+        $('#phct_encounter_form').validate({
+            rules: {
+                pulse: {
+                    number: true,
+                    range: [0, 230]
+                },
+                temperature_c: {
+                    number: true,
+                    range: [25, 43]
+                },
+                weight_kg: {
+                    number: true,
+                    range: [0, 250]
+                },
+                height_cm: {
+                    number: true,
+                    range: [10, 228]
+                },
+                glycosylated_hemoglobin: {
+                    number: true,
+                    range: [0, 20]
+                }
+            },
+            submitHandler: function (form) {
+                $('#result').html(JSON.stringify($('form').serializeEncounterForm(),undefined,2));
+            }
+        });
+    var fullDate = new Date()
+    var twoDigitMonth = ((fullDate.getMonth().length+1) === 1)? (fullDate.getMonth()+1) : '0' + (fullDate.getMonth()+1);
+    var currentDate = fullDate.getFullYear() + "-" + twoDigitMonth + "-" + fullDate.getDate();
+    $("#encounter\\.encounter_datetime").val(currentDate);
+
+    navigator.geolocation.getCurrentPosition (function (pos)
+    {
+        var lat = pos.coords.latitude;
+        var lng = pos.coords.longitude;
+        $("#lat").text (lat);
+        $("#lng").text (lng);
+    });
+
+
+    var dispensaryName = [
+        {"val": "5", "label": "Amukura"},
+        {"val": "55", "label": "Bumala A"},
+        {"val": "83", "label": "Bumala B"},
+        {"val": "4", "label": "Burnt Forest"},
+        {"val": "19", "label": "Busia"},
+        {"val": "7", "label": "Chulaimbo"},
+        {"val": "17", "label": "Iten"},
+        {"val": "18", "label": "Kabarnet"},
+        {"val": "23", "label": "Khuyangu"},
+        {"val": "11", "label": "Kitale"},
+        {"val": "68", "label": "MARIGAT"},
+        {"val": "59", "label": "MAUTUMA"},
+        {"val": "77", "label": "Moiben"},
+        {"val": "2", "label": "Mosoriot"},
+        {"val": "9", "label": "Mt. Elgon"},
+        {"val": "6", "label": "Naitiri"},
+        {"val": "79", "label": "Nambale"},
+        {"val": "21", "label": "Non-AMPATH Site"},
+        {"val": "22", "label": "None"},
+        {"val": "20", "label": "Port Victoria"},
+        {"val": "73", "label": "Soy"},
+        {"val": "12", "label": "Teso"},
+        {"val": "3", "label": "Turbo"},
+        {"val": "16", "label": "Unknown"},
+        {"val": "8", "label": "Webuye"},
+        {"val": "28", "label": "Ziwa"}
+    ];
+
+    $('#encounter\\.location_id').autocomplete({
+        source: dispensaryName,
+        create: function(event,ui){
+            var location_val = $('input[name="encounter\\.location_id"]').val();
+            $.each(dispensaryName, function (i, elem) {
+                if (elem.val == location_val) {
+                    $('#encounter\\.location_id').val(elem.label)
+                }
+            });
+        },
+        select: function (event, ui) {
+            $('input[name="encounter\\.location_id"]').val(ui.item.val  );
+            $('#encounter\\.location_id').val(ui.item.label);
+            return false;
+        }
+    });
+
+
+        var butula_locations={
+                "Butula":{"Butula":
+                    {"Marachi East":{
+                        "Elukongo":["Buyaiyi","Chengo A","Chengo B","Siribo A","Siribo B","Mauko A","Mauko B","Namaterema","Makwara","Malomba A","Malomba B","Emafubu","Makhubabi","Buhuyu","Buhuyi Town","Sirandala"],
+                        "Tingolo":["Siunga A","Siunga B","Mungabo","Namaika","Munyenya","Simakola","Esigulu","Khurana","Kalalani","Esibina A","Esibina B","Eluche A","Eluche B","Mulwanda","Tingolo","Buloma","Lukhakha A","Lukhakha B","Lukhakha C","Masendebale A","Masendebale B"],
+                        "BUMALA (B)":["Enango A","Enango B","Bumala A","Bumala B","Bumala C","Buduma A","Buduma B","Buduma C","Kongolo","Apala","Isongo A","Isongo B","Iseka","Emwaku","Musibiriri","Enango A","Enango B","Bumala A","Bumala B","Bumala C","Buduma A"]},
+
+
+                    "Bumala A":{
+                        "BUSIRE":["Bumala","Busire","Sigulu","Sitoto","Mukwayo","Mayoni"],
+                        "Bukhala":["Ibanda","Bukhale","Musire","Masebule","Isongo"],
+                        "Bumala":["Bumala A","Bumala Central","Bumala Town"]},
+
+
+                    "Bujumba":{
+                        "Ikonzo":["Khulunyu A","Khulunyu B","Ikonzo A","Ikonzo B","Ikonzo C","Dadira A","Dadira B","Sirikhaya A","Sirikhaya B"],
+                        "Namwitsula":["Khuyala","Bukulumu ","Bukhula","Iyabo","Busibi","Namwitsula"],
+                        "Bujumba":["Nebolola","Kwikali","Bujumba","Bumina","Madola","Tingale","Buranga","Bukwaku A","Bukwaku B","Busire A","Busire B","Lwanya","Siroba","Kengo","Bukhuma","Sikota"],
+                        "Burinda":["Boro Kisumu","Burinda","Boro Nango","Nyahobe","Luminyi","Busibula","Nyamwanga A","Nyamwanga B","Buriya","Ogwaro"]},
+
+
+                    "Marachi Central":{
+                        "Kingadole":["Sigomere A","Sigomere B","Busaba","Simoni A","Simoni B","Simoni C","Sieywe","Muyeye A","Muyeye B","Musoma","Bumwaya A","Bumwaya B","Bumwaya C","Busakadi A","Busakadi B","Nyaluanda","Munongo","Kingadole A","Kingadole B","Sidukhumi","Shibale"],
+                        "Esikoma":["Bujwanga","Khuluchina","Bumanyi","Sikoma","Siamakond","Madwele","Masinde","Mundasi A","Mundasi B","Esieywe","Bidonge","Emagombe","Idudi","Elunyiko","Emukhuyu","Neela East","Neela West","Burumbutsi","Mabanza","Ibanda","Saka"],
+                        "Bukahalalire":["Igula West","Igula East","Butunyi","Murumba","Simuli","Mamba","Nyabula","Agola","Muguli","Bukahalire","Bumagunda","Randabu","Bufisi","Khusafu","Siguli","Enduru","Emamba","Munyenya","Busiada","Bumanyi"]},
+
+
+                    "ELugulu":{
+                        "Bulemia":["Enakaywa A","Enakaywa B","Enakaywa C","Enakaywa D","Busirangombe","Bukalama A","Bukalama B","Bukalama c","Bukalama D","Madola A","Madola B","Bulemia A","Bulemia B","Bulemia C"],
+                        "Namusala":["Bugengi","Mungambwa","Lisumu","Musoma","Bulindo","Namsala A","Namsala B","Bukhuma"],
+                        "Mukweso":["Esibembe","Elara A","Elara B","Mungabo","Elugulu","Namudoda","Igangu","Mabanga","Masiebi","Budama","Mukweso","Elwanda"],
+                        "Bulwani":["Imanga","Bumakhutu","Budunga","Bulwani A","Bulwani B","Bulwani C"],
+                        "Bwaliro":["Bwaliro A","Bwaliro B","Bwaliro C","Mukane","Sikura"]},
+
+                     "Elukhari":{
+                        "Kanjala":["Bukuyudi ","Kanjala A","Kanjala B","Siwololo"],
+                        "Sikarira":["Khurana A","Khurana B","Namasale","Namakholo","Idokho","Enandi","Mundaa","Nyalara","Makutano","Butula"],
+                        "Bukati":["Bukanga","Elwanya","Bukati","Khumukongolo","Nyapera","Ebuyumbu","Madowa","Emurale","Elukhari"]}
+
+
+                    }
+                }
+        };
+
+    });
+
+
+</script>
+</html>
