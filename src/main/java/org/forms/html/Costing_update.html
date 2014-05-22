@@ -93,34 +93,40 @@
         </select>
     </div>
 
-    <div class="form-group">
-        <label>Community Unit<span class="required">*</span></label>
-        <select class="form-control optgroup select_bc" id="encounter.location_id" name="encounter.location_id" required="required" size=1>
-            <option value="0">---</option>
-            <option value="2">Biribiriet</option>
-            <option value="3">Chepkemel</option>
-            <option value="4">Cheplaskei</option>
-            <option value="5">Chepsaita</option>
-            <option value="6">Chepteri</option>
-            <option value="7">Itigo</option>
-            <option value="8">Kokwet</option>
-            <option value="9">Kingwal</option>
-            <option value="10">Lelmokwo</option>
-            <option value="11">Leseru</option>
-            <option value="12">Mosoriot</option>
-            <option value="13">Murgor hills</option>
-            <option value="14">Murgusi</option>
-            <option value="15">Ngechek</option>
-            <option value="16">Ngenyilel</option>
-            <option value="17">Osorongai</option>
-            <option value="18">Sambu</option>
-            <option value="19">Sigo</option>
-            <option value="20">Sokyot</option>
-            <option value="21">Sosian</option>
-            <option value="22">Sugoi</option>
-            <option value="23">Tuigoin</option>
-            <option value="24">Sosian</option>
-            <option value="25">Turbo/Kaptebee</option>
+    <div style="display:none" class="form-group show_community_unit_mosoriot_select">
+        <label for="encounter.community_unit.mosoriot">Mosoriot units:<span class="required">*</span></label>
+        <select class="form-control" id="encounter.community_unit.mosoriot" name="encounter.community_unit.mosoriot">
+            <option disabled selected value="">Mosoriot units</option>
+            <option value="111">Biribiriet</option>
+            <option value="133">Chepterit</option>
+            <option value="112">Itigo</option>
+            <option value="114">Kokwet</option>
+            <option value="115">Kosirai</option>
+            <option value="118">Lelmokwo/Sigot</option>
+            <option value="221">Mosoriot</option>
+            <option value="194">Ngechek</option>
+            <option value="109">Mutwot</option>
+        </select>
+    </div>
+    <div style="display:none" class="form-group show_community_unit_turbo_select">
+        <label for="encounter.community_unit.turbo3">Turbo units:<span class="required">*</span></label>
+        <select class="form-control" id="encounter.community_unit.turbo3" name="encounter.community_unit.turbo3">
+            <option disabled selected value="">Turbo units</option>
+            <option value="50"> Chepkemel</option>
+            <option value="51">Cheplaskei</option>
+            <option value="72">Chepsaita</option>
+            <option value="73">Cheramei</option>
+            <option value="75">Leseru</option>
+            <option value="76">Murgor hills</option>
+            <option value="77">Murgusi</option>
+            <option value="57">Ngenyilel</option>
+            <option value="44">Osorongai</option>
+            <option value="63">Sambut</option>
+            <option value="54">Sokyot</option>
+            <option value="56">Sosiani</option>
+            <option value="98">Sugoi</option>
+            <option value="103">Tuigoin</option>
+            <option value="126">Turbo/ Kaptebee</option>
         </select>
     </div>
 
@@ -132,9 +138,13 @@
         <label for="encounter.provider_id">Provider ID:</label>
         <select class="form-control optgroup select_bc" id="encounter.provider_id" name="encounter.provider_id" required="required" size=1>
             <option value="">---</option>
-            <option value="4-2">Jackson Rotich</option>
-            <option value="3-4">Penina Kiptoo</option>
-            <option value="2271-5">Kenedy Kirwa</option>
+            <option value="3335-6">Josephine Kisato</option>
+            <option value="3334-6">Catherine Chiliswa</option>
+            <option value="3337-6">Derek Levembe</option>
+            <option value="3364-6">Daniel Malakwen</option>
+            <option value="3356-3">Jackson Rotich</option>
+            <option value="237-8">Penina Kiptoo</option>
+            <option value="3331-6">Keney Kirwa</option>
         </select>
     </div>
 </div>
@@ -350,56 +360,7 @@
     .optgroup { font-size:25px;
         background:rgba(71, 42, 22, 0.8);
     }
-    .modalDialog {
-        position: fixed;
-        font-family: Arial, Helvetica, sans-serif;
-        top: 0;
-        right: 0;
-        bottom: 0;
-        left: 0;
-        background: rgba(0,0,0,0.8);
-        z-index: 99999;
-        opacity:0;
-        -webkit-transition: opacity 400ms ease-in;
-        -moz-transition: opacity 400ms ease-in;
-        transition: opacity 400ms ease-in;
-        pointer-events: none;
-    }
-    .modalDialog:target {
-        opacity:1;
-        pointer-events: auto;
-    }
-    .modalDialog > div {
-        width: 90%;
-        height: 90%;
-        position: relative;
-        margin: 3% auto;
-        padding: 5px 20px 13px 20px;
-        border-radius: 10px;
-        background: #fff;
-        background: -moz-linear-gradient(#fff, #999);
-        background: -webkit-linear-gradient(#fff);
-        background: -o-linear-gradient(#fff, #999);
-    }
-    .close {
-        background: #606061;
-        color: #FFFFFF;
-        line-height: 70px;
-        position: absolute;
-        right: 12px;
-        text-align: center;
-        top: 10px;
-        width: 70px;
-        text-decoration: none;
-        font-weight: bold;
-        -webkit-border-radius: 12px;
-        -moz-border-radius: 12px;
-        border-radius: 12px;
-        -moz-box-shadow: 1px 1px 3px #000;
-        -webkit-box-shadow: 1px 1px 3px #000;
-        box-shadow: 1px 1px 3px #000;
-    }
-    .close:hover { background: #00d9ff; }
+
 </style>
 
 <script type="text/javascript">
@@ -453,10 +414,6 @@ $(document).ready(function () {
         document.getElementById('admission_container').innerHTML = tblHtml;
     });
 
-
-
-
-
     $('#obs\\.admitted_select').change(function () {
         var $show_admission_quiz = $('.show_admission_quiz ');
         if ($('#obs\\.admitted_select').val() == '1065^YES^99DCT') {
@@ -464,6 +421,36 @@ $(document).ready(function () {
         }
         else
             $show_admission_quiz.hide();
+    });
+
+    $('#person_address\\.address4').change(function () {
+        var $show_community_unit_mosoriot_select = $('.show_community_unit_mosoriot_select');
+        var $show_community_unit_turbo_select = $('.show_community_unit_turbo_select');
+        var $show_village = $('.show_village');
+        if($("#person_address\\.address4").val()==2) {
+
+            $show_community_unit_mosoriot_select.show();
+            $show_community_unit_turbo_select.hide();
+        }
+        if($("#person_address\\.address4").val()==3){
+            $show_community_unit_turbo_select.show();
+            $show_community_unit_mosoriot_select.hide();
+        }
+        $show_village.show();
+    });
+
+    $('#obs\\.admitted_select').change(function () {
+        var $show_admission_quiz = $('.show_admission_quiz');
+        var $show_admission_quiz = $('.show_admission_qui');
+        if($("#person_address\\.address4").val()=="1065^YES^99DCT") {
+
+            $show_admission_quiz.show();
+
+        }
+        else
+        {
+            $show_admission_quiz.hide();
+        }
     });
 
 
