@@ -18,47 +18,7 @@
 
     <h2 class="text-center">Dispensary Confirmation Form</h2>
 
-    <div class="section">
-        <h3>Demographics</h3>
 
-        <div class="form-group">
-            <input class="form-control" id="patient.uuid"
-                   name="patient.uuid" type="hidden" readonly="readonly">
-        </div>
-        <div class="form-group">
-            <label for="patient.medical_record_number">AMRS ID Number:</label>
-            <input class="form-control" id="patient.medical_record_number"
-                   name="patient.medical_record_number" type="text" readonly="readonly">
-        </div>
-        <div class="form-group">
-            <label for="patient.family_name">Family Name:</label>
-            <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
-                   readonly="readonly">
-        </div>
-        <div class="form-group">
-            <label for="patient.given_name">Given Name:</label>
-            <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
-                   readonly="readonly">
-        </div>
-        <div class="form-group">
-            <label for="patient.middle_name">Middle Name:</label>
-            <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
-                   readonly="readonly">
-        </div>
-        <div class="form-group">
-            <label for="patient.sex">Gender:</label>
-            <select class="form-control" id="patient.sex" name="patient.sex" readonly="readonly">
-                <option value="">...</option>
-                <option value="M">Male</option>
-                <option value="F">Female</option>
-            </select>
-        </div>
-        <div class="form-group">
-            <label for="patient.birthdate">Date Of Birth:</label>
-            <input class="form-control datepicker nonFutureDate" id="patient.birthdate" name="patient.birthdate" type="text"
-                   readonly="readonly">
-        </div>
-    </div>
     <div class="section">
 
         <div class="form-group">
@@ -124,10 +84,6 @@
             </select>
         </div>
 
-
-
-
-
     </div>
     <div class="section">
 
@@ -141,8 +97,6 @@
                 <option value="RLD">Requested later date</option>
             </select>
         </div>
-
-
 
 
         <div class="form-group">
@@ -206,24 +160,232 @@
 
         <div class="form-group">
             <label for="number-of-nets-provided">Number of cows owned<span class="required">*</span></label>
-            <input class="form-control isDecimal" id="total-land-owned" required="required"
-                   name="total-land-owned" type="number"
-                   data-concept="6304^TOTAL LAND HOUSEHOLD CURRENTLY OWN^99DCT">
+            <input class="form-control isDecimal" id="total_number_of_cattle_household_currently_own" required="required"
+                   name="total_number_of_cattle_household_currently_own" type="number"
+                   data-concept="6305^TOTAL NUMBER OF CATTLE HOUSEHOLD CURRENTLY OWN^99DCT">
         </div>
 
-
-
-
+        <div class="form-group">
+            <label for="number-of-nets-provided">Number of goats owned?:<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="total_number_of_goats_household_currently_own" required="required"
+                   name="total_number_of_goats_household_currently_own" type="number"
+                   data-concept="6306^TOTAL NUMBER OF GOATS HOUSEHOLD CURRENTLY OWN^99DCT">
+        </div>
 
         <div class="form-group">
-            <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
-                   type="hidden" required="required">
+            <label for="number-of-nets-provided">Number of sheep owned?:<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="total_number_of_sheep_household_currently_own" required="required"
+                   name="total_number_of_sheep_household_currently_own" type="number"
+                   data-concept="6307^TOTAL NUMBER OF SHEEP HOUSEHOLD CURRENTLY OWN^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="number-of-nets-provided">Children between 3-20 yrs on household?:<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="total_children_age_between_3_and_20_living_in_home" required="required"
+                   name="total_children_age_between_3_and_20_living_in_home" type="number"
+                   data-concept="6302^TOTAL CHILDREN AGE BETWEEN 3 AND 20 LIVING IN HOME^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="number-of-nets-provided">Number attending school or educational institution?:<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="number_of_household_members_currently_attending_school" required="required"
+                   name="number_of_household_members_currently_attending_school" type="number"
+                   data-concept="7233^NUMBER OF HOUSEHOLD MEMBERS CURRENTLY ATTENDING SCHOOL^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="number-of-nets-provided"># of members &gt;=13 years?:<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="number_of_household_members_13_and_older_eligible_for_hiv_test" required="required"
+                   name="number_of_household_members_13_and_older_eligible_for_hiv_test" type="number"
+                   data-concept="7634^NUMBER OF HOUSEHOLD MEMBERS 13 AND OLDER ELIGIBLE FOR HIV TEST^99DCT">
+        </div>
+
+        <div class="form-group">
+            <label for="number-of-nets-provided"># of children &lt; 13 years:<span class="required">*</span></label>
+            <input class="form-control isDecimal" id="number_of_household_members_less_than_13_eligible_for_hiv_test" required="required"
+                   name="number_of_household_members_less_than_13_eligible_for_hiv_test" type="number"
+                   data-concept="7635^NUMBER OF HOUSEHOLD MEMBERS LESS THAN 13 ELIGIBLE FOR HIV TEST^99DCT">
+        </div>
+    </div>
+
+    <div class="section">
+        <h3>Individual Household Member</h3>
+
+        <div class="form-group">
+            <input class="form-control" id="patient.uuid"
+                   name="patient.uuid" type="hidden">
+        </div>
+        <div class="form-group">
+            <label for="patient.medical_record_number">AMRS ID Number:</label>
+            <input class="form-control" id="patient.medical_record_number"
+                   name="patient.medical_record_number" type="text">
+        </div>
+        <div class="form-group">
+            <label for="patient.family_name">Family Name:</label>
+            <input class="form-control" id="patient.family_name" name="patient.family_name" type="text"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="patient.given_name">Given Name:</label>
+            <input class="form-control" id="patient.given_name" name="patient.given_name" type="text"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="patient.middle_name">Middle Name:</label>
+            <input class="form-control" id="patient.middle_name" name="patient.middle_name" type="text"
+                    >
+        </div>
+        <div class="form-group">
+            <label for="patient.sex">Gender:</label>
+            <select class="form-control" id="patient.sex" name="patient.sex">
+                <option value="">...</option>
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="patient.birthdate">Date Of Birth:</label>
+            <input class="form-control datepicker nonFutureDate" id="patient.birthdate" name="patient.birthdate" type="text"
+                    >
         </div>
 
         <div class="form-group">
             <label for="patient.phone">Phone:</label>
+            <input class="form-control phoneNumber" id="patient.phone1" name="patient.phone1" type="tel">
+        </div>
+
+        <div class="form-group">
+            <label for="patient.phone">Re-Enter Phone Number:</label>
             <input class="form-control phoneNumber" id="patient.phone" name="patient.phone" type="tel">
         </div>
+
+
+        <div class="form-group">
+            <label for="civil_status">Marital status:<span
+                    class="required">*</span></label>
+            <select class="form-control" id="civil_status" required="required"
+                    name="civil_status" data-concept="1054^CIVIL STATUS^99DCT">
+                <option value="">...</option>
+                <option value="1057^NEVER MARRIED^99DCT">Single</option>
+                <option value="1058^DIVORCED^99DCT">Divorced</option>
+                <option value="1056^SEPARATED^99DCT">Separated</option>
+                <option value="1059^WIDOWED^99DCT">Widowed</option>
+                <option value="5555^MARRIED^99DCT">Married</option>
+                <option value="1060^LIVING WITH PARTNER^99DCT">Cohabiting</option>
+
+
+
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="regular_sexual_partner">Do you have a regular partner?<span
+                    class="required">*</span></label>
+            <select class="form-control" id="regular_sexual_partner" required="required"
+                    name="regular_sexual_partner" data-concept="7000^REGULAR SEXUAL PARTNER^99DCT">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="regular_sexual_partner">Do you know the status of your partner?<span
+                    class="required">*</span></label>
+            <select class="form-control" id="partner_known_hiv_status" required="required"
+                    name="partner_known_hiv_status" data-concept="7001^PARTNER KNOWN HIV STATUS^99DCT">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="regular_sexual_partner">Condom use?<span
+                    class="required">*</span></label>
+            <select class="form-control" id="condom_use" required="required"
+                    name="condom_use" data-concept="1848^CONDOM USE^99DCT">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="regular_sexual_partner">House status?<span
+                    class="required">*</span></label>
+            <select class="form-control" id="house_status" required="required"
+                    name="house_status" data-concept="6144^HOUSE STATUS^99DCT">
+                <option value="">...</option>
+                <option value="6141^HOUSEHOLD RESIDENT^99DCT">Household resident</option>
+                <option value="6142^VISITOR FROM CATCHMENT AREA^99DCT">Visitor from catchment area </option>
+                <option value="6143^VISITOR NOT FROM CATCHMENT AREA^99DCT">Visitor from elsewhere</option>
+            </select>
+        </div>
+
+
+        <div class="form-group">
+            <label for="patient.phone">Relationship to Head of Household:</label>
+            <select class="form-control" id="person_relationship" required="required"
+                    name="house_status">
+            <option value="1">Self (Household Head)</option>
+            <option value="2">Spouse</option>
+            <option value="3">Son/Daughter-in-law</option>
+            <option value="4">Son/Daughter-in-law</option>
+            <option value="5">Parent in-law</option>
+            <option value="6">Parent in-law</option>
+            <option value="7">Grandchild</option>
+            <option value="8">Grandparent</option>
+            <option value="9">Brother/Sister</option>
+            <option value="10">Uncle/Aunt</option>
+            <option value="11">Co-wife</option>
+            <option value="12">Cousin</option>
+            <option value="13">Niece/Nephew</option>
+            <option value="14">Step child</option>
+            <option value="15">Foster child</option>
+            <option value="16">Friend</option>
+            <option value="17">House helper</option>
+            <option value="18">Employee helper</option>
+            <option value="19">Tenant/Renter</option>
+            <option value="20">Other</option>
+            <option value="99">Don’t Know</option>
+                </select>
+        </div>
+    </div>
+
+
+    <div class="section">
+     <h3>Part 2: Socio economic questions</h3>
+                                                 
+        <div class="form-group">
+            <label for="civil_status">Average income per month:<span
+                    class="required">*</span></label>
+            <select class="form-control" id="individual_average_income_per_month" required="required"
+                    name="individual_average_income_per_month" data-concept="7003^INDIVIDUAL AVERAGE INCOME PER MONTH (KSH)^99DCT">
+                <option value="">...</option>
+                <option value="s">0-1000 7002</option>
+                <option value="f">1001-2000 6313</option>
+                <option value="d">2001-3000 6314</option>
+                <option value="d">3001-5000 6315</option>
+                <option value="d">5001-10000  6316</option>
+                <option value="d">Above 10000  6317</option>
+
+
+
+            </select>
+        </div>
+
+
+    </div>
+
+        <div class="form-group">
+            <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
+                   type="hidden" required="required">
+ </div>
+
+
 
     </div>
     </form>
