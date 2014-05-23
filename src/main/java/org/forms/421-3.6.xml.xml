@@ -72,7 +72,7 @@
             <date xsi:nil="true"/>
             <time xsi:nil="true"/>
             <value xsi:nil="true"/>
-      </freetext_general>
+      </freetext_general>           6145
     </occupation_detailed>
     <individual_average_income_per_month_ksh openmrs_concept="7003^INDIVIDUAL AVERAGE INCOME PER MONTH (KSH)^99DCT" openmrs_datatype="CWE" multiple="0">
         <date xsi:nil="true"/>

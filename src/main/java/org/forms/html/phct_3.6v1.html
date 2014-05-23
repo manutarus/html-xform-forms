@@ -358,24 +358,145 @@
 
     <div class="section">
      <h3>Part 2: Socio economic questions</h3>
-                                                 
+
         <div class="form-group">
             <label for="civil_status">Average income per month:<span
                     class="required">*</span></label>
             <select class="form-control" id="individual_average_income_per_month" required="required"
                     name="individual_average_income_per_month" data-concept="7003^INDIVIDUAL AVERAGE INCOME PER MONTH (KSH)^99DCT">
                 <option value="">...</option>
-                <option value="s">0-1000 7002</option>
-                <option value="f">1001-2000 6313</option>
-                <option value="d">2001-3000 6314</option>
-                <option value="d">3001-5000 6315</option>
-                <option value="d">5001-10000  6316</option>
-                <option value="d">Above 10000  6317</option>
+                <option value="7002^LESS THAN 1000 KSH^99DCT">0-1000</option>
+                <option value="6313^1001 to 2000 KSH^99DCT">1001-2000</option>
+                <option value="6314^2001 to 3000 KSH^99DCT">2001-3000</option>
+                <option value="6315^3001 to 5000 KSH^99DC">3001-5000</option>
+                <option value="6316^5001 to 10000 KSH^99DCT">5001-10000</option>
+                <option value="6317^MORE THAN 10000 KSH^99DCT">Above 10000</option>
 
 
 
             </select>
         </div>
+
+        <div class="form-group">
+                    <label for="civil_status">Education level :<span
+                            class="required">*</span></label>
+                    <select class="form-control" id="highest_education" required="required"
+                            name="highest_education" data-concept="1605^HIGHEST EDUCATION^99DCT">
+                        <option value="">...</option>
+                        <option value="1107^NONE^99DCT">None </option>
+                        <option value="7583^ADULT EDUCATION^99DCT">Adult Education</option>
+                        <option value="T6214^PRIMARY SCHOOL^99DCT"> Primary  </option>
+                        <option value="6215^SECONDARY SCHOOL^99DCT">Secondary </option>
+                        <option value="6216^COLLEGE^99DCT">Tertiary </option>
+                        <option value="1604^UNIVERSITY^99DCT">University </option>
+                    </select>
+                </div>
+            <div class="form-group">
+
+                <label for="members_over_13">Hours worked in past week on farm, for wage or business:<span class="required">*</span></label>
+                <input class="form-control" id="number_of_hours_income_generated_activities_in_past_week"
+                       name="number_of_hours_income_generated_activities_in_past_week"
+                       type="number" data-concept="6145^NUMBER OF HOURS INCOME GENERATED ACTIVITIES IN PAST WEEK^99DCT" required="required">
+            </div>
+
+
+        <div class="form-group">
+                <label for="members_over_13">Hours worked in housework-cooking, cleaning?<span class="required">*</span></label>
+                <input class="form-control" id="number_of_hours_non_income_generated_activities_in_past_week"
+                       name="number_of_hours_non_income_generated_activities_in_past_week"
+                       type="number" data-concept="6146^NUMBER OF HOURS NON-INCOME GENERATED ACTIVITIES IN PAST WEEK^99DCT" required="required">
+        </div>
+
+        <div class="form-group">
+                <label for="members_over_13">Times gone to health facility due to health problem in past 4wks?<span class="required">*</span></label>
+                <input class="form-control" id="number_of_times_to_health_facility_due_to_health_issues_in_past_four_week"
+                       name="number_of_times_to_health_facility_due_to_health_issues_in_past_four_week"
+                       type="number" data-concept="6147^NUMBER OF TIMES TO HEALTH FACILITY DUE TO HEALTH ISSUES IN PAST FOUR WEEKS^99DCT" required="required">
+        </div>
+        <div class="form-group">
+                <label for="members_over_13">Amount of money used on medical care with your illness in past 4wks?<span class="required">*</span></label>
+                <input class="form-control" id="spent_on_medical_issues_in_past_four_weeks"
+                       name="spent_on_medical_issues_in_past_four_weeks"
+                       type="number" data-concept="6148^MONEY (KSH) SPENT ON MEDICAL ISSUES IN PAST FOUR WEEKS^99DCT" required="required">
+        </div>
+
+
+
+    </div>
+
+
+    <div class="section">
+        <h3>Part 3: For Children</h3>
+
+        <div class="form-group">
+            <label for="immunizations_ever">Child immunized?<span
+                    class="required">*</span></label>
+            <select class="form-control" id="immunizations_ever" required="required"
+                    name="immunizations_ever" data-concept="5853^IMMUNIZATIONS EVER^99DCT">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="source_of_immunization_information">Source of immunization information:<span
+                    class="required">*</span></label>
+            <select class="form-control" id="source_of_immunization_information" required="required"
+                    name="source_of_immunization_information" data-concept="6163^SOURCE OF IMMUNIZATION INFORMATION^99DCT">
+                <option value="">...</option>
+                <option value="6162^DOCUMENTATION^99DCT">Documentation</option>
+                <option value="1410^CARETAKER^99DCT">Caretaker</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="immunizations_ever">Previously immunization:<span
+                    class="required">*</span></label>
+            <select class="form-control" id="previous_immunizations_administered" required="required"
+                    name="previous_immunizations_administered" data-concept="1198^PREVIOUS IMMUNIZATIONS ADMINISTERED^99DCT">
+                <option value="">...</option>
+                <option value="886^BACILLE CAMILE-GUERIN VACCINATION^99DCT">BCG</option>
+                <option value="783^POLIO VACCINATION^99DCT">Polio</option>
+                <option value="6654^PENTAVALENT VACCINE^99DCT">DPT/ Pentavalent</option>
+                <option value="36^MEASLES VACCINATION^99DCT">Measles</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="review_of_systems_general">With fever?:<span
+                    class="required">*</span></label>
+            <select class="form-control" id="review_of_systems_general" required="required"
+                    name="review_of_systems_general" data-concept="1069^REVIEW OF SYSTEMS, GENERAL^99DCT">
+                <option value="">...</option>
+                <option value="5945^FEVER^99DCT">Yes</option>
+                <option value="664^NEGATIVE^99DCT">No</option>
+            </select>
+        </div>
+
+
+     <div class="form-group">
+            <label for="malaria_tests_ordered">If yes, malaria test done?:<span
+                    class="required">*</span></label>
+            <select class="form-control" id="malaria_tests_ordered" required="required"
+                    name="malaria_tests_ordered" data-concept="1271^TESTS ORDERED^99DCT">
+                <option value="">...</option>
+                <option value="32^MALARIAL SMEAR^99DCT">Yes</option>
+                <option value="1107^NONE^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="malarial_smear">Test result?:<span
+                    class="required">*</span></label>
+            <select class="form-control" id="malarial_smear" required="required"
+                    name="malarial_smear" data-concept="32^MALARIAL SMEAR^99DCT">
+                <option value="">...</option>
+                <option value="703^POSITIVE^99DCT">Positive</option>
+                <option value="664^NEGATIVE^99DCT">Negative</option>
+            </select>
+        </div>
+
 
 
     </div>
