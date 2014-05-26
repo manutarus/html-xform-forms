@@ -10,13 +10,13 @@
     <script src="js/additional-methods.min.js"></script>
     <script src="js/muzima.js"></script>
 
-    <title>Dispensary Form</title>
+    <title>PHCT Household Encounter Form</title>
 </head>
 <body class="col-md-8 col-md-offset-2">
 <div id="pre_populate_data"></div>
 <form id="dispensary_form" name="dispensary_form">
 
-    <h2 class="text-center">Dispensary Confirmation Form</h2>
+    <h2 class="text-center">PHCT Household Encounter Form</h2>
 
 
     <div class="section">
@@ -98,8 +98,10 @@
             </select>
         </div>
 
+  <div class="section">
+      <label class="alert alert-info" id ="chw_alert" >If household Declines then get CHW information</label>
 
-        <div class="form-group">
+      <div class="form-group">
 
             <label for="members_over_13">No of members &gt;= 13 years:<span class="required">*</span></label>
             <input class="form-control" id="members_over_13"
@@ -122,7 +124,14 @@
                    name="total-number-of-house-hold-members" type="NUMBER"
                    type="number" data-concept="6801^NUMBER OF HOUSEHOLD MEMBERS^99DCT" required="required">
         </div>
+  </div>
         </div>
+
+
+    <!--General accepted div-->
+
+
+<div style="display:none" id="general_accepted_div" class="allowed_in">
     <div class="section">
         <h3>Household member definition</h3>
 
@@ -506,9 +515,7 @@
                    type="hidden" required="required">
  </div>
 
-
-
-    </div>
+</div>
     </form>
 </body>
 
@@ -741,6 +748,23 @@
             }
 
         });
+
+
+
+        $('#allowed_in').change(function () {
+            var $allowed_in = $('.allowed_in');
+            if($("#allowed_in").val()=='A') {
+                $allowed_in.show();
+            }
+           else{
+                $allowed_in.hide();
+            }
+        });
+
+
+
+
+
 
     });
 
