@@ -99,7 +99,7 @@
         </div>
 
   <div class="section">
-      <label class="alert alert-info" id ="chw_alert" >If household Declines then get CHW information</label>
+      <label class="alert alert-info">If household Declines then get CHW information</label>
 
       <div class="form-group">
 
@@ -137,24 +137,31 @@
 
         <div class="form-group">
             <label for="no_of_bed_net"> Number of nets<span class="required">*</span></label>
+            <br><label class="alert alert-info">If None Enter 0</label>
+
             <input class="form-control isDecimal" id="no_of_bed_net" required="required"
                    name="no_of_bed_net" type="number"
                    data-concept="6866^NUMBER OF BEDNETS IN HOUSEHOLD^99DCT">
         </div>
 
         <div class="form-group">
-            <label for="number-of-nets-provided"> Number of nets provided<span class="required">*</span></label>
-            <input class="form-control isDecimal" id="number-of-nets-provided" required="required"
-                   name="number-of-nets-provided" type="number"
-                   data-concept="7629^NUMBER OF BEDNETS ISSUED PER HOUSEHOLD^99DCT">
+            <label for="number-of-nets-provided">Number of nets provided<span class="required">*</span></label>
+            <select class="form-control" id="number-of-nets-provided" name="number-of-nets-provided" data-concept="7629^NUMBER OF BEDNETS ISSUED PER HOUSEHOLD^99DCT">
+                <option value="">...</option>
+                <option value="0">Zero</option>
+                <option value="1">One</option>
+            </select>
         </div>
 
-        <div class="form-group">
-            <label for="number-of-nets-provided">Voucher ID of net provided<span class="required">*</span></label>
+        <div style="display:none" class="form-group number_of_nets">
+            <label for="voucher-id-net-provided">Voucher ID of net provided<span class="required">*</span></label>
             <input class="form-control isDecimal" id="voucher-id-net-provided" required="required"
                    name="voucher-id-net-provided" type="number"
                    data-concept="7633^VOUCHER ID FOR BEDNET^99DCT">
         </div>
+
+
+
         </div>
 
     <div class="section">
@@ -281,14 +288,10 @@
                 <option value="1059^WIDOWED^99DCT">Widowed</option>
                 <option value="5555^MARRIED^99DCT">Married</option>
                 <option value="1060^LIVING WITH PARTNER^99DCT">Cohabiting</option>
-
-
-
             </select>
         </div>
 
-
-        <div class="form-group">
+        <div style="display:none" class="form-group civil_status">
             <label for="regular_sexual_partner">Do you have a regular partner?<span
                     class="required">*</span></label>
             <select class="form-control" id="regular_sexual_partner" required="required"
@@ -299,7 +302,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div style="display:none" class="form-group regular_sexual_partner">
             <label for="regular_sexual_partner">Do you know the status of your partner?<span
                     class="required">*</span></label>
             <select class="form-control" id="partner_known_hiv_status" required="required"
@@ -448,7 +451,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div style="display:none" class="form-group immunizations_ever">
             <label for="source_of_immunization_information">Source of immunization information:<span
                     class="required">*</span></label>
             <select class="form-control" id="source_of_immunization_information" required="required"
@@ -459,7 +462,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div style="display:none" class="form-group immunizations_ever">
             <label for="immunizations_ever">Previously immunization:<span
                     class="required">*</span></label>
             <select class="form-control" id="previous_immunizations_administered" required="required"
@@ -484,7 +487,7 @@
         </div>
 
 
-     <div class="form-group">
+     <div style="display:none" class="form-group review_of_systems_general">
             <label for="malaria_tests_ordered">If yes, malaria test done?:<span
                     class="required">*</span></label>
             <select class="form-control" id="malaria_tests_ordered" required="required"
@@ -495,7 +498,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div style="display:none" class="form-group malaria_tests_ordered">
             <label for="malarial_smear">Test result?:<span
                     class="required">*</span></label>
             <select class="form-control" id="malarial_smear" required="required"
@@ -510,9 +513,806 @@
 
     </div>
 
+
+
+
+    <div class="section">
+        <h3>For children < 18 years</h3>
+
+        <div class="form-group">
+            <label for="mother_dead">Mother dead?:<span class="required">*</span></label>
+            <select class="form-control" id="mother_dead" name="mother_dead"
+                    data-concept="2000^MOTHER DECEASED, CODED^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="mother_hiv_status">Mother HIV +?:<span class="required">*</span></label>
+            <select class="form-control" id="mother_hiv_status" name="mother_hiv_status"
+                    data-concept="6149^MOTHER HIV STATUS^99DCT" required="required">
+                <option value="">...</option>
+                <option value="703^POSITIVE^99DCT">Yes</option>
+                <option value="664^NEGATIVE^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="father_deceased_coded">Father dead?:<span class="required">*</span></label>
+            <select class="form-control" id="father_deceased_coded" name="father_deceased_coded"
+                    data-concept="2001^FATHER DECEASED, CODED^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="father_hiv_status">Father HIV +?:<span class="required">*</span></label>
+            <select class="form-control" id="father_hiv_status" name="father_hiv_status"
+                    data-concept="6150^FATHER HIV POSITIVE^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="enrolled_in_ampath">For children ≤ 18 months, Enrolled in treatment program?:<span class="required">*</span></label>
+            <select class="form-control" id="enrolled_in_ampath" name="enrolled_in_ampath"
+                    data-concept="6904^ENROLLED IN AMPATH^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+
+            </select>
+        </div>
+
+        <div style="display:none" class="form-group enrolled_in_ampath">
+            <label for="tests_ordered">If no, DBS taken?:<span class="required">*</span></label>
+            <select class="form-control" id="tests_ordered" name="tests_ordered"
+                    data-concept="1271^TESTS ORDERED^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1030^HIV DNA POLYMERASE CHAIN REACTION, QUALITATIVE^99DCT">Yes</option>
+                <option value="1107^NONE^99DCT">No</option>
+
+            </select>
+        </div>
+
+        <div style="display:none" class="form-group tests_ordered">
+            <label for="dbs_results">DBS Results?:<span class="required">*</span></label>
+            <select class="form-control" id="dbs_results" name="dbs_results"
+                    data-concept="1030^HIV DNA POLYMERASE CHAIN REACTION, QUALITATIVE^99DCT" required="required">
+                <option value="">...</option>
+
+                <option value="703^POSITIVE^99DCT">Reactive </option>
+                <option value="664^NEGATIVE^99DCT">Non-reactive </option>
+                <option value="1138^INDETERMINATE^99DCT">Indeterminate</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="human_immunodeficiency_virus_testing_needed">Child need testing?:<span class="required">*</span></label>
+            <select class="form-control" id="human_immunodeficiency_virus_testing_needed" name="human_immunodeficiency_virus_testing_needed"
+                    data-concept="7964^HUMAN IMMUNODEFICIENCY VIRUS TESTING NEEDED^99DCT" required="required">
+                <option value="">...</option>
+
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+
+            </select>
+        </div>
+
+    </div>
+    <div class="section">
+    <h3>Part 4: CDM INFORMATION</h3>
+    <div class="form-group">
+
+        <label for="hours_since_last_meal">How long ago/When(HRS) was your last meal?:<span class="required">*</span></label>
+        <input class="form-control" id="hours_since_last_meal"
+               name="hours_since_last_meal"
+               type="number" data-concept="7005^NUMBER OF HOURS SINCE LAST MEAL PRIOR TO BLOOD GLUCOSE TEST^99DCT" required="required">
+
+        <label class="alert alert-info">If > 6 hrs before the screening patient is considered fasting<br>
+            If < 6 hrs before the screening patient is considered random
+        </label>
+
+    </div>
+
+
+    <div class="form-group">
+        <label for="hypertension_status">Known hypertensive patient?:<span class="required">*</span></label>
+        <select class="form-control" id="hypertension_status" name="hypertension_status"
+                data-concept="7288^HYPERTENSION STATUS^99DCT" required="required">
+            <option value="">...</option>
+
+            <option value="7286^KNOWN HYPERTENSIVE PATIENT^99DCT">Yes</option>
+            <option value="7285^NEW HYPERTENSIVE PATIENT^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div style="display:none" class="form-group hypertension_status">
+        <label for="hypertension_care_program_enrollment_status"> If Yes, Enrolled to care:<span class="required">*</span></label>
+        <select class="form-control" id="hypertension_care_program_enrollment_status" name="hypertension_care_program_enrollment_status"
+                data-concept="7448^HYPERTENSIVE PATIENT HYPERTENSION CARE PROGRAM ENROLLMENT STATUS ^99DCT" required="required">
+            <option value="">...</option>
+
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="systolic_blood_pressure">Systolic Blood Pressure (mmHg) :<span class="required">*</span></label>
+        <input class="form-control" id="systolic_blood_pressure"
+               name="systolic_blood_pressure"
+               type="number" data-concept="5085^SYSTOLIC BLOOD PRESSURE^99DCT" required="required">
+    </div>
+
+    <div class="form-group">
+
+        <label for="diastolic_blood_pressure">Diastolic Blood Pressure (mmHg)  :<span class="required">*</span></label>
+        <input class="form-control" id="diastolic_blood_pressure"
+               name="diastolic_blood_pressure"
+               type="number" data-concept="5086^DIASTOLIC BLOOD PRESSURE^99DCT" required="required">
+    </div>
+
+    <div class="form-group">
+        <label for="diabetes_status"> Known DM patient:<span class="required">*</span></label>
+        <select class="form-control" id="diabetes_status" name="diabetes_status"
+                data-concept="7287^DIABETES STATUS^99DCT" required="required">
+            <option value="">...</option>
+            <option value="7282^KNOWN DIABETIC PATIENT^99DCT">Yes</option>
+            <option value="7281^NEW DIABETIC PATIENT^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div style="display:none" class="form-group diabetes_status">
+        <label for="diabetic_patient_diabetes_care_program_enrollment_status"> If Yes, Enrolled to care:<span class="required">*</span></label>
+        <select class="form-control" id="diabetic_patient_diabetes_care_program_enrollment_status" name="diabetic_patient_diabetes_care_program_enrollment_status"
+                data-concept="7449^DIABETIC PATIENT DIABETES CARE PROGRAM ENROLLMENT STATUS ^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+
+    <div class="form-group">
+        <label for="serum_glucose_random">Random Blood Sugar  (mmL):<span class="required">*</span></label>
+        <input class="form-control" id="serum_glucose_random"
+               name="serum_glucose_random"
+               type="number" data-concept="887^SERUM GLUCOSE^99DCT" required="required">
+    </div>
+
+    <div class="form-group">
+
+        <label for="serum_glucose_fasting">Fasting Blood Sugar  (mmL):<span class="required">*</span></label>
+        <input class="form-control" id="serum_glucose_fasting"
+               name="serum_glucose_fasting"
+               type="number" data-concept="6252^SERUM GLUCOSE, FASTING^99DCT" required="required">
+    </div>
+    <div style="display:none"  class="form-group db_referral">
+        <label class="alert alert-info">Refer to Dispensary</label>
+        <div class="form-group">
+            <label for="encounter.location_id">Facility patient is referred to:<span class="required">*</span></label>
+            <input class="form-control" id="name_of_facility_to_which_patient_is_referred" type="text" placeholder="Start typing facility...">
+            <input class="form-control" name="name_of_facility_to_which_patient_is_referred" data-concept="7637^NAME OF FACILITY TO WHICH PATIENT IS REFERRED, FREETEXT^99DCT"  type="hidden">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_tested_previously"> If Yes, Enrolled to care:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_tested_previously" name="hiv_tested_previously"
+                data-concept="1361^HIV TESTED PREVIOUSLY^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="patient_reported_number_of_times_previously_tested_for_hiv">How many times have you been tested for HIV:<span class="required">*</span></label>
+        <input class="form-control" id="patient_reported_number_of_times_previously_tested_for_hiv"
+               name="patient_reported_number_of_times_previously_tested_for_hiv"
+               type="number" data-concept="8616^PATIENT REPORTED NUMBER OF TIMES PREVIOUSLY TESTED FOR HIV^99DCT" required="required">
+    </div>
+
+    <div class="form-group">
+        <label for="patient_reported_last_hiv_tested_date">If Yes for previously tested for HIV , when were you last tested?:</label>
+        <input class="form-control datepicker nonFutureDate" id="patient_reported_last_hiv_tested_date"  data-concept="2388^PATIENT REPORTED LAST HIV TESTED DATE^99DCT"
+               name="patient_reported_last_hiv_tested_date" type="text" >
+    </div>
+
+    <div class="form-group">
+        <label for="point_of_hiv_testing"> Point of HIV Testing:<span class="required">*</span></label>
+        <select class="form-control" id="point_of_hiv_testing" name="point_of_hiv_testing"
+                data-concept="2051^POINT OF HIV TESTING^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1776^PREVENTION OF MOTHER-TO-CHILD TRANSMISSION OF HIV^99DCT">pMTCT</option>
+            <option value="2047^VOLUNTARY COUNSELING AND TESTING CENTER^99DCT">VCT</option>
+            <option value="2049^HOME BASED TESTING PROGRAM^99DCT">HCT</option>
+            <option value="8227^PERPETUAL HOME-BASED COUNSELING AND TESTING^99DCT">PHCT</option>
+            <option value="58^TUBERCULOSIS^99DCT">TB Clinic</option>
+            <option value="2177^PROVIDER INITIATED TESTING AND COUNSELING^99DCT">DTC/PITC</option>
+            <option value="5485^INPATIENT CARE OR HOSPITALIZATION^99DCT">Inpatient</option>
+            <option value="2050^MATERNAL CHILD HEALTH PROGRAM^99DCT">MCH</option>
+            <option value="1965^OUTPATIENT SERVICES^99DCT">OPD</option>
+            <option value="5622^OTHER NON-CODED^99DCT">Other</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_test_result_previously">Last HIV test result:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_test_result_previously" name="hiv_test_result_previously"
+                data-concept="1362^HIV TEST RESULT PREVIOUSLY^99DCT" required="required">
+            <option value="">...</option>
+
+            <option value="703^POSITIVE^99DCT">Positive </option>
+            <option value="664^NEGATIVE^99DCT">Negative </option>
+            <option value="1138^INDETERMINATE^99DCT">Indeterminate</option>
+            <option value="1067^UNKNOWN^99DCT">Unknown</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_disclosure_to_anyone_specific">If Yes, to whom?:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_disclosure_to_anyone_specific" name="hiv_disclosure_to_anyone_specific"
+                data-concept="5616^HIV DISCLOSURE TO ANYONE, SPECIFIC^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1670^PARTNER^99DCT">Spouse/Partner</option>
+            <option value="1748^RELATIVES^99DCT">Relative</option>
+            <option value="5618^FRIEND^99DCT">Friend</option>
+            <option value="5622^OTHER NON-CODED^99DCT">Other</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="reason_for_not_disclosing_hiv_status">If no, reason for not disclosing?:<span class="required">*</span></label>
+        <select class="form-control" id="reason_for_not_disclosing_hiv_status" name="reason_for_not_disclosing_hiv_status"
+                data-concept="7010^REASON FOR NOT DISCLOSING HIV STATUS^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1666^STIGMA^99DCT">Stigma</option>
+            <option value="6285^RELIGION^99DCT">Religion</option>
+            <option value="6270^CULTURE^99DCT">Cultural practices</option>
+            <option value="5622^OTHER NON-CODED^99DCT">Other</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_disclosure_to_anyone">Did you disclose your HIV Status to anyone?:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_disclosure_to_anyone" name="hiv_disclosure_to_anyone"
+                data-concept="1048^HIV DISCLOSURE TO ANYONE^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_disclosure_to_freetext_general">(specify):</label>
+        <input class="form-control" data-concept="1915^FREETEXT GENERAL^99DCT" id="hiv_disclosure_to_freetext_general" name="hiv_disclosure_to_freetext_general" type="text" >
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_positive_hiv_care_program_enrollment_status">If HIV+, Enrolled in Treatment Program?:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_positive_hiv_care_program_enrollment_status" name="hiv_positive_hiv_care_program_enrollment_status"
+                data-concept="6152^HIV POSITIVE HIV CARE PROGRAM ENROLLMENT STATUS^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_care_program_enrolled">If Enrolled:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_care_program_enrolled" name="hiv_care_program_enrolled"
+                data-concept="6153^HIV CARE PROGRAM ENROLLED^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1286^AMPATH^99DCT">Amapth</option>
+            <option value="5622^OTHER NON-CODED^99DCT">Other</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_care_program_enrolled_freetext_general">(specify):</label>
+        <input class="form-control" data-concept="1915^FREETEXT GENERAL^99DCT" id="hiv_care_program_enrolled_freetext_general" name="hiv_care_program_enrolled_freetext_general" type="text" >
+    </div>
+
+    <div class="form-group">
+        <label for="ampath_enrollment_medical_record_number">AMRS ID Number:</label>
+        <input class="form-control" id="ampath_enrollment_medical_record_number"
+               name="ampath_enrollment_medical_record_number" type="text" >
+    </div>
+
+    <div class="form-group">
+        <label for="reason_for_not_enrolling_in_care_program_if_hiv_detailed">If HIV+, and not in Care Program, reason?:<span class="required">*</span></label>
+        <select class="form-control" id="reason_for_not_enrolling_in_care_program_if_hiv_detailed" name="reason_for_not_enrolling_in_care_program_if_hiv_detailed"
+                data-concept="7565^REASON FOR NOT ENROLLING IN CARE PROGRAM, IF HIV+, DETAILED^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1666^STIGMA^99DCT">Stigma</option>
+            <option value="1551^DISTANCE TOO FAR^99DCT"> Proximity to clinic</option>
+            <option value="820^TRANSPORT PROBLEMS^99DCT">Lack of transport</option>
+            <option value="5622^OTHER NON-CODED^99DCT">Other</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="reason_for_not_enrolling_in_care_program_if_hiv_detailed_freetext_general">(specify):</label>
+        <input class="form-control" data-concept="1915^FREETEXT GENERAL^99DCT" id="reason_for_not_enrolling_in_care_program_if_hiv_detailed_freetext_general" name="reason_for_not_enrolling_in_care_program_if_hiv_detailed_freetext_general" type="text" >
+    </div>
+
+
+    <div class="form-group">
+        <label for="hiv_counselled_this_visit">Counseled:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_counselled_this_visit" name="hiv_counselled_this_visit"
+                data-concept="2292^HIV COUNSELLED THIS VISIT^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="reason_for_declining_hiv_test_from_hct_program">Reasons for declining?:<span class="required">*</span></label>
+        <select class="form-control" id="reason_for_declining_hiv_test_from_hct_program" name="reason_for_declining_hiv_test_from_hct_program"
+                data-concept="6169^REASON FOR DECLINING HIV TEST FROM HCT PROGRAM^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1666^STIGMA^99DCT">Stigma</option>
+            <option value="6285^RELIGION^99DCT">Religion</option>
+            <option value="6270^CULTURE^99DCT">Cultural practices</option>
+            <option value="6286^MYTHS AND MISCONCEPTION^99DCT">Myths and Misconception</option>
+            <option value="6164^NO RIGHT TO CONSENT^99DCT">No right to consent</option>
+            <option value="6167^DIFFICULT TO TEST ONE CHILD AND NOT OTHERS^99DCT">Difficult to test child</option>
+            <option value="5622^OTHER NON-CODED^99DCT">Other</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="reason_for_declining_hiv_test_from_hct_program_freetext_general">(specify):</label>
+        <input class="form-control" data-concept="1915^FREETEXT GENERAL^99DCT" id="reason_for_declining_hiv_test_from_hct_program_freetext_general" name="reason_for_declining_hiv_test_from_hct_program_freetext_general" type="text" >
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_test_detailed"> Test 1 Result:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_test_detailed" name="hiv_test_detailed"
+                data-concept="6170^HIV TEST, DETAILED^99DCT" required="required">
+            <option value="">...</option>
+            <option value="6155^DETERMINE HIV RAPID TEST^99DCT">Determine</option>
+            <option value="703^POSITIVE^99DCT">Reactive</option>
+            <option value="664^NEGATIVE^99DCT">Non-reactive</option>
+            <option value="1138^INDETERMINATE^99DCT">Indeterminate</option>
+
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_test_detailed_2"> Test 2 Result:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_test_detailed_2" name="hiv_test_detailed_2"
+                data-concept="6170^HIV TEST, DETAILED^99DCT" required="required">
+            <option value="">...</option>
+            <option value="2342^UNIGOLD HIV RAPID TEST^99DCT">Unigold</option>
+            <option value="703^POSITIVE^99DCT">Reactive</option>
+            <option value="664^NEGATIVE^99DCT">Non-reactive</option>
+            <option value="1138^INDETERMINATE^99DCT">Indeterminate</option>
+
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_enzyme_immunoassay_qualitative"> Test 2 Result:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_enzyme_immunoassay_qualitative" name="hiv_enzyme_immunoassay_qualitative"
+                data-concept="1042^HIV ENZYME IMMUNOASSAY, QUALITATIVE^99DCT" required="required">
+            <option value="">...</option>
+            <option value="2342^UNIGOLD HIV RAPID TEST^99DCT">Unigold</option>
+            <option value="703^POSITIVE^99DCT">Reactive</option>
+            <option value="664^NEGATIVE^99DCT">Non-reactive</option>
+            <option value="1138^INDETERMINATE^99DCT">Indeterminate</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_ultra_rapid_test_brand_1"> New logic Test 1 Result:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_ultra_rapid_test_brand_1" name="hiv_ultra_rapid_test_brand_1"
+                data-concept="8705^HIV ULTRA RAPID TEST, BRAND^99DCT" required="required">
+            <option value="">...</option>
+            <option value="8703^COLLOIDAL ULTRA RAPID HIV TEST^99DCT">Colloidal Gold</option>
+            <option value="703^POSITIVE^99DCT">Reactive</option>
+            <option value="664^NEGATIVE^99DCT">Non-reactive</option>
+            <option value="1138^INDETERMINATE^99DCT">Indeterminate</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="hiv_ultra_rapid_test_brand_2">New Logic Test 2 Result:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_ultra_rapid_test_brand_2" name="hiv_ultra_rapid_test_brand_2"
+                data-concept="8705^HIV ULTRA RAPID TEST, BRAND^99DCT" required="required">
+            <option value="">...</option>
+            <option value="8704^CARD HIV ULTRA RAPID TEST^99DCT">Card Test</option>
+            <option value="703^POSITIVE^99DCT">Reactive</option>
+            <option value="664^NEGATIVE^99DCT">Non-reactive</option>
+            <option value="1138^INDETERMINATE^99DCT">Indeterminate</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="confirm_hiv_test_new_logic">Unigold:<span class="required">*</span></label>
+        <select class="form-control" id="confirm_hiv_test_new_logic" name="confirm_hiv_test_new_logic"
+                data-concept="6170^HIV TEST, DETAILED^99DCT" required="required">
+            <option value="">...</option>
+            <option value="2342^UNIGOLD HIV RAPID TEST^99DCT">Unigold</option>
+            <option value="703^POSITIVE^99DCT">Reactive</option>
+            <option value="664^NEGATIVE^99DCT">Non-reactive</option>
+            <option value="1138^INDETERMINATE^99DCT">Indeterminate</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="pregnancy_status">Obviously pregnant?:<span class="required">*</span></label>
+        <select class="form-control" id="pregnancy_status" name="pregnancy_status"
+                data-concept="5272^PREGNANCY STATUS^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="last_menstrual_period_date">If Yes for previously tested for HIV , when were you last tested?:</label>
+        <input class="form-control datepicker nonFutureDate" id="last_menstrual_period_date"  data-concept="1836^LAST MENSTRUAL PERIOD DATE^99DCT"
+               name="last_menstrual_period_date" type="text" >
+    </div>
+
+
+    <div class="form-group">
+        <label for="urine_pregnancy_test_qualitative"> Pregnancy Test Result:<span class="required">*</span></label>
+        <select class="form-control" id="urine_pregnancy_test_qualitative" name="urine_pregnancy_test_qualitative"
+                data-concept="45^URINE PREGNANCY TEST, QUALITATIVE^99DCT" required="required">
+            <option value="">...</option>
+
+            <option value="703^POSITIVE^99DCT">Positive</option>
+            <option value="664^NEGATIVE^99DCT">Negative</option>
+            <option value="1138^INDETERMINATE^99DCT">Indeterminate</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="estimated_date_of_confinement">EDD(dd/mm/yyyy):</label>
+        <input class="form-control datepicker nonFutureDate" id="estimated_date_of_confinement"  data-concept="5596^ESTIMATED DATE OF CONFINEMENT^99DCT"
+               name="estimated_date_of_confinement" type="text" >
+    </div>
+
+    <div class="form-group">
+        <label for="antenatal_care_enrolled">Attending ANC?:<span class="required">*</span></label>
+        <select class="form-control" id="antenatal_care_enrolled" name="antenatal_care_enrolled"
+                data-concept="2055^ANTENATAL CARE ENROLLED^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="sleeps_under_bednet_at_night">Using mosquito net? :<span class="required">*</span></label>
+        <select class="form-control" id="sleeps_under_bednet_at_night" name="sleeps_under_bednet_at_night"
+                data-concept="7012^SLEEPS UNDER BEDNET AT NIGHT^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="insecticide_treated_net_issued_this_visit">Issued mosquito net?:<span class="required">*</span></label>
+        <select class="form-control" id="insecticide_treated_net_issued_this_visit" name="insecticide_treated_net_issued_this_visit"
+                data-concept="2293^INSECTICIDE TREATED NET ISSUED THIS VISIT^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="condom_given_this_visit">Condom given?:<span class="required">*</span></label>
+        <select class="form-control" id="condom_given_this_visit" name="condom_given_this_visit"
+                data-concept="6287^CONDOM GIVEN THIS VISIT^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+
+        <label for="number_of_condoms_issued">Number of condoms issued[pcs]:<span class="required">*</span></label>
+        <input class="form-control" id="number_of_condoms_issued"  name="number_of_condoms_issued"
+               type="number" data-concept="8706^NUMBER OF CONDOMS ISSUED^99DCT" required="required">
+    </div>
+
+    <div class="form-group">
+        <label for="reason_for_condom_use">Reason for Condom issue:<span class="required">*</span></label>
+        <select class="form-control" id="reason_for_condom_use" name="reason_for_condom_use"
+                data-concept="6579^REASON FOR CONDOM USE^99DCT" required="required">
+            <option value="">...</option>
+            <option value="6096^DISCORDANT COUPLE^99DCT">Discordant</option>
+            <option value="703^POSITIVE^99DCT">Positive client</option>
+            <option value="6578^MOST AT RISK PERSON FOR GETTING HIV INFECTION^99DCT">Most at Risk Persons(MARPs)</option>
+            <option value="5271^FAMILY PLANNING STATUS^99DCT">Family Planning</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="review_of_medical_history">Have you ever suffered from STI?:<span class="required">*</span></label>
+        <select class="form-control" id="review_of_medical_history" name="review_of_medical_history"
+                data-concept="6287^REVIEW OF MEDICAL HISTORY^99DCT" required="required">
+            <option value="">...</option>
+            <option value="174^SEXUALLY TRANSMITTED INFECTION^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="review_of_systems_genitourinary">Have you ever suffered from STI?:<span class="required">*</span></label>
+        <select class="form-control" id="review_of_systems_genitourinary" name="review_of_systems_genitourinary"
+                data-concept="1080^REVIEW OF SYSTEMS, GENITOURINARY^99DCT" required="required">
+            <option value="">...</option>
+            <option value="664^NEGATIVE^99DCT">No Complaints</option>
+            <option value="5993^VAGINAL DISCHARGE^99DCT">Vaginal Discharge</option>
+            <option value="5995^URETHRAL DISCHARGE^99DCT">Urethral Discharge</option>
+            <option value="6020^DYSURIA^99DCT">Dysuria, Hematuria</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="circumcized">Circumcized?:<span class="required">*</span></label>
+        <select class="form-control" id="circumcized" name="circumcized"
+                data-concept="2062^CIRCUMCIZED^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label for="patient_multiple_sexual_partners">Do you have more than one sexual partner?:<span class="required">*</span></label>
+        <select class="form-control" id="patient_multiple_sexual_partners" name="patient_multiple_sexual_partners"
+                data-concept="5567^PATIENT MULTIPLE SEXUAL PARTNERS^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    </div>
+    <div class="section">
+        <h3>TB Screening</h3>
+        <div class="form-group">
+            <label for="cough_for_more_than_two_weeks">Cough &gt; 2 weeks? :<span class="required">*</span></label>
+            <select class="form-control" id="cough_for_more_than_two_weeks" name="cough_for_more_than_two_weeks"
+                    data-concept="6171^COUGH FOR MORE THAN TWO WEEKS^99DCT" required="required">
+                <option value="">...</option>
+                <option value="6174^REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">Yes</option>
+                <option value="6175^NEGATIVE REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="bloody_cough_in_past_year">Bloody Cough past year? :<span class="required">*</span></label>
+            <select class="form-control" id="bloody_cough_in_past_year" name="bloody_cough_in_past_year"
+                    data-concept="6172^BLOODY COUGH IN PAST YEAR^99DCT" required="required">
+                <option value="">...</option>
+                <option value="6174^REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">Yes</option>
+                <option value="6175^NEGATIVE REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="fever_more_than_three_weeks"> Fever &gt; 3 weeks?:<span class="required">*</span></label>
+            <select class="form-control" id="fever_more_than_three_weeks" name="fever_more_than_three_weeks"
+                    data-concept="6173^FEVER MORE THAN THREE WEEKS^99DCT" required="required">
+                <option value="">...</option>
+                <option value="6174^REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">Yes</option>
+                <option value="6175^NEGATIVE REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="weight_loss">Weight loss in past 1yr?:<span class="required">*</span></label>
+            <select class="form-control" id="weight_loss" name="weight_loss"
+                    data-concept="832^WEIGHT LOSS^99DCT" required="required">
+                <option value="">...</option>
+                <option value="6174^REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">Yes</option>
+                <option value="6175^NEGATIVE REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="household_member_diagnosed_with_tuberculosis">TB in household?:<span class="required">*</span></label>
+            <select class="form-control" id="household_member_diagnosed_with_tuberculosis" name="household_member_diagnosed_with_tuberculosis"
+                    data-concept="2020^HOUSEHOLD MEMBER DIAGNOSED WITH TUBERCULOSIS^99DCT" required="required">
+                <option value="">...</option>
+                <option value="6174^REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">Yes</option>
+                <option value="6175^NEGATIVE REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="failure_to_thrive">If child, failure to thrive?:<span class="required">*</span></label>
+            <select class="form-control" id="failure_to_thrive" name="failure_to_thrive"
+                    data-concept="5050^FAILURE TO THRIVE^99DCT" required="required">
+                <option value="">...</option>
+                <option value="6174^REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">Yes</option>
+                <option value="6175^NEGATIVE REVIEW OF TUBERCULOSIS SCREENING QUESTIONS^99DCT">No</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="currently_on_tuberculosis_treatment">Currently on TB treatment?:<span class="required">*</span></label>
+            <select class="form-control" id="currently_on_tuberculosis_treatment" name="currently_on_tuberculosis_treatment"
+                    data-concept="6176^CURRENTLY ON TUBERCULOSIS TREATMENT^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="on_tuberculosis_treatment_ever">Treated for TB in past?:<span class="required">*</span></label>
+            <select class="form-control" id="on_tuberculosis_treatment_ever" name="on_tuberculosis_treatment_ever"
+                    data-concept="1644^ON TUBERCULOSIS TREATMENT, EVER^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+
+            <label for="tuberculosis_treatment_completion_year">Year of treatment:<span class="required">*</span></label>
+            <input class="form-control" id="tuberculosis_treatment_completion_year"
+                   name="tuberculosis_treatment_completion_year"
+                   type="number" data-concept="5966^TUBERCULOSIS TREATMENT COMPLETION YEAR^99DCT" required="required">
+        </div>
+
+        <div class="form-group">
+            <label for="completion_of_6_month_tuberculosis_treatment">Completed 6 months treatment?:<span class="required">*</span></label>
+            <select class="form-control" id="completion_of_6_month_tuberculosis_treatment" name="completion_of_6_month_tuberculosis_treatment"
+                    data-concept="6292^COMPLETION OF 6-MONTH TUBERCULOSIS TREATMENT^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="1067^UNKNOWN^99DCT">Unknown</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sputum_collected">Sputum collected? :<span class="required">*</span></label>
+            <select class="form-control" id="sputum_collected" name="sputum_collected"
+                    data-concept="6195^SPUTUM COLLECTED^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+                <option value="6179^UNABLE TO COLLECT SAMPLE^99DCT">Unable to produce sputum</option>
+                <option value="6194^UNDER FIVE YEARS OLD, NO SPUTUM SAMPLE NEEDED^99DCT">Under 5 years, no sample needed</option>
+
+
+            </select>
+        </div>
+    </div>
+    <div class="section">
+        <h3>Follow-up Information</h3>
+
+        <div class="form-group">
+            <label for="hct_follow_up_order"> Follow-up:<span class="required">*</span></label>
+            <select class="form-control" id="hct_follow_up_order" name="hct_follow_up_order"
+                    data-concept="6193^HCT FOLLOW-UP ORDER^99DCT" required="required">
+                <option value="">...</option>
+                <option value="6191^REPEAT HIV TESTING IN THREE TO SIX MONTHS^99DCT">Repeat testing 3-6 months</option>
+                <option value="2390^REFERRED TO AMPATH, HIV POSITIVE^99DCT">HIV+ test, HIV clinic referral</option>
+                <option value="6188^HEALTH CENTRE REFERRAL, INDETERMINATE HIV TEST^99DCT">Indeterminate test, Health Centre referral </option>
+                <option value="6189^HEALTH CENTRE REFERRAL, CHILD LESS THAN 18 MONTHS OLD^99DCT">Child < 18 months, Health Centre referral </option>
+                <option value="1865^ANTENATAL CARE SERVICE^99DCT">Child < 5 years, referred for TB workup ANC referral </option>
+                <option value="6190^HEALTH CENTRE REFERRAL, OTHER AILMENTS^99DCT">Health Centre referral for other ailments </option>
+                <option value="1107^NONE^99DCT">No follow up(None)  </option>
+                <option value="887^SERUM GLUCOSE^99DCT">Blood sugar checkup   </option>
+                <option value="5085^SYSTOLIC BLOOD PRESSURE^99DCT">Blood pressure checkup  </option>
+                <option value="8707^VOLUNTARY MEDICAL MALE CIRCUMCISION ^99DCT"> VMMC </option>
+                <option value="58^TUBERCULOSIS^99DCT">Referred for TB </option>
+                <option value="174^SEXUALLY TRANSMITTED INFECTION^99DCT">STI Referral </option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="return_visit_date">Appointment Date:</label>
+            <input class="form-control datepicker nonFutureDate"
+                   data-concept="5096^RETURN VISIT DATE^99DCT"
+                   id="return_visit_date" name="return_visit_date" type="text"
+                    >
+        </div>
+
+        <div class="form-group">
+            <label for="preferred_clinic">Preferred Clinic:<span class="required">*</span></label>
+            <input class="form-control" id="preferred_clinic" type="text" placeholder="Start typing Clinic...">
+            <input class="form-control" name="epreferred_clinic" type="hidden">
+        </div>
+
+        <div class="form-group">
+            <label for="visible_signs_of_sickness">Client looks very sick? :<span class="required">*</span></label>
+            <select class="form-control" id="visible_signs_of_sickness" name="visible_signs_of_sickness"
+                    data-concept="7014^VISIBLE SIGNS OF SICKNESS^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1065^YES^99DCT">Yes</option>
+                <option value="1066^NO^99DCT">No</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="occupation">Occupation? :<span class="required">*</span></label>
+            <select class="form-control" id="occupation" name="occupation"
+                    data-concept="1972^OCCUPATION^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1967^FARMER^99DCT">Farmer</option>
+                <option value="1968^TEACHER^99DCT">Teacher </option>
+                <option value="5619^HEALTH CARE PROVIDER^99DCT">Health care worker</option>
+                <option value="6966^TRUCK DRIVER^99DCT">Truck Driver</option>
+                <option value="6284^SELF EMPLOYMENT^99DCT">Self Employed</option>
+                <option value="1966^CAUSAL WORKER^99DCT">Casual Worker</option>
+                <option value="1832^COMMERCIAL SEX WORKER ^99DCT">Commercial Sex Worker</option>
+                <option value="1971^UNEMPLOYED^99DCT">Unemployed</option>
+                <option value="1175^NOT APPLICABLE^99DCT">Not Applicable</option>
+                <option value="5622^OTHER NON-CODED^99DCT">Other</option>
+            </select>
+        </div>
         <div class="form-group">
             <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
                    type="hidden" required="required">
+        </div>
+
+    </div>
+
+
+
  </div>
 
 </div>
@@ -760,10 +1560,168 @@
                 $allowed_in.hide();
             }
         });
+        $('#number-of-nets-provided').change(function () {
+            var $number_of_nets = $('.number_of_nets');
+            if($("#number-of-nets-provided").val()=="1") {
+                $number_of_nets.show();
+            }
+           else{
+                $number_of_nets.hide();
+            }
+        });
+
+        $('#civil_status').change(function () {
+            var $civil_status = $('.civil_status');
+            if(!(($("#civil_status").val()=="5555^MARRIED^99DCT")||($("#civil_status").val()=="1060^LIVING WITH PARTNER^99DCT"))
+                    &&($("#civil_status").val()!="")) {
+                $civil_status.show();
+            }
+           else{
+                $civil_status.hide();
+            }
+        });
+        $('#regular_sexual_partner').change(function () {
+            var $regular_sexual_partner = $('.regular_sexual_partner');
+            if($("#regular_sexual_partner").val()=="1065^YES^99DCT") {
+                $regular_sexual_partner.show();
+            }
+           else{
+                $regular_sexual_partner.hide();
+            }
+        });
+        $('#immunizations_ever').change(function () {
+            var $immunizations_ever = $('.immunizations_ever');
+            if($("#immunizations_ever").val()=="1065^YES^99DCT") {
+                $immunizations_ever.show();
+            }
+           else{
+                $immunizations_ever.hide();
+            }
+        });
+
+        $('#review_of_systems_general').change(function () {
+            var $review_of_systems_general = $('.review_of_systems_general');
+            if($("#review_of_systems_general").val()=="5945^FEVER^99DCT") {
+                $review_of_systems_general.show();
+            }
+            else{
+                $review_of_systems_general.hide();
+            }
+        });
+
+        $('#malaria_tests_ordered').change(function () {
+            var $malaria_tests_ordered = $('.malaria_tests_ordered');
+            if($("#malaria_tests_ordered").val()=="32^MALARIAL SMEAR^99DCT") {
+                $malaria_tests_ordered.show();
+            }
+            else{
+                $malaria_tests_ordered.hide();
+            }
+        });
+
+        $('#enrolled_in_ampath').change(function () {
+            var $enrolled_in_ampath = $('.enrolled_in_ampath');
+            if($("#enrolled_in_ampath").val()=="1066^NO^99DCT") {
+                $enrolled_in_ampath.show();
+            }
+            else{
+                $enrolled_in_ampath.hide();
+            }
+        });
+
+        $('#tests_ordered').change(function () {
+            var $tests_ordered = $('.tests_ordered');
+            if($("#tests_ordered").val()=="1030^HIV DNA POLYMERASE CHAIN REACTION, QUALITATIVE^99DCT") {
+                $tests_ordered.show();
+            }
+            else{
+                $tests_ordered.hide();
+            }
+        });
+
+        $('#hypertension_status').change(function () {
+            var $hypertension_status = $('.hypertension_status');
+            if($("#hypertension_status").val()=="7286^KNOWN HYPERTENSIVE PATIENT^99DCT") {
+                $hypertension_status.show();
+            }
+            else{
+                $hypertension_status.hide();
+            }
+        });
+
+        $('#diabetes_status').change(function () {
+            var $diabetes_status = $('.diabetes_status');
+            if($("#diabetes_status").val()=="7282^KNOWN DIABETIC PATIENT^99DCT") {
+                $diabetes_status.show();
+            }
+            else{
+                $diabetes_status.hide();
+            }
+        });
 
 
+        $('#diastolic_blood_pressure').focusout(function () {
+            var $db_referral = $('.db_referral');
+
+                if($("#diastolic_blood_pressure").val()>= 90) {
+                    $db_referral.show();
+
+                }
+                else{
+                    if(($("#serum_glucose_random").val()< 8.0)&&($("#systolic_blood_pressure").val()< 140)&&($("#serum_glucose_fasting").val()< 5.6)){
+                        $db_referral.hide();
+                    }
+                }
 
 
+        });
+
+        $('#systolic_blood_pressure').focusout(function () {
+            var $db_referral = $('.db_referral');
+
+                if($("#systolic_blood_pressure").val()>= 140) {
+                    $db_referral.show();
+
+                }
+                else{
+                    if(($("#serum_glucose_random").val()< 8.0)&&($("#diastolic_blood_pressure").val()< 90)&&($("#serum_glucose_fasting").val()< 5.6)){
+                        $db_referral.hide();
+                    }
+                }
+
+
+        });
+
+        $('#serum_glucose_random').focusout(function () {
+            var $db_referral = $('.db_referral');
+                if($("#serum_glucose_random").val()>= 8.0) {
+                    $db_referral.show();
+
+                }
+                else{
+                    if(($("#systolic_blood_pressure").val()< 140)&&($("#diastolic_blood_pressure").val()< 90)&&($("#serum_glucose_fasting").val()< 5.6)){
+                        $db_referral.hide();
+                    }
+                }
+
+        });
+
+        $('#serum_glucose_fasting').focusout(function () {
+            var $db_referral = $('.db_referral');
+
+                if($("#serum_glucose_fasting").val()>= 5.6) {
+                    $db_referral.show();
+
+                }
+                else{
+
+                    if(($("#systolic_blood_pressure").val()< 140)&&($("#diastolic_blood_pressure").val()< 90)&&($("#serum_glucose_random").val() < 8.0)){
+                        $db_referral.hide();
+                    }
+                }
+
+
+        });
 
 
     });
