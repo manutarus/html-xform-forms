@@ -715,7 +715,7 @@
     </div>
 
     <div class="form-group">
-        <label for="hiv_tested_previously"> If Yes, Enrolled to care:<span class="required">*</span></label>
+        <label for="hiv_tested_previously">Previously Tested for HIV:<span class="required">*</span></label>
         <select class="form-control" id="hiv_tested_previously" name="hiv_tested_previously"
                 data-concept="1361^HIV TESTED PREVIOUSLY^99DCT" required="required">
             <option value="">...</option>
@@ -725,6 +725,9 @@
         </select>
     </div>
 
+
+
+<div style="display:none" id="tested_previously" class=" form-group hiv_tested_previously">
     <div class="form-group">
 
         <label for="patient_reported_number_of_times_previously_tested_for_hiv">How many times have you been tested for HIV:<span class="required">*</span></label>
@@ -864,6 +867,8 @@
         <label for="reason_for_not_enrolling_in_care_program_if_hiv_detailed_freetext_general">(specify):</label>
         <input class="form-control" data-concept="1915^FREETEXT GENERAL^99DCT" id="reason_for_not_enrolling_in_care_program_if_hiv_detailed_freetext_general" name="reason_for_not_enrolling_in_care_program_if_hiv_detailed_freetext_general" type="text" >
     </div>
+
+</div>
 
 
     <div class="form-group">
@@ -1638,6 +1643,20 @@
                 $tests_ordered.hide();
             }
         });
+
+
+
+
+        $('#hiv_tested_previously').change(function () {
+            var $hiv_tested_previously = $('.hiv_tested_previously');
+            if($("#hiv_tested_previously").val()=="1065^YES^99DCT") {
+                $hiv_tested_previously.show();
+            }
+            else{
+                $hiv_tested_previously.hide();
+            }
+        });
+
 
         $('#hypertension_status').change(function () {
             var $hypertension_status = $('.hypertension_status');
