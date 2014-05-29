@@ -119,9 +119,9 @@
 
 
         <div class="form-group">
-            <label for="total-number-of-house-hold-members">Total number of house hold members eligible for testing<span class="required">*</span></label>
-            <input class="form-control" id="total-number-of-house-hold-members"
-                   name="total-number-of-house-hold-members" type="NUMBER"
+            <label for="total_number_of_house_hold_members">Total number of house hold members eligible for testing<span class="required">*</span></label>
+            <input class="form-control" id="total_number_of_house_hold_members"
+                   name="total_number_of_house_hold_members" type="NUMBER"
                    type="number" data-concept="6801^NUMBER OF HOUSEHOLD MEMBERS^99DCT" required="required">
         </div>
   </div>
@@ -224,6 +224,7 @@
         </div>
     </div>
 
+<div class="section repeat">
     <div class="section">
         <h3>Individual Household Member</h3>
 
@@ -261,8 +262,7 @@
         </div>
         <div class="form-group">
             <label for="patient.birthdate">Date Of Birth:</label>
-            <input class="form-control datepicker nonFutureDate" id="patient.birthdate" name="patient.birthdate" type="text"
-                    >
+            <input class="form-control datepicker nonFutureDate" id="patient.birthdate" name="patient.birthdate" type="text">
         </div>
 
         <div class="form-group">
@@ -370,6 +370,25 @@
 
     <div class="section">
      <h3>Part 2: Socio economic questions</h3>
+
+
+        <div class="form-group">
+            <label for="occupation">Occupation? :<span class="required">*</span></label>
+            <select class="form-control" id="occupation" name="occupation"
+                    data-concept="1972^OCCUPATION^99DCT" required="required">
+                <option value="">...</option>
+                <option value="1967^FARMER^99DCT">Farmer</option>
+                <option value="1968^TEACHER^99DCT">Teacher </option>
+                <option value="5619^HEALTH CARE PROVIDER^99DCT">Health care worker</option>
+                <option value="6966^TRUCK DRIVER^99DCT">Truck Driver</option>
+                <option value="6284^SELF EMPLOYMENT^99DCT">Self Employed</option>
+                <option value="1966^CAUSAL WORKER^99DCT">Casual Worker</option>
+                <option value="1832^COMMERCIAL SEX WORKER ^99DCT">Commercial Sex Worker</option>
+                <option value="1971^UNEMPLOYED^99DCT">Unemployed</option>
+                <option value="1175^NOT APPLICABLE^99DCT">Not Applicable</option>
+                <option value="5622^OTHER NON-CODED^99DCT">Other</option>
+            </select>
+        </div>
 
         <div class="form-group">
             <label for="civil_status">Average income per month:<span
@@ -516,7 +535,7 @@
 
 
 
-    <div class="section">
+    <div style="display:none"  class="section children_below_18">
         <h3>For children < 18 years</h3>
 
         <div class="form-group">
@@ -776,6 +795,17 @@
     </div>
 
     <div class="form-group">
+        <label for="hiv_disclosure_to_anyone">Did you disclose your HIV Status to anyone?:<span class="required">*</span></label>
+        <select class="form-control" id="hiv_disclosure_to_anyone" name="hiv_disclosure_to_anyone"
+                data-concept="1048^HIV DISCLOSURE TO ANYONE^99DCT" required="required">
+            <option value="">...</option>
+            <option value="1065^YES^99DCT">Yes</option>
+            <option value="1066^NO^99DCT">No</option>
+
+        </select>
+    </div>
+
+    <div style="display:none"  class="form-group hiv_disclosure_to_anyone">
         <label for="hiv_disclosure_to_anyone_specific">If Yes, to whom?:<span class="required">*</span></label>
         <select class="form-control" id="hiv_disclosure_to_anyone_specific" name="hiv_disclosure_to_anyone_specific"
                 data-concept="5616^HIV DISCLOSURE TO ANYONE, SPECIFIC^99DCT" required="required">
@@ -788,7 +818,7 @@
         </select>
     </div>
 
-    <div class="form-group">
+    <div style="display:none"  class="form-group hiv_disclosure_to_anyone_two">
         <label for="reason_for_not_disclosing_hiv_status">If no, reason for not disclosing?:<span class="required">*</span></label>
         <select class="form-control" id="reason_for_not_disclosing_hiv_status" name="reason_for_not_disclosing_hiv_status"
                 data-concept="7010^REASON FOR NOT DISCLOSING HIV STATUS^99DCT" required="required">
@@ -801,21 +831,10 @@
         </select>
     </div>
 
-    <div class="form-group">
-        <label for="hiv_disclosure_to_anyone">Did you disclose your HIV Status to anyone?:<span class="required">*</span></label>
-        <select class="form-control" id="hiv_disclosure_to_anyone" name="hiv_disclosure_to_anyone"
-                data-concept="1048^HIV DISCLOSURE TO ANYONE^99DCT" required="required">
-            <option value="">...</option>
-            <option value="1065^YES^99DCT">Yes</option>
-            <option value="1066^NO^99DCT">No</option>
-
-        </select>
-    </div>
-
-    <div class="form-group">
+   <!-- <div class="form-group">
         <label for="hiv_disclosure_to_freetext_general">(specify):</label>
         <input class="form-control" data-concept="1915^FREETEXT GENERAL^99DCT" id="hiv_disclosure_to_freetext_general" name="hiv_disclosure_to_freetext_general" type="text" >
-    </div>
+    </div>-->
 
     <div class="form-group">
         <label for="hiv_positive_hiv_care_program_enrollment_status">If HIV+, Enrolled in Treatment Program?:<span class="required">*</span></label>
@@ -979,6 +998,10 @@
         </select>
     </div>
 
+
+
+
+<div style="display:none" class="patient_sex">
     <div class="form-group">
         <label for="pregnancy_status">Obviously pregnant?:<span class="required">*</span></label>
         <select class="form-control" id="pregnancy_status" name="pregnancy_status"
@@ -1050,6 +1073,12 @@
         </select>
     </div>
 
+
+
+
+
+</div>
+
     <div class="form-group">
         <label for="condom_given_this_visit">Condom given?:<span class="required">*</span></label>
         <select class="form-control" id="condom_given_this_visit" name="condom_given_this_visit"
@@ -1061,7 +1090,8 @@
         </select>
     </div>
 
-    <div class="form-group">
+ <div style="display:none"  class="form-group condom_given_this_visit">
+    <div  class="form-group">
 
         <label for="number_of_condoms_issued">Number of condoms issued[pcs]:<span class="required">*</span></label>
         <input class="form-control" id="number_of_condoms_issued"  name="number_of_condoms_issued"
@@ -1079,6 +1109,9 @@
             <option value="5271^FAMILY PLANNING STATUS^99DCT">Family Planning</option>
         </select>
     </div>
+
+ </div>
+
 
     <div class="form-group">
         <label for="review_of_medical_history">Have you ever suffered from STI?:<span class="required">*</span></label>
@@ -1199,7 +1232,10 @@
 
             </select>
         </div>
-        <div class="form-group">
+
+
+
+        <div  style="display:none" class="form-group currently_on_tuberculosis_treatment">
             <label for="on_tuberculosis_treatment_ever">Treated for TB in past?:<span class="required">*</span></label>
             <select class="form-control" id="on_tuberculosis_treatment_ever" name="on_tuberculosis_treatment_ever"
                     data-concept="1644^ON TUBERCULOSIS TREATMENT, EVER^99DCT" required="required">
@@ -1210,7 +1246,7 @@
             </select>
         </div>
 
-        <div class="form-group">
+        <div style="display:none" class="form-group currently_on_tuberculosis_treatment_year">
 
             <label for="tuberculosis_treatment_completion_year">Year of treatment:<span class="required">*</span></label>
             <input class="form-control" id="tuberculosis_treatment_completion_year"
@@ -1218,7 +1254,7 @@
                    type="number" data-concept="5966^TUBERCULOSIS TREATMENT COMPLETION YEAR^99DCT" required="required">
         </div>
 
-        <div class="form-group">
+        <div style="display:none"  class="form-group currently_on_tuberculosis_treatment_year">
             <label for="completion_of_6_month_tuberculosis_treatment">Completed 6 months treatment?:<span class="required">*</span></label>
             <select class="form-control" id="completion_of_6_month_tuberculosis_treatment" name="completion_of_6_month_tuberculosis_treatment"
                     data-concept="6292^COMPLETION OF 6-MONTH TUBERCULOSIS TREATMENT^99DCT" required="required">
@@ -1292,23 +1328,7 @@
             </select>
         </div>
 
-        <div class="form-group">
-            <label for="occupation">Occupation? :<span class="required">*</span></label>
-            <select class="form-control" id="occupation" name="occupation"
-                    data-concept="1972^OCCUPATION^99DCT" required="required">
-                <option value="">...</option>
-                <option value="1967^FARMER^99DCT">Farmer</option>
-                <option value="1968^TEACHER^99DCT">Teacher </option>
-                <option value="5619^HEALTH CARE PROVIDER^99DCT">Health care worker</option>
-                <option value="6966^TRUCK DRIVER^99DCT">Truck Driver</option>
-                <option value="6284^SELF EMPLOYMENT^99DCT">Self Employed</option>
-                <option value="1966^CAUSAL WORKER^99DCT">Casual Worker</option>
-                <option value="1832^COMMERCIAL SEX WORKER ^99DCT">Commercial Sex Worker</option>
-                <option value="1971^UNEMPLOYED^99DCT">Unemployed</option>
-                <option value="1175^NOT APPLICABLE^99DCT">Not Applicable</option>
-                <option value="5622^OTHER NON-CODED^99DCT">Other</option>
-            </select>
-        </div>
+</div>
         <div class="form-group">
             <input class="form-control" id="encounter.form_uuid" name="encounter.form_uuid"
                    type="hidden" required="required">
@@ -1337,17 +1357,17 @@
 
         $('#phct_encounter_form').validate({
             rules: {
-                pulse: {
+                members_over_13: {
                     number: true,
-                    range: [0, 230]
+                    range: [0, 50]
                 },
-                temperature_c: {
+                children_less_13: {
                     number: true,
-                    range: [25, 43]
+                    range: [0, 43]
                 },
-                weight_kg: {
+                total_number_of_house_hold_members: {
                     number: true,
-                    range: [0, 250]
+                    range: [$("#members_over_13").val()+$("#children_less_13").val()]
                 },
                 height_cm: {
                     number: true,
@@ -1656,7 +1676,61 @@
                 $hiv_tested_previously.hide();
             }
         });
+        $('#hiv_disclosure_to_anyone').change(function () {
+            var $hiv_disclosure_to_anyone = $('.hiv_disclosure_to_anyone');
+            var $hiv_disclosure_to_anyone_two = $('.hiv_disclosure_to_anyone_two');
 
+            if($("#hiv_disclosure_to_anyone").val()=="1065^YES^99DCT") {
+                $hiv_disclosure_to_anyone.show();
+                $hiv_disclosure_to_anyone_two.hide();
+            }
+            else{
+                $hiv_disclosure_to_anyone.hide();
+                $hiv_disclosure_to_anyone_two.show();
+            }
+        });
+
+
+        $('#patient\\.sex').change(function () {
+            var $patient_sex = $('.patient_sex');
+            if($("#patient\\.sex").val()=="F") {
+                $patient_sex.show();
+            }
+            else{
+                $patient_sex.hide();
+            }
+        });
+
+        $('#condom_given_this_visit').change(function () {
+            var $condom_given_this_visit = $('.condom_given_this_visit');
+            if($("#condom_given_this_visit").val()=="1065^YES^99DCT") {
+                $condom_given_this_visit.show();
+            }
+            else{
+                $condom_given_this_visit.hide();
+            }
+        });
+
+
+        $('#currently_on_tuberculosis_treatment').change(function () {
+            var $currently_on_tuberculosis_treatment = $('.currently_on_tuberculosis_treatment');
+            if($("#currently_on_tuberculosis_treatment").val()=="1066^NO^99DCT") {
+                $currently_on_tuberculosis_treatment.show();
+            }
+            else{
+                $currently_on_tuberculosis_treatment.hide();
+            }
+        });
+
+        $('#currently_on_tuberculosis_treatment').change(function () {
+            var $currently_on_tuberculosis_treatment_year = $('.currently_on_tuberculosis_treatment_year');
+            if($("#currently_on_tuberculosis_treatment").val()=="1065^YES^99DCT") {
+                $currently_on_tuberculosis_treatment_year.show();
+            }
+            else{
+                $currently_on_tuberculosis_treatment_year.hide();
+            }
+        });
 
         $('#hypertension_status').change(function () {
             var $hypertension_status = $('.hypertension_status');
@@ -1678,7 +1752,6 @@
             }
         });
 
-
         $('#diastolic_blood_pressure').focusout(function () {
             var $db_referral = $('.db_referral');
 
@@ -1691,8 +1764,6 @@
                         $db_referral.hide();
                     }
                 }
-
-
         });
 
         $('#systolic_blood_pressure').focusout(function () {
@@ -1739,9 +1810,29 @@
                     }
                 }
 
+        });
+        var calculateAge = function(birthday) {
+            var user_date = Date.parse(birthday);
+            var today_date = new Date();
+            var diff_date =  today_date - user_date;
+
+            var num_years = diff_date/31536000000;
+            var num_months = (diff_date % 31536000000)/2628000000;
+
+            return (Math.floor(num_months) +(Math.floor(num_years) *12 ));
+        };
+        $('#patient\\.birthdate').change(function(e) {
+            e.preventDefault();
+            var $birthday = $('#patient\\.birthdate').val();
+            var $children_below_18 = $('.children_below_18');
+            if( calculateAge($birthday) < 216) {
+                $children_below_18.show();
+            }
+            else{
+                $children_below_18.hide();
+            }
 
         });
-
 
     });
 

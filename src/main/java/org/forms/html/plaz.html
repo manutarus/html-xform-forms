@@ -1,9 +1,27 @@
-<!DOCTYPE html>
 <html>
 <head>
-    <title></title>
+    <title>Date substraction</title>
 </head>
 <body>
+<script language="JavaScript" type="text/javascript">
+    <!--
 
+    var myVar = prompt("Enter a future date: ")
+
+    var user_date = Date.parse(myVar);
+    var today_date = new Date();
+    var diff_date =  today_date - user_date;
+
+    var num_years = diff_date/31536000000;
+    var num_months = (diff_date % 31536000000)/2628000000;
+    var num_days = ((diff_date % 31536000000) % 2628000000)/86400000;
+
+
+   alert(Math.floor(num_months) +(Math.floor(num_years) *12 ));
+    document.write("Number of years: " + Math.floor(num_years) + "<br>");
+    document.write("Number of months: " + Math.floor(num_months) + "<br>");
+    document.write("Number of days: " + Math.floor(num_days) + "<br>");
+    //-->
+</script>
 </body>
 </html>
