@@ -1,0 +1,146 @@
+{
+    "payload": {
+        "survey": {
+            "provider_id": "1234-1",
+            "location_id": "2",
+            "encounter_datetime": "2014-06-4",
+            "allowed_in": "accepted",
+            "return_date": "2014-06-01",
+            "form_id": "12345",
+            "device_imei": "723623652832",
+            "date_entered": "2014-05-25",
+            "start_time": "2014-05-25 08:21:30",
+            "end_time": "2014-05-25 09:10:11",
+            "form_uuid": "a752fbb0-6997-4c31-ba10-d7a632084cca"
+        },
+        "household_definition": {
+            "no_of_household_adults": "4",
+            "no_of_children_under_13": "1",
+            "no_total_household": "5",
+            "eligible_adults": "3",
+            "eligible_under_13": "2",
+            "total_eligible": "5"
+        },
+        "economic": {
+            "bednets_owned": "4",
+            "bednets_given": "2",
+            "bednets_voucher": "VCHR345",
+            "land_owned": "4",
+            "cows_owned": "20",
+            "goats_owned": "10",
+            "sheep_owned": "20",
+            "children_in_household": "16",
+            "children_in_school": "10"
+        },
+        "individuals": [
+            {
+                "family_name": "Jesse",
+                "given_name": "Chris",
+                "middle_name": "Man",
+                "gender": "M",
+                "birth_date": "2000-01-01",
+                "birth_date_estimated": "Y",
+                "contact_phone_number": "+254-48848",
+                "medical_record_number": "8848-9",
+                "hct_id": "75757-8",
+                "patient_identifier_type_id": "3",
+                "patient_id": "75757",
+                "observation": {
+                    "1054^CIVIL STATUS^99DCT": "1057^NEVER MARRIED^99DCT",
+                    "6144^HOUSE STATUS^99DCT": "6141^HOUSEHOLD RESIDENT^99DCT",
+                    "7000^REGULAR SEXUAL PARTNER^99DCT": "1065^YES^99DCT",
+                    "7001^PARTNER KNOWN HIV STATUS^99DCT": "1065^YES^99DCT",
+                    "1848^CONDOM USE^99DCT": "1065^YES^99DCT",
+                    "relation_to_househead": "self",
+                    "1972^OCCUPATION^99DCT": "1967^FARMER^99DCT",
+                    "7003^INDIVIDUAL AVERAGE INCOME PER MONTH (KSH)^99DCT": "7002^LESS_THAN_1000_KSH^99DCT",
+                    "1605^HIGHEST EDUCATION^99DCT": "7583^ADULT_EDUCATION^99DCT",
+                    "6145^NUMBER OF HOURS INCOME GENERATED ACTIVITIES IN PAST WEEK^99DCT": "114",
+                    "6146^NUMBER OF HOURS NON-INCOME GENERATED ACTIVITIES IN PAST WEEK^99DCT": "34",
+                    "6147^NUMBER OF TIMES TO HEALTH FACILITY DUE TO HEALTH ISSUES IN PAST FOUR WEEKS^99DCT": "45",
+                    "6148^MONEY (KSH) SPENT ON MEDICAL ISSUES IN PAST FOUR WEEKS^99DCT": "4000",
+                    "5272^PREGNANCY STATUS^99DCT": "1",
+                    "1836^LAST MENSTRUAL PERIOD DATE^99DCT": "12-01-2014",
+                    "45^URINE PREGNANCY TEST, QUALITATIVE^99DCT": "703^POSITIVE^99DCT",
+                    "2055^ANTENATAL CARE ENROLLED^99DCT": "1065^YES^99DCT",
+                    "2293^INSECTICIDE TREATED NET ISSUED THIS VISIT^99DCT": "1065^YES^99DCT",
+                    "7012^SLEEPS UNDER BEDNET AT NIGHT^99DCT": "1065^YES^99DCT",
+                    "2000^MOTHER DECEASED, CODED^99DCT": "1065^YES^99DCT",
+                    "6411^BLOOD PRESSURE^99DCT": {
+                        "5085^SYSTOLIC BLOOD PRESSURE^99DCT": "167",
+                        "5086^DIASTOLIC BLOOD PRESSURE^99DCT": "81"
+                    },
+                    "6170^HIV TEST, DETAILED^99DCT": [
+                        {
+                            "2343^HIV RAPID TEST, BRAND^99DCT": "6155^DETERMINE HIV RAPID TEST^99DCT",
+                            "1040^HIV RAPID TEST, QUALITATIVE^99DCT": "703^POSITIVE^99DCT"
+                        },
+                        {
+                            "2343^HIV RAPID TEST, BRAND^99DCT": "2342^UNIGOLD HIV RAPID TEST^99DCT",
+                            "1040^HIV RAPID TEST, QUALITATIVE^99DCT": "703^POSITIVE^99DCT"
+                        }
+                    ]
+                }
+            },
+            {
+                "family_name": "Elly",
+                "given_name": "Makuba",
+                "middle_name": "Sijimbi",
+                "gender": "M",
+                "birth_date": "2000-01-01",
+                "birth_date_estimated": "Y",
+                "contact_phone_number": "+254-48848",
+                "medical_record_number": "8848-9",
+                "hct_id": "1002-5",
+                "patient_identifier_type_id": "3",
+                "patient_id": "75757",
+                "observation": {
+                    "1054^CIVIL STATUS^99DCT": "1057^NEVER MARRIED^99DCT",
+                    "6144^HOUSE STATUS^99DCT": "6141^HOUSEHOLD RESIDENT^99DCT",
+                    "7000^REGULAR SEXUAL PARTNER^99DCT": "1065^YES^99DCT",
+                    "7001^PARTNER KNOWN HIV STATUS^99DCT": "1065^YES^99DCT",
+                    "1848^CONDOM USE^99DCT": "1065^YES^99DCT",
+                    "relation_to_househead": "self",
+                    "1972^OCCUPATION^99DCT": "1967^FARMER^99DCT",
+                    "7003^INDIVIDUAL AVERAGE INCOME PER MONTH (KSH)^99DCT": "7002^LESS_THAN_1000_KSH^99DCT",
+                    "1605^HIGHEST EDUCATION^99DCT": "7583^ADULT_EDUCATION^99DCT",
+                    "6145^NUMBER OF HOURS INCOME GENERATED ACTIVITIES IN PAST WEEK^99DCT": "114",
+                    "6146^NUMBER OF HOURS NON-INCOME GENERATED ACTIVITIES IN PAST WEEK^99DCT": "34",
+                    "6147^NUMBER OF TIMES TO HEALTH FACILITY DUE TO HEALTH ISSUES IN PAST FOUR WEEKS^99DCT": "45",
+                    "6148^MONEY (KSH) SPENT ON MEDICAL ISSUES IN PAST FOUR WEEKS^99DCT": "4000",
+                    "5272^PREGNANCY STATUS^99DCT": "1",
+                    "1836^LAST MENSTRUAL PERIOD DATE^99DCT": "12-01-2014",
+                    "45^URINE PREGNANCY TEST, QUALITATIVE^99DCT": "703^POSITIVE^99DCT",
+                    "2055^ANTENATAL CARE ENROLLED^99DCT": "1065^YES^99DCT",
+                    "2293^INSECTICIDE TREATED NET ISSUED THIS VISIT^99DCT": "1065^YES^99DCT",
+                    "7012^SLEEPS UNDER BEDNET AT NIGHT^99DCT": "1065^YES^99DCT",
+                    "2000^MOTHER DECEASED, CODED^99DCT": "1065^YES^99DCT",
+                    "1198^PREVIOUS IMMUNIZATIONS ADMINISTERED^99DCT": [
+                        "886^BACILLE CAMILE-GUERIN VACCINATION^99DCT",
+                        "781^DIPTHERIA TETANUS AND PERTUSSIS VACCINATION^99DCT",
+                        "36^MEASLES VACCINATION^99DCT",
+                        "783^POLIO VACCINATION^99DCT"
+                    ],
+                    "6411^BLOOD PRESSURE^99DCT": {
+                        "5085^SYSTOLIC BLOOD PRESSURE^99DCT": "167",
+                        "5086^DIASTOLIC BLOOD PRESSURE^99DCT": "81"
+                    },
+                    "6170^HIV TEST, DETAILED^99DCT": [
+                        {
+                            "2343^HIV RAPID TEST, BRAND^99DCT": "6155^DETERMINE HIV RAPID TEST^99DCT",
+                            "1040^HIV RAPID TEST, QUALITATIVE^99DCT": "703^POSITIVE^99DCT"
+                        },
+                        {
+                            "2343^HIV RAPID TEST, BRAND^99DCT": "2342^UNIGOLD HIV RAPID TEST^99DCT",
+                            "1040^HIV RAPID TEST, QUALITATIVE^99DCT": "703^POSITIVE^99DCT"
+                        }
+                    ]
+                }
+            }
+        ]
+    }
+}
+            
+           
+
+

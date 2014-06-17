@@ -273,8 +273,8 @@
 
     <div id ="try4">
     <label >No</label><br>
-    <input type="text" id="try4txt" name="try4txt" /><br>
-    </div>
+        <input id="try4txt" type="radio"  name="obs.injury'+i+'" value="1065^YES^99DCT">
+        <label for="try4txt">Yes</label>
 
 
     <div id ="try5">
@@ -1870,10 +1870,12 @@ $(document).ready(function () {
 
         for (i=1; i<= $('#obs\\.admission_in_past_12_months').val(); i +=1 ) {
             counter++;
-            $('#try4txt').clone(true).appendTo($('#try5'));
 
+            $('#try4txt').clone(true).appendTo($('#try5'));
             $('#try4txt').attr('name', 'realname'+counter);
-            $('#try4txt').attr('id', 'realId'+counter);
+
+
+
 
 
 
